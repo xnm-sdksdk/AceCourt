@@ -1,14 +1,6 @@
 # AceCourt
 
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Ace Court is a front-end project developed by Alfredo Silva and Nuno Mendonça using the framework Vue.js, this project combines the UX/UI planning that later will lead to the development.
 
 ## Project Setup
 
