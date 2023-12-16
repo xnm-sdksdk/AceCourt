@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import DrawsView from "../views/DrawsView.vue";
-import EditProfile from "../views/EditProfile.vue";
+import EditProfile from "../views/EditProfileView.vue";
 import HomePageView from "../views/HomePageView.vue";
 import LandingPageView from "../views/LandingPageView.vue";
 import LogInView from "../views/LogInView.vue";
@@ -13,7 +13,7 @@ import RankingView from "../views/RankingView.vue";
 import ScheduleView from "../views/ScheduleView.vue";
 import ScoresView from "../views/ScoresView.vue";
 import SignUpView from "../views/SignUpView.vue";
-import TrophiesView from "../views/TrophyView.vue";
+//import TrophiesView from "../views/TrophyView.vue";
 import UpComingGamesView from "../views/UpComingGamesView.vue";
 import PageNotFoundView from "../views/PageNotFoundView.vue";
 // import { useUserStore } from "@/stores/user";
@@ -27,31 +27,9 @@ const router = createRouter({
       component: LandingPageView,
     },
     {
-      path: "/about",
-      name: "about",
-      component: AboutView,
-    },
-    {
       path: "/login",
       name: "login",
       component: LogInView,
-    },
-    {
-      path: "/add",
-      name: "addAnimal",
-      component: AddAnimalView,
-      meta: { requiresAuth: true },
-    },
-    {
-      path: "/animals",
-      name: "animals",
-      component: AnimalListView,
-    },
-    {
-      path: "/animals/:id",
-      name: "animal",
-      component: AnimalView,
-      meta: { requiresAuth: true },
     },
     {
       path: "/:PageNotFound(.*)*",
