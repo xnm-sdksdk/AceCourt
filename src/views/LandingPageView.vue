@@ -2,9 +2,6 @@
   <NavBar></NavBar>
 
   <Footer></Footer>
-  <div class="">
-    <h1>Landing Page</h1>
-  </div>
 </template>
 
 <script>
@@ -15,7 +12,6 @@ export default {
     NavBar,Footer
   },
 }
-export default {};
 </script>
 
 <style></style>
