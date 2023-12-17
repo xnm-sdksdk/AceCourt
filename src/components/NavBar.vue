@@ -5,17 +5,19 @@
         <h1>Ace Court</h1>
       </div>
       <div class="flex items-center space-x-4">
-        <button
-          class="bg-white border border-blue-500 text-blue-500 px-4 py-2 rounded-full hover:bg-gray-100"
-        >
-          Login
-        </button>
+        <RouterLink :to="{name:'login'}">
+          <button
+            class="bg-white border border-blue-500 text-blue-500 px-4 py-2 rounded-full hover:bg-gray-100"
+          >
+            Login
+          </button>
+        </RouterLink>
         <button
           class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600"
         >
           Sign Up
         </button>
-      </div> 
+      </div>
     </div>
   </nav>
 </template>
