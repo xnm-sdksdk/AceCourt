@@ -2,26 +2,8 @@
 import { RouterLink, RouterView } from "vue-router";
 </script>
 <template>
-  <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="./assets/logo.svg"
-      width="125"
-      height="125"
-    />
-  </header>
-
-  <main>
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
-</main>
+    <RouterView></RouterView>
 </template>
-
-<script>
-import { RouterView } from "vue-router";
-</script>
 
 <style scoped>
 header {
