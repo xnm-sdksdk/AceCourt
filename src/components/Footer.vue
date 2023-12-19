@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-EFEFEF text-white p-6">
+  <footer class="flex bg-slate-100 text-white p-6">
     <div class="container mx-auto">
       <h2>Ace Court</h2>
 
