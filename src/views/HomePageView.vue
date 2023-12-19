@@ -12,7 +12,12 @@
       <!-- Highlight Player Card -->
       <!-- class="d-flex align-center flex-column" -->
       <div class="">
-        <v-card max-width="400" height="400" class="mx-auto my-8" elevation="3">
+        <v-card
+          max-width="400"
+          height="400"
+          class="mx-auto rounded-b-xl my-8"
+          elevation="3"
+        >
           <v-img src="" alt="Highlight-Player-Image" width="150" height="150">
           </v-img>
           <v-card-title class="ml-4"> Highlight Player </v-card-title>
@@ -29,7 +34,12 @@
       <!-- Live Games Card -->
 
       <div class="">
-        <v-card max-width="400" height="400" class="mx-auto my-8" elevation="3">
+        <v-card
+          max-width="400"
+          height="400"
+          class="mx-auto rounded-b-xl my-8"
+          elevation="3"
+        >
           <v-card-title class="ml-4"> Live Games </v-card-title>
           <v-card-subtitle class="ml-4">Real-Time Data</v-card-subtitle>
 
@@ -44,7 +54,12 @@
 
       <!-- Top Matches Card -->
       <div class="">
-        <v-card max-width="400" height="300" class="mx-auto my-8" elevation="3">
+        <v-card
+          max-width="400"
+          height="300"
+          class="mx-auto rounded-b-xl my-8"
+          elevation="3"
+        >
           <!-- Carlos -->
           <!-- <v-img src="" alt="Carlos-Alcaraz-Image" width="150" height="150">
           </v-img> -->
@@ -60,7 +75,12 @@
       </div>
       <!-- News Card -->
       <div class="">
-        <v-card max-width="400" height="300" class="mx-auto my-8" elevation="3">
+        <v-card
+          max-width="400"
+          height="300"
+          class="mx-auto rounded-b-xl my-8"
+          elevation="3"
+        >
           <!-- Player -->
           <!-- <v-img src="" alt="Player-Image" width="150" height="150">
           </v-img> -->
@@ -73,11 +93,66 @@
         </v-card>
       </div>
       <!-- Ranking Card -->
-
+      <div class="">
+        <v-card
+          max-width="400"
+          height="300"
+          class="mx-auto rounded-b-xl my-8"
+          elevation="3"
+        >
+          <!-- Player -->
+          <!-- <v-img src="" alt="Djokovic-Ranking-Image" width="150" height="150">
+          </v-img> -->
+          <v-card-title class="ml-4"> Ranking </v-card-title>
+          <v-card-subtitle class="ml-4"
+            >Tennis - "We'll be back", say Australia's Davis Cup
+            nearly-men</v-card-subtitle
+          >
+          <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
+        </v-card>
+      </div>
       <!-- Head to Head Card -->
-
+      <div class="">
+        <v-card
+          max-width="400"
+          height="300"
+          class="mx-auto rounded-b-xl my-8"
+          elevation="3"
+        >
+          <!-- De Minaur -->
+          <!-- <v-img src="" alt="De-Minaur-Image" width="150" height="150">
+          </v-img> -->
+          <!-- Medvedev -->
+          <!-- <v-img src="" alt="Medvedev-Image" width="150" height="150">
+          </v-img> -->
+          <v-card-title class="ml-4"> Head to Head </v-card-title>
+          <v-card-subtitle class="ml-4"
+            >Medvedev gets revenge on De Minaur and return to US Open
+            quarter-finals</v-card-subtitle
+          >
+        </v-card>
+      </div>
       <!-- Tournament Progress Stats Card -->
-
+      <div class="">
+        <v-card
+          max-width="400"
+          height="300"
+          class="mx-auto rounded-b-xl my-8"
+          elevation="3"
+        >
+          <v-card-title class="ml-4"> Tournament Progress </v-card-title>
+          <!-- Graph 1 -->
+          <!-- Graph 2 -->
+          <!-- Graph 3 -->
+          <v-card-subtitle class="ml-4"
+            >Percentage of Completion</v-card-subtitle
+          >
+          <v-card-subtitle class="ml-4"
+            >Average First Server Won %</v-card-subtitle
+          >
+          <v-card-subtitle class="ml-4">Second Serve % Won</v-card-subtitle>
+        </v-card>
+      </div>
       <!-- Footer -->
       <Footer></Footer>
     </v-container>
