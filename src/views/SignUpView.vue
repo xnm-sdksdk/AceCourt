@@ -80,11 +80,13 @@
       </div>
 
       <!-- Botão Login -->
-      <button
-        class="w-full bg-white border border-blue-500 text-blue-500 py-2 px-4 rounded-md hover:bg-gray-100 focus:outline-none focus:ring focus:border-blue-700"
-      >
-        Log In
-      </button>
+      <RouterLink :to="{name: 'login'}">
+        <button
+          class="w-full bg-white border border-blue-500 text-blue-500 py-2 px-4 rounded-md hover:bg-gray-100 focus:outline-none focus:ring focus:border-blue-700"
+        >
+          Log In
+        </button>
+      </RouterLink>
     </div>
   </div>
 </template>
@@ -97,7 +99,7 @@ export default {
       name: "",
       email: "",
       password: "",
-      typeUser:""
+      typeUser: "",
     };
   },
   methods: {
