@@ -2,13 +2,6 @@
   <v-app>
     <NavBar></NavBar>
     <v-container>
-      <!-- <v-row>
-        <v-col cols="2">
-          <v-sheet>
-          </v-sheet>
-        </v-col>
-      </v-row> -->
-
       <!-- Highlight Player Card -->
       <!-- class="d-flex align-center flex-column" -->
       <div class="">
