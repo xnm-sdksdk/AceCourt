@@ -154,8 +154,8 @@
         </v-card>
       </div>
       <!-- Footer -->
-      <Footer></Footer>
     </v-container>
+    <Footer></Footer>
   </v-app>
 </template>
 
