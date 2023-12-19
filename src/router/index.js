@@ -15,6 +15,7 @@ import ProfileView from "@/views/ProfileView.vue";
 import MyStatsView from "@/views/MyStatsView.vue";
 import EditProfile from "@/views/EditProfileView.vue";
 import TrophiesView from "@/views/TrophiesView.vue";
+import AboutUsView from "@/views/AboutUsView.vue";
 import PageNotFoundView from "@/views/PageNotFoundView.vue";
 import { useUserStore } from "@/stores/user";
 
@@ -147,6 +148,14 @@ const router = createRouter({
       component: TrophiesView,
       meta: {
         title: "Trophies",
+      },
+    },
+    {
+      path: "/about",
+      name: "about",
+      component: AboutUsView,
+      meta: {
+        title: "About Us",
       },
     },
     {

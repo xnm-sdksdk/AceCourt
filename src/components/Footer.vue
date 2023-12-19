@@ -4,21 +4,13 @@
       <h2>Ace Court</h2>
 
       <div class="flex flex-col md:flex-row md:items-center mb-4">
-        <a
-          href="#"
-          class="text-gray-800 hover:underline mb-2 md:mb-0 md:mr-4"
-          >About Us</a
-        >
-        <a
-          href="#"
-          class="text-gray-800 hover:underline mb-2 md:mb-0 md:mr-4"
-          >Privacy Policy</a
-        >
-        <a
-          href="#"
-          class="text-gray-800 hover:underline mb-2 md:mb-0"
-          >Terms of Service</a
-        >
+        <RouterLink :to="{ name: 'about' }">
+          <p class="text-gray-800 hover:underline mb-2 md:mb-0 md:mr-4">
+            About Us
+          </p>
+        </RouterLink>
+        <p class="text-gray-800 mb-2 md:mb-0 md:mr-4">Privacy Policy</p>
+        <p class="text-gray-800 mb-2 md:mb-0 md:mr-4">Terms of Service</p>
       </div>
 
       <div class="w-90">
