@@ -7,25 +7,28 @@
         <v-row>
           <v-col>
             <v-card class="rounded-b-xl" elevation="3" height="300">
+              <v-card-title class="m-3"> Highlight Player </v-card-title>
               <v-row>
-                <v-card-title class="ml-4"> Highlight Player </v-card-title>
-                <v-divider></v-divider>
-                <v-col cols="4">
-                  <v-avatar size="100">
+                <v-col cols="6">
+                  <v-avatar size="200">
                     <v-img
-                      src="../public/assets/carlos.svg"
+                      src="../assets/carlos.svg"
                       alt="Highlight-Player-Image"
-                      width="200"
-                      height="200"
+                      width="100%"
+                      height="100%"
                     >
                     </v-img>
                   </v-avatar>
                 </v-col>
 
-                <v-col cols="8">
-                  <v-card-subtitle class="ml-4">Carlos Alcaraz</v-card-subtitle>
+                <v-col>
+                  <div class="text-blue-900 font-extrabold">
+                    <v-card-subtitle class="m-1" justify="start"
+                      >Carlos Alcaraz</v-card-subtitle
+                    >
+                  </div>
 
-                  <v-card-text class="ml-4">
+                  <v-card-text class="m-1" justify="start">
                     Spanish tennis sensation Carlos Alcaraz showcases formidable
                     skill and remarkable achievements.
                   </v-card-text>
@@ -41,18 +44,21 @@
           <v-col>
             <div class="">
               <v-card class="rounded-b-xl" elevation="3" height="300">
-                <v-card-title class="ml-4"> Live Games </v-card-title>
-                <v-divider></v-divider>
-                <v-card-subtitle class="ml-4">Real-Time Data</v-card-subtitle>
+                <v-card-title class="m-1"> Live Games </v-card-title>
 
-                <v-card-text class="ml-4">
+                <v-card-subtitle class="m-4">Real-Time Data</v-card-subtitle>
+
+                <v-card-text class="m-3 max-w-xs">
                   Experience the thrill of live games with our dynamic
                   dashboard, providing real-time data for an immersive gaming
                   experience
                 </v-card-text>
-                <RouterLink :to="{ name: 'scores' }">
-                  <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
-                </RouterLink>
+
+                <div class="m-4 md:m-4 lg:m-4">
+                  <RouterLink :to="{ name: 'scores' }">
+                    <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
+                  </RouterLink>
+                </div>
               </v-card>
             </div>
           </v-col>
@@ -70,9 +76,9 @@
                 <v-divider></v-divider>
                 <v-col cols="4">
                   <!-- Carlos -->
-                  <v-avatar size="100">
+                  <v-avatar size="200">
                     <v-img
-                      src="../public/assets/carlos.svg"
+                      src="../assets/carlos.svg"
                       alt="Carlos-Alcaraz-Image"
                       width="200"
                       height="2050"
@@ -80,9 +86,9 @@
                     </v-img>
                   </v-avatar>
                   <!-- Jannik -->
-                  <v-avatar size="100">
+                  <v-avatar size="200">
                     <v-img
-                      src="../public/assets/jannik.svg"
+                      src="../assets/jannik.svg"
                       alt="Jannik-Sinner-Image"
                       width="200"
                       height="200"
@@ -102,21 +108,19 @@
 
           <v-col>
             <!-- News Card -->
-            <div
-              class="container mx-auto flex justify-between items-center p-4"
-            >
+            <div class="">
               <v-card class="rounded-b-xl" elevation="3" height="300">
                 <v-row>
                   <v-card-title class="ml-4"> News </v-card-title>
                   <v-divider></v-divider>
                   <!-- Player -->
                   <v-col cols="4">
-                    <v-avatar size="100">
+                    <v-avatar size="200">
                       <v-img
-                        src="../public/assets/player.svg"
+                        src="../assets/player.svg"
                         alt="Player-Image"
-                        width="200"
-                        height="200"
+                        width="100%"
+                        height="100%"
                       >
                       </v-img>
                     </v-avatar>
@@ -149,10 +153,10 @@
                   <!-- Player -->
                   <v-avatar size="200">
                     <v-img
-                      src="../public/assets/nova.svg"
+                      src="../assets/nova.svg"
                       alt="Djokovic-Ranking-Image"
-                      width="300"
-                      height="300"
+                      width="100%"
+                      height="100%"
                     >
                     </v-img>
                   </v-avatar>
@@ -176,22 +180,22 @@
               <v-card class="rounded-b-xl" elevation="3" height="300">
                 <v-card-title class="ml-4"> Head to Head </v-card-title>
                 <!-- De Minaur -->
-                <v-avatar size="100">
+                <v-avatar size="200">
                   <v-img
-                    src="../public/assets/alex.svg"
+                    src="../assets/alex.svg"
                     alt="De-Minaur-Image"
-                    width="150"
-                    height="150"
+                    width="100%"
+                    height="100%"
                   >
                   </v-img>
                 </v-avatar>
                 <!-- Medvedev  -->
-                <v-avatar size="100">
+                <v-avatar size="200">
                   <v-img
-                    src="../public/assets/medvedev.svg"
+                    src="../assets/medvedev.svg"
                     alt="Medvedev-Image"
-                    width="150"
-                    height="150"
+                    width="100%"
+                    height="100%"
                   >
                   </v-img>
                 </v-avatar>
