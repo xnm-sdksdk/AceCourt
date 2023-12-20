@@ -4,7 +4,7 @@
       <h2 class="text-2xl font-semibold mb-4 flex justify-center">Log In</h2>
 
       <!-- Form -->
-      <form>
+      <form @submit.prevent="logAccount">
         <!-- Email Input -->
         <div class="mb-4">
           <input
@@ -12,6 +12,7 @@
             id="email"
             name="email"
             placeholder="Email"
+            v-model.trim="email"
             class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-500"
           />
         </div>
@@ -22,6 +23,7 @@
             id="password"
             name="password"
             placeholder="Password"
+            v-model.trim="password"
             class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-500"
             :type="showPassword ? 'text' : 'password'"
           />
@@ -50,7 +52,7 @@
       </div>
 
       <!-- Sign Up Button -->
-      <RouterLink :to="{name:'signup'}">
+      <RouterLink :to="{ name: 'signup' }">
         <button
           class="w-full bg-white border border-blue-500 text-blue-500 py-2 px-4 rounded-md hover:bg-gray-100 focus:outline-none focus:ring focus:border-blue-700"
         >
@@ -65,6 +67,8 @@
 export default {
   data() {
     return {
+      email: "",
+      password: "",
       showPassword: false,
     };
   },
@@ -72,6 +76,7 @@ export default {
     togglePasswordVisibility() {
       this.showPassword = !this.showPassword;
     },
+    logAccount() {},
   },
 };
 </script>
