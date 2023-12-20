@@ -1,0 +1,40 @@
+{
+	"success": 1,
+	"result": [
+		{
+			"player_key": "1905",
+			"player_name": "N. Djokovic",
+			"player_country": "Serbia",
+			"player_bday": "22.05.1987",
+			"player_logo": "https://api.api-tennis.com/logo-tennis/1905_n-djokovic.jpg",
+			"stats": [
+				{
+					"season": "2021",
+					"type": "doubles",
+					"rank": "255",
+					"titles": "0",
+					"matches_won": "6",
+					"matches_lost": "4",
+					"hard_won": "2",
+					"hard_lost": "2",
+					"clay_won": "",
+					"clay_lost": "",
+					"grass_won": "3",
+					"grass_lost": "0"
+				},
+				{
+					"season": "2020",
+					"type": "doubles",
+					"rank": "158",
+					"titles": "0",
+					"matches_won": "2",
+					"matches_lost": "1",
+					"hard_won": "2",
+					"hard_lost": "1",
+					"clay_won": "",
+					"clay_lost": "",
+					"grass_won": "",
+					"grass_lost": ""
+				},
+     ]
+ }
