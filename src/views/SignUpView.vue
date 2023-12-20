@@ -50,17 +50,25 @@
 
         <!-- Tipe of User Select -->
         <div class="mb-4">
-          <select
-            id="userType"
-            name="userType"
-            class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-500"
-            v-model="typeUser"
-          >
-            <option value="#" disabled selected>Type of user</option>
-            <option value="Tennis Enthusiast">Tennis Enthusiast</option>
-            <option value="Sports Bettor">Sports Bettor</option>
-            <option value="Youth Player">Youth Player</option>
-          </select>
+          <!-- Tipe of User Select -->
+          <div class="mb-4 relative">
+            <select
+              id="userType"
+              name="userType"
+              class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-500"
+              v-model="typeUser"
+            >
+              <option value="" disabled selected>Type of user</option>
+              <option value="Tennis Enthusiast">Tennis Enthusiast</option>
+              <option value="Sports Bettor">Sports Bettor</option>
+              <option value="Youth Player">Youth Player</option>
+            </select>
+            <div
+              class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none"
+            >
+              <img src="@/assets/arrowSelect.svg" alt="" />
+            </div>
+          </div>
         </div>
 
         <!-- Botão de Sign Up -->
@@ -80,7 +88,7 @@
       </div>
 
       <!-- Botão Login -->
-      <RouterLink :to="{name: 'login'}">
+      <RouterLink :to="{ name: 'login' }">
         <button
           class="w-full bg-white border border-blue-500 text-blue-500 py-2 px-4 rounded-md hover:bg-gray-100 focus:outline-none focus:ring focus:border-blue-700"
         >
@@ -102,6 +110,7 @@ export default {
       typeUser: "",
     };
   },
+
   methods: {
     togglePasswordVisibility() {
       this.showPassword = !this.showPassword;
