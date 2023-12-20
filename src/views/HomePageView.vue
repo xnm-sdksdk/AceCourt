@@ -3,18 +3,17 @@
     <NavBar></NavBar>
     <v-container>
       <!-- Highlight Player Card -->
-      <!-- class="d-flex align-center flex-column" -->
-      <v-row>
-        <v-col>
-          <div class="">
+      <div class="container mx-auto flex justify-between items-center p-4">
+        <v-row>
+          <v-col>
             <v-card class="rounded-b-xl" elevation="3">
-              <v-img
+              <!-- <v-img
                 src=""
                 alt="Highlight-Player-Image"
                 width="150"
                 height="150"
               >
-              </v-img>
+              </v-img> -->
               <v-card-title class="ml-4"> Highlight Player </v-card-title>
               <v-card-subtitle class="ml-4">Carlos Alcaraz</v-card-subtitle>
 
@@ -24,31 +23,32 @@
               </v-card-text>
               <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
             </v-card>
-          </div>
-        </v-col>
+          </v-col>
 
-        <!-- Live Games Card -->
-        <v-col>
-          <div class="">
-            <v-card class="rounded-b-xl" elevation="3">
-              <v-card-title class="ml-4"> Live Games </v-card-title>
-              <v-card-subtitle class="ml-4">Real-Time Data</v-card-subtitle>
+          <!-- Live Games Card -->
+          <v-col>
+            <div class="">
+              <v-card class="rounded-b-xl" elevation="3">
+                <v-card-title class="ml-4"> Live Games </v-card-title>
+                <v-card-subtitle class="ml-4">Real-Time Data</v-card-subtitle>
 
-              <v-card-text class="ml-4">
-                Experience the thrill of live games with our dynamic dashboard,
-                providing real-time data for an immersive gaming experience
-              </v-card-text>
-              <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
-            </v-card>
-          </div>
-        </v-col>
-      </v-row>
+                <v-card-text class="ml-4">
+                  Experience the thrill of live games with our dynamic
+                  dashboard, providing real-time data for an immersive gaming
+                  experience
+                </v-card-text>
+                <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
+              </v-card>
+            </div>
+          </v-col>
+        </v-row>
+      </div>
       <!-- Highlight Game Bar -->
 
       <!-- Top Matches Card -->
-      <v-row no-gutters>
-        <v-col>
-          <div class="">
+      <div class="container mx-auto flex justify-between items-center p-4">
+        <v-row>
+          <v-col>
             <v-card class="rounded-b-xl" elevation="3">
               <!-- Carlos -->
               <!-- <v-img src="" alt="Carlos-Alcaraz-Image" width="150" height="150">
@@ -62,30 +62,30 @@
                 Game</v-card-subtitle
               >
             </v-card>
-          </div>
-        </v-col>
+          </v-col>
 
-        <v-col>
-          <!-- News Card -->
-          <div class="">
-            <v-card class="rounded-b-xl" elevation="3">
-              <!-- Player -->
-              <!-- <v-img src="" alt="Player-Image" width="150" height="150">
+          <v-col>
+            <!-- News Card -->
+            <div class="">
+              <v-card class="rounded-b-xl" elevation="3">
+                <!-- Player -->
+                <!-- <v-img src="" alt="Player-Image" width="150" height="150">
           </v-img> -->
-              <v-card-title class="ml-4"> News </v-card-title>
-              <v-card-subtitle class="ml-4"
-                >Tennis - "We'll be back", say Australia's Davis Cup
-                nearly-men</v-card-subtitle
-              >
-              <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
-            </v-card>
-          </div>
-        </v-col>
-      </v-row>
+                <v-card-title class="ml-4"> News </v-card-title>
+                <v-card-subtitle class="ml-4"
+                  >Tennis - "We'll be back", say Australia's Davis Cup
+                  nearly-men</v-card-subtitle
+                >
+                <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
+              </v-card>
+            </div>
+          </v-col>
+        </v-row>
+      </div>
       <!-- Ranking Card -->
-      <v-row>
-        <v-col>
-          <div class="">
+      <div class="container mx-auto flex justify-between items-center p-4">
+        <v-row>
+          <v-col>
             <v-card class="rounded-b-xl" elevation="3">
               <!-- Player -->
               <!-- <v-img src="" alt="Djokovic-Ranking-Image" width="150" height="150">
@@ -97,31 +97,31 @@
               >
               <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
             </v-card>
-          </div>
-        </v-col>
-        <v-col>
-          <!-- Head to Head Card -->
-          <div class="">
-            <v-card class="rounded-b-xl" elevation="3">
-              <!-- De Minaur -->
-              <!-- <v-img src="" alt="De-Minaur-Image" width="150" height="150">
+          </v-col>
+          <v-col>
+            <!-- Head to Head Card -->
+            <div class="">
+              <v-card class="rounded-b-xl" elevation="3">
+                <!-- De Minaur -->
+                <!-- <v-img src="" alt="De-Minaur-Image" width="150" height="150">
           </v-img> -->
-              <!-- Medvedev -->
-              <!-- <v-img src="" alt="Medvedev-Image" width="150" height="150">
+                <!-- Medvedev -->
+                <!-- <v-img src="" alt="Medvedev-Image" width="150" height="150">
           </v-img> -->
-              <v-card-title class="ml-4"> Head to Head </v-card-title>
-              <v-card-subtitle class="ml-4"
-                >Medvedev gets revenge on De Minaur and return to US Open
-                quarter-finals</v-card-subtitle
-              >
-            </v-card>
-          </div>
-        </v-col>
-      </v-row>
+                <v-card-title class="ml-4"> Head to Head </v-card-title>
+                <v-card-subtitle class="ml-4"
+                  >Medvedev gets revenge on De Minaur and return to US Open
+                  quarter-finals</v-card-subtitle
+                >
+              </v-card>
+            </div>
+          </v-col>
+        </v-row>
+      </div>
       <!-- Tournament Progress Stats Card -->
-      <v-row>
-        <v-col>
-          <div class="">
+      <div class="container mx-auto flex justify-between items-center p-4">
+        <v-row>
+          <v-col>
             <v-card
               max-width="1400"
               height="300"
@@ -140,9 +140,9 @@
               >
               <v-card-subtitle class="ml-4">Second Serve % Won</v-card-subtitle>
             </v-card>
-          </div>
-        </v-col>
-      </v-row>
+          </v-col>
+        </v-row>
+      </div>
       <!-- Footer -->
     </v-container>
     <Footer></Footer>
