@@ -69,9 +69,6 @@ export default {
     };
   },
   methods: {
-    /**
-     *
-     */
     togglePasswordVisibility() {
       this.showPassword = !this.showPassword;
     },

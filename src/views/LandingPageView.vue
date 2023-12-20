@@ -2,7 +2,7 @@
   <div>
     <NavBar></NavBar>
     <main>
-      <v-container class="mt-5">
+      <v-container class="container mx-auto flex justify-between items-center p-4">
         <v-row>
           <v-col cols="12" md="6" class="align-self-center">
             <!-- Title -->
@@ -63,6 +63,7 @@
           </v-col>
         </v-row>
       </v-container>
+      
     </main>
     <Footer></Footer>
   </div>
