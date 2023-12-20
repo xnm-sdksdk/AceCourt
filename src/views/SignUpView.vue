@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="submitSignUp">
+  <form @submit.prevent="createAccount">
     <div class="flex items-center justify-center h-screen">
       <div class="max-w-xl mx-auto bg-white rounded p-8 shadow-md">
         <h2 class="text-2xl font-semibold mb-4 flex justify-center">Sign Up</h2>
