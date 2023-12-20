@@ -6,36 +6,43 @@
       <div class="container mx-auto flex justify-between items-center p-4">
         <v-row>
           <v-col>
-            <v-card class="rounded-b-xl" elevation="3">
-              <v-card-title class="ml-4"> Highlight Player </v-card-title>
+            <v-card class="rounded-b-xl" elevation="3" height="300">
+              <v-row>
+                <v-card-title class="ml-4"> Highlight Player </v-card-title>
+                <v-divider></v-divider>
+                <v-col cols="4">
+                  <v-avatar size="100">
+                    <v-img
+                      src="../public/assets/carlos.svg"
+                      alt="Highlight-Player-Image"
+                      width="200"
+                      height="200"
+                    >
+                    </v-img>
+                  </v-avatar>
+                </v-col>
 
-              <v-avatar size="100">
-                <v-img
-                  src="../public/assets/carlos.svg"
-                  alt="Highlight-Player-Image"
-                  width="200"
-                  height="200"
-                >
-                </v-img>
-              </v-avatar>
-              <v-card-subtitle class="ml-4">Carlos Alcaraz</v-card-subtitle>
+                <v-col cols="8">
+                  <v-card-subtitle class="ml-4">Carlos Alcaraz</v-card-subtitle>
 
-              <v-card-text class="ml-4">
-                Spanish tennis sensation Carlos Alcaraz showcases formidable
-                skill and remarkable achievements.
-              </v-card-text>
-              <RouterLink :to="{ name: 'players' }">
-                <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
-              </RouterLink>
+                  <v-card-text class="ml-4">
+                    Spanish tennis sensation Carlos Alcaraz showcases formidable
+                    skill and remarkable achievements.
+                  </v-card-text>
+                  <RouterLink :to="{ name: 'players' }">
+                    <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
+                  </RouterLink>
+                </v-col>
+              </v-row>
             </v-card>
           </v-col>
 
           <!-- Live Games Card -->
           <v-col>
             <div class="">
-              <v-card class="rounded-b-xl" elevation="3">
+              <v-card class="rounded-b-xl" elevation="3" height="300">
                 <v-card-title class="ml-4"> Live Games </v-card-title>
-
+                <v-divider></v-divider>
                 <v-card-subtitle class="ml-4">Real-Time Data</v-card-subtitle>
 
                 <v-card-text class="ml-4">
@@ -57,57 +64,74 @@
       <div class="container mx-auto flex justify-between items-center p-4">
         <v-row>
           <v-col>
-            <v-card class="rounded-b-xl" elevation="3">
-              <v-card-title class="ml-4"> Top Matches </v-card-title>
-              <!-- Carlos -->
-              <v-avatar size="100">
-                <v-img
-                  src="../public/assets/carlos.svg"
-                  alt="Carlos-Alcaraz-Image"
-                  width="200"
-                  height="2050"
-                >
-                </v-img>
-              </v-avatar>
-              <!-- Jannik -->
-              <v-avatar size="100">
-                <v-img
-                  src="../public/assets/jannik.svg"
-                  alt="Jannik-Sinner-Image"
-                  width="200"
-                  height="200"
-                >
-                </v-img>
-              </v-avatar>
-              <v-card-subtitle class="ml-4"
-                >Jannik Sinner defeats Carlos Alcaraz in a perfect
-                Game</v-card-subtitle
-              >
+            <v-card class="rounded-b-xl" elevation="3" height="300">
+              <v-row>
+                <v-card-title class="ml-4"> Top Matches </v-card-title>
+                <v-divider></v-divider>
+                <v-col cols="4">
+                  <!-- Carlos -->
+                  <v-avatar size="100">
+                    <v-img
+                      src="../public/assets/carlos.svg"
+                      alt="Carlos-Alcaraz-Image"
+                      width="200"
+                      height="2050"
+                    >
+                    </v-img>
+                  </v-avatar>
+                  <!-- Jannik -->
+                  <v-avatar size="100">
+                    <v-img
+                      src="../public/assets/jannik.svg"
+                      alt="Jannik-Sinner-Image"
+                      width="200"
+                      height="200"
+                    >
+                    </v-img>
+                  </v-avatar>
+                </v-col>
+                <v-col cols="8">
+                  <v-card-subtitle class="ml-4"
+                    >Jannik Sinner defeats Carlos Alcaraz in a perfect
+                    Game</v-card-subtitle
+                  >
+                </v-col>
+              </v-row>
             </v-card>
           </v-col>
 
           <v-col>
             <!-- News Card -->
-            <div class="">
-              <v-card class="rounded-b-xl" elevation="3">
-                <v-card-title class="ml-4"> News </v-card-title>
-                <!-- Player -->
-                <v-avatar size="100">
-                  <v-img
-                    src="../public/assets/player.svg"
-                    alt="Player-Image"
-                    width="200"
-                    height="200"
-                  >
-                  </v-img>
-                </v-avatar>
-                <v-card-subtitle class="ml-4"
-                  >Tennis - "We'll be back", say Australia's Davis Cup
-                  nearly-men</v-card-subtitle
-                >
-                <RouterLink :to="{ name: 'news' }">
-                  <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
-                </RouterLink>
+            <div
+              class="container mx-auto flex justify-between items-center p-4"
+            >
+              <v-card class="rounded-b-xl" elevation="3" height="300">
+                <v-row>
+                  <v-card-title class="ml-4"> News </v-card-title>
+                  <v-divider></v-divider>
+                  <!-- Player -->
+                  <v-col cols="4">
+                    <v-avatar size="100">
+                      <v-img
+                        src="../public/assets/player.svg"
+                        alt="Player-Image"
+                        width="200"
+                        height="200"
+                      >
+                      </v-img>
+                    </v-avatar>
+                  </v-col>
+
+                  <v-col cols="8">
+                    <v-card-subtitle class="ml-4"
+                      >Tennis - "We'll be back", say Australia's Davis Cup
+                      nearly-men</v-card-subtitle
+                    >
+                    <RouterLink :to="{ name: 'news' }">
+                      <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
+                    </RouterLink>
+                  </v-col>
+                </v-row>
               </v-card>
             </div>
           </v-col>
@@ -117,31 +141,39 @@
       <div class="container mx-auto flex justify-between items-center p-4">
         <v-row>
           <v-col>
-            <v-card class="rounded-b-xl" elevation="3">
-              <v-card-title class="ml-4"> Ranking </v-card-title>
-              <!-- Player -->
-              <v-avatar size="200">
-                <v-img
-                  src="../public/assets/nova.svg"
-                  alt="Djokovic-Ranking-Image"
-                  width="300"
-                  height="300"
-                >
-                </v-img>
-              </v-avatar>
-              <v-card-subtitle class="ml-4"
-                >Tennis - "We'll be back", say Australia's Davis Cup
-                nearly-men</v-card-subtitle
-              >
-              <RouterLink :to="{ name: 'ranking' }">
-                <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
-              </RouterLink>
+            <v-card class="rounded-b-xl" elevation="3" height="300">
+              <v-row>
+                <v-card-title class="ml-4"> Ranking </v-card-title>
+                <v-divider></v-divider>
+                <v-col cols="4">
+                  <!-- Player -->
+                  <v-avatar size="200">
+                    <v-img
+                      src="../public/assets/nova.svg"
+                      alt="Djokovic-Ranking-Image"
+                      width="300"
+                      height="300"
+                    >
+                    </v-img>
+                  </v-avatar>
+                </v-col>
+
+                <v-col cols="8">
+                  <v-card-subtitle class="ml-4"
+                    >Tennis - "We'll be back", say Australia's Davis Cup
+                    nearly-men</v-card-subtitle
+                  >
+                  <RouterLink :to="{ name: 'ranking' }">
+                    <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
+                  </RouterLink>
+                </v-col>
+              </v-row>
             </v-card>
           </v-col>
           <v-col>
             <!-- Head to Head Card -->
             <div class="">
-              <v-card class="rounded-b-xl" elevation="3">
+              <v-card class="rounded-b-xl" elevation="3" height="300">
                 <v-card-title class="ml-4"> Head to Head </v-card-title>
                 <!-- De Minaur -->
                 <v-avatar size="100">
@@ -177,10 +209,10 @@
         <v-row>
           <v-col>
             <v-card
-              max-width="1400"
-              height="300"
+              max-width="1500"
               class="rounded-b-xl"
               elevation="3"
+              height="300"
             >
               <v-card-title class="ml-4"> Tournament Progress </v-card-title>
               <!-- Graph 1 -->
