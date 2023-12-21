@@ -133,6 +133,60 @@
           </v-col>
         </v-row>
       </v-container>
+      <v-container class="container mx-auto p-4">
+    <!-- Title -->
+    <h1 class="text-2xl font-bold mb-4">
+      Interactive Experience & <br>Tennis Information
+    </h1>
+
+    <v-row>
+      <v-col cols="12" md="6">
+        <div class="inner-container rounded-md" style="background-color: #efefef;">
+          <img src="@/assets/ranking.svg" alt="Imagem 1" class="inner-image" />
+          <p class="inner-text">Player rankings</p>
+        </div>
+      </v-col>
+
+      <v-col cols="12" md="6">
+        <div class="inner-container rounded-md" style="background-color: #efefef;">
+          <img src="@/assets/vote.svg" alt="Imagem 2" class="inner-image" />
+          <p class="inner-text">Vote the winner</p>
+        </div>
+      </v-col>
+    </v-row>
+
+    <v-row>
+      <v-col cols="12" md="6">
+        <div class="inner-container rounded-md" style="background-color: #efefef;">
+          <img src="@/assets/schedule.svg" alt="Imagem 3" class="inner-image" />
+          <p class="inner-text">Match schedule</p>
+        </div>
+      </v-col>
+
+      <v-col cols="12" md="6">
+        <div class="inner-container rounded-md" style="background-color: #efefef;">
+          <img src="@/assets/trophy.svg" alt="Imagem 4" class="inner-image" />
+          <p class="inner-text">Win trophies</p>
+        </div>
+      </v-col>
+    </v-row>
+
+    <v-row>
+      <v-col cols="12" md="6">
+        <div class="inner-container rounded-md" style="background-color: #efefef;">
+          <img src="@/assets/news.svg" alt="Imagem 5" class="inner-image" />
+          <p class="inner-text">Latest News</p>
+        </div>
+      </v-col>
+
+      <v-col cols="12" md="6">
+        <div class="inner-container rounded-md" style="background-color: #efefef;">
+          <img src="@/assets/stats.svg" alt="Imagem 6" class="inner-image" />
+          <p class="inner-text">See your stats</p>
+        </div>
+      </v-col>
+    </v-row>
+  </v-container>
     </main>
     <Footer></Footer>
   </div>
@@ -193,5 +247,30 @@ button:hover {
   width: 100px;
   height: 75px;
   color: #008bcc;
+}
+
+.inner-container {
+  background-color: #efefef;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.inner-image {
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+}
+
+.inner-text {
+  text-align: left;
+  font-family: "Karla Medium",sans-serif;
+  font-size: 16pt;
+  color: #0f3972;
+}
+
+.rounded-md {
+  border-radius: 12px;
 }
 </style>
