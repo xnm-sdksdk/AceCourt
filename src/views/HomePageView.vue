@@ -76,7 +76,7 @@
             >
               <div class="justify-center items-center p-1">
                 <v-row>
-                  <v-col cols="1" class="m-3">Sets</v-col>
+                  <v-col cols="2" class="m-3">Sets</v-col>
                   <v-col cols="1" class="m-3">1st</v-col>
                   <v-col cols="1" class="m-3">2nd</v-col>
                   <v-col cols="1" class="m-3">3rd</v-col>
@@ -90,7 +90,7 @@
             <div class="justify-center items-center p-1">
               <v-card class="text-center bg-blue-lighten-5 white--text">
                 <v-row>
-                  <v-col cols="1" class="m-3">N. Djokovic</v-col>
+                  <v-col cols="2" class="m-3">N. Djokovic</v-col>
                   <v-col cols="1" class="m-3">6</v-col>
                   <v-col cols="1" class="m-3">6</v-col>
                   <v-col cols="1" class="m-3">-</v-col>
@@ -106,7 +106,7 @@
                 class="rounded-b-xl text-center bg-blue-lighten-5 white--text"
               >
                 <v-row>
-                  <v-col cols="1" class="m-3">C. Alcaraz</v-col>
+                  <v-col cols="2" class="m-3">C. Alcaraz</v-col>
                   <v-col cols="1" class="m-3">3</v-col>
                   <v-col cols="1" class="m-3">2</v-col>
                   <v-col cols="1" class="m-3">-</v-col>
@@ -274,6 +274,7 @@
             >
               <v-card-title class="ml-4"> Tournament Progress </v-card-title>
               <!-- Graph 1 -->
+
               <!-- Graph 2 -->
               <!-- Graph 3 -->
               <canvas ref="myChart"></canvas>
@@ -299,6 +300,7 @@ import NavBar from "@/components/NavBar.vue";
 import Footer from "@/components/Footer.vue";
 import ButtonSeeMore from "@/components/ButtonSeeMore.vue";
 import Chart from "chart.js/auto";
+
 export default {
   components: {
     NavBar,
