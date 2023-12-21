@@ -6,7 +6,7 @@
       <div class="container mx-auto flex justify-between items-center p-4">
         <v-row>
           <v-col>
-            <v-card class="rounded-b-xl" elevation="3" height="300">
+            <v-card class="rounded-b-xl bg-grey-lighten-5" elevation="3" height="300">
               <v-card-title class="m-3"> Highlight Player </v-card-title>
               <v-row>
                 <v-col cols="6">
@@ -43,7 +43,7 @@
           <!-- Live Games Card -->
           <v-col>
             <div class="">
-              <v-card class="rounded-b-xl" elevation="3" height="300">
+              <v-card class="rounded-b-xl bg-grey-lighten-5" elevation="3" height="300">
                 <v-card-title class="m-1"> Live Games </v-card-title>
 
                 <v-card-subtitle class="m-4">Real-Time Data</v-card-subtitle>
@@ -88,7 +88,7 @@
             </v-card>
             <!-- Second Row -->
             <div class="justify-center items-center p-1">
-              <v-card class="text-center bg-blue-lighten-5 white--text">
+              <v-card class="text-center bg-grey-lighten-5 white--text">
                 <v-row>
                   <v-col cols="2" class="m-3">N. Djokovic</v-col>
                   <v-col cols="1" class="m-3">6</v-col>
@@ -103,7 +103,7 @@
             <!-- Third Row -->
             <div class="justify-center items-center p-1">
               <v-card
-                class="rounded-b-xl text-center bg-blue-lighten-5 white--text"
+                class="rounded-b-xl text-center bg-grey-lighten-5 white--text"
               >
                 <v-row>
                   <v-col cols="2" class="m-3">C. Alcaraz</v-col>
@@ -124,7 +124,7 @@
       <div class="container mx-auto flex justify-between items-center p-4">
         <v-row>
           <v-col>
-            <v-card class="rounded-b-xl" elevation="3" height="300">
+            <v-card class="rounded-b-xl bg-grey-lighten-5" elevation="3" height="300">
               <v-row>
                 <v-card-title class="ml-4"> Top Matches </v-card-title>
                 <v-divider></v-divider>
@@ -163,7 +163,7 @@
           <v-col>
             <!-- News Card -->
             <div class="">
-              <v-card class="rounded-b-xl" elevation="3" height="300">
+              <v-card class="rounded-b-xl bg-grey-lighten-5" elevation="3" height="300">
                 <v-row>
                   <v-card-title class="ml-4"> News </v-card-title>
                   <v-divider></v-divider>
@@ -199,7 +199,7 @@
       <div class="container mx-auto flex justify-between items-center p-4">
         <v-row>
           <v-col>
-            <v-card class="rounded-b-xl" elevation="3" height="300">
+            <v-card class="rounded-b-xl bg-grey-lighten-5" elevation="3" height="300">
               <v-row>
                 <v-card-title class="ml-4"> Ranking </v-card-title>
                 <v-divider></v-divider>
@@ -231,7 +231,7 @@
           <v-col>
             <!-- Head to Head Card -->
             <div class="">
-              <v-card class="rounded-b-xl" elevation="3" height="300">
+              <v-card class="rounded-b-xl bg-grey-lighten-5" elevation="3" height="300">
                 <v-card-title class="ml-4"> Head to Head </v-card-title>
                 <!-- De Minaur -->
                 <v-avatar size="200">
@@ -268,7 +268,7 @@
           <v-col>
             <v-card
               max-width="1500"
-              class="rounded-b-xl"
+              class="rounded-b-xl bg-grey-lighten-5"
               elevation="3"
               height="300"
             >
