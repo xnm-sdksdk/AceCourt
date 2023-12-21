@@ -222,15 +222,16 @@
         </v-row>
       </v-container>
       <v-container class="container mx-auto p-4 addColor">
-        <v-carousel hide-delimiters>
+        <v-carousel hide-delimiters show-arrows>
           <v-carousel-item>
             <div class="sub-container">
               <div class="sub-header">
                 <h3 class="sub-header-text">
-                  "I've been a tennis fanatic for years, and <b>Ace Court</b> <br>has
-                  completely changed the game for me. The real-<br>time updates and
-                  in-depth player insights keep me <br>glued to the action. It's
-                  like having a front-row seat <br>to every match!"
+                  "I've been a tennis fanatic for years, and <b>Ace Court</b>
+                  <br />has completely changed the game for me. The real-<br />time
+                  updates and in-depth player insights keep me <br />glued to
+                  the action. It's like having a front-row seat <br />to every
+                  match!"
                 </h3>
               </div>
               <div class="sub-content">
@@ -247,11 +248,12 @@
             <div class="sub-container">
               <div class="sub-header">
                 <h3 class="sub-header-text">
-                  "As a sports bettor, Ace Court is my ultimate <br>companion. Live
-                  updates and detailed player stats <br> give me the edge for
-                  strategic bets. The ability to <br> favorite games and players is a
-                  game-changer,<br> making it effortless to track my key interests.
-                  It's a brmust for serious sports betting."
+                  "As a sports bettor, Ace Court is my ultimate <br />companion.
+                  Live updates and detailed player stats <br />
+                  give me the edge for strategic bets. The ability to <br />
+                  favorite games and players is a game-changer,<br />
+                  making it effortless to track my key interests. It's a brmust
+                  for serious sports betting."
                 </h3>
               </div>
               <div class="sub-content">
@@ -263,8 +265,23 @@
               </div>
             </div>
           </v-carousel-item>
-          
         </v-carousel>
+      </v-container>
+      <v-container>
+        <h2 class="feature-title mb-5">
+          Transform your tennis experience with Ace Court. <br />
+          Stay updated with player rankings, schedules, and news in one <br />
+          centralized hub. Elevate your game—explore Ace Court today!
+        </h2>
+        <!-- Start Button -->
+        <RouterLink :to="{ name: 'signup' }">
+          <button
+            class="text-white px-4 py-2 rounded-full mb-10"
+            style="letter-spacing: 0.15em"
+          >
+            Start
+          </button>
+        </RouterLink>
       </v-container>
     </main>
     <Footer></Footer>
@@ -358,7 +375,7 @@ button:hover {
   flex-direction: column;
   padding: 10px;
   margin-bottom: 10px;
-  transition: opacity 0.3s; 
+  transition: opacity 0.3s;
 }
 
 .sub-container:hover {
@@ -371,8 +388,8 @@ button:hover {
 
 .sub-header {
   width: 100%;
-  text-align:left;
-  color: #1C1C1C;
+  text-align: left;
+  color: #1c1c1c;
 }
 
 .sub-header-text {
@@ -406,10 +423,10 @@ button:hover {
 
 .sub-paragraph {
   font-size: 14px;
-  color: #008BCC;
+  color: #008bcc;
 }
 
-.addColor{
-  color: #F2F9FC;
+.addColor {
+  color: #f2f9fc;
 }
 </style>
