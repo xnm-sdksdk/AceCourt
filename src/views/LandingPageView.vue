@@ -134,59 +134,137 @@
         </v-row>
       </v-container>
       <v-container class="container mx-auto p-4">
-    <!-- Title -->
-    <h1 class="text-2xl font-bold mb-4">
-      Interactive Experience & <br>Tennis Information
-    </h1>
+        <!-- Title -->
+        <h1 class="text-2xl font-bold mb-4">
+          Interactive Experience & <br />Tennis Information
+        </h1>
 
-    <v-row>
-      <v-col cols="12" md="6">
-        <div class="inner-container rounded-md" style="background-color: #efefef;">
-          <img src="@/assets/ranking.svg" alt="Imagem 1" class="inner-image" />
-          <p class="inner-text">Player rankings</p>
-        </div>
-      </v-col>
+        <v-row>
+          <v-col cols="12" md="6">
+            <div
+              class="inner-container rounded-md"
+              style="background-color: #efefef"
+            >
+              <img
+                src="@/assets/ranking.svg"
+                alt="Imagem 1"
+                class="inner-image"
+              />
+              <p class="inner-text">Player rankings</p>
+            </div>
+          </v-col>
 
-      <v-col cols="12" md="6">
-        <div class="inner-container rounded-md" style="background-color: #efefef;">
-          <img src="@/assets/vote.svg" alt="Imagem 2" class="inner-image" />
-          <p class="inner-text">Vote the winner</p>
-        </div>
-      </v-col>
-    </v-row>
+          <v-col cols="12" md="6">
+            <div
+              class="inner-container rounded-md"
+              style="background-color: #efefef"
+            >
+              <img src="@/assets/vote.svg" alt="Imagem 2" class="inner-image" />
+              <p class="inner-text">Vote the winner</p>
+            </div>
+          </v-col>
+        </v-row>
 
-    <v-row>
-      <v-col cols="12" md="6">
-        <div class="inner-container rounded-md" style="background-color: #efefef;">
-          <img src="@/assets/schedule.svg" alt="Imagem 3" class="inner-image" />
-          <p class="inner-text">Match schedule</p>
-        </div>
-      </v-col>
+        <v-row>
+          <v-col cols="12" md="6">
+            <div
+              class="inner-container rounded-md"
+              style="background-color: #efefef"
+            >
+              <img
+                src="@/assets/schedule.svg"
+                alt="Imagem 3"
+                class="inner-image"
+              />
+              <p class="inner-text">Match schedule</p>
+            </div>
+          </v-col>
 
-      <v-col cols="12" md="6">
-        <div class="inner-container rounded-md" style="background-color: #efefef;">
-          <img src="@/assets/trophy.svg" alt="Imagem 4" class="inner-image" />
-          <p class="inner-text">Win trophies</p>
-        </div>
-      </v-col>
-    </v-row>
+          <v-col cols="12" md="6">
+            <div
+              class="inner-container rounded-md"
+              style="background-color: #efefef"
+            >
+              <img
+                src="@/assets/trophy.svg"
+                alt="Imagem 4"
+                class="inner-image"
+              />
+              <p class="inner-text">Win trophies</p>
+            </div>
+          </v-col>
+        </v-row>
 
-    <v-row>
-      <v-col cols="12" md="6">
-        <div class="inner-container rounded-md" style="background-color: #efefef;">
-          <img src="@/assets/news.svg" alt="Imagem 5" class="inner-image" />
-          <p class="inner-text">Latest News</p>
-        </div>
-      </v-col>
+        <v-row>
+          <v-col cols="12" md="6">
+            <div
+              class="inner-container rounded-md"
+              style="background-color: #efefef"
+            >
+              <img src="@/assets/news.svg" alt="Imagem 5" class="inner-image" />
+              <p class="inner-text">Latest News</p>
+            </div>
+          </v-col>
 
-      <v-col cols="12" md="6">
-        <div class="inner-container rounded-md" style="background-color: #efefef;">
-          <img src="@/assets/stats.svg" alt="Imagem 6" class="inner-image" />
-          <p class="inner-text">See your stats</p>
-        </div>
-      </v-col>
-    </v-row>
-  </v-container>
+          <v-col cols="12" md="6">
+            <div
+              class="inner-container rounded-md"
+              style="background-color: #efefef"
+            >
+              <img
+                src="@/assets/stats.svg"
+                alt="Imagem 6"
+                class="inner-image"
+              />
+              <p class="inner-text">See your stats</p>
+            </div>
+          </v-col>
+        </v-row>
+      </v-container>
+      <v-container class="container mx-auto p-4">
+        <v-carousel>
+          <v-carousel-item>
+            <div class="sub-container">
+              <div class="sub-header">
+                <h3 class="sub-header-text">
+                  "I've been a tennis fanatic for years, and Ace Court has
+                  completely changed the game for me. The real-time updates and
+                  in-depth player insights keep me glued to the action. It's
+                  like having a front-row seat to every match!"
+                </h3>
+              </div>
+              <div class="sub-content">
+                <img src="@/assets/sara.svg" alt="Imagem 1" class="sub-image" />
+                <div class="sub-texts">
+                  <h2 class="sub-title">Sara Johnson</h2>
+                  <p class="sub-paragraph">Tennis Enthusiastic</p>
+                </div>
+              </div>
+            </div>
+          </v-carousel-item>
+
+          <v-carousel-item>
+            <div class="sub-container">
+              <div class="sub-header">
+                <h3 class="sub-header-text">
+                  "As a sports bettor, Ace Court is my ultimate companion. Live
+                  updates and detailed player stats give me the edge for
+                  strategic bets. The ability to favorite games and players is a
+                  game-changer, making it effortless to track my key interests.
+                  It's a must for serious sports betting."
+                </h3>
+              </div>
+              <div class="sub-content">
+                <img src="@/assets/eric.svg" alt="Imagem 2" class="sub-image" />
+                <div class="sub-texts">
+                  <h2 class="sub-title">Eric May</h2>
+                  <p class="sub-paragraph">Sports Bettor</p>
+                </div>
+              </div>
+            </div>
+          </v-carousel-item>
+        </v-carousel>
+      </v-container>
     </main>
     <Footer></Footer>
   </div>
@@ -259,18 +337,71 @@ button:hover {
 
 .inner-image {
   width: 50px;
-  height: 50px;
+  height: 30px;
   margin-right: 20px;
 }
 
 .inner-text {
   text-align: left;
-  font-family: "Karla Medium",sans-serif;
+  font-family: "Karla Medium", sans-serif;
   font-size: 16pt;
   color: #0f3972;
 }
 
 .rounded-md {
   border-radius: 12px;
+}
+
+.sub-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  transition: opacity 0.3s; /* Adiciona transição de opacidade */
+}
+
+.sub-container:hover {
+  opacity: 0.8; /* Torna o slide semi-transparente ao passar o mouse */
+}
+
+.v-carousel-item-next .sub-container {
+  opacity: 0.5; /* Torna o próximo slide semi-transparente quando o atual está selecionado */
+}
+
+.sub-header {
+  width: 100%;
+  text-align: center;
+}
+
+.sub-header-text {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.sub-texts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sub-image {
+  width: 50px;
+  height: auto;
+  margin-right: 20px;
+}
+
+
+.sub-content {
+  flex-grow: 1;
+}
+
+.sub-title {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.sub-paragraph {
+  font-size: 14px;
 }
 </style>
