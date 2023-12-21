@@ -277,7 +277,7 @@
 
               <!-- Graph 2 -->
               <!-- Graph 3 -->
-              <canvas ref="myChart"></canvas>
+              <!--<canvas ref="myChart"></canvas>-->
               <v-card-subtitle class="ml-4"
                 >Percentage of Completion</v-card-subtitle
               >
@@ -299,8 +299,7 @@
 import NavBar from "@/components/NavBar.vue";
 import Footer from "@/components/Footer.vue";
 import ButtonSeeMore from "@/components/ButtonSeeMore.vue";
-import Chart from "chart.js/auto";
-
+//import Chart from "chart.js/auto";
 export default {
   components: {
     NavBar,
