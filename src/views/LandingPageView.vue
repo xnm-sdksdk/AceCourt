@@ -30,7 +30,7 @@
           </v-col>
 
           <!-- Image -->
-          <v-col cols="12" md="6">
+          <v-col cols="12" md="6" class="d-flex align-center justify-center">
             <img
               src="@/assets/HeroImage.svg"
               alt="Imagem"
@@ -42,7 +42,7 @@
 
       <v-container class="mt-5" style="background-color: #efefef">
         <v-row>
-          <v-col cols="12" md="4" v-for="index in 3" :key="index">
+          <v-col cols="12" md="4">
             <v-card>
               <!--Icon-->
               <img
@@ -58,6 +58,42 @@
               <v-card-text>
                 Get instant updates on match outcomes, scores, and key moments
                 as they happen on the court.
+              </v-card-text>
+            </v-card>
+          </v-col>
+          <v-col cols="12" md="4">
+            <v-card>
+              <!--Icon-->
+              <img
+                src="../assets/performanceAnalyse.svg"
+                class="icon-image"
+                style="max-height: 75px"
+              />
+
+              <!-- Title -->
+              <v-card-title class="mt-0">Performance Analysis</v-card-title>
+
+              <!-- Description -->
+              <v-card-text>
+                Stay informed with concise, powerful data visualizations that elevate your Australian Open experience.
+              </v-card-text>
+            </v-card>
+          </v-col>
+          <v-col cols="12" md="4">
+            <v-card>
+              <!--Icon-->
+              <img
+                src="../assets/followPlayers.svg"
+                class="icon-image"
+                style="max-height: 75px"
+              />
+
+              <!-- Title -->
+              <v-card-title class="mt-0">Follow Your Players</v-card-title>
+
+              <!-- Description -->
+              <v-card-text>
+                Never lose sight of your favorite players. Utilize our tracking feature to follow specific athletes throughout the Australian Open.
               </v-card-text>
             </v-card>
           </v-col>
@@ -83,15 +119,16 @@ export default {
 
 <style scoped>
 h1 {
-  font-size: 30pt;
+  font-size: 24pt;
   color: #0f3972;
 }
 
 p {
-  font-size: 14pt;
+  font-size: 12pt;
 }
 .small-image {
   max-width: 100%;
+  width: 50%;
   height: auto;
   max-height: 500px;
 }
