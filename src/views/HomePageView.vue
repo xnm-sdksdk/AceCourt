@@ -64,7 +64,61 @@
           </v-col>
         </v-row>
       </div>
+
       <!-- Highlight Game Bar -->
+      <div class="container mx-auto flex justify-between items-center p-4">
+        <!-- First Row -->
+        <v-row>
+          <v-col>
+            <v-card
+              class="rounded-t-xl m-1 text-center bg-blue-lighten-5 white--text"
+              elevation="3"
+            >
+              <div class="justify-center items-center p-1">
+                <v-row>
+                  <v-col cols="1" class="m-3">Sets</v-col>
+                  <v-col cols="1" class="m-3">1st</v-col>
+                  <v-col cols="1" class="m-3">2nd</v-col>
+                  <v-col cols="1" class="m-3">3rd</v-col>
+                  <v-col cols="1" class="m-3">4th</v-col>
+                  <v-col cols="1" class="m-3">5th</v-col>
+                  <v-col cols="3" class="m-3">Final</v-col>
+                </v-row>
+              </div>
+            </v-card>
+            <!-- Second Row -->
+            <div class="justify-center items-center p-1">
+              <v-card class="text-center bg-blue-lighten-5 white--text">
+                <v-row>
+                  <v-col cols="1" class="m-3">N. Djokovic</v-col>
+                  <v-col cols="1" class="m-3">6</v-col>
+                  <v-col cols="1" class="m-3">6</v-col>
+                  <v-col cols="1" class="m-3">-</v-col>
+                  <v-col cols="1" class="m-3">-</v-col>
+                  <v-col cols="1" class="m-3">-</v-col>
+                  <v-col cols="3" class="m-3">2</v-col>
+                </v-row>
+              </v-card>
+            </div>
+            <!-- Third Row -->
+            <div class="justify-center items-center p-1">
+              <v-card
+                class="rounded-b-xl text-center bg-blue-lighten-5 white--text"
+              >
+                <v-row>
+                  <v-col cols="1" class="m-3">C. Alcaraz</v-col>
+                  <v-col cols="1" class="m-3">3</v-col>
+                  <v-col cols="1" class="m-3">2</v-col>
+                  <v-col cols="1" class="m-3">-</v-col>
+                  <v-col cols="1" class="m-3">-</v-col>
+                  <v-col cols="1" class="m-3">-</v-col>
+                  <v-col cols="3" class="m-3">0</v-col>
+                </v-row>
+              </v-card>
+            </div>
+          </v-col>
+        </v-row>
+      </div>
 
       <!-- Top Matches Card -->
       <div class="container mx-auto flex justify-between items-center p-4">
