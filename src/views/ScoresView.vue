@@ -47,6 +47,18 @@
           elevation="3"
           height="300"
         >
+          <v-card-text>
+            <!-- First Player - Last Match -->
+            <v-row>
+              <v-col> N. Djokovic (1) </v-col>
+              <v-col>3</v-col>
+            </v-row>
+            <!-- Second Player - Last Match -->
+            <v-row>
+              <v-col> C. Alcaraz (1) </v-col>
+              <v-col>0</v-col>
+            </v-row>
+          </v-card-text>
         </v-card>
 
         <div class="">
@@ -60,6 +72,26 @@
             elevation="3"
             height="300"
           >
+            <v-card-text>
+              <!-- First Player - Players -->
+              <v-row>
+                <v-col> N. Djokovic </v-col>
+              </v-row>
+              <!-- Second Player - Players -->
+              <v-row>
+                <v-col> C. Alcaraz </v-col>
+              </v-row>
+              <!-- Third Player - Players -->
+              <v-row>
+                <v-col> T. Tsitsipas </v-col>
+              </v-row>
+              <!-- See More Players -->
+              <v-row>
+                <v-col>
+                  <v-btn @click="seeMorePlayers">See More</v-btn>
+                </v-col>
+              </v-row>
+            </v-card-text>
           </v-card>
         </div>
       </v-col>
@@ -73,6 +105,14 @@ import NavBar from "@/components/NavBar.vue";
 export default {
   components: {
     NavBar,
+  },
+  data() {
+    return {
+      menu: false,
+    };
+  },
+  methods: {
+    seeMorePlayers() {},
   },
   // setup() {},
 };
