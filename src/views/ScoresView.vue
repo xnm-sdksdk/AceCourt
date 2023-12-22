@@ -7,19 +7,19 @@
       <v-col cols="8">
         <!-- My Games -->
         <v-card-title
-          class="rounded-t-xl text-center bg-grey-lighten-4 white--text m-1"
+          class="rounded-t-xl text-center bg-grey-lighten-4 white--text ma-1"
           >My Games</v-card-title
         >
         <v-card
-          class="rounded-b-xl bg-grey-lighten-4 m-1"
+          class="rounded-b-xl bg-grey-lighten-4 ma-1"
           elevation="3"
           height="300"
         >
         </v-card>
         <!-- Live Games -->
-        <v-card-title class="rounded-t-xl text-center bg-grey-lighten-5 white--text m-1"> Live Games </v-card-title>
+        <v-card-title class="rounded-t-xl text-center bg-grey-lighten-5 white--text ma-1 pa-2"> Live Games </v-card-title>
         <v-card
-          class="rounded-b-xl bg-grey-lighten-4 m-1"
+          class="rounded-b-xl bg-grey-lighten-4 ma-1"
           elevation="3"
           height="300"
         >
@@ -27,15 +27,15 @@
       </v-col>
 
       <!-- Second Column Last Match, Players -->
-      <v-col>
+      <v-col cols="4">
         <!-- Last Match -->
         <v-card-title
-          class="rounded-t-xl text-center bg-blue-lighten-5 white--text m-1"
+          class="rounded-t-xl text-center bg-blue-lighten-5 white--text ma-1"
         >
           Last Match
         </v-card-title>
         <v-card
-          class="rounded-b-xl bg-grey-lighten-4 m-1"
+          class="rounded-b-xl bg-grey-lighten-4 ma-1"
           elevation="3"
           height="300"
         >
@@ -44,11 +44,11 @@
         <div class="">
           <!-- Players -->
           <v-card-title
-            class="rounded-t-xl text-center bg-blue-lighten-5 white--text m-1"
+            class="rounded-t-xl text-center bg-blue-lighten-5 white--text ma-1"
             >Players</v-card-title
           >
           <v-card
-            class="rounded-b-xl bg-grey-lighten-4 m-1"
+            class="rounded-b-xl bg-grey-lighten-4 ma-1"
             elevation="3"
             height="300"
           >
