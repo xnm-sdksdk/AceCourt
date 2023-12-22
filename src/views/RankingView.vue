@@ -6,16 +6,14 @@
       <!-- Header Section -->
       <v-row>
         <v-col>
-          <h1 class="text-3xl font-bold mb-4">
-            Ranking
-          </h1>
+          <h1 class="text-3xl font-bold mb-4">Ranking</h1>
         </v-col>
         <v-col class="text-right">
           <button
             class="bg-white border border-blue-500 text-blue-500 px-4 py-2 rounded-full hover:bg-gray-100"
             @click="goBack"
           >
-            <img src="@/assets/back.svg" alt="">
+            <img src="@/assets/back.svg" alt="" />
             Back
           </button>
         </v-col>
@@ -46,7 +44,12 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="stand in filteredStandings" :key="stand.player">
+              <tr
+                v-for="stand in filteredStandings"
+                :key="stand.player"
+                @click="seePlayer(stand.player_key)"
+                style="cursor: pointer"
+              >
                 <td>{{ stand.place }}</td>
                 <td>{{ stand.player }}</td>
                 <td>{{ stand.country }}</td>
@@ -72,7 +75,7 @@ export default {
     return {
       store: useGameStore(),
       standings: [],
-      selectedOption: 'Ranking'
+      selectedOption: "Ranking",
     };
   },
 
@@ -84,22 +87,32 @@ export default {
     goBack() {
       this.$router.go(-1);
     },
+
+    seePlayer(playerKey) {
+      this.$router.push({ name: "players", params: { id: playerKey } });
+    },
   },
 
   computed: {
     filteredStandings() {
       switch (this.selectedOption) {
-        case 'Ranking':
+        case "Ranking":
           return this.standings;
-        case 'Country':
+        case "Country":
           // Sort by Country Name
-          return this.standings.slice().sort((a, b) => a.country.localeCompare(b.country));
-        case 'A-Z':
+          return this.standings
+            .slice()
+            .sort((a, b) => a.country.localeCompare(b.country));
+        case "A-Z":
           // Sort by Name (A-Z)
-          return this.standings.slice().sort((a, b) => a.player.localeCompare(b.player));
-        case 'Z-A':
+          return this.standings
+            .slice()
+            .sort((a, b) => a.player.localeCompare(b.player));
+        case "Z-A":
           // Sort by Name (Z-A)
-          return this.standings.slice().sort((a, b) => b.player.localeCompare(a.player));
+          return this.standings
+            .slice()
+            .sort((a, b) => b.player.localeCompare(a.player));
         default:
           return this.standings;
       }
@@ -107,11 +120,9 @@ export default {
   },
 
   watch: {
-    selectedOption() {
-    },
+    selectedOption() {},
   },
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
