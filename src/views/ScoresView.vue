@@ -15,6 +15,49 @@
           elevation="3"
           height="300"
         >
+          <!-- Tournament Stage and Arena -->
+          <v-card-text>
+            <v-row>
+              <v-col>Australia Open - Quarter Finals</v-col>
+              <v-col>Rod Laver Arena</v-col>
+            </v-row>
+          </v-card-text>
+
+          <!-- Header First Game -->
+          <v-row>
+            <v-col>Results</v-col>
+            <v-col>Icon</v-col>
+            <v-col>1st</v-col>
+            <v-col>2nd</v-col>
+            <v-col>3rd</v-col>
+            <v-col>4th</v-col>
+            <v-col>5th</v-col>
+            <v-col>Sets</v-col>
+          </v-row>
+
+          <!-- First Player - First Game -->
+          <v-row>
+            <v-col>N. Djokovic</v-col>
+            <v-col>40</v-col>
+            <v-col>6</v-col>
+            <v-col>0</v-col>
+            <v-col></v-col>
+            <v-col></v-col>
+            <v-col></v-col>
+            <v-col>1</v-col>
+          </v-row>
+
+           <!-- Second Player - First Game -->
+           <v-row>
+            <v-col>C. Alcaraz</v-col>
+            <v-col>40</v-col>
+            <v-col>6</v-col>
+            <v-col>0</v-col>
+            <v-col></v-col>
+            <v-col></v-col>
+            <v-col></v-col>
+            <v-col>1</v-col>
+          </v-row>
         </v-card>
         <v-row class="bg-red">
           <v-col col="9">
