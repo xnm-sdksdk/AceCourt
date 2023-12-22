@@ -9,26 +9,27 @@
           <h1>Ranking</h1>
         </v-col>
         <v-col class="text-right">
-          <button
-            style="letter-spacing: 0.15em"
-            @click="goBack"
-          >
-            <img src="@/assets/arrowSelect.svg" alt="">
-            Back
-          </button>
+          <button style="letter-spacing: 0.15em" @click="goBack">Back</button>
         </v-col>
       </v-row>
-      <v-data-table :items="standings" :headers="standingsHeaders" class="elevation-1">
-        <template v-slot:item="{ item }">
+      <v-table fixed-header height="570px">
+        <thead>
           <tr>
-            <td>{{ item.place }}</td>
-            <td>{{ item.player }}</td>
-            <td>{{ item.country }}</td>
-            <td></td>
-            <td>{{ item.points }}</td>
+            <th class="text-left">Position</th>
+            <th class="text-left">Name</th>
+            <th class="text-left">Nacionality</th>
+            <th class="text-left">Points</th>
           </tr>
-        </template>
-      </v-data-table>
+        </thead>
+        <tbody>
+          <tr v-for="stand in standings" :key="stand.player">
+            <td>{{ stand.place }}</td>
+            <td>{{ stand.player }}</td>
+            <td>{{ stand.country }}</td>
+            <td>{{ stand.points }}</td>
+          </tr>
+        </tbody>
+      </v-table>
     </v-container>
   </div>
 </template>
@@ -45,13 +46,6 @@ export default {
     return {
       store: useGameStore(),
       standings: [],
-      standingsHeaders: [
-        { text: "Position", value: "place" },
-        { text: "Name", value: "player" },
-        { text: "Nationality", value: "country" },
-        { text: "W-L", value: "" },
-        { text: "Points", value: "points" },
-      ],
     };
   },
 
@@ -68,5 +62,4 @@ export default {
 </script>
 
 <style scoped>
-/* Add your component-specific styles here */
 </style>
