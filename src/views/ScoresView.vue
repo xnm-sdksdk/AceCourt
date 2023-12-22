@@ -3,27 +3,63 @@
   <!-- My Games Title -->
   <div class="container mx-auto flex justify-between items-center p-4">
     <v-row>
-      <v-col>
+      <!-- First Column My Games, Live Games -->
+      <v-col cols="8">
+        <!-- My Games -->
         <v-card-title
-          class="rounded-t-xl text-center bg-blue-lighten-5 white--text"
+          class="rounded-t-xl text-center bg-grey-lighten-4 white--text m-1"
           >My Games</v-card-title
         >
+        <v-card
+          class="rounded-b-xl bg-grey-lighten-4 m-1"
+          elevation="3"
+          height="300"
+        >
+        </v-card>
+        <!-- Live Games -->
+        <v-card-title class="rounded-t-xl text-center bg-grey-lighten-5 white--text m-1"> Live Games </v-card-title>
+        <v-card
+          class="rounded-b-xl bg-grey-lighten-4 m-1"
+          elevation="3"
+          height="300"
+        >
+        </v-card>
       </v-col>
 
+      <!-- Second Column Last Match, Players -->
       <v-col>
+        <!-- Last Match -->
         <v-card-title
-          class="rounded-t-xl text-center bg-blue-lighten-5 white--text"
+          class="rounded-t-xl text-center bg-blue-lighten-5 white--text m-1"
         >
           Last Match
         </v-card-title>
+        <v-card
+          class="rounded-b-xl bg-grey-lighten-4 m-1"
+          elevation="3"
+          height="300"
+        >
+        </v-card>
+
+        <div class="">
+          <!-- Players -->
+          <v-card-title
+            class="rounded-t-xl text-center bg-blue-lighten-5 white--text m-1"
+            >Players</v-card-title
+          >
+          <v-card
+            class="rounded-b-xl bg-grey-lighten-4 m-1"
+            elevation="3"
+            height="300"
+          >
+          </v-card>
+        </div>
       </v-col>
     </v-row>
   </div>
   <div class="container mx-auto flex justify-between items-center p-4">
     <v-row>
-      <v-col>
-        <v-card-title>Players</v-card-title>
-      </v-col>
+      <v-col> </v-col>
     </v-row>
   </div>
   <!-- Arena  -->
