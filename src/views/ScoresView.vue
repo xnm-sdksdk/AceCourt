@@ -2,12 +2,12 @@
   <NavBar></NavBar>
   <!-- My Games Title -->
   <div class="container mx-auto flex justify-between items-center p-4">
-    <v-row>
+    <v-row class="bg-green">
       <!-- First Column My Games, Live Games -->
-      <v-col cols="8">
+      <v-col cols="9">
         <!-- My Games -->
         <v-card-title
-          class="rounded-t-xl text-center bg-grey-lighten-4 white--text ma-1"
+          class="rounded-t-xl bg-grey-lighten-4 white--text ma-1 pa-3"
           >My Games</v-card-title
         >
         <v-card
@@ -16,21 +16,29 @@
           height="300"
         >
         </v-card>
-        <!-- Live Games -->
-        <v-card-title class="rounded-t-xl text-center bg-grey-lighten-5 white--text ma-1 pa-2"> Live Games </v-card-title>
-        <v-card
-          class="rounded-b-xl bg-grey-lighten-4 ma-1"
-          elevation="3"
-          height="300"
-        >
-        </v-card>
+        <v-row class="bg-red">
+          <v-col col="9">
+            <!-- Live Games -->
+            <v-card-title
+              class="rounded-t-xl bg-grey-lighten-5 white--text ma-1 pa-3"
+            >
+              Live Games
+            </v-card-title>
+            <v-card
+              class="rounded-b-xl bg-grey-lighten-4 ma-1"
+              elevation="3"
+              height="300"
+            >
+            </v-card>
+          </v-col>
+        </v-row>
       </v-col>
 
       <!-- Second Column Last Match, Players -->
-      <v-col cols="4">
+      <v-col cols="3">
         <!-- Last Match -->
         <v-card-title
-          class="rounded-t-xl text-center bg-blue-lighten-5 white--text ma-1"
+          class="rounded-t-xl bg-blue-lighten-5 white--text ma-1 pa-3"
         >
           Last Match
         </v-card-title>
@@ -44,7 +52,7 @@
         <div class="">
           <!-- Players -->
           <v-card-title
-            class="rounded-t-xl text-center bg-blue-lighten-5 white--text ma-1"
+            class="rounded-t-xl bg-blue-lighten-5 white--text ma-1 pa-3"
             >Players</v-card-title
           >
           <v-card
@@ -57,25 +65,7 @@
       </v-col>
     </v-row>
   </div>
-  <div class="container mx-auto flex justify-between items-center p-4">
-    <v-row>
-      <v-col> </v-col>
-    </v-row>
-  </div>
-  <!-- Arena  -->
-  <!-- First Game -->
-  <!-- <v-card>
-    <v-row>
-      <v-col>Results</v-col>
-      <v-col>Live Emojis</v-col>
-      <v-col>1</v-col>
-      <v-col>2</v-col>
-      <v-col>3</v-col>
-      <v-col>4</v-col>
-      <v-col>5</v-col>
-      <v-col>Sets</v-col>
-    </v-row>
-  </v-card> -->
+  <!-- <div class="container mx-auto flex justify-between items-center p-4"></div> -->
 </template>
 
 <script>
