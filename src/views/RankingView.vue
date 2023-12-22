@@ -92,13 +92,13 @@ export default {
         case 'Ranking':
           return this.standings;
         case 'Country':
-          // Filtra por ordem alfabética do país
+          // Sort by Country Name
           return this.standings.slice().sort((a, b) => a.country.localeCompare(b.country));
         case 'A-Z':
-          // Filtra por ordem alfabética do nome (A-Z)
+          // Sort by Name (A-Z)
           return this.standings.slice().sort((a, b) => a.player.localeCompare(b.player));
         case 'Z-A':
-          // Filtra por ordem alfabética do nome (Z-A)
+          // Sort by Name (Z-A)
           return this.standings.slice().sort((a, b) => b.player.localeCompare(a.player));
         default:
           return this.standings;
