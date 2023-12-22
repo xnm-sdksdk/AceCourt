@@ -18,62 +18,46 @@
           </button>
         </v-col>
       </v-row>
-
-      <!-- Select Section -->
-      <v-row>
-        <v-col>
-          <v-select
-            clearable
-            label="Select"
-            :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
-            full-width
-          ></v-select>
-        </v-col>
-      </v-row>
-
-      <!-- Table Section -->
-      <v-row>
-        <v-col>
-          <v-data-table
-            :items="desserts"
-            :headers="headers"
-            :items-per-page="5"
-            class="elevation-1"
-          >
-            <template v-slot:item="{ item }">
-              <tr>
-                <td>{{ item.position }}</td>
-                <td>{{ item.name }}</td>
-                <td>{{ item.nationality }}</td>
-                <td>{{ item.wl }}</td>
-                <td>{{ item.points }}</td>
-              </tr>
-            </template>
-          </v-data-table>
-        </v-col>
-      </v-row>
+      <v-data-table :items="standings" :headers="standingsHeaders" class="elevation-1">
+        <template v-slot:item="{ item }">
+          <tr>
+            <td>{{ item.place }}</td>
+            <td>{{ item.player }}</td>
+            <td>{{ item.country }}</td>
+            <td></td>
+            <td>{{ item.points }}</td>
+          </tr>
+        </template>
+      </v-data-table>
     </v-container>
   </div>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar.vue";
-import {useGameStore} from "@/stores/tennis.js"
+import { useGameStore } from "@/stores/tennis.js";
+
 export default {
   components: {
     NavBar,
   },
   data() {
     return {
-      store:useGameStore(),
-      players:[]
+      store: useGameStore(),
+      standings: [],
+      standingsHeaders: [
+        { text: "Position", value: "place" },
+        { text: "Name", value: "player" },
+        { text: "Nationality", value: "country" },
+        { text: "W-L", value: "" },
+        { text: "Points", value: "points" },
+      ],
     };
   },
 
-  created () {
-    this.store.fetchPlayers();
-    this.players = this.store.getPlayers || [];
-    console.log(this.players);
+  created() {
+    this.store.fetchStandings();
+    this.standings = this.store.getStandings || [];
   },
   methods: {
     goBack() {
@@ -84,4 +68,5 @@ export default {
 </script>
 
 <style scoped>
+/* Add your component-specific styles here */
 </style>
