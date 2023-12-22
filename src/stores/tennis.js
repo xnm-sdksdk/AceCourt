@@ -6,15 +6,16 @@ const API_KEY = "180fc8f42877e51e2ab6e22a8e65be1aa951f5ee63b012a132edcc8c6f290d7
 export const useGameStore = defineStore("game", {
   state: () => ({
     tournaments: [],
+    players:[]
   }),
   getters: {
     getAustralianOpen: (state) => {
-      return state.tournaments.filter(
-        (tournament) =>
-          tournament.result.tournament_name === "Australian Open" &&
-          tournament.result.event_type === "Boys Singles"
-      );
+      return state.tournaments.filter(tournament=>tournament.tournament_name=="Australian Open" && tournament.event_type_type=="Atp Singles")
     },
+
+    getPlayers: (state)=>{
+      return state.players
+    }
   },
   actions: {
     async fetchTournaments() {
@@ -25,11 +26,25 @@ export const useGameStore = defineStore("game", {
         }
 
         const data = await response.json();
-        this.tournaments = data; // Assuming the response is an array of tournaments
+        this.tournaments = data.result; // Assuming the response is an array of tournaments
       } catch (error) {
         console.error("Error fetching tournaments:", error);
       }
     },
+
+    async fetchPlayers(){
+      try {
+        const response = await fetch(`${TENNIS_API_URL}?method=get_players&tournament_key=1236&APIkey=${API_KEY}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        this.players = data.result;
+      } catch (error) {
+        console.error("Error fetching players:", error);
+      }
+    }
   },
   persist: true,
 });

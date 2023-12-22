@@ -17,6 +17,7 @@ import EditProfile from "@/views/EditProfileView.vue";
 import TrophiesView from "@/views/TrophiesView.vue";
 import AboutUsView from "@/views/AboutUsView.vue";
 import PageNotFoundView from "@/views/PageNotFoundView.vue";
+import testApi from "@/views/testApi.vue"
 import { useUserStore } from "@/stores/user";
 
 const router = createRouter({
@@ -164,6 +165,14 @@ const router = createRouter({
       component: PageNotFoundView,
       meta: {
         title: "PageNotFound",
+      },
+    },
+    {
+      path: "/test",
+      name: "test",
+      component: testApi,
+      meta: {
+        title: "Test Api",
       },
     },
   ],
