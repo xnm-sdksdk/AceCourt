@@ -22,11 +22,14 @@
     <!-- Player Name Section -->
     <v-row>
       <v-col>
-        <v-container fluid style="
+        <v-container
+          fluid
+          style="
             background-color: #efefef;
             border-top-left-radius: 12px;
             border-top-right-radius: 12px;
-          ">
+          "
+        >
           <h2 class="text-xl font-bold">{{ player.player_name }}</h2>
         </v-container>
       </v-col>
@@ -47,26 +50,49 @@
           <!-- Player Nationality and Name -->
           <v-row>
             <v-col>
-              <!-- Add player nationality flag image here -->
-              <img src=""/>
-              <p>{{ player.player_country }}</p>
+              <v-row>
+                <!-- Add player nationality flag image here -->
+                <img src="" />
+                <p>Player Country</p>
+              </v-row>
+              <v-row>
+                <!-- Player Position in Ranking -->
+                <p class="rotate">Rank:</p>
+                <p>1</p>
+                <!-- Player Points -->
+                <p class="rotate">Points:</p>
+                <p>101010</p>
+              </v-row>
             </v-col>
             <v-col>
-              <!-- Player Name -->
-              <h3 class="text-lg font-bold">{{ player.player_name }}</h3>
-              <!-- Player Position in Ranking -->
-              <p>Rank:</p>
-              <!-- Player Points -->
-              <p>Points: </p>
+              <v-row>
+                <p>Age</p>
+                <p>20</p>
+              </v-row>
+              <v-row>
+                <p>Age</p>
+                <p>20</p>
+              </v-row>
+              <v-row>
+                <p>Age</p>
+                <p>20</p>
+              </v-row>
+              <v-row>
+                <p>Age</p>
+                <p>20</p>
+              </v-row>
+            </v-col>
+            <v-col>
+              <img src="">
             </v-col>
           </v-row>
         </v-container>
       </v-col>
-
-      <!-- Center Section: Add Your Player Information Here -->
-
-      <!-- Right Section: Empty for Now -->
     </v-row>
+    <!--Career and Last Matches-->
+    <v-row></v-row>
+    <!--Registed Games-->
+    <v-row></v-row>
   </v-container>
 </template>
 
@@ -87,7 +113,9 @@ export default {
   created() {
     this.store.fetchPlayers();
     this.playerId = this.$route.params.id;
-    this.player = this.store.getPlayers.find(player=>player.player_key==this.playerId);
+    this.player = this.store.getPlayers.find(
+      (player) => player.player_key == this.playerId
+    );
     console.log(this.player);
   },
 };
@@ -97,5 +125,8 @@ z
 h2 {
   color: #0f3972;
 }
-</style>
 
+.rotate{
+  rotate: -90deg;
+}
+</style>

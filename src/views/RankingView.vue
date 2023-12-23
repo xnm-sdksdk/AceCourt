@@ -47,11 +47,10 @@
               <tr
                 v-for="stand in filteredStandings"
                 :key="stand.player"
-                @click="seePlayer(stand.player_key)"
                 style="cursor: pointer"
               >
                 <td>{{ stand.place }}</td>
-                <td>{{ stand.player }}</td>
+                <td @click="seePlayer(stand.player_key)">{{ stand.player }}</td>
                 <td>{{ stand.country }}</td>
                 <td>{{ stand.points }}</td>
               </tr>
