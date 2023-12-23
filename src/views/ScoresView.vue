@@ -2,7 +2,7 @@
   <NavBar></NavBar>
   <!-- My Games Title -->
   <div class="container mx-auto flex justify-between items-center p-6">
-    <v-row class="bg-green">
+    <v-row>
       <!-- First Column My Games, Live Games -->
       <v-col cols="9">
         <div class="py-2">
@@ -86,11 +86,11 @@
 
         <!-- Live Games -->
 
-        <v-row class="bg-red">
+        <v-row>
           <v-col col="9">
             <div class="py-4">
               <v-card-title
-                class="rounded-t-xl bg-grey-lighten-5 white--text ma-1 pa-3"
+                class="rounded-t-xl bg-grey-lighten-4 white--text ma-1 pa-3"
               >
                 Live Games
               </v-card-title>
