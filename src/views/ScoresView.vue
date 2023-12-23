@@ -20,7 +20,7 @@
           </v-card-text>
 
           <!-- Header First Game -->
-          <v-row class="rounded-t-xl bg-white ma-1 ">
+          <v-row class="rounded-t-xl bg-white ma-1">
             <v-col>Results</v-col>
             <v-col>Icon</v-col>
             <v-col>1st</v-col>
@@ -178,13 +178,16 @@
 
 <script>
 import NavBar from "@/components/NavBar.vue";
+import { useGameStore } from "@/stores/games";
 export default {
   components: {
     NavBar,
   },
   data() {
     return {
-      menu: false,
+      store: useGameStore(),
+      liveGames: [],
+      myGames: [],
     };
   },
   methods: {
