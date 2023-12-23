@@ -32,7 +32,7 @@
                     Spanish tennis sensation Carlos Alcaraz showcases formidable
                     skill and remarkable achievements.
                   </v-card-text>
-                  <RouterLink :to="{ name: 'players' }">
+                  <RouterLink :to="{ name: 'players',params:{id:1905}}">
                     <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
                   </RouterLink>
                 </v-col>
