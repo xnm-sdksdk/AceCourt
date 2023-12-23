@@ -29,20 +29,29 @@
               <ScoresHeaderResults></ScoresHeaderResults>
 
               <!-- First Player - First Game -->
-              <v-row class="bg-blue-darken-2 ma-1 pa-1">
-                <v-col>N. Djokovic</v-col>
-                <v-col>40</v-col>
-                <v-col>6</v-col>
-                <v-col>0</v-col>
-                <v-col></v-col>
-                <v-col></v-col>
-                <v-col></v-col>
-                <v-col>1</v-col>
+              <v-row
+                class="bg-blue-darken-2 ma-1 pa-1"
+                v-for="(game, index) in renderingGames"
+                :key="index"
+              >
+                <v-col>
+                  <div>
+                    {{ game.event_first_player }}
+                  </div>
+                  <div>{{ game.event_first_player }}</div>
+                </v-col>
+                <v-col>{{ getLiveScore(game) }}</v-col>
+                <v-col>{{ getSetResult(game, 1) }}</v-col>
+                <v-col>{{}}</v-col>
+                <v-col>{{}}</v-col>
+                <v-col>{{}}</v-col>
+                <v-col>{{}}</v-col>
+                <v-col>{{}}</v-col>
               </v-row>
 
               <!-- Second Player - First Game -->
               <v-row class="rounded-b-xl bg-blue-darken-2 ma-1 pa-1">
-                <v-col>C. Alcaraz</v-col>
+                <v-col></v-col>
                 <v-col>40</v-col>
                 <v-col>6</v-col>
                 <v-col>0</v-col>
@@ -251,12 +260,32 @@ export default {
       store: useGameStore(),
       liveGames: [],
       myGames: [],
+      firstPlayerLiveGame: null,
     };
   },
   methods: {
     seeMorePlayers() {},
+    getLiveScore(game) {
+      return "LiveScore";
+    },
+    getSetResult(game, setNumber) {
+      return "SetResult";
+    },
   },
-  // setup() {},
+  computed: {
+    renderingGames() {
+      return this.liveGames;
+    },
+    firstPlayer() {
+      return this.store.getFirstPlayerInFirstLiveGame;
+    },
+  },
+  created() {
+    this.store.fetchLiveScores();
+    this.liveGames = this.store.liveGames;
+    this.firstPlayerLiveGame = this.firstPlayer;
+    console.log("Created");
+  },
 };
 </script>
 
