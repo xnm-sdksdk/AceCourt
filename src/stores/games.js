@@ -22,11 +22,15 @@ export const useGameStore = defineStore("game", {
     },
 
     getPlayers: (state) => {
-      return state.players;
+      if ((state.liveGames, length > 0)) {
+        const firstliveGame = state.liveGames[0];
+        return firstliveGame.event_first_player;
+      }
+      return null;
     },
 
-    getStandings: (state) => {
-      return state.standings;
+    getLiveScore: (state) => {
+      return state.livescore;
     },
   },
   actions: {
@@ -65,16 +69,16 @@ export const useGameStore = defineStore("game", {
     async fetchLiveScores() {
       try {
         const response = await fetch(
-          `${TENNIS_API_URL}?method=get_livescore&event_type=ATP&APIkey=${API_KEY}`
+          `${TENNIS_API_URL}?method=get_livescore&APIkey=${API_KEY}`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
         const data = await response.json();
-        this.standings = data.result;
+        this.liveGames = data.result;
       } catch (error) {
-        console.error("Error fetching Standings:", error);
+        console.error("Error fetching Live Games:", error);
       }
     },
   },
