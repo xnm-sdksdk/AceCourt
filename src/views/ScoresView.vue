@@ -20,16 +20,8 @@
           </v-card-text>
 
           <!-- Header First Game -->
-          <v-row class="rounded-t-xl bg-white ma-1">
-            <v-col>Results</v-col>
-            <v-col>Icon</v-col>
-            <v-col>1st</v-col>
-            <v-col>2nd</v-col>
-            <v-col>3rd</v-col>
-            <v-col>4th</v-col>
-            <v-col>5th</v-col>
-            <v-col>Sets</v-col>
-          </v-row>
+
+          <ScoresHeaderResults></ScoresHeaderResults>
 
           <!-- First Player - First Game -->
           <v-row class="bg-blue-darken-2 ma-1 pa-1">
@@ -56,16 +48,7 @@
           </v-row>
 
           <!-- Header First Game -->
-          <v-row class="rounded-t-xl bg-white ma-1">
-            <v-col>Results</v-col>
-            <v-col>Icon</v-col>
-            <v-col>1st</v-col>
-            <v-col>2nd</v-col>
-            <v-col>3rd</v-col>
-            <v-col>4th</v-col>
-            <v-col>5th</v-col>
-            <v-col>Sets</v-col>
-          </v-row>
+          <ScoresHeaderResults></ScoresHeaderResults>
 
           <!-- First Player - First Game -->
           <v-row class="bg-blue-darken-2 ma-1">
@@ -101,10 +84,41 @@
               Live Games
             </v-card-title>
             <v-card
-              class="rounded-b-xl bg-grey-lighten-4 ma-1"
+              class="rounded-b-xl bg-grey-lighten-4 ma-1 pa-4"
               elevation="3"
               height="300"
             >
+              <v-card-text>
+                <v-row>
+                  <v-col>Australia Open - Quarter Finals</v-col>
+                  <v-col>Rod Laver Arena</v-col>
+                </v-row>
+              </v-card-text>
+              <!-- Fist Game Live Games -->
+              <ScoresHeaderResults></ScoresHeaderResults>
+
+              <v-row class="bg-blue-darken-2 ma-1">
+                <v-col>N. Djokovic</v-col>
+                <v-col>40</v-col>
+                <v-col>6</v-col>
+                <v-col>0</v-col>
+                <v-col></v-col>
+                <v-col></v-col>
+                <v-col></v-col>
+                <v-col>1</v-col>
+              </v-row>
+
+              <!-- Second Player - First Game -->
+              <v-row class="rounded-b-xl bg-blue-darken-2 ma-1">
+                <v-col>C. Alcaraz</v-col>
+                <v-col>40</v-col>
+                <v-col>6</v-col>
+                <v-col>0</v-col>
+                <v-col></v-col>
+                <v-col></v-col>
+                <v-col></v-col>
+                <v-col>1</v-col>
+              </v-row>
             </v-card>
           </v-col>
         </v-row>
@@ -178,10 +192,12 @@
 
 <script>
 import NavBar from "@/components/NavBar.vue";
+import ScoresHeaderResults from "@/components/ScoresHeaderResults.vue";
 import { useGameStore } from "@/stores/games";
 export default {
   components: {
     NavBar,
+    ScoresHeaderResults,
   },
   data() {
     return {
