@@ -47,6 +47,10 @@
             </v-col>
           </v-row>
         </div>
+        <div class="m-6 p-6">
+          <button class="px-6">Save</button>
+          <button>Logout</button>
+        </div>
       </v-main>
     </v-container>
   </v-app>
