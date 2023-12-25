@@ -29,70 +29,70 @@
 
                 <ScoresHeaderResults></ScoresHeaderResults>
 
-                <!-- First Player - First Game -->
-                <v-row
-                  class="bg-blue-darken-2 ma-1 pa-1"
-                  v-for="(game, index) in renderingGames"
-                  :key="index"
-                >
-                  <v-col>
-                    <div>
-                      {{ game.event_first_player }}
-                    </div>
-                    <div>{{ game.event_first_player }}</div>
-                  </v-col>
-                  <v-col>{{ getLiveScore(game) }}</v-col>
-                  <v-col>{{ getSetResult(game, 1) }}</v-col>
-                  <v-col>{{}}</v-col>
-                  <v-col>{{}}</v-col>
-                  <v-col>{{}}</v-col>
-                  <v-col>{{}}</v-col>
-                  <v-col>{{}}</v-col>
-                </v-row>
+              <!-- First Player - First Game -->
+              <v-row
+                class="bg-blue-darken-2 ma-1 pa-1"
+                v-for="(game, index) in renderingGames"
+                :key="index"
+              >
+                <v-col>
+                  <div>
+                    {{ game.event_first_player }}
+                  </div>
+                  <div>{{ game.event_first_player }}</div>
+                </v-col>
+                <v-col>{{ getLiveScore(game) }}</v-col>
+                <v-col>{{ getSetResult(game, 1) }}</v-col>
+                <v-col>{{}}</v-col>
+                <v-col>{{}}</v-col>
+                <v-col>{{}}</v-col>
+                <v-col>{{}}</v-col>
+                <v-col>{{}}</v-col>
+              </v-row>
 
-                <!-- Second Player - First Game -->
-                <v-row class="rounded-b-xl bg-blue-darken-2 ma-1 pa-1">
-                  <v-col></v-col>
-                  <v-col>40</v-col>
-                  <v-col>6</v-col>
-                  <v-col>0</v-col>
-                  <v-col></v-col>
-                  <v-col></v-col>
-                  <v-col></v-col>
-                  <v-col>1</v-col>
-                </v-row>
-              </div>
+              <!-- Second Player - First Game -->
+              <v-row class="rounded-b-xl bg-blue-darken-2 ma-1 pa-1">
+                <v-col></v-col>
+                <v-col>40</v-col>
+                <v-col>6</v-col>
+                <v-col>0</v-col>
+                <v-col></v-col>
+                <v-col></v-col>
+                <v-col></v-col>
+                <v-col>1</v-col>
+              </v-row>
+            </div>
 
               <div class="py-4">
                 <!-- Header First Game -->
                 <ScoresHeaderResults></ScoresHeaderResults>
 
-                <!-- First Player - First Game -->
-                <v-row class="bg-blue-darken-2 ma-1">
-                  <v-col>N. Djokovic</v-col>
-                  <v-col>40</v-col>
-                  <v-col>6</v-col>
-                  <v-col>0</v-col>
-                  <v-col></v-col>
-                  <v-col></v-col>
-                  <v-col></v-col>
-                  <v-col>1</v-col>
-                </v-row>
+              <!-- First Player - First Game -->
+              <v-row class="bg-blue-darken-2 ma-1">
+                <v-col>N. Djokovic</v-col>
+                <v-col>40</v-col>
+                <v-col>6</v-col>
+                <v-col>0</v-col>
+                <v-col></v-col>
+                <v-col></v-col>
+                <v-col></v-col>
+                <v-col>1</v-col>
+              </v-row>
 
-                <!-- Second Player - First Game -->
-                <v-row class="rounded-b-xl bg-blue-darken-2 ma-1">
-                  <v-col>C. Alcaraz</v-col>
-                  <v-col>40</v-col>
-                  <v-col>6</v-col>
-                  <v-col>0</v-col>
-                  <v-col></v-col>
-                  <v-col></v-col>
-                  <v-col></v-col>
-                  <v-col>1</v-col>
-                </v-row>
-              </div>
-            </v-card>
-          </div>
+              <!-- Second Player - First Game -->
+              <v-row class="rounded-b-xl bg-blue-darken-2 ma-1">
+                <v-col>C. Alcaraz</v-col>
+                <v-col>40</v-col>
+                <v-col>6</v-col>
+                <v-col>0</v-col>
+                <v-col></v-col>
+                <v-col></v-col>
+                <v-col></v-col>
+                <v-col>1</v-col>
+              </v-row>
+            </div>
+          </v-card>
+        </div>
 
           <!-- Live Games -->
 
