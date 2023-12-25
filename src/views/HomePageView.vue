@@ -82,7 +82,7 @@
                   <v-col cols="1" class="m-3">3rd</v-col>
                   <v-col cols="1" class="m-3">4th</v-col>
                   <v-col cols="1" class="m-3">5th</v-col>
-                  <v-col cols="3" class="m-3">Final</v-col>
+                  <v-col cols="2" class="m-3">Final</v-col>
                 </v-row>
               </div>
             </v-card>
@@ -96,7 +96,7 @@
                   <v-col cols="1" class="m-3">-</v-col>
                   <v-col cols="1" class="m-3">-</v-col>
                   <v-col cols="1" class="m-3">-</v-col>
-                  <v-col cols="3" class="m-3">2</v-col>
+                  <v-col cols="2" class="m-3">2</v-col>
                 </v-row>
               </v-card>
             </div>
@@ -112,7 +112,7 @@
                   <v-col cols="1" class="m-3">-</v-col>
                   <v-col cols="1" class="m-3">-</v-col>
                   <v-col cols="1" class="m-3">-</v-col>
-                  <v-col cols="3" class="m-3">0</v-col>
+                  <v-col cols="2" class="m-3">0</v-col>
                 </v-row>
               </v-card>
             </div>
