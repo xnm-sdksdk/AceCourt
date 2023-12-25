@@ -38,13 +38,13 @@
                   {{ game.event_first_player }}
                 </v-col>
                 <!-- <v-col>{{ game.pointbypoint.points.number_point }}</v-col> -->
-                <!-- <v-col>{{ getLiveScore(game) }}</v-col>
-                <v-col>{{ getSetResult(game, 1) }}</v-col> -->
+                <!-- <v-col>{{ getLiveScore(game) }}</v-col>-->
+                <v-col>{{ getSetResult(game, 1) }}</v-col>
+                <v-col>{{ getSetResult(game, 2) }}</v-col>
                 <v-col>{{}}</v-col>
                 <v-col>{{}}</v-col>
                 <v-col>{{}}</v-col>
-                <v-col>{{}}</v-col>
-                <v-col>{{}}</v-col>
+                <v-col>{{ game.event_final77_result }}</v-col>
               </v-row>
 
               <!-- Second Player - First Game -->
@@ -121,8 +121,12 @@
                   <!-- Fist Game Live Games -->
                   <ScoresHeaderResults></ScoresHeaderResults>
 
-                  <v-row class="bg-blue-darken-2 ma-1">
-                    <v-col>N. Djokovic</v-col>
+                  <v-row
+                    class="bg-blue-darken-2 ma-1 pa-1 rounded-b-xl"
+                    v-for="(game, index) in renderingGames"
+                    :key="index"
+                  >
+                    <v-col>{{ game.event_second_player }}</v-col>
                     <v-col>40</v-col>
                     <v-col>6</v-col>
                     <v-col>0</v-col>
@@ -133,7 +137,7 @@
                   </v-row>
 
                   <!-- Second Player - First Game -->
-                  <v-row class="rounded-b-xl bg-blue-darken-2 ma-1">
+                  <!-- <v-row class="rounded-b-xl bg-blue-darken-2 ma-1">
                     <v-col>C. Alcaraz</v-col>
                     <v-col>40</v-col>
                     <v-col>6</v-col>
@@ -142,7 +146,7 @@
                     <v-col></v-col>
                     <v-col></v-col>
                     <v-col>1</v-col>
-                  </v-row>
+                  </v-row> -->
                 </div>
                 <div class="py-4">
                   <v-card-text>
@@ -273,6 +277,9 @@ export default {
       return "LiveScore";
     },
     getSetResult(game, setNumber) {
+      if (game && game.scores && game.scores[setNumber - 1]) {
+        return game.scores[setNumber - 1].score_set;
+      }
       return "SetResult";
     },
   },
