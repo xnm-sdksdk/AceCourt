@@ -6,7 +6,7 @@
         <div class="">
           <h1>My Profile</h1>
         </div>
-        <div class="">
+        <div class="ma-3 pa-3">
           <ProfileButtons></ProfileButtons>
         </div>
         <div class="">

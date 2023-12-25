@@ -3,13 +3,18 @@
   <div class="">
     <h1>My Stats</h1>
   </div>
+  <div class="">
+    <ProfileButtons></ProfileButtons>
+  </div>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar.vue";
+import ProfileButtons from "@/components/ProfileButtons.vue";
 export default {
   components: {
     NavBar,
+    ProfileButtons,
   },
   // setup() {},
 };

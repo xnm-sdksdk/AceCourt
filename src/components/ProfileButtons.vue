@@ -1,9 +1,15 @@
 <template>
   <div class="">
     <span>
-      <button>Profile</button>
-      <button>Trophies</button>
-      <button>My Stats</button
-    ></span>
+      <RouterLink :to="{ name: 'profile' }">
+        <button>Profile</button>
+      </RouterLink>
+      <RouterLink :to="{ name: 'trophies' }">
+        <button>Trophies</button>
+      </RouterLink>
+      <RouterLink :to="{ name: 'mystats' }">
+        <button>My Stats</button>
+      </RouterLink>
+    </span>
   </div>
 </template>
