@@ -4,7 +4,7 @@
       <!-- Left Containers -->
       <v-row style="display: flex;flex-direction: column;">
         <v-col cols="4">
-            
+            Final
         </v-col>
         <v-col cols="4">
             Container 2
@@ -26,8 +26,20 @@
 </template>
 
 <script>
-export default {
+import { useGameStore } from '../stores/tennis';
 
+export default {
+  data() {
+    return {
+      store: useGameStore(),
+      fixtures:[]
+    }
+  },
+  created () {
+    this.store.fetchFixtures()
+    this.fixtures=this.store.getFixtures;
+    console.log(this.fixtures);
+  },
 }
 </script>
 
