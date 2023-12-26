@@ -4,9 +4,9 @@
       <div class="max-w-xl mx-auto bg-white rounded p-8 shadow-md">
         <h2 class="text-2xl font-semibold mb-4 flex justify-center">Sign Up</h2>
 
-        <!-- Formulário -->
+        <!-- Form -->
         <form>
-          <!-- Nome Input -->
+          <!-- Name Input -->
           <div class="mb-4">
             <input
               type="text"
@@ -49,9 +49,9 @@
             </div>
           </div>
 
-          <!-- Tipe of User Select -->
+          <!-- Type of User Select -->
           <div class="mb-4">
-            <!-- Tipe of User Select -->
+            <!-- Type of User Select -->
             <div class="mb-4 relative">
               <select
                 id="userType"
@@ -72,7 +72,7 @@
             </div>
           </div>
 
-          <!-- Botão de Sign Up -->
+          <!-- Button Sign Up -->
           <button
             type="submit"
             class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-700"
@@ -88,7 +88,7 @@
           <div class="border-t border-gray-300 flex-grow ml-3"></div>
         </div>
 
-        <!-- Botão Login -->
+        <!-- Button Login -->
         <RouterLink :to="{ name: 'login' }">
           <button
             class="w-full bg-white border border-blue-500 text-blue-500 py-2 px-4 rounded-md hover:bg-gray-100 focus:outline-none focus:ring focus:border-blue-700"
@@ -102,6 +102,7 @@
 </template>
 
 <script>
+import {useUserStore} from "@/stores/user.js"
 export default {
   data() {
     return {
@@ -110,6 +111,7 @@ export default {
       email: "",
       password: "",
       typeUser: "",
+      userStore:useUserStore()
     };
   },
 
@@ -117,7 +119,10 @@ export default {
     togglePasswordVisibility() {
       this.showPassword = !this.showPassword;
     },
-    createAccount() {},
+    createAccount() {
+      this.userStore.register(this.name,this.email,this.password,this.typeUser)
+      console.log(this.userStore.getAllUsers);
+    },
   },
 };
 </script>

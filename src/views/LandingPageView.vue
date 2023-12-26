@@ -21,7 +21,7 @@
             </p>
 
             <!-- Start Button -->
-            <RouterLink :to="{ name: 'home' }">
+            <RouterLink :to="{ name: 'game' }">
               <button
                 class="text-white px-4 py-2 rounded-full"
                 style="letter-spacing: 0.15em"

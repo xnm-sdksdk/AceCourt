@@ -4,6 +4,7 @@ import SignUpView from "@/views/SignUpView.vue";
 import LogInView from "@/views/LogInView.vue";
 import HomePageView from "../views/HomePageView.vue";
 import ScoresView from "@/views/ScoresView.vue";
+import GameView from "@/views/GameView.vue"
 import RankingView from "@/views/RankingView.vue";
 import PlayersView from "@/views/PlayersView.vue";
 import DrawsView from "@/views/DrawsView.vue";
@@ -60,6 +61,14 @@ const router = createRouter({
       component: ScoresView,
       meta: {
         title: "Scores",
+      },
+    },
+    {
+      path: "/game",
+      name: "game",
+      component: GameView,
+      meta: {
+        title: "Game",
       },
     },
     {
