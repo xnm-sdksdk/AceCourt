@@ -120,8 +120,12 @@ export default {
       this.showPassword = !this.showPassword;
     },
     createAccount() {
-      this.userStore.register(this.name,this.email,this.password,this.typeUser)
-      console.log(this.userStore.getAllUsers);
+      try {
+        this.userStore.register(this.name,this.email,this.password,this.typeUser)
+        this.$router.push({name:"login"})
+      } catch (error) {
+        alert(`Error: ${error.message}` )
+      }
     },
   },
 };

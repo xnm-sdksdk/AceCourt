@@ -64,11 +64,14 @@
 </template>
 
 <script>
+import { useUserStore } from '../stores/user';
+
 export default {
   data() {
     return {
       email: "",
       password: "",
+      userStore:useUserStore(),
       showPassword: false,
     };
   },
@@ -76,7 +79,14 @@ export default {
     togglePasswordVisibility() {
       this.showPassword = !this.showPassword;
     },
-    logAccount() {},
+    logAccount() {
+      try {
+        this.userStore.login(this.email,this.password)
+        this.$router.push({name:"home"})
+      } catch (error) {
+        alert(`Error: ${error.message}` )
+      }
+    },
   },
 };
 </script>

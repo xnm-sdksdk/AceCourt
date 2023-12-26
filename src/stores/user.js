@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-import { useRouter } from "vue-router";
 
 export const useUserStore = defineStore("user", {
   state: () => ({
@@ -25,7 +24,7 @@ export const useUserStore = defineStore("user", {
       if(findUser){
         alert("Already have an account with this email!")
       }else{
-        this.users.push({id: this.users.length > 0 ? this.users[this.users.length - 1].id + 1 : 1 , name:name , email: email , password: password , typeUser:typeUser})
+        this.users.push({id:this.users[this.users.length - 1].id + 1, name:name , email: email , password: password , typeUser:typeUser})
         console.log(this.users);
       }
     },
