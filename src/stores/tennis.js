@@ -57,6 +57,7 @@ export const useGameStore = defineStore("game", {
         this.players = data.result;
       } catch (error) {
         console.error("Error fetching players:", error);
+        console.error("Response status:", response.status);
       }
     },
     getFirstPlayerRanking() {
