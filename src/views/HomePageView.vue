@@ -71,7 +71,7 @@
                   >
                 </div>
 
-                <div class="text-slate-700">
+                <div class="text-slate-700 text-left">
                   <v-card-text class="ml-5 max-w-xs">
                     Experience the thrill of live games with our dynamic
                     dashboard, providing real-time data for an immersive gaming
@@ -100,15 +100,17 @@
               elevation="3"
             >
               <div class="justify-center items-center p-1">
-                <v-row>
-                  <v-col cols="2" class="m-3">Sets</v-col>
-                  <v-col cols="1" class="m-3">1st</v-col>
-                  <v-col cols="1" class="m-3">2nd</v-col>
-                  <v-col cols="1" class="m-3">3rd</v-col>
-                  <v-col cols="1" class="m-3">4th</v-col>
-                  <v-col cols="1" class="m-3">5th</v-col>
-                  <v-col cols="2" class="m-3">Final</v-col>
-                </v-row>
+                <div class="text-blue-900 font-bold">
+                  <v-row>
+                    <v-col cols="2" class="m-3">Sets</v-col>
+                    <v-col cols="1" class="m-3">1st</v-col>
+                    <v-col cols="1" class="m-3">2nd</v-col>
+                    <v-col cols="1" class="m-3">3rd</v-col>
+                    <v-col cols="1" class="m-3">4th</v-col>
+                    <v-col cols="1" class="m-3">5th</v-col>
+                    <v-col cols="2" class="m-3">Final</v-col>
+                  </v-row>
+                </div>
               </div>
             </v-card>
             <!-- Second Row -->
@@ -154,38 +156,49 @@
               elevation="3"
               height="300"
             >
-              <v-row>
-                <v-card-title class="ml-4"> Top Matches </v-card-title>
-                <v-divider></v-divider>
-                <v-col cols="4">
-                  <!-- Carlos -->
-                  <v-avatar size="200">
-                    <v-img
-                      src="../assets/carlos.svg"
-                      alt="Carlos-Alcaraz-Image"
-                      width="200"
-                      height="2050"
-                    >
-                    </v-img>
-                  </v-avatar>
-                  <!-- Jannik -->
-                  <v-avatar size="200">
-                    <v-img
-                      src="../assets/jannik.svg"
-                      alt="Jannik-Sinner-Image"
-                      width="200"
-                      height="200"
-                    >
-                    </v-img>
-                  </v-avatar>
-                </v-col>
-                <v-col cols="8">
-                  <v-card-subtitle class="ml-4"
-                    >Jannik Sinner defeats Carlos Alcaraz in a perfect
-                    Game</v-card-subtitle
-                  >
-                </v-col>
-              </v-row>
+              <div class="text-blue-900">
+                <v-card-title class="ml-5 my-5 text-h5"> Top Matches </v-card-title>
+              </div>
+              <div class="flex">
+                <v-row class="ml-2">
+                  <v-col cols="6" class="">
+                    <div class="relative">
+                      <!-- Carlos -->
+                      <v-img
+                        src="../assets/carlos.svg"
+                        alt="Carlos-Alcaraz-Image"
+                        height="180px"
+                        width="180px"
+                        cover
+                        class="rounded-circle"
+                      >
+                      </v-img>
+
+                      <!-- Jannik -->
+
+                      <div class="absolute top-0 left-20 mx-6">
+                        <v-img
+                          src="../assets/jannik.svg"
+                          alt="Jannik-Sinner-Image"
+                          height="180px"
+                          width="180px"
+                          cover
+                          class="rounded-circle"
+                        >
+                        </v-img>
+                      </div>
+                    </div>
+                  </v-col>
+                  <v-col cols="5">
+                    <div class="text-slate-700 text-center tracking-widest">
+                      <v-card-text class="m-4 ml-5 text-h5"
+                        >Jannik Sinner defeats Carlos Alcaraz in a perfect
+                        Game</v-card-text
+                      >
+                    </div>
+                  </v-col>
+                </v-row>
+              </div>
             </v-card>
           </v-col>
 
