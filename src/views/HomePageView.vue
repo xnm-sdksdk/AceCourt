@@ -16,13 +16,13 @@
                   Highlight Player
                 </v-card-title>
               </div>
-              <v-row class="ml-3">
-                <v-col cols="5">
+              <v-row class="ml-5">
+                <v-col cols="4">
                   <v-img
                     src="../assets/carlos.svg"
                     alt="Highlight-Player-Image"
-                    height="200px"
-                    width="200px"
+                    height="180px"
+                    width="180px"
                     cover
                     class="rounded-circle"
                   >
@@ -37,7 +37,7 @@
                   </div>
 
                   <div class="text-slate-700">
-                    <v-card-text class="m-1" justify="start">
+                    <v-card-text class="" justify="start">
                       Spanish tennis sensation Carlos Alcaraz showcases
                       formidable skill and remarkable achievements.
                     </v-card-text>
@@ -255,69 +255,90 @@
               elevation="3"
               height="300"
             >
-              <v-row>
-                <v-card-title class="ml-4"> Ranking </v-card-title>
+              <div class="text-blue-900">
+                <v-card-title class="ml-5 my-5 text-h5"> Ranking </v-card-title>
+              </div>
 
-                <v-col cols="4">
+              <v-row class="ml-3">
+                <v-col cols="6">
                   <!-- Player -->
-                  <v-avatar size="200">
-                    <v-img
-                      src="../assets/nova.svg"
-                      alt="Djokovic-Ranking-Image"
-                      width="100%"
-                      height="100%"
-                    >
-                    </v-img>
-                  </v-avatar>
+
+                  <v-img
+                    src="../assets/nova.svg"
+                    alt="Djokovic-Ranking-Image"
+                    width="200px"
+                    height="200px"
+                    cover
+                    class="rounded-circle"
+                  >
+                  </v-img>
                 </v-col>
 
                 <v-col cols="5">
-                  <v-card-subtitle class="ml-4">{{
-                    fetchRankingPlayerName
-                  }}</v-card-subtitle>
-                  <v-card-text>{{ fetchRankingPlayerPoints }}</v-card-text>
-                  <RouterLink :to="{ name: 'ranking' }">
-                    <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
-                  </RouterLink>
+                  <div class="d-flex flex-col">
+                    <v-card-text>{{ fetchRankingPlayerName }}</v-card-text>
+                    <v-card-text>{{ fetchRankingPlayerPoints }}</v-card-text>
+                    <RouterLink :to="{ name: 'ranking' }">
+                      <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
+                    </RouterLink>
+                  </div>
                 </v-col>
               </v-row>
             </v-card>
           </v-col>
           <v-col cols="5">
             <!-- Head to Head Card -->
-            <div class="">
-              <v-card
-                class="rounded-xl bg-grey-lighten-5"
-                elevation="3"
-                height="300"
-              >
-                <v-card-title class="ml-4"> Head to Head </v-card-title>
-                <!-- De Minaur -->
-                <v-avatar size="200">
-                  <v-img
-                    src="../assets/alex.svg"
-                    alt="De-Minaur-Image"
-                    width="100%"
-                    height="100%"
-                  >
-                  </v-img>
-                </v-avatar>
-                <!-- Medvedev  -->
-                <v-avatar size="200">
-                  <v-img
-                    src="../assets/medvedev.svg"
-                    alt="Medvedev-Image"
-                    width="100%"
-                    height="100%"
-                  >
-                  </v-img>
-                </v-avatar>
-                <v-card-subtitle class="ml-4"
-                  >Medvedev gets revenge on De Minaur and return to US Open
-                  quarter-finals</v-card-subtitle
-                >
-              </v-card>
-            </div>
+            <v-card
+              class="rounded-xl bg-grey-lighten-5"
+              elevation="3"
+              height="300"
+            >
+              <div class="text-blue-900">
+                <v-card-title class="ml-5 my-5 text-h5"> Head to Head </v-card-title>
+              </div>
+              <!-- De Minaur -->
+
+              <div class="flex">
+                <v-row class="ml-2">
+                  <v-col cols="6" class="">
+                    <div class="relative">
+                      <v-img
+                        src="../assets/medvedev.svg"
+                        alt="Medvedev-Image"
+                        width="180px"
+                        height="180px"
+                        cover
+                        class="rounded-circle"
+                      >
+                      </v-img>
+
+                      <!-- Medvedev  -->
+
+                      <div class="absolute top-0 left-20 mx-6">
+                        <v-img
+                          src="../assets/alex.svg"
+                          alt="De-Minaur-Image"
+                          width="180px"
+                          height="180px"
+                          cover
+                          class="rounded-circle"
+                        >
+                        </v-img>
+                      </div>
+                    </div>
+                  </v-col>
+
+                  <v-col cols="5">
+                    <div class="text-slate-700 text-right tracking-widest">
+                      <v-card-text class="m-5 my-1 ml.5 text-h6"
+                        >Medvedev gets revenge on De Minaur and return to US
+                        Open quarter-finals</v-card-text
+                      >
+                    </div>
+                  </v-col>
+                </v-row>
+              </div>
+            </v-card>
           </v-col>
         </v-row>
       </div>
@@ -376,12 +397,12 @@ export default {
     fetchRankingPlayerName() {
       return this.store.getFirstPlayerRanking()
         ? this.store.getFirstPlayerRanking().player
-        : "Loading...";
+        : "Loading Name...";
     },
     fetchRankingPlayerPoints() {
       return this.store.getFirstPlayerRanking()
         ? this.store.getFirstPlayerRanking().points
-        : "Loading...";
+        : "Loading Points...";
     },
   },
 };
