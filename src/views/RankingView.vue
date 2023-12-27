@@ -46,11 +46,11 @@
             <tbody>
               <tr
                 v-for="stand in filteredStandings"
-                :key="stand.player"
+                :key="stand.player_key"
                 style="cursor: pointer"
               >
                 <td>{{ stand.place }}</td>
-                <td @click="seePlayer(stand.player_key)">{{ stand.player }}</td>
+                <td @click="seePlayer(stand.player_key,stand.place,stand.points)">{{ stand.player }}</td>
                 <td>{{ stand.country }}</td>
                 <td>{{ stand.points }}</td>
               </tr>
@@ -87,8 +87,8 @@ export default {
       this.$router.go(-1);
     },
 
-    seePlayer(playerKey) {
-      this.$router.push({ name: "players", params: { id: playerKey } });
+    seePlayer(playerKey,place,points) {
+      this.$router.push({ name: "players", params: { id: playerKey, place:place, points:points} });
     },
   },
 

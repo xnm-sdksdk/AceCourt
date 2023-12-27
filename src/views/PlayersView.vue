@@ -53,17 +53,17 @@
               </v-row>
               <v-row>
                 <!-- Player Position in Ranking -->
-                <p class="rotate">Rank:</p>
-                <p>1</p>
+                <p class="rotate">Position:</p>
+                <p>{{ playerPlace }}</p>
                 <!-- Player Points -->
                 <p class="rotate">Points:</p>
-                <p>101010</p>
+                <p>{{ playerPoints }}</p>
               </v-row>
             </v-col>
             <v-col>
               <v-row>
                 <p>Age</p>
-                <p>20</p>
+                <p>{{ calcBirth() }}</p>
               </v-row>
               <v-row>
                 <p>Age</p>
@@ -79,7 +79,7 @@
               </v-row>
             </v-col>
             <v-col>
-              <img src="" />
+              <img :src="player.player_logo" />
             </v-col>
           </v-row>
         </v-container>
@@ -98,21 +98,49 @@ import BackButton from "../components/BackButton.vue";
 import { useGameStore } from "@/stores/tennis.js";
 export default {
   components: {
-    NavBar,BackButton
+    NavBar,
+    BackButton,
   },
   data() {
     return {
       store: useGameStore(),
       player: null,
       playerId: null,
+      playerPlace: 0,
+      playerPoints: 0,
     };
   },
   created() {
     this.playerId = this.$route.params.id;
+    this.playerPlace = this.$route.params.place;
+    this.playerPoints = this.$route.params.points;
     this.player = this.store.getPlayers.find(
       (player) => player.player_key == this.playerId
     );
     console.log(this.player);
+  },
+  methods: {
+    calcBirth() {
+      const birthdate = this.player.player_bday;
+
+      // Verify if birth format is correct "YYYY-MM-DD"
+      if (!birthdate || !/^\d{2}\.\d{2}\.\d{4}$/.test(birthdate)) {
+        return "Invalid birthdate";
+      }
+
+      // Extract date
+      const [day, month, year] = birthdate.split(".");
+      const birthDateObject = new Date(`${year}-${month}-${day}`);
+
+      // Verify if Date of Birth is NaN
+      if (isNaN(birthDateObject.getTime())) {
+        return "Invalid birthdate";
+      }
+
+      const birthYear = birthDateObject.getFullYear();
+      const currentYear = new Date().getFullYear();
+      return currentYear - birthYear;
+    },
   },
 };
 </script>
