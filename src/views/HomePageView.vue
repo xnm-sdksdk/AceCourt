@@ -222,7 +222,7 @@
             >
               <v-row>
                 <v-card-title class="ml-4"> Ranking </v-card-title>
-                <v-divider></v-divider>
+
                 <v-col cols="4">
                   <!-- Player -->
                   <v-avatar size="200">
@@ -237,10 +237,10 @@
                 </v-col>
 
                 <v-col cols="8">
-                  <v-card-subtitle class="ml-4"
-                    >Tennis - "We'll be back", say Australia's Davis Cup
-                    nearly-men</v-card-subtitle
-                  >
+                  <v-card-subtitle class="ml-4">{{
+                    fetchRankingPlayerName
+                  }}</v-card-subtitle>
+                  <v-card-text>{{ fetchRankingPlayerPoints }}</v-card-text>
                   <RouterLink :to="{ name: 'ranking' }">
                     <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
                   </RouterLink>
@@ -337,7 +337,18 @@ export default {
       store: useGameStore(),
     };
   },
-  // setup() {},
+  computed: {
+    fetchRankingPlayerName() {
+      return this.store.getFirstPlayerRanking()
+        ? this.store.getFirstPlayerRanking().player
+        : "Loading...";
+    },
+    fetchRankingPlayerPoints() {
+      return this.store.getFirstPlayerRanking()
+        ? this.store.getFirstPlayerRanking().points
+        : "Loading...";
+    },
+  },
 };
 </script>
 

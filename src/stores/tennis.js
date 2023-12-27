@@ -1,31 +1,38 @@
 import { defineStore } from "pinia";
 
 const TENNIS_API_URL = "https://api.api-tennis.com/tennis/";
-const API_KEY = "180fc8f42877e51e2ab6e22a8e65be1aa951f5ee63b012a132edcc8c6f290d7b";
+const API_KEY =
+  "180fc8f42877e51e2ab6e22a8e65be1aa951f5ee63b012a132edcc8c6f290d7b";
 
 export const useGameStore = defineStore("game", {
   state: () => ({
     tournaments: [],
-    players:[],
-    standings:[]
+    players: [],
+    standings: [],
   }),
   getters: {
     getAustralianOpen: (state) => {
-      return state.tournaments.filter(tournament=>tournament.tournament_name=="Australian Open" && tournament.event_type_type=="Atp Singles")
+      return state.tournaments.filter(
+        (tournament) =>
+          tournament.tournament_name == "Australian Open" &&
+          tournament.event_type_type == "Atp Singles"
+      );
     },
 
-    getPlayers: (state)=>{
-      return state.players
+    getPlayers: (state) => {
+      return state.players;
     },
 
-    getStandings: (state)=>{
-      return state.standings
-    }
+    getStandings: (state) => {
+      return state.standings;
+    },
   },
   actions: {
     async fetchTournaments() {
       try {
-        const response = await fetch(`${TENNIS_API_URL}?method=get_tournaments&APIkey=${API_KEY}`);
+        const response = await fetch(
+          `${TENNIS_API_URL}?method=get_tournaments&APIkey=${API_KEY}`
+        );
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -37,9 +44,11 @@ export const useGameStore = defineStore("game", {
       }
     },
 
-    async fetchPlayers(){
+    async fetchPlayers() {
       try {
-        const response = await fetch(`${TENNIS_API_URL}?method=get_players&tournament_key=1236&APIkey=${API_KEY}`);
+        const response = await fetch(
+          `${TENNIS_API_URL}?method=get_players&tournament_key=1236&APIkey=${API_KEY}`
+        );
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -50,10 +59,14 @@ export const useGameStore = defineStore("game", {
         console.error("Error fetching players:", error);
       }
     },
-
-    async fetchStandings(){
+    getFirstPlayerRanking() {
+      return this.standings.length > 0 ? this.standings[0] : null;
+    },
+    async fetchStandings() {
       try {
-        const response = await fetch(`${TENNIS_API_URL}?method=get_standings&event_type=ATP&APIkey=${API_KEY}`);
+        const response = await fetch(
+          `${TENNIS_API_URL}?method=get_standings&event_type=ATP&APIkey=${API_KEY}`
+        );
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -63,7 +76,7 @@ export const useGameStore = defineStore("game", {
       } catch (error) {
         console.error("Error fetching Standings:", error);
       }
-    }
+    },
   },
   persist: true,
 });
