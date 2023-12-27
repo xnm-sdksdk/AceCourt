@@ -88,7 +88,8 @@ const router = createRouter({
       },
     },
     {
-      path: "/players/:id&:place&:points",
+      // /:id&:place&:points
+      path: "/players/:id",
       name: "players",
       component: PlayersView,
       meta: {
