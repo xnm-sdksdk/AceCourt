@@ -11,8 +11,12 @@
               elevation="3"
               height="300"
             >
-              <v-card-title class="m-3"> Highlight Player </v-card-title>
-              <v-row class="border border-red">
+              <div class="text-blue-900">
+                <v-card-title class="m-3 text-h5">
+                  Highlight Player
+                </v-card-title>
+              </div>
+              <v-row>
                 <v-col cols="6">
                   <v-img
                     src="../assets/carlos.svg"
@@ -50,15 +54,22 @@
                 elevation="3"
                 height="300"
               >
-                <v-card-title class="m-1"> Live Games </v-card-title>
+                <div class="text-blue-900">
+                  <v-card-title class="m-3 text-h5"> Live Games </v-card-title>
+                </div>
+                <div class="text-blue-600">
+                  <v-card-subtitle class="m-3 text-body-1"
+                    >Real-Time Data</v-card-subtitle
+                  >
+                </div>
 
-                <v-card-subtitle class="m-2">Real-Time Data</v-card-subtitle>
-
-                <v-card-text class="m-2 max-w-xs">
-                  Experience the thrill of live games with our dynamic
-                  dashboard, providing real-time data for an immersive gaming
-                  experience
-                </v-card-text>
+                <div class="text-slate-700">
+                  <v-card-text class="m-3 max-w-xs">
+                    Experience the thrill of live games with our dynamic
+                    dashboard, providing real-time data for an immersive gaming
+                    experience
+                  </v-card-text>
+                </div>
 
                 <div class="m-3">
                   <RouterLink :to="{ name: 'scores' }">
