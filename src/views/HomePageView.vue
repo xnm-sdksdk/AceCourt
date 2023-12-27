@@ -6,7 +6,11 @@
       <div class="container mx-auto flex justify-between items-center p-4">
         <v-row>
           <v-col>
-            <v-card class="rounded-xl bg-grey-lighten-5" elevation="3" height="300">
+            <v-card
+              class="rounded-xl bg-grey-lighten-5"
+              elevation="3"
+              height="300"
+            >
               <v-card-title class="m-3"> Highlight Player </v-card-title>
               <v-row>
                 <v-col cols="6">
@@ -32,7 +36,7 @@
                     Spanish tennis sensation Carlos Alcaraz showcases formidable
                     skill and remarkable achievements.
                   </v-card-text>
-                  <RouterLink :to="{ name: 'players',params:{id:1905}}">
+                  <RouterLink :to="{ name: 'players', params: { id: 1905 } }">
                     <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
                   </RouterLink>
                 </v-col>
@@ -43,7 +47,11 @@
           <!-- Live Games Card -->
           <v-col>
             <div class="">
-              <v-card class="rounded-xl bg-grey-lighten-5" elevation="3" height="300">
+              <v-card
+                class="rounded-xl bg-grey-lighten-5"
+                elevation="3"
+                height="300"
+              >
                 <v-card-title class="m-1"> Live Games </v-card-title>
 
                 <v-card-subtitle class="m-4">Real-Time Data</v-card-subtitle>
@@ -124,7 +132,11 @@
       <div class="container mx-auto flex justify-between items-center p-4">
         <v-row>
           <v-col>
-            <v-card class="rounded-xl bg-grey-lighten-5" elevation="3" height="300">
+            <v-card
+              class="rounded-xl bg-grey-lighten-5"
+              elevation="3"
+              height="300"
+            >
               <v-row>
                 <v-card-title class="ml-4"> Top Matches </v-card-title>
                 <v-divider></v-divider>
@@ -163,7 +175,11 @@
           <v-col>
             <!-- News Card -->
             <div class="">
-              <v-card class="rounded-xl bg-grey-lighten-5" elevation="3" height="300">
+              <v-card
+                class="rounded-xl bg-grey-lighten-5"
+                elevation="3"
+                height="300"
+              >
                 <v-row>
                   <v-card-title class="ml-4"> News </v-card-title>
                   <v-divider></v-divider>
@@ -199,10 +215,14 @@
       <div class="container mx-auto flex justify-between items-center p-4">
         <v-row>
           <v-col>
-            <v-card class="rounded-xl bg-grey-lighten-5" elevation="3" height="300">
+            <v-card
+              class="rounded-xl bg-grey-lighten-5"
+              elevation="3"
+              height="300"
+            >
               <v-row>
                 <v-card-title class="ml-4"> Ranking </v-card-title>
-                <v-divider></v-divider>
+
                 <v-col cols="4">
                   <!-- Player -->
                   <v-avatar size="200">
@@ -217,10 +237,10 @@
                 </v-col>
 
                 <v-col cols="8">
-                  <v-card-subtitle class="ml-4"
-                    >Tennis - "We'll be back", say Australia's Davis Cup
-                    nearly-men</v-card-subtitle
-                  >
+                  <v-card-subtitle class="ml-4">{{
+                    fetchRankingPlayerName
+                  }}</v-card-subtitle>
+                  <v-card-text>{{ fetchRankingPlayerPoints }}</v-card-text>
                   <RouterLink :to="{ name: 'ranking' }">
                     <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
                   </RouterLink>
@@ -231,7 +251,11 @@
           <v-col>
             <!-- Head to Head Card -->
             <div class="">
-              <v-card class="rounded-xl bg-grey-lighten-5" elevation="3" height="300">
+              <v-card
+                class="rounded-xl bg-grey-lighten-5"
+                elevation="3"
+                height="300"
+              >
                 <v-card-title class="ml-4"> Head to Head </v-card-title>
                 <!-- De Minaur -->
                 <v-avatar size="200">
@@ -299,6 +323,7 @@
 import NavBar from "@/components/NavBar.vue";
 import Footer from "@/components/Footer.vue";
 import ButtonSeeMore from "@/components/ButtonSeeMore.vue";
+import { useGameStore } from "@/stores/tennis";
 //import Chart from "chart.js/auto";
 export default {
   components: {
@@ -309,9 +334,21 @@ export default {
   data() {
     return {
       SeeMore: "See More",
+      store: useGameStore(),
     };
   },
-  // setup() {},
+  computed: {
+    fetchRankingPlayerName() {
+      return this.store.getFirstPlayerRanking()
+        ? this.store.getFirstPlayerRanking().player
+        : "Loading...";
+    },
+    fetchRankingPlayerPoints() {
+      return this.store.getFirstPlayerRanking()
+        ? this.store.getFirstPlayerRanking().points
+        : "Loading...";
+    },
+  },
 };
 </script>
 

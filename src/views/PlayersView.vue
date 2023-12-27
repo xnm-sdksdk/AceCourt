@@ -30,7 +30,9 @@
             border-top-right-radius: 12px;
           "
         >
-          <h2 class="text-xl font-bold">{{ player.player_name }}</h2>
+          <h2 class="text-xl font-bold">
+            {{ fetchPlayerInfo }}
+          </h2>
         </v-container>
       </v-col>
     </v-row>
@@ -38,7 +40,7 @@
     <!-- Player Information Section -->
     <v-row>
       <!-- Left Section: Nationality and Ranking -->
-      <v-col>
+      <v-col v-if="player">
         <v-container
           fluid
           style="
@@ -83,7 +85,7 @@
               </v-row>
             </v-col>
             <v-col>
-              <img src="">
+              <img src="" />
             </v-col>
           </v-row>
         </v-container>
@@ -110,6 +112,13 @@ export default {
       playerId: null,
     };
   },
+  computed: {
+    fetchPlayerInfo() {
+      return this.store.fetchPlayers()
+        ? this.store.fetchPlayers().player_
+        : "Oops";
+    },
+  },
   created() {
     this.store.fetchPlayers();
     this.playerId = this.$route.params.id;
@@ -126,7 +135,7 @@ h2 {
   color: #0f3972;
 }
 
-.rotate{
+.rotate {
   rotate: -90deg;
 }
 </style>

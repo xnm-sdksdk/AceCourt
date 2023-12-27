@@ -62,14 +62,13 @@ export const useGameStore = defineStore("game", {
         this.players = data.result;
       } catch (error) {
         console.error("Error fetching players:", error);
+        console.error("Response status:", response.status);
       }
     },
 
-    async fetchStandings() {
+    async fetchStandings(){
       try {
-        const response = await fetch(
-          `${TENNIS_API_URL}?method=get_standings&event_type=ATP&APIkey=${API_KEY}`
-        );
+        const response = await fetch(`${TENNIS_API_URL}?method=get_standings&event_type=ATP&APIkey=${API_KEY}`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -79,24 +78,7 @@ export const useGameStore = defineStore("game", {
       } catch (error) {
         console.error("Error fetching Standings:", error);
       }
-    },
-
-    async fetchFixtures() {
-      try {
-        const response = await fetch(
-          `${TENNIS_API_URL}?method=get_fixtures&APIkey=${API_KEY}&date_start=2019-07-24&date_stop=2019-07-24`
-        );
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        this.fixtures = data.result;
-      } catch (error) {
-        console.error("Error fetching Standings:", error);
-      }
-    },
+    }
   },
   persist: true,
 });

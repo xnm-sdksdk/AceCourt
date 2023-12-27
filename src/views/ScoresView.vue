@@ -36,11 +36,9 @@
                   :key="index"
                 >
                   <v-col>
-                    <div>
-                      {{ game.event_first_player }}
-                    </div>
-                    <div>{{ game.event_first_player }}</div>
+                    {{ game.event_first_player }}
                   </v-col>
+                  <!-- <div>{{ game.event_first_player }}</div> -->
                   <!-- <v-col>{{ game.pointbypoint.points.number_point }}</v-col> -->
                   <!-- <v-col>{{ getLiveScore(game) }}</v-col>-->
                   <v-col>{{ getSetResult(game, 1) }}</v-col>
@@ -48,11 +46,11 @@
                   <v-col>{{}}</v-col>
                   <v-col>{{}}</v-col>
                   <v-col>{{}}</v-col>
-                  <v-col>{{ game.event_final77_result }}</v-col>
+                  <v-col>{{ game.event_final_result }}</v-col>
                 </v-row>
 
                 <!-- Second Player - First Game -->
-                <v-row class="rounded-b-xl bg-blue-darken-2 ma-1 pa-1">
+                <!-- <v-row class="rounded-b-xl bg-blue-darken-2 ma-1 pa-1">
                   <v-col></v-col>
                   <v-col>40</v-col>
                   <v-col>6</v-col>
@@ -61,7 +59,7 @@
                   <v-col></v-col>
                   <v-col></v-col>
                   <v-col>1</v-col>
-                </v-row>
+                </v-row> -->
               </div>
 
               <div class="py-4">
@@ -119,8 +117,12 @@
                     <!-- Fist Game Live Games -->
                     <ScoresHeaderResults></ScoresHeaderResults>
 
-                    <v-row class="bg-blue-darken-2 ma-1">
-                      <v-col>N. Djokovic</v-col>
+                    <v-row
+                      v-for="game in liveGames"
+                      :key="game.event_key"
+                      class="bg-blue-darken-2 ma-1"
+                    >
+                      <v-col>{{ game.event_first_player }}</v-col>
                       <v-col>40</v-col>
                       <v-col>6</v-col>
                       <v-col>0</v-col>
@@ -243,26 +245,19 @@
               elevation="3"
               height="300"
             >
-              <v-card-text>
-                <!-- First Player - Players -->
-                <v-row>
-                  <v-col> N. Djokovic </v-col>
-                </v-row>
-                <!-- Second Player - Players -->
-                <v-row>
-                  <v-col> C. Alcaraz </v-col>
-                </v-row>
-                <!-- Third Player - Players -->
-                <v-row>
-                  <v-col> T. Tsitsipas </v-col>
-                </v-row>
+              <v-data-table :items="players" :key="player_key">
+                <!-- Players -->
+                <v-col>
+                  
+                </v-col>
+
                 <!-- See More Players -->
                 <v-row>
                   <v-col>
                     <v-btn @click="seeMorePlayers">See More</v-btn>
                   </v-col>
                 </v-row>
-              </v-card-text>
+              </v-data-table>
             </v-card>
           </div>
         </v-col>
