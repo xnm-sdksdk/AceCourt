@@ -25,7 +25,7 @@
           "
         >
           <h2 class="text-xl font-bold">
-            {{ fetchPlayerInfo }}
+            {{ player.player_name }}
           </h2>
         </v-container>
       </v-col>
@@ -49,7 +49,7 @@
               <v-row>
                 <!-- Add player nationality flag image here -->
                 <img src="" />
-                <p>Player Country</p>
+                <p>{{ player.player_country }}</p>
               </v-row>
               <v-row>
                 <!-- Player Position in Ranking -->
@@ -107,15 +107,7 @@ export default {
       playerId: null,
     };
   },
-  computed: {
-    fetchPlayerInfo() {
-      return this.store.fetchPlayers()
-        ? this.store.fetchPlayers().player_
-        : "Oops";
-    },
-  },
   created() {
-    this.store.fetchPlayers();
     this.playerId = this.$route.params.id;
     this.player = this.store.getPlayers.find(
       (player) => player.player_key == this.playerId
