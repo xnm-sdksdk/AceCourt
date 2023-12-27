@@ -4,18 +4,12 @@
   <!-- Main Container -->
   <v-container>
     <!-- Header Section -->
-    <v-row>
+    <v-row class="justify-space-between">
       <v-col>
         <h1 class="text-3xl font-bold mb-4">Player Information</h1>
       </v-col>
-      <v-col class="text-right">
-        <button
-          class="bg-white border border-blue-500 text-blue-500 px-4 py-2 rounded-full hover:bg-gray-100"
-          @click="goBack"
-        >
-          <img src="@/assets/back.svg" alt="" />
-          Back
-        </button>
+      <v-col>
+        <BackButton></BackButton>
       </v-col>
     </v-row>
 
@@ -31,7 +25,7 @@
           "
         >
           <h2 class="text-xl font-bold">
-            {{ fetchPlayerInfo }}
+            {{ player.player_name }}
           </h2>
         </v-container>
       </v-col>
@@ -55,7 +49,7 @@
               <v-row>
                 <!-- Add player nationality flag image here -->
                 <img src="" />
-                <p>Player Country</p>
+                <p>{{ player.player_country }}</p>
               </v-row>
               <v-row>
                 <!-- Player Position in Ranking -->
@@ -100,10 +94,11 @@
 
 <script>
 import NavBar from "@/components/NavBar.vue";
+import BackButton from "../components/BackButton.vue";
 import { useGameStore } from "@/stores/tennis.js";
 export default {
   components: {
-    NavBar,
+    NavBar,BackButton
   },
   data() {
     return {
@@ -112,15 +107,7 @@ export default {
       playerId: null,
     };
   },
-  computed: {
-    fetchPlayerInfo() {
-      return this.store.fetchPlayers()
-        ? this.store.fetchPlayers().player_
-        : "Oops";
-    },
-  },
   created() {
-    this.store.fetchPlayers();
     this.playerId = this.$route.params.id;
     this.player = this.store.getPlayers.find(
       (player) => player.player_key == this.playerId
@@ -137,5 +124,9 @@ h2 {
 
 .rotate {
   rotate: -90deg;
+}
+
+.justify-space-between {
+  justify-content: space-between;
 }
 </style>
