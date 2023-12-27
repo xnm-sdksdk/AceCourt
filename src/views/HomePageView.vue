@@ -29,7 +29,7 @@
                   </v-img>
                 </v-col>
 
-                <v-col cols="6">
+                <v-col cols="7">
                   <div class="text-blue-600">
                     <v-card-subtitle class="m-1 text-body-1" justify="start"
                       >Carlos Alcaraz</v-card-subtitle
@@ -37,16 +37,15 @@
                   </div>
 
                   <div class="text-slate-700">
-                    <v-card-text class="" justify="start">
+                    <v-card-text>
                       Spanish tennis sensation Carlos Alcaraz showcases
                       formidable skill and remarkable achievements.
                     </v-card-text>
                   </div>
-                  <div class="">
-                    <RouterLink :to="{ name: 'players', params: { id: 1905 } }">
-                      <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
-                    </RouterLink>
-                  </div>
+
+                  <RouterLink :to="{ name: 'players', params: { id: 1905 } }">
+                    <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
+                  </RouterLink>
                 </v-col>
               </v-row>
             </v-card>
@@ -294,7 +293,9 @@
               height="300"
             >
               <div class="text-blue-900">
-                <v-card-title class="ml-5 my-5 text-h5"> Head to Head </v-card-title>
+                <v-card-title class="ml-5 my-5 text-h5">
+                  Head to Head
+                </v-card-title>
               </div>
               <!-- De Minaur -->
 
