@@ -4,18 +4,12 @@
   <!-- Main Container -->
   <v-container>
     <!-- Header Section -->
-    <v-row>
+    <v-row class="justify-space-between">
       <v-col>
         <h1 class="text-3xl font-bold mb-4">Player Information</h1>
       </v-col>
-      <v-col class="text-right">
-        <button
-          class="bg-white border border-blue-500 text-blue-500 px-4 py-2 rounded-full hover:bg-gray-100"
-          @click="goBack"
-        >
-          <img src="@/assets/back.svg" alt="" />
-          Back
-        </button>
+      <v-col>
+        <BackButton></BackButton>
       </v-col>
     </v-row>
 
@@ -100,10 +94,11 @@
 
 <script>
 import NavBar from "@/components/NavBar.vue";
+import BackButton from "../components/BackButton.vue";
 import { useGameStore } from "@/stores/tennis.js";
 export default {
   components: {
-    NavBar,
+    NavBar,BackButton
   },
   data() {
     return {
@@ -137,5 +132,9 @@ h2 {
 
 .rotate {
   rotate: -90deg;
+}
+
+.justify-space-between {
+  justify-content: space-between;
 }
 </style>

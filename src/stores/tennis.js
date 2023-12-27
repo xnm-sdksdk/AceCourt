@@ -9,7 +9,6 @@ export const useGameStore = defineStore("game", {
     tournaments: [],
     players: [],
     standings: [],
-    fixtures: [],
   }),
   getters: {
     getAustralianOpen: (state) => {
@@ -26,10 +25,6 @@ export const useGameStore = defineStore("game", {
 
     getStandings: (state) => {
       return state.standings;
-    },
-
-    getFixtures: (state) => {
-      return state.fixtures;
     },
   },
   actions: {
@@ -65,10 +60,14 @@ export const useGameStore = defineStore("game", {
         console.error("Response status:", response.status);
       }
     },
-
-    async fetchStandings(){
+    getFirstPlayerRanking() {
+      return this.standings.length > 0 ? this.standings[0] : null;
+    },
+    async fetchStandings() {
       try {
-        const response = await fetch(`${TENNIS_API_URL}?method=get_standings&event_type=ATP&APIkey=${API_KEY}`);
+        const response = await fetch(
+          `${TENNIS_API_URL}?method=get_standings&event_type=ATP&APIkey=${API_KEY}`
+        );
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -78,7 +77,9 @@ export const useGameStore = defineStore("game", {
       } catch (error) {
         console.error("Error fetching Standings:", error);
       }
-    }
+    },
   },
   persist: true,
 });
+
+//ID AUSTRALIAN OPEN BOYS SINGLES:329
