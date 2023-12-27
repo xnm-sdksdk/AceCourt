@@ -157,7 +157,9 @@
               height="300"
             >
               <div class="text-blue-900">
-                <v-card-title class="ml-5 my-5 text-h5"> Top Matches </v-card-title>
+                <v-card-title class="ml-5 my-5 text-h5">
+                  Top Matches
+                </v-card-title>
               </div>
               <div class="flex">
                 <v-row class="ml-2">
@@ -202,42 +204,45 @@
             </v-card>
           </v-col>
 
-          <v-col cols="5">
-            <!-- News Card -->
-            <div class="">
-              <v-card
-                class="rounded-xl bg-grey-lighten-5"
-                elevation="3"
-                height="300"
-              >
-                <v-row>
-                  <v-card-title class="ml-4"> News </v-card-title>
-                  <v-divider></v-divider>
-                  <!-- Player -->
-                  <v-col cols="4">
-                    <v-avatar size="200">
-                      <v-img
-                        src="../assets/player.svg"
-                        alt="Player-Image"
-                        width="100%"
-                        height="100%"
-                      >
-                      </v-img>
-                    </v-avatar>
-                  </v-col>
+          <!-- News Card -->
 
-                  <v-col cols="8">
-                    <v-card-subtitle class="ml-4"
+          <v-col cols="5">
+            <v-card
+              class="rounded-xl bg-grey-lighten-5"
+              elevation="3"
+              height="300"
+            >
+              <div class="text-blue-900">
+                <v-card-title class="ml-5 my-5 text-h5"> News </v-card-title>
+              </div>
+
+              <!-- Player -->
+              <v-row class="ml-3">
+                <v-col cols="6">
+                  <v-img
+                    src="../assets/player.svg"
+                    alt="Player-Image"
+                    width="200px"
+                    height="200px"
+                    cover
+                    class="rounded-circle"
+                  >
+                  </v-img>
+                </v-col>
+                <v-col cols="5" class="flex flex-col">
+                  <div class="text-slate-700">
+                    <v-card-text class="m-1 text-body-1 text-right"
                       >Tennis - "We'll be back", say Australia's Davis Cup
-                      nearly-men</v-card-subtitle
+                      nearly-men</v-card-text
                     >
-                    <RouterLink :to="{ name: 'news' }">
-                      <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
-                    </RouterLink>
-                  </v-col>
-                </v-row>
-              </v-card>
-            </div>
+                  </div>
+
+                  <RouterLink :to="{ name: 'news' }">
+                    <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
+                  </RouterLink>
+                </v-col>
+              </v-row>
+            </v-card>
           </v-col>
         </v-row>
       </div>
