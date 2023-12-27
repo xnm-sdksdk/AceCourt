@@ -4,25 +4,23 @@
     <v-container>
       <!-- Highlight Player Card -->
       <div class="container mx-auto flex justify-between items-center p-4">
-        <v-row>
-          <v-col>
+        <v-row class="justify-center align-center">
+          <v-col cols="5">
             <v-card
               class="rounded-xl bg-grey-lighten-5"
               elevation="3"
               height="300"
             >
               <v-card-title class="m-3"> Highlight Player </v-card-title>
-              <v-row>
+              <v-row class="border border-red">
                 <v-col cols="6">
-                  <v-avatar size="200">
-                    <v-img
-                      src="../assets/carlos.svg"
-                      alt="Highlight-Player-Image"
-                      width="100%"
-                      height="100%"
-                    >
-                    </v-img>
-                  </v-avatar>
+                  <v-img
+                    src="../assets/carlos.svg"
+                    alt="Highlight-Player-Image"
+                    width="100%"
+                    height="100%"
+                  >
+                  </v-img>
                 </v-col>
 
                 <v-col>
@@ -45,7 +43,7 @@
           </v-col>
 
           <!-- Live Games Card -->
-          <v-col>
+          <v-col cols="5">
             <div class="">
               <v-card
                 class="rounded-xl bg-grey-lighten-5"
@@ -54,15 +52,15 @@
               >
                 <v-card-title class="m-1"> Live Games </v-card-title>
 
-                <v-card-subtitle class="m-4">Real-Time Data</v-card-subtitle>
+                <v-card-subtitle class="m-2">Real-Time Data</v-card-subtitle>
 
-                <v-card-text class="m-3 max-w-xs">
+                <v-card-text class="m-2 max-w-xs">
                   Experience the thrill of live games with our dynamic
                   dashboard, providing real-time data for an immersive gaming
                   experience
                 </v-card-text>
 
-                <div class="m-4 md:m-4 lg:m-4">
+                <div class="m-3">
                   <RouterLink :to="{ name: 'scores' }">
                     <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
                   </RouterLink>
@@ -76,8 +74,8 @@
       <!-- Highlight Game Bar -->
       <div class="container mx-auto flex justify-between items-center p-4">
         <!-- First Row -->
-        <v-row>
-          <v-col>
+        <v-row class="justify-center align-center">
+          <v-col cols="10">
             <v-card
               class="rounded-t-xl m-1 text-center bg-blue-lighten-5 white--text"
               elevation="3"
@@ -130,8 +128,8 @@
 
       <!-- Top Matches Card -->
       <div class="container mx-auto flex justify-between items-center p-4">
-        <v-row>
-          <v-col>
+        <v-row class="justify-center align-center">
+          <v-col cols="5">
             <v-card
               class="rounded-xl bg-grey-lighten-5"
               elevation="3"
@@ -172,7 +170,7 @@
             </v-card>
           </v-col>
 
-          <v-col>
+          <v-col cols="5">
             <!-- News Card -->
             <div class="">
               <v-card
@@ -213,8 +211,8 @@
       </div>
       <!-- Ranking Card -->
       <div class="container mx-auto flex justify-between items-center p-4">
-        <v-row>
-          <v-col>
+        <v-row class="justify-center align-center">
+          <v-col cols="5">
             <v-card
               class="rounded-xl bg-grey-lighten-5"
               elevation="3"
@@ -236,7 +234,7 @@
                   </v-avatar>
                 </v-col>
 
-                <v-col cols="8">
+                <v-col cols="5">
                   <v-card-subtitle class="ml-4">{{
                     fetchRankingPlayerName
                   }}</v-card-subtitle>
@@ -248,7 +246,7 @@
               </v-row>
             </v-card>
           </v-col>
-          <v-col>
+          <v-col cols="5">
             <!-- Head to Head Card -->
             <div class="">
               <v-card
@@ -288,8 +286,8 @@
       </div>
       <!-- Tournament Progress Stats Card -->
       <div class="container mx-auto flex justify-between items-center p-4">
-        <v-row>
-          <v-col>
+        <v-row class="justify-center align-center">
+          <v-col cols="10">
             <v-card
               max-width="1500"
               class="rounded-xl bg-grey-lighten-5"
