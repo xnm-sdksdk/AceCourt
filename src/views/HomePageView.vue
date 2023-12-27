@@ -12,35 +12,41 @@
               height="300"
             >
               <div class="text-blue-900">
-                <v-card-title class="m-3 text-h5">
+                <v-card-title class="ml-5 my-5 text-h5">
                   Highlight Player
                 </v-card-title>
               </div>
-              <v-row>
-                <v-col cols="6">
+              <v-row class="ml-3">
+                <v-col cols="5">
                   <v-img
                     src="../assets/carlos.svg"
                     alt="Highlight-Player-Image"
-                    width="100%"
-                    height="100%"
+                    height="200px"
+                    width="200px"
+                    cover
+                    class="rounded-circle"
                   >
                   </v-img>
                 </v-col>
 
-                <v-col>
-                  <div class="text-blue-900 font-extrabold">
-                    <v-card-subtitle class="m-1" justify="start"
+                <v-col cols="6">
+                  <div class="text-blue-600">
+                    <v-card-subtitle class="m-1 text-body-1" justify="start"
                       >Carlos Alcaraz</v-card-subtitle
                     >
                   </div>
 
-                  <v-card-text class="m-1" justify="start">
-                    Spanish tennis sensation Carlos Alcaraz showcases formidable
-                    skill and remarkable achievements.
-                  </v-card-text>
-                  <RouterLink :to="{ name: 'players', params: { id: 1905 } }">
-                    <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
-                  </RouterLink>
+                  <div class="text-slate-700">
+                    <v-card-text class="m-1" justify="start">
+                      Spanish tennis sensation Carlos Alcaraz showcases
+                      formidable skill and remarkable achievements.
+                    </v-card-text>
+                  </div>
+                  <div class="">
+                    <RouterLink :to="{ name: 'players', params: { id: 1905 } }">
+                      <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
+                    </RouterLink>
+                  </div>
                 </v-col>
               </v-row>
             </v-card>
@@ -55,23 +61,25 @@
                 height="300"
               >
                 <div class="text-blue-900">
-                  <v-card-title class="m-3 text-h5"> Live Games </v-card-title>
+                  <v-card-title class="ml-5 my-5 text-h5">
+                    Live Games
+                  </v-card-title>
                 </div>
                 <div class="text-blue-600">
-                  <v-card-subtitle class="m-3 text-body-1"
+                  <v-card-subtitle class="ml-5 text-body-1"
                     >Real-Time Data</v-card-subtitle
                   >
                 </div>
 
                 <div class="text-slate-700">
-                  <v-card-text class="m-3 max-w-xs">
+                  <v-card-text class="ml-5 max-w-xs">
                     Experience the thrill of live games with our dynamic
                     dashboard, providing real-time data for an immersive gaming
                     experience
                   </v-card-text>
                 </div>
 
-                <div class="m-3">
+                <div class="ml-5">
                   <RouterLink :to="{ name: 'scores' }">
                     <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
                   </RouterLink>
