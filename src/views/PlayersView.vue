@@ -87,14 +87,47 @@
                   <v-table fixed-header width="100%">
                     <thead>
                       <tr>
-                        <th class="text-left headColor">Year</th>
-                        <th class="text-left headColor">Rank</th>
-                        <th class="text-left headColor">Titles</th>
-                        <th class="text-left headColor">All Games</th>
-                        <th class="text-left headColor">Prize Money</th>
+                        <th
+                          class="text-left"
+                          style="background-color: #f2f9fc; color: #0f3972"
+                        >
+                          Year
+                        </th>
+                        <th
+                          class="text-left"
+                          style="background-color: #f2f9fc; color: #0f3972"
+                        >
+                          Rank
+                        </th>
+                        <th
+                          class="text-left"
+                          style="background-color: #f2f9fc; color: #0f3972"
+                        >
+                          Titles
+                        </th>
+                        <th
+                          class="text-left"
+                          style="background-color: #f2f9fc; color: #0f3972"
+                        >
+                          All Games (W-L)
+                        </th>
+                        <th
+                          class="text-left"
+                          style="background-color: #f2f9fc; color: #0f3972"
+                        >
+                          Prize Money
+                        </th>
                       </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                      <tr v-for="year in filterSingles" :key="year.season">
+                        <td>{{ year.season }}</td>
+                        <td>{{ year.rank }}</td>
+                        <td>{{ year.titles }}</td>
+                        <td>{{ year.matches_won }}-{{ year.matches_lost }}</td>
+                        <td>{{ sumPrizeMoney(year.season) }} $</td>
+                      </tr>
+                    </tbody>
                   </v-table>
                 </v-col>
               </v-row>
@@ -133,6 +166,14 @@ export default {
     );
     console.log(this.player);
   },
+
+  computed: {
+    filterSingles() {
+      const stats = this.player.stats.filter((stat) => stat.type == "singles");
+      stats.sort((a, b) => parseInt(b.season) - parseInt(a.season));
+      return stats;
+    },
+  },
   methods: {
     calcBirth() {
       const birthdate = this.player.player_bday;
@@ -158,7 +199,30 @@ export default {
 
     turnPro() {
       const lessYear = this.player.stats.map((year) => parseInt(year.season));
+      console.log(lessYear);
       return Math.min(...lessYear);
+    },
+
+    sumPrizeMoney(season) {
+      const tournaments = this.player.tournaments.filter(
+        (tournament) => parseInt(tournament.season) === parseInt(season)
+      );
+
+      const totalPrizeMoney = tournaments.reduce(
+        (total, tournament) =>
+          total + parseFloat(tournament.prize.replace(/[^\d.-]/g, "") || 0),
+        0
+      );
+
+      const formattedTotal = totalPrizeMoney.toLocaleString();
+
+      // Divide a string a cada 3 caracteres
+      const formattedWithSpaces = formattedTotal.replace(
+        /\B(?=(\d{3})+(?!\d))/g,
+        " "
+      );
+
+      return formattedWithSpaces;
     },
   },
 };
@@ -198,10 +262,5 @@ img {
 .align-end {
   display: flex;
   align-items: flex-end;
-}
-
-.headColor{
-  background-color: #F2F9FC;
-  color:#0F3972
 }
 </style>
