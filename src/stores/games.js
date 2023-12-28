@@ -30,7 +30,7 @@ export const useGameStore = defineStore("game", {
     },
 
     getLiveScore: (state) => {
-      return state.livescore;
+      return state.liveGames;
     },
   },
   actions: {
