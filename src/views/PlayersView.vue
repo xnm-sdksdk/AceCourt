@@ -1,95 +1,109 @@
 <template>
-  <NavBar></NavBar>
+  <div>
+    <NavBar></NavBar>
 
-  <!-- Main Container -->
-  <v-container>
-    <!-- Header Section -->
-    <v-row class="justify-space-between">
-      <v-col>
-        <h1 class="text-3xl font-bold mb-4">Player Information</h1>
-      </v-col>
-      <v-col>
-        <BackButton></BackButton>
-      </v-col>
-    </v-row>
+    <v-container>
+      <!-- Header Section -->
+      <v-row>
+        <v-col>
+          <h1 class="text-3xl font-bold mb-4">Player Information</h1>
+        </v-col>
+        <v-col>
+          <BackButton></BackButton>
+        </v-col>
+      </v-row>
 
-    <!-- Player Name Section -->
-    <v-row>
-      <v-col>
-        <v-container
-          fluid
-          style="
-            background-color: #efefef;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-          "
-        >
-          <h2 class="text-xl font-bold">
-            {{ player.player_name }}
-          </h2>
-        </v-container>
-      </v-col>
-    </v-row>
+      <!-- Player Name Section -->
+      <v-row>
+        <v-col>
+          <v-container fluid class="name-container">
+            <h2 class="text-xl font-bold">{{ player.player_name }}</h2>
+          </v-container>
+        </v-col>
+      </v-row>
 
-    <!-- Player Information Section -->
-    <v-row>
-      <!-- Left Section: Nationality and Ranking -->
-      <v-col v-if="player">
-        <v-container
-          fluid
-          style="
-            background-color: #efefef;
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
-          "
-        >
-          <!-- Player Nationality and Name -->
-          <v-row>
-            <v-col>
+      <!-- Player Information Section -->
+      <!-- Player Information Section -->
+      <v-row>
+        <!-- Left Section: Ranking -->
+        <v-col v-if="player">
+          <v-container fluid class="info-container">
+            <v-col class="section">
               <v-row>
-                <!-- Add player nationality flag image here -->
-                <img src="" />
-                <p>{{ player.player_country }}</p>
+                <h3>Position:</h3>
+                <p>{{ standings.place }}</p>
               </v-row>
               <v-row>
-                <!-- Player Position in Ranking -->
-                <p class="rotate">Position:</p>
-                <p>{{ playerPlace }}</p>
-                <!-- Player Points -->
-                <p class="rotate">Points:</p>
-                <p>{{ playerPoints }}</p>
+                <h3>Points:</h3>
+                <p>{{ standings.points }}</p>
               </v-row>
             </v-col>
             <v-col>
-              <v-row>
-                <p>Age</p>
+              <v-row class="align-center">
+                <h3>Age:</h3>
                 <p>{{ calcBirth() }}</p>
               </v-row>
-              <v-row>
-                <p>Age</p>
-                <p>20</p>
+              <v-row class="align-center">
+                <h3>Country:</h3>
+                <p>{{ player.player_country }}</p>
               </v-row>
-              <v-row>
-                <p>Age</p>
-                <p>20</p>
-              </v-row>
-              <v-row>
-                <p>Age</p>
-                <p>20</p>
+              <v-row class="align-center">
+                <h3>Turned Pro:</h3>
+                <p>{{ turnPro() }}</p>
               </v-row>
             </v-col>
-            <v-col>
+            <v-col class="align-end">
               <img :src="player.player_logo" />
+            </v-col>
+          </v-container>
+        </v-col>
+      </v-row>
+
+      <!-- Career and Last Matches -->
+      <v-row>
+        <v-container>
+          <!-- Player Name Section -->
+          <v-row>
+            <v-col>
+              <v-container fluid class="name-container">
+                <h2 class="text-xl font-bold">Career</h2>
+              </v-container>
             </v-col>
           </v-row>
         </v-container>
-      </v-col>
-    </v-row>
-    <!--Career and Last Matches-->
-    <v-row></v-row>
-    <!--Registed Games-->
-    <v-row></v-row>
-  </v-container>
+      </v-row>
+
+      <!-- Registered Games -->
+      <v-row>
+        <v-container>
+          <!-- Player Name Section -->
+          <v-row>
+            <v-col>
+              <v-container fluid class="name-container">
+                <h2 class="text-xl font-bold">Registed Games</h2> </v-container
+              ><!-- Player Name Section -->
+              <v-row>
+                <v-col>
+                  <v-table fixed-header width="100%">
+                    <thead>
+                      <tr>
+                        <th class="text-left headColor">Year</th>
+                        <th class="text-left headColor">Rank</th>
+                        <th class="text-left headColor">Titles</th>
+                        <th class="text-left headColor">All Games</th>
+                        <th class="text-left headColor">Prize Money</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </v-table>
+                </v-col>
+              </v-row>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-row>
+    </v-container>
+  </div>
 </template>
 
 <script>
@@ -104,16 +118,16 @@ export default {
   data() {
     return {
       store: useGameStore(),
+      standings: null,
       player: null,
       playerId: null,
-      playerPlace: 0,
-      playerPoints: 0,
     };
   },
   created() {
     this.playerId = this.$route.params.id;
-    this.playerPlace = this.$route.params.place;
-    this.playerPoints = this.$route.params.points;
+    this.standings = this.store.getStandings.find(
+      (player) => player.player_key == this.playerId
+    );
     this.player = this.store.getPlayers.find(
       (player) => player.player_key == this.playerId
     );
@@ -141,20 +155,53 @@ export default {
       const currentYear = new Date().getFullYear();
       return currentYear - birthYear;
     },
+
+    turnPro() {
+      const lessYear = this.player.stats.map((year) => parseInt(year.season));
+      return Math.min(...lessYear);
+    },
   },
 };
 </script>
-z
-<style>
-h2 {
-  color: #0f3972;
+<style scoped>
+.name-container {
+  background-color: #efefef;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
-.rotate {
-  rotate: -90deg;
+.info-container {
+  background-color: #efefef;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
 }
 
-.justify-space-between {
-  justify-content: space-between;
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+
+.align-center {
+  display: flex;
+  align-items: center;
+}
+
+.align-end {
+  display: flex;
+  align-items: flex-end;
+}
+
+.headColor{
+  background-color: #F2F9FC;
+  color:#0F3972
 }
 </style>

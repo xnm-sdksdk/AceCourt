@@ -88,7 +88,7 @@ export default {
     },
 
     seePlayer(playerKey,place,points) {
-      this.$router.push({ name: "players", params: { id: playerKey, place:place, points:points} });
+      this.$router.push({ name: "players", params: { id: playerKey} });
     },
   },
 
