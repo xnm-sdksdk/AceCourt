@@ -304,7 +304,7 @@ export default {
     },
   },
   created() {
-    this.store.fetchLiveScores();
+    this.store.fetchLiveScores;
     this.liveGames = this.store.liveGames;
     this.firstPlayerLiveGame = this.firstPlayer;
     console.log("Created");

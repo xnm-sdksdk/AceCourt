@@ -396,13 +396,13 @@ export default {
   },
   computed: {
     fetchRankingPlayerName() {
-      return this.store.getFirstPlayerRanking()
-        ? this.store.getFirstPlayerRanking().player
+      return this.store.getFirstPlayerRanking
+        ? this.store.getFirstPlayerRanking.player
         : "Loading Name...";
     },
     fetchRankingPlayerPoints() {
-      return this.store.getFirstPlayerRanking()
-        ? this.store.getFirstPlayerRanking().points
+      return this.store.getFirstPlayerRanking
+        ? this.store.getFirstPlayerRanking.points
         : "Loading Points...";
     },
   },
