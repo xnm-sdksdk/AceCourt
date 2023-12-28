@@ -26,6 +26,9 @@ export const useGameStore = defineStore("game", {
     getStandings: (state) => {
       return state.standings;
     },
+    getFirstPlayerRanking() {
+      return this.standings.length > 0 ? this.standings[0] : null;
+    },
   },
   actions: {
     async fetchTournaments() {
@@ -60,9 +63,7 @@ export const useGameStore = defineStore("game", {
         console.error("Response status:", response.status);
       }
     },
-    getFirstPlayerRanking() {
-      return this.standings.length > 0 ? this.standings[0] : null;
-    },
+
     async fetchStandings() {
       try {
         const response = await fetch(
