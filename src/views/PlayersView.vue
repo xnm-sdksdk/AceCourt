@@ -121,11 +121,11 @@
                     </thead>
                     <tbody>
                       <tr v-for="year in filterSingles" :key="year.season">
-                        <td>{{ year.season }}</td>
-                        <td>{{ year.rank }}</td>
-                        <td>{{ year.titles }}</td>
-                        <td>{{ year.matches_won }}-{{ year.matches_lost }}</td>
-                        <td>{{ sumPrizeMoney(year.season) }} $</td>
+                        <td style="background-color: #EFEFEF; color: #1C1C1C">{{ year.season }}</td>
+                        <td style="background-color: #EFEFEF; color: #1C1C1C">{{ year.rank }}</td>
+                        <td style="background-color: #EFEFEF; color: #1C1C1C">{{ year.titles }}</td>
+                        <td style="background-color: #EFEFEF; color: #1C1C1C">{{ year.matches_won }}-{{ year.matches_lost }}</td>
+                        <td style="background-color: #EFEFEF; color: #1C1C1C">{{ sumPrizeMoney(year.season) }} $</td>
                       </tr>
                     </tbody>
                   </v-table>
