@@ -330,8 +330,8 @@
                   </v-col>
 
                   <v-col cols="5">
-                    <div class="text-slate-700 text-right tracking-widest">
-                      <v-card-text class="m-5 my-1 ml.5 text-h6"
+                    <div class="text-slate-700">
+                      <v-card-text class="text-h6 text-right"
                         >Medvedev gets revenge on De Minaur and return to US
                         Open quarter-finals</v-card-text
                       >
