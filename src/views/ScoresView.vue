@@ -49,47 +49,6 @@
                     <v-col>{{}}</v-col>
                     <v-col>{{ game.event_final_result }}</v-col>
                   </v-row>
-
-                  <!-- Second Player - First Game -->
-                  <!-- <v-row class="rounded-b-xl bg-blue-darken-2 ma-1 pa-1">
-                  <v-col></v-col>
-                  <v-col>40</v-col>
-                  <v-col>6</v-col>
-                  <v-col>0</v-col>
-                  <v-col></v-col>
-                  <v-col></v-col>
-                  <v-col></v-col>
-                  <v-col>1</v-col>
-                </v-row> -->
-                </div>
-
-                <div class="py-4">
-                  <!-- Header First Game -->
-                  <ScoresHeaderResults></ScoresHeaderResults>
-
-                  <!-- First Player - First Game -->
-                  <v-row class="bg-blue-darken-2 ma-1">
-                    <v-col>N. Djokovic</v-col>
-                    <v-col>40</v-col>
-                    <v-col>6</v-col>
-                    <v-col>0</v-col>
-                    <v-col></v-col>
-                    <v-col></v-col>
-                    <v-col></v-col>
-                    <v-col>1</v-col>
-                  </v-row>
-
-                  <!-- Second Player - First Game -->
-                  <v-row class="rounded-b-xl bg-blue-darken-2 ma-1">
-                    <v-col>C. Alcaraz</v-col>
-                    <v-col>40</v-col>
-                    <v-col>6</v-col>
-                    <v-col>0</v-col>
-                    <v-col></v-col>
-                    <v-col></v-col>
-                    <v-col></v-col>
-                    <v-col>1</v-col>
-                  </v-row>
                 </div>
               </v-card>
             </div>
@@ -147,60 +106,6 @@
                         <v-col></v-col>
                         <v-col>1</v-col>
                       </v-row>
-
-                      <!-- Second Player - First Game -->
-                      <!-- <v-row class="rounded-b-xl bg-blue-darken-2 ma-1">
-                    <v-col>C. Alcaraz</v-col>
-                    <v-col>40</v-col>
-                    <v-col>6</v-col>
-                    <v-col>0</v-col>
-                    <v-col></v-col>
-                    <v-col></v-col>
-                    <v-col></v-col>
-                    <v-col>1</v-col>
-                  </v-row> -->
-                    </div>
-                    <div class="py-4">
-                      <v-card-text>
-                        <v-row>
-                          <v-col>Australia Open - Quarter Finals</v-col>
-                          <v-col>Rod Laver Arena</v-col>
-                        </v-row>
-                      </v-card-text>
-                    </div>
-                    <div class="py-4">
-                      <v-card-text>
-                        <v-row>
-                          <v-col>Australia Open - Quarter Finals</v-col>
-                          <v-col>Rod Laver Arena</v-col>
-                        </v-row>
-                      </v-card-text>
-
-                      <!-- Second Game Live Games -->
-                      <ScoresHeaderResults></ScoresHeaderResults>
-
-                      <v-row class="bg-blue-darken-2 ma-1">
-                        <v-col>N. Djokovic</v-col>
-                        <v-col>40</v-col>
-                        <v-col>6</v-col>
-                        <v-col>0</v-col>
-                        <v-col></v-col>
-                        <v-col></v-col>
-                        <v-col></v-col>
-                        <v-col>1</v-col>
-                      </v-row>
-
-                      <!-- Second Player - First Game -->
-                      <v-row class="rounded-b-xl bg-blue-darken-2 ma-1">
-                        <v-col>C. Alcaraz</v-col>
-                        <v-col>40</v-col>
-                        <v-col>6</v-col>
-                        <v-col>0</v-col>
-                        <v-col></v-col>
-                        <v-col></v-col>
-                        <v-col></v-col>
-                        <v-col>1</v-col>
-                      </v-row>
                     </div>
                   </v-card>
                 </div>
@@ -246,17 +151,15 @@
                 elevation="3"
                 height="300"
               >
-                <v-data-table :items="players" :key="player_key">
-                  <!-- Players -->
-                  <v-col> </v-col>
+                <!-- Players -->
+                <v-col> </v-col>
 
-                  <!-- See More Players -->
-                  <v-row>
-                    <v-col>
-                      <v-btn @click="seeMorePlayers">See More</v-btn>
-                    </v-col>
-                  </v-row>
-                </v-data-table>
+                <!-- See More Players -->
+                <v-row>
+                  <v-col>
+                    <v-btn @click="seeMorePlayers">See More</v-btn>
+                  </v-col>
+                </v-row>
               </v-card>
             </div>
           </v-col>
