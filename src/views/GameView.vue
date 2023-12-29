@@ -26,12 +26,12 @@
 </template>
 
 <script>
-import { useGameStore } from '../stores/tennis';
+import { useTennisStore } from '../stores/tennis';
 
 export default {
   data() {
     return {
-      store: useGameStore(),
+      store: useTennisStore(),
       fixtures:[]
     }
   },

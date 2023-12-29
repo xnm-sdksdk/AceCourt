@@ -85,7 +85,7 @@ export const useGameStore = defineStore("game", {
     async fetchH2H(playerId) {
       try {
         const response = await fetch(
-          `${TENNIS_API_URL}?method=get_H2H&APIkey=${API_KEY}&first_player_key=${playerId}`
+          `${TENNIS_API_URL}?method=get_H2H&APIkey=${API_KEY}&first_player_key=${playerId}&second_player_key=${playerId}`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

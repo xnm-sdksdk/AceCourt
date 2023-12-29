@@ -142,7 +142,8 @@
 <script>
 import NavBar from "@/components/NavBar.vue";
 import BackButton from "../components/BackButton.vue";
-import { useGameStore } from "@/stores/tennis.js";
+import { useGameStore } from "@/stores/games.js";
+import { useTennisStore } from "@/stores/tennis.js";
 export default {
   components: {
     NavBar,
@@ -150,7 +151,8 @@ export default {
   },
   data() {
     return {
-      store: useGameStore(),
+      tennisStore: useTennisStore(),
+      gameStore:useGameStore(),
       h2h:[],
       standings: null,
       player: null,
@@ -159,13 +161,13 @@ export default {
   },
   created() {
     this.playerId = this.$route.params.id;
-    this.standings = this.store.getStandings.find(
+    this.standings = this.tennisStore.getStandings.find(
       (player) => player.player_key == this.playerId
     );
-    this.player = this.store.getPlayers.find(
+    this.player = this.tennisStore.getPlayers.find(
       (player) => player.player_key == this.playerId
     );
-    this.h2h=this.store.getH2H
+    this.h2h=this.gameStore.getH2H
     console.log(this.h2h);
   },
 
