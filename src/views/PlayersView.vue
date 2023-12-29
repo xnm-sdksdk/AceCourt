@@ -160,13 +160,20 @@ export default {
     };
   },
   created() {
+    //Get player Id from route
     this.playerId = this.$route.params.id;
+
+    //Get standings to get the points and place of the player
     this.standings = this.tennisStore.getStandings.find(
       (player) => player.player_key == this.playerId
     );
+
+    //Get player from player id
     this.player = this.tennisStore.getPlayers.find(
       (player) => player.player_key == this.playerId
     );
+
+    //G of the playeret last games
     this.h2h=this.gameStore.getH2H
     console.log(this.h2h);
   },
