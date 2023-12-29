@@ -151,6 +151,7 @@ export default {
   data() {
     return {
       store: useGameStore(),
+      h2h:[],
       standings: null,
       player: null,
       playerId: null,
@@ -164,7 +165,8 @@ export default {
     this.player = this.store.getPlayers.find(
       (player) => player.player_key == this.playerId
     );
-    console.log(this.player);
+    this.h2h=this.store.getH2H
+    console.log(this.h2h);
   },
 
   computed: {
@@ -199,7 +201,6 @@ export default {
 
     turnPro() {
       const lessYear = this.player.stats.map((year) => parseInt(year.season));
-      console.log(lessYear);
       return Math.min(...lessYear);
     },
 
