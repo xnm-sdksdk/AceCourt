@@ -202,10 +202,9 @@ export default {
 
     const firstPlayer = ref(null);
 
-    onMounted(() => {
-      store.fetchLiveScores();
+    onMounted(async () => {
+      await store.fetchLiveScores();
       liveGames.value = store.getLiveScore;
-
       console.log(liveGames.value);
     });
 
