@@ -170,47 +170,56 @@
 </template>
 
 <script>
+import { ref, onMounted } from "vue";
 import NavBar from "@/components/NavBar.vue";
 import ScoresHeaderResults from "@/components/ScoresHeaderResults.vue";
 import { useGameStore } from "@/stores/games";
+
 export default {
   components: {
     NavBar,
     ScoresHeaderResults,
   },
-  data() {
-    return {
-      store: useGameStore(),
-      liveGames: [],
-      myGames: [],
-      firstPlayerLiveGame: null,
+  setup() {
+    const store = useGameStore();
+    const liveGames = ref([]);
+    const myGames = ref([]);
+    const firstPlayerLiveGame = ref(null);
+
+    const seeMorePlayers = () => {
+      return "See More Players";
     };
-  },
-  methods: {
-    seeMorePlayers() {},
-    getLiveScore(game) {
+
+    const getLiveScore = (game) => {
       return "LiveScore";
-    },
-    getSetResult(game, setNumber) {
-      if (game && game.scores && game.scores[setNumber - 1]) {
-        return game.scores[setNumber - 1].score_set;
-      }
-      return "SetResult";
-    },
-  },
-  computed: {
-    renderingGames() {
-      return this.liveGames;
-    },
-    firstPlayer() {
-      return this.store.getFirstPlayerInFirstLiveGame;
-    },
-  },
-  created() {
-    this.store.fetchLiveScores();
-    this.liveGames = this.store.getLiveScore;
-    //this.firstPlayerLiveGame = this.firstPlayer;
-    console.log(this.liveGames);
+    };
+
+    const getSetResult = (game, setNumber) => {
+      return "get Set Result";
+    };
+
+    const renderingGames = ref([]);
+
+    const firstPlayer = ref(null);
+
+    onMounted(() => {
+      store.fetchLiveScores();
+      liveGames.value = store.getLiveScore;
+
+      console.log(liveGames.value);
+    });
+
+    return {
+      store,
+      liveGames,
+      myGames,
+      firstPlayerLiveGame,
+      seeMorePlayers,
+      getLiveScore,
+      getSetResult,
+      renderingGames,
+      firstPlayer,
+    };
   },
 };
 </script>
