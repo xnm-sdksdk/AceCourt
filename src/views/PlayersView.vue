@@ -184,7 +184,7 @@ export default {
     );
 
     //G of the playeret last games
-    this.h2h = this.gameStore.getH2H;
+    this.h2h = this.gameStore.getPlayerLastMacthes;
     console.log(this.h2h);
   },
 

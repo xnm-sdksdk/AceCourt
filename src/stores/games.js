@@ -11,7 +11,7 @@ export const useGameStore = defineStore("game", {
     standings: [],
     liveGames: [],
     myGames: [],
-    h2h:[]
+    playerLastMatches:[]
   }),
   getters: {
     getAustralianOpen: (state) => {
@@ -34,8 +34,8 @@ export const useGameStore = defineStore("game", {
       return state.liveGames;
     },
 
-    getH2H:(state)=>{
-      return state.h2h
+    getPlayerLastMaches:(state)=>{
+      return state.playerLastMatches
     }
   },
   actions: {
@@ -49,7 +49,7 @@ export const useGameStore = defineStore("game", {
         }
 
         const data = await response.json();
-        this.tournaments = data.result; // Assuming the response is an array of tournaments
+        this.tournaments = data.result;
       } catch (error) {
         console.error("Error fetching tournaments:", error);
       }
@@ -90,16 +90,16 @@ export const useGameStore = defineStore("game", {
     async fetchH2H() {
       try {
         const response = await fetch(
-          `${TENNIS_API_URL}?method=get_H2H&APIkey=${API_KEY}`
+          `${TENNIS_API_URL}?method=get_H2H&APIkey=${API_KEY}&first_player_key=1906&second_player_key=2072`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
         const data = await response.json();
-        this.h2h = data.result;
+        this.playerLastMatches = data.result;
       } catch (error) {
-        console.error("Error fetching Live Games:", error);
+        console.error("Error fetching H2H:", error);
       }
     },
   },
