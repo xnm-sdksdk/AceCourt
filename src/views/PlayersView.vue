@@ -23,7 +23,6 @@
       </v-row>
 
       <!-- Player Information Section -->
-      <!-- Player Information Section -->
       <v-row>
         <!-- Left Section: Ranking -->
         <v-col v-if="player">
@@ -59,7 +58,7 @@
         </v-col>
       </v-row>
 
-      <!-- Career and Last Matches -->
+      <!--Last Matches -->
       <v-row>
         <v-container>
           <!-- Player Name Section -->
