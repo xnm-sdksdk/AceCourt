@@ -23,7 +23,7 @@ export const useGameStore = defineStore("game", {
     },
 
     getPlayers: (state) => {
-      if ((state.liveGames, length > 0)) {
+      if ((state.liveGames.length > 0)) {
         const firstliveGame = state.liveGames[0];
         return firstliveGame.event_first_player;
       }
@@ -34,7 +34,7 @@ export const useGameStore = defineStore("game", {
       return state.liveGames;
     },
 
-    getPlayerLastMaches:(state)=>{
+    getPlayerLastMatches:(state)=>{
       return state.playerLastMatches
     }
   },
