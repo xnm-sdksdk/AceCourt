@@ -11,7 +11,7 @@ export const useGameStore = defineStore("game", {
     standings: [],
     liveGames: [],
     myGames: [],
-    playerLastMatches:[]
+    playerLastMatches: [],
   }),
   getters: {
     getAustralianOpen: (state) => {
@@ -23,7 +23,7 @@ export const useGameStore = defineStore("game", {
     },
 
     getPlayers: (state) => {
-      if ((state.liveGames.length > 0)) {
+      if (state.liveGames.length > 0) {
         const firstliveGame = state.liveGames[0];
         return firstliveGame.event_first_player;
       }
@@ -34,9 +34,9 @@ export const useGameStore = defineStore("game", {
       return state.liveGames;
     },
 
-    getPlayerLastMatches:(state)=>{
-      return state.playerLastMatches
-    }
+    getPlayerLastMatches: (state) => {
+      return state.playerLastMatches;
+    },
   },
   actions: {
     async fetchTournaments() {
@@ -70,7 +70,18 @@ export const useGameStore = defineStore("game", {
         console.error("Error fetching players:", error);
       }
     },
-
+    async fetchFixtures() {
+      try {
+        const response = await fetch(
+          `${TENNIS_API_URL}?method=get_fixtures&tournament_key=1236&APIkey=${API_KEY}&date_start=2023-01-01&date_stop=2023-02-28&timezone=Europe/Berlin`
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+      } catch (err) {
+        console.log("Error fetching Fixtures: ", err);
+      }
+    },
     async fetchLiveScores() {
       try {
         const response = await fetch(
