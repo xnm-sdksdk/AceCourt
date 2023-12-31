@@ -33,7 +33,7 @@
         <!-- Image -->
         <v-col cols="12" md="6" class="d-flex align-center justify-center">
           <img
-            src="@/assets/HeroImage.svg"
+            src="../assets/HeroImage.svg"
             alt="Imagem"
             class="w-full h-auto small-image"
           />
@@ -125,7 +125,7 @@
         <!-- Image -->
         <v-col cols="12" md="6" class="d-flex align-center justify-center">
           <img
-            src="@/assets/Elevate.svg"
+            src="../assets/Elevate.svg"
             alt="Imagem"
             class="w-full h-auto small-image2"
           />
@@ -145,7 +145,7 @@
             style="background-color: #efefef"
           >
             <img
-              src="@/assets/ranking.svg"
+              src="../assets/ranking.svg"
               alt="Imagem 1"
               class="inner-image"
             />
@@ -158,7 +158,7 @@
             class="inner-container rounded-md"
             style="background-color: #efefef"
           >
-            <img src="@/assets/vote.svg" alt="Imagem 2" class="inner-image" />
+            <img src="../assets/vote.svg" alt="Imagem 2" class="inner-image" />
             <p class="inner-text">Vote the winner</p>
           </div>
         </v-col>
@@ -171,7 +171,7 @@
             style="background-color: #efefef"
           >
             <img
-              src="@/assets/schedule.svg"
+              src="../assets/schedule.svg"
               alt="Imagem 3"
               class="inner-image"
             />
@@ -184,7 +184,7 @@
             class="inner-container rounded-md"
             style="background-color: #efefef"
           >
-            <img src="@/assets/trophy.svg" alt="Imagem 4" class="inner-image" />
+            <img src="../assets/trophy.svg" alt="Imagem 4" class="inner-image" />
             <p class="inner-text">Win trophies</p>
           </div>
         </v-col>
@@ -196,7 +196,7 @@
             class="inner-container rounded-md"
             style="background-color: #efefef"
           >
-            <img src="@/assets/news.svg" alt="Imagem 5" class="inner-image" />
+            <img src="../assets/news.svg" alt="Imagem 5" class="inner-image" />
             <p class="inner-text">Latest News</p>
           </div>
         </v-col>
@@ -206,7 +206,7 @@
             class="inner-container rounded-md"
             style="background-color: #efefef"
           >
-            <img src="@/assets/stats.svg" alt="Imagem 6" class="inner-image" />
+            <img src="../assets/stats.svg" alt="Imagem 6" class="inner-image" />
             <p class="inner-text">See your stats</p>
           </div>
         </v-col>
@@ -225,7 +225,7 @@
               </h3>
             </div>
             <div class="sub-content">
-              <img src="@/assets/sara.svg" alt="Imagem 1" class="sub-image" />
+              <img src="../assets/sara.svg" alt="Imagem 1" class="sub-image" />
               <div class="sub-texts">
                 <h2 class="sub-title">Sara Johnson</h2>
                 <p class="sub-paragraph">Tennis Enthusiastic</p>
@@ -247,7 +247,7 @@
               </h3>
             </div>
             <div class="sub-content">
-              <img src="@/assets/eric.svg" alt="Imagem 2" class="sub-image" />
+              <img src="../assets/eric.svg" alt="Imagem 2" class="sub-image" />
               <div class="sub-texts">
                 <h2 class="sub-title">Eric May</h2>
                 <p class="sub-paragraph">Sports Bettor</p>
