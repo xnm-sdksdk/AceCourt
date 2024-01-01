@@ -33,7 +33,7 @@
                   <!-- First Player - First Game -->
                   <v-row
                     class="bg-blue-darken-2 ma-1 pa-1"
-                    v-for="(game, index) in renderingGames"
+                    v-for="(game, index) in myGames"
                     :key="index"
                   >
                     <v-col>
@@ -94,7 +94,7 @@
 
                       <v-row
                         class="bg-blue-darken-2 ma-1 pa-1 rounded-b-xl"
-                        v-for="(game, index) in renderingGames"
+                        v-for="(game, index) in liveGames"
                         :key="index"
                       >
                         <v-col>{{ game.event_second_player }}</v-col>
@@ -157,7 +157,7 @@
                 <!-- See More Players -->
                 <v-row>
                   <v-col>
-                    <v-btn @click="seeMorePlayers">See More</v-btn>
+                    <v-btn>See More</v-btn>
                   </v-col>
                 </v-row>
               </v-card>
@@ -180,46 +180,40 @@ export default {
     NavBar,
     ScoresHeaderResults,
   },
-  setup() {
-    const store = useGameStore();
-    const liveGames = ref([]);
-    const myGames = ref([]);
-    const firstPlayerLiveGame = ref(null);
-
-    const seeMorePlayers = () => {
-      return "See More Players";
-    };
-
-    const getLiveScore = (game) => {
-      return "LiveScore";
-    };
-
-    const getSetResult = (game, setNumber) => {
-      return "get Set Result";
-    };
-
-    const renderingGames = ref([]);
-
-    const firstPlayer = ref(null);
-
-    onMounted(async () => {
-      await store.fetchLiveScores();
-      liveGames.value = store.getLiveScore;
-      console.log(liveGames.value);
-    });
-
+  data() {
     return {
-      store,
-      liveGames,
-      myGames,
-      firstPlayerLiveGame,
-      seeMorePlayers,
-      getLiveScore,
-      getSetResult,
-      renderingGames,
-      firstPlayer,
+      store: useGameStore(),
+      liveGames: [],
+      myGames: [],
+      isLoading: true,
     };
   },
+  async created() {
+    await this.fetch();
+  },
+  methods: {
+    async fetch() {
+      await this.store.fetchFixtures();
+      this.liveGames = this.store.liveGames;
+      this.myGames = this.store.getMyGames;
+    },
+    addMyGames(game) {
+      this.store.addMyGames(game);
+    },
+    removeMyGames(game) {
+      this.store.removeMyGames(game);
+    },
+    renderLiveGames() {
+      this.liveGames = liveGames;
+    },
+    getSetResult(game, setNumber) {
+      console.log(game, setNumber);
+    },
+    getLiveScore(game) {
+      console.log(game);
+    },
+  },
+  computed: {},
 };
 </script>
 

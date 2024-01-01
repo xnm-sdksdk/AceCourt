@@ -37,8 +37,17 @@ export const useGameStore = defineStore("game", {
     getPlayerLastMatches: (state) => {
       return state.playerLastMatches;
     },
+    getMyGames: (state) => {
+      return state.myGames;
+    },
   },
   actions: {
+    addMyGames(game) {
+      this.myGames.push(game);
+    },
+    removeMyGames(game) {
+      console.log("Remove");
+    },
     async fetchTournaments() {
       try {
         const response = await fetch(
@@ -78,8 +87,11 @@ export const useGameStore = defineStore("game", {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
+        const data = await response.json();
+        this.liveGames = data.result;
       } catch (err) {
         console.log("Error fetching Fixtures: ", err);
+        throw err;
       }
     },
     async fetchLiveScores() {
