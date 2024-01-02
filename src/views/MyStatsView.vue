@@ -24,8 +24,8 @@
                 </v-row>
               </v-card>
               <!-- Second Row -->
-              <v-row class="justify-center align-center ma-4">
-                <v-col cols="6">
+              <v-row class="justify-center align-center">
+                <v-col cols="6" class="my-4">
                   <v-card
                     class="rounded-lg bg-grey-lighten-5"
                     elevation="3"
@@ -34,7 +34,7 @@
                     <p>Days in streak</p>
                   </v-card>
                 </v-col>
-                <v-col cols="6">
+                <v-col cols="6" class="my-4">
                   <v-card
                     class="rounded-lg bg-grey-lighten-5"
                     elevation="3"
@@ -46,7 +46,7 @@
               </v-row>
               <!-- Third Row -->
               <v-row class="justify-center align-center">
-                <v-col cols="6">
+                <v-col cols="6" class="my-4">
                   <v-card
                     class="rounded-lg bg-grey-lighten-5"
                     elevation="3"
@@ -55,7 +55,7 @@
                     <p>Right Games</p>
                   </v-card>
                 </v-col>
-                <v-col cols="6">
+                <v-col cols="6" class="my-4">
                   <v-card
                     class="rounded-lg bg-grey-lighten-5"
                     elevation="3"
@@ -67,7 +67,7 @@
               </v-row>
               <!-- Fourth Row -->
               <v-row class="justify-center align-center">
-                <v-col cols="12">
+                <v-col cols="12" class="my-4">
                   <v-card
                     class="rounded-lg bg-grey-lighten-5"
                     elevation="3"
