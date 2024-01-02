@@ -68,44 +68,25 @@
                     elevation="3"
                   >
                     <div class="py-4">
-                      <v-card-text>
-                        <v-row>
-                          <v-col>Australia Open - Quarter Finals</v-col>
-                          <v-col>Rod Laver Arena</v-col>
-                        </v-row>
-                      </v-card-text>
-                      <!-- Fist Game Live Games -->
-                      <ScoresHeaderResults></ScoresHeaderResults>
-
-                      <v-row
+                      <v-card
                         v-for="game in liveGames"
                         :key="game.event_key"
-                        class="bg-blue-darken-2 ma-1"
+                        class="mb-4"
                       >
-                        <v-col>{{ game.event_first_player }}</v-col>
-                        <v-col>40</v-col>
-                        <v-col>6</v-col>
-                        <v-col>0</v-col>
-                        <v-col></v-col>
-                        <v-col></v-col>
-                        <v-col></v-col>
-                        <v-col>1</v-col>
-                      </v-row>
-
-                      <v-row
-                        class="bg-blue-darken-2 ma-1 pa-1 rounded-b-xl"
-                        v-for="(game, index) in liveGames"
-                        :key="index"
-                      >
-                        <v-col>{{ game.event_second_player }}</v-col>
-                        <v-col>40</v-col>
-                        <v-col>6</v-col>
-                        <v-col>0</v-col>
-                        <v-col></v-col>
-                        <v-col></v-col>
-                        <v-col></v-col>
-                        <v-col>1</v-col>
-                      </v-row>
+                        <v-row class="bg-blue-darken-2 ma-1">
+                          <v-col>{{ game.tournament_round }}</v-col>
+                          <v-col>{{ game.event_type_type }}</v-col>
+                          <v-col>{{ game.event_status }}</v-col>
+                        </v-row>
+                        <ScoresHeaderResults></ScoresHeaderResults>
+                        <v-row class="bg-blue-darken-2 ma-1">
+                          <v-col>{{ game.event_first_player }}</v-col>
+                        </v-row>
+                        <v-row class="bg-blue-darken-2 ma-1" I>
+                          <v-col>{{ game.event_second_player }}</v-col>
+                        </v-row>
+                      </v-card>
+                      <!-- Fist Game Live Games -->
                     </div>
                   </v-card>
                 </div>
