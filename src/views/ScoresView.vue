@@ -17,38 +17,33 @@
                 class="rounded-b-xl bg-grey-lighten-4 ma-1 pa-4"
                 elevation="3"
               >
-                <!-- Tournament Stage and Arena -->
                 <div class="py-4">
-                  <v-card-text>
-                    <v-row>
-                      <v-col>Australia Open - Quarter Finals</v-col>
-                      <v-col>Rod Laver Arena</v-col>
-                    </v-row>
-                  </v-card-text>
-
-                  <!-- Header First Game -->
-
-                  <ScoresHeaderResults></ScoresHeaderResults>
-
-                  <!-- First Player - First Game -->
-                  <v-row
-                    class="bg-blue-darken-2 ma-1 pa-1"
-                    v-for="(game, index) in myGames"
-                    :key="index"
+                  <v-card
+                    v-for="game in myGames"
+                    :key="game.event_key"
+                    class="mb-4"
                   >
-                    <v-col>
-                      {{ game.event_first_player }}
-                    </v-col>
-                    <!-- <div>{{ game.event_first_player }}</div> -->
-                    <!-- <v-col>{{ game.pointbypoint.points.number_point }}</v-col> -->
-                    <!-- <v-col>{{ getLiveScore(game) }}</v-col>-->
-                    <v-col>{{ getSetResult(game, 1) }}</v-col>
-                    <v-col>{{ getSetResult(game, 2) }}</v-col>
-                    <v-col>{{}}</v-col>
-                    <v-col>{{}}</v-col>
-                    <v-col>{{}}</v-col>
-                    <v-col>{{ game.event_final_result }}</v-col>
-                  </v-row>
+                    <v-row class="rounded-t-xl bg-blue-darken-2 ma-1">
+                      <v-col>{{ game.tournament_round }}</v-col>
+                      <v-col>{{ game.event_type_type }}</v-col>
+                      <v-col>{{ game.event_status }}</v-col>
+                    </v-row>
+                    <ScoresHeaderResults></ScoresHeaderResults>
+                    <v-row class="bg-blue-darken-2 ma-1">
+                      <v-col>{{ game.event_first_player }}</v-col>
+                      <!--
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col> -->
+                    </v-row>
+                    <v-row class="rounded-b-xl bg-blue-darken-2 ma-1" I>
+                      <v-col>{{ game.event_second_player }}</v-col>
+                    </v-row>
+                  </v-card>
                 </div>
               </v-card>
             </div>
@@ -73,7 +68,7 @@
                         :key="game.event_key"
                         class="mb-4"
                       >
-                        <v-row class="bg-blue-darken-2 ma-1">
+                        <v-row class="rounded-t-xl bg-blue-darken-2 ma-1">
                           <v-col>{{ game.tournament_round }}</v-col>
                           <v-col>{{ game.event_type_type }}</v-col>
                           <v-col>{{ game.event_status }}</v-col>
@@ -81,8 +76,16 @@
                         <ScoresHeaderResults></ScoresHeaderResults>
                         <v-row class="bg-blue-darken-2 ma-1">
                           <v-col>{{ game.event_first_player }}</v-col>
+                          <!--
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col> -->
                         </v-row>
-                        <v-row class="bg-blue-darken-2 ma-1" I>
+                        <v-row class="rounded-b-xl bg-blue-darken-2 ma-1" I>
                           <v-col>{{ game.event_second_player }}</v-col>
                         </v-row>
                       </v-card>
