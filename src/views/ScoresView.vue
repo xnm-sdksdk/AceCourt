@@ -9,19 +9,17 @@
           <v-col cols="9">
             <div class="py-2">
               <!-- My Games -->
-              <v-card-title
-                class="rounded-t-xl bg-grey-lighten-4 white--text ma-1 pa-3"
-                >My Games</v-card-title
-              >
-              <v-card
-                class="rounded-b-xl bg-grey-lighten-4 ma-1 pa-4"
-                elevation="3"
-              >
+              <v-card class="rounded-xl bg-grey-lighten-5" elevation="3">
+                <div class="text-blue-900 font-bold">
+                  <v-card-title class="ml-5 my-5 text-h5"
+                    >My Games</v-card-title
+                  >
+                </div>
                 <div class="py-4">
                   <v-card
                     v-for="game in myGames"
                     :key="game.event_key"
-                    class="mb-4"
+                    class="bg-grey-lighten-5 mb-4"
                   >
                     <v-row class="rounded-t-xl bg-blue-darken-2 ma-1">
                       <v-col>{{ game.tournament_round }}</v-col>
@@ -52,21 +50,18 @@
 
             <v-row>
               <v-col col="9">
-                <div class="py-4">
-                  <v-card-title
-                    class="rounded-t-xl bg-grey-lighten-4 white--text ma-1 pa-3"
-                  >
-                    Live Games
-                  </v-card-title>
-                  <v-card
-                    class="rounded-b-xl bg-grey-lighten-4 ma-1 pa-4"
-                    elevation="3"
-                  >
-                    <div class="py-4">
+                <div class="my-4">
+                  <v-card class="rounded-xl bg-grey-lighten-5" elevation="3">
+                    <div class="text-blue-900">
+                      <v-card-title class="text-h5 ml-5 my-5">
+                        Live Games
+                      </v-card-title>
+                    </div>
+                    <div class="my-4">
                       <v-card
                         v-for="game in liveGames"
                         :key="game.event_key"
-                        class="mb-4"
+                        class="rounded-xl bg-grey-lighten-5 ma-3"
                       >
                         <v-row class="rounded-t-xl bg-blue-darken-2 ma-1">
                           <v-col>{{ game.tournament_round }}</v-col>
