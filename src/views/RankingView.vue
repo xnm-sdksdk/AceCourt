@@ -64,7 +64,7 @@
 
 <script>
 import NavBar from "@/components/NavBar.vue";
-import { useGameStore } from "@/stores/tennis.js";
+import { useTennisStore } from "@/stores/tennis.js";
 
 export default {
   components: {
@@ -72,7 +72,7 @@ export default {
   },
   data() {
     return {
-      store: useGameStore(),
+      store: useTennisStore(),
       standings: [],
       selectedOption: "Ranking",
     };

@@ -23,7 +23,6 @@
       </v-row>
 
       <!-- Player Information Section -->
-      <!-- Player Information Section -->
       <v-row>
         <!-- Left Section: Ranking -->
         <v-col v-if="player">
@@ -57,20 +56,6 @@
             </v-col>
           </v-container>
         </v-col>
-      </v-row>
-
-      <!-- Career and Last Matches -->
-      <v-row>
-        <v-container>
-          <!-- Player Name Section -->
-          <v-row>
-            <v-col>
-              <v-container fluid class="name-container">
-                <h2 class="text-xl font-bold">Career</h2>
-              </v-container>
-            </v-col>
-          </v-row>
-        </v-container>
       </v-row>
 
       <!-- Registered Games -->
@@ -121,11 +106,21 @@
                     </thead>
                     <tbody>
                       <tr v-for="year in filterSingles" :key="year.season">
-                        <td style="background-color: #EFEFEF; color: #1C1C1C">{{ year.season }}</td>
-                        <td style="background-color: #EFEFEF; color: #1C1C1C">{{ year.rank }}</td>
-                        <td style="background-color: #EFEFEF; color: #1C1C1C">{{ year.titles }}</td>
-                        <td style="background-color: #EFEFEF; color: #1C1C1C">{{ year.matches_won }}-{{ year.matches_lost }}</td>
-                        <td style="background-color: #EFEFEF; color: #1C1C1C">{{ sumPrizeMoney(year.season) }} $</td>
+                        <td style="background-color: #efefef; color: #1c1c1c">
+                          {{ year.season }}
+                        </td>
+                        <td style="background-color: #efefef; color: #1c1c1c">
+                          {{ year.rank }}
+                        </td>
+                        <td style="background-color: #efefef; color: #1c1c1c">
+                          {{ year.titles }}
+                        </td>
+                        <td style="background-color: #efefef; color: #1c1c1c">
+                          {{ year.matches_won }}-{{ year.matches_lost }}
+                        </td>
+                        <td style="background-color: #efefef; color: #1c1c1c">
+                          {{ sumPrizeMoney(year.season) }} $
+                        </td>
                       </tr>
                     </tbody>
                   </v-table>
@@ -142,7 +137,8 @@
 <script>
 import NavBar from "@/components/NavBar.vue";
 import BackButton from "../components/BackButton.vue";
-import { useGameStore } from "@/stores/tennis.js";
+import { useGameStore } from "@/stores/games.js";
+import { useTennisStore } from "@/stores/tennis.js";
 export default {
   components: {
     NavBar,
@@ -150,22 +146,30 @@ export default {
   },
   data() {
     return {
-      store: useGameStore(),
-      h2h:[],
+      tennisStore: useTennisStore(),
+      gameStore: useGameStore(),
+      h2h: [],
       standings: null,
       player: null,
       playerId: null,
     };
   },
   created() {
+    //Get player Id from route
     this.playerId = this.$route.params.id;
-    this.standings = this.store.getStandings.find(
+
+    //Get standings to get the points and place of the player
+    this.standings = this.tennisStore.getStandings.find(
       (player) => player.player_key == this.playerId
     );
-    this.player = this.store.getPlayers.find(
+
+    //Get player from player id
+    this.player = this.tennisStore.getPlayers.find(
       (player) => player.player_key == this.playerId
     );
-    this.h2h=this.store.getH2H
+
+    //G of the playeret last games
+    this.h2h = this.gameStore.getPlayerLastMacthes;
     console.log(this.h2h);
   },
 

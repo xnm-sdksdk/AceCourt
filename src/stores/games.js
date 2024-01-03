@@ -11,7 +11,7 @@ export const useGameStore = defineStore("game", {
     standings: [],
     liveGames: [],
     myGames: [],
-    h2h:[]
+    playerLastMatches: [],
   }),
   getters: {
     getAustralianOpen: (state) => {
@@ -23,7 +23,7 @@ export const useGameStore = defineStore("game", {
     },
 
     getPlayers: (state) => {
-      if ((state.liveGames, length > 0)) {
+      if (state.liveGames.length > 0) {
         const firstliveGame = state.liveGames[0];
         return firstliveGame.event_first_player;
       }
@@ -31,10 +31,23 @@ export const useGameStore = defineStore("game", {
     },
 
     getLiveScore: (state) => {
-      return state.livescore;
+      return state.liveGames;
+    },
+
+    getPlayerLastMatches: (state) => {
+      return state.playerLastMatches;
+    },
+    getMyGames: (state) => {
+      return state.myGames;
     },
   },
   actions: {
+    addMyGames(game) {
+      this.myGames.push(game);
+    },
+    removeMyGames(game) {
+      console.log("Remove");
+    },
     async fetchTournaments() {
       try {
         const response = await fetch(
@@ -45,7 +58,7 @@ export const useGameStore = defineStore("game", {
         }
 
         const data = await response.json();
-        this.tournaments = data.result; // Assuming the response is an array of tournaments
+        this.tournaments = data.result;
       } catch (error) {
         console.error("Error fetching tournaments:", error);
       }
@@ -66,7 +79,21 @@ export const useGameStore = defineStore("game", {
         console.error("Error fetching players:", error);
       }
     },
-
+    async fetchFixtures() {
+      try {
+        const response = await fetch(
+          `${TENNIS_API_URL}?method=get_fixtures&APIkey=${API_KEY}&date_start=2023-01-01&date_stop=2023-02-28&tournament_key=1236`
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        this.liveGames = data.result;
+      } catch (err) {
+        console.log("Error fetching Fixtures: ", err);
+        throw err;
+      }
+    },
     async fetchLiveScores() {
       try {
         const response = await fetch(
@@ -86,7 +113,7 @@ export const useGameStore = defineStore("game", {
     async fetchH2H() {
       try {
         const response = await fetch(
-          `${TENNIS_API_URL}?method=get_H2H&APIkey=${API_KEY}&first_player_key=`
+          `${TENNIS_API_URL}?method=get_H2H&APIkey=${API_KEY}&first_player_key=1906&second_player_key=2072`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -95,11 +122,9 @@ export const useGameStore = defineStore("game", {
         const data = await response.json();
         this.h2h = data.result;
       } catch (error) {
-        console.error("Error fetching Live Games:", error);
+        console.error("Error fetching H2H:", error);
       }
     },
   },
   persist: true,
 });
-
-//ID AUSTRALIAN OPEN BOYS SINGLES:329
