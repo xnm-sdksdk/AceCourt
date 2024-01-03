@@ -10,6 +10,7 @@ export const useGameStore = defineStore("game", {
     players: [],
     standings: [],
     liveGames: [],
+    fixtures:[],
     myGames: [],
     playerLastMatches: [],
   }),
@@ -40,6 +41,10 @@ export const useGameStore = defineStore("game", {
     getMyGames: (state) => {
       return state.myGames;
     },
+
+    getFixtures: (state)=>{
+      return state.fixtures
+    }
   },
   actions: {
     addMyGames(game) {
@@ -82,13 +87,13 @@ export const useGameStore = defineStore("game", {
     async fetchFixtures() {
       try {
         const response = await fetch(
-          `${TENNIS_API_URL}?method=get_fixtures&APIkey=${API_KEY}&date_start=2023-01-01&date_stop=2023-02-28&tournament_key=1236`
+          `${TENNIS_API_URL}?method=get_fixtures&APIkey=${API_KEY}&date_start=2019-01-01&date_stop=2023-02-28`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
-        this.liveGames = data.result;
+        this.fixtures = data.result;
       } catch (err) {
         console.log("Error fetching Fixtures: ", err);
         throw err;
