@@ -9,46 +9,39 @@
           <v-col cols="9">
             <div class="py-2">
               <!-- My Games -->
-              <v-card-title
-                class="rounded-t-xl bg-grey-lighten-4 white--text ma-1 pa-3"
-                >My Games</v-card-title
-              >
-              <v-card
-                class="rounded-b-xl bg-grey-lighten-4 ma-1 pa-4"
-                elevation="3"
-              >
-                <!-- Tournament Stage and Arena -->
-                <div class="py-4">
-                  <v-card-text>
-                    <v-row>
-                      <v-col>Australia Open - Quarter Finals</v-col>
-                      <v-col>Rod Laver Arena</v-col>
-                    </v-row>
-                  </v-card-text>
-
-                  <!-- Header First Game -->
-
-                  <ScoresHeaderResults></ScoresHeaderResults>
-
-                  <!-- First Player - First Game -->
-                  <v-row
-                    class="bg-blue-darken-2 ma-1 pa-1"
-                    v-for="(game, index) in renderingGames"
-                    :key="index"
+              <v-card class="rounded-xl bg-grey-lighten-5" elevation="3">
+                <div class="text-blue-900 font-bold">
+                  <v-card-title class="ml-5 my-5 text-h5"
+                    >My Games</v-card-title
                   >
-                    <v-col>
-                      {{ game.event_first_player }}
-                    </v-col>
-                    <!-- <div>{{ game.event_first_player }}</div> -->
-                    <!-- <v-col>{{ game.pointbypoint.points.number_point }}</v-col> -->
-                    <!-- <v-col>{{ getLiveScore(game) }}</v-col>-->
-                    <v-col>{{ getSetResult(game, 1) }}</v-col>
-                    <v-col>{{ getSetResult(game, 2) }}</v-col>
-                    <v-col>{{}}</v-col>
-                    <v-col>{{}}</v-col>
-                    <v-col>{{}}</v-col>
-                    <v-col>{{ game.event_final_result }}</v-col>
-                  </v-row>
+                </div>
+                <div class="py-4">
+                  <v-card
+                    v-for="game in myGames"
+                    :key="game.event_key"
+                    class="bg-grey-lighten-5 mb-4"
+                  >
+                    <v-row class="rounded-t-xl bg-blue-darken-2 ma-1">
+                      <v-col>{{ game.tournament_round }}</v-col>
+                      <v-col>{{ game.event_type_type }}</v-col>
+                      <v-col>{{ game.event_status }}</v-col>
+                    </v-row>
+                    <ScoresHeaderResults></ScoresHeaderResults>
+                    <v-row class="bg-blue-darken-2 ma-1">
+                      <v-col>{{ game.event_first_player }}</v-col>
+                      <!--
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col> -->
+                    </v-row>
+                    <v-row class="rounded-b-xl bg-blue-darken-2 ma-1" I>
+                      <v-col>{{ game.event_second_player }}</v-col>
+                    </v-row>
+                  </v-card>
                 </div>
               </v-card>
             </div>
@@ -57,55 +50,41 @@
 
             <v-row>
               <v-col col="9">
-                <div class="py-4">
-                  <v-card-title
-                    class="rounded-t-xl bg-grey-lighten-4 white--text ma-1 pa-3"
-                  >
-                    Live Games
-                  </v-card-title>
-                  <v-card
-                    class="rounded-b-xl bg-grey-lighten-4 ma-1 pa-4"
-                    elevation="3"
-                  >
-                    <div class="py-4">
-                      <v-card-text>
-                        <v-row>
-                          <v-col>Australia Open - Quarter Finals</v-col>
-                          <v-col>Rod Laver Arena</v-col>
-                        </v-row>
-                      </v-card-text>
-                      <!-- Fist Game Live Games -->
-                      <ScoresHeaderResults></ScoresHeaderResults>
-
-                      <v-row
+                <div class="my-4">
+                  <v-card class="rounded-xl bg-grey-lighten-5" elevation="3">
+                    <div class="text-blue-900">
+                      <v-card-title class="text-h5 ml-5 my-5">
+                        Live Games
+                      </v-card-title>
+                    </div>
+                    <div class="my-4">
+                      <v-card
                         v-for="game in liveGames"
                         :key="game.event_key"
-                        class="bg-blue-darken-2 ma-1"
+                        class="rounded-xl bg-grey-lighten-5 ma-3"
                       >
-                        <v-col>{{ game.event_first_player }}</v-col>
-                        <v-col>40</v-col>
-                        <v-col>6</v-col>
-                        <v-col>0</v-col>
-                        <v-col></v-col>
-                        <v-col></v-col>
-                        <v-col></v-col>
-                        <v-col>1</v-col>
-                      </v-row>
-
-                      <v-row
-                        class="bg-blue-darken-2 ma-1 pa-1 rounded-b-xl"
-                        v-for="(game, index) in renderingGames"
-                        :key="index"
-                      >
-                        <v-col>{{ game.event_second_player }}</v-col>
-                        <v-col>40</v-col>
-                        <v-col>6</v-col>
-                        <v-col>0</v-col>
-                        <v-col></v-col>
-                        <v-col></v-col>
-                        <v-col></v-col>
-                        <v-col>1</v-col>
-                      </v-row>
+                        <v-row class="rounded-t-xl bg-blue-darken-2 ma-1">
+                          <v-col>{{ game.tournament_round }}</v-col>
+                          <v-col>{{ game.event_type_type }}</v-col>
+                          <v-col>{{ game.event_status }}</v-col>
+                        </v-row>
+                        <ScoresHeaderResults></ScoresHeaderResults>
+                        <v-row class="bg-blue-darken-2 ma-1">
+                          <v-col>{{ game.event_first_player }}</v-col>
+                          <!--
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col>
+                          <v-col>{{ game. }}</v-col> -->
+                        </v-row>
+                        <v-row class="rounded-b-xl bg-blue-darken-2 ma-1" I>
+                          <v-col>{{ game.event_second_player }}</v-col>
+                        </v-row>
+                      </v-card>
+                      <!-- Fist Game Live Games -->
                     </div>
                   </v-card>
                 </div>
@@ -157,7 +136,7 @@
                 <!-- See More Players -->
                 <v-row>
                   <v-col>
-                    <v-btn @click="seeMorePlayers">See More</v-btn>
+                    <v-btn>See More</v-btn>
                   </v-col>
                 </v-row>
               </v-card>
@@ -180,46 +159,40 @@ export default {
     NavBar,
     ScoresHeaderResults,
   },
-  setup() {
-    const store = useGameStore();
-    const liveGames = ref([]);
-    const myGames = ref([]);
-    const firstPlayerLiveGame = ref(null);
-
-    const seeMorePlayers = () => {
-      return "See More Players";
-    };
-
-    const getLiveScore = (game) => {
-      return "LiveScore";
-    };
-
-    const getSetResult = (game, setNumber) => {
-      return "get Set Result";
-    };
-
-    const renderingGames = ref([]);
-
-    const firstPlayer = ref(null);
-
-    onMounted(async () => {
-      await store.fetchLiveScores();
-      liveGames.value = store.getLiveScore;
-      console.log(liveGames.value);
-    });
-
+  data() {
     return {
-      store,
-      liveGames,
-      myGames,
-      firstPlayerLiveGame,
-      seeMorePlayers,
-      getLiveScore,
-      getSetResult,
-      renderingGames,
-      firstPlayer,
+      store: useGameStore(),
+      liveGames: [],
+      myGames: [],
+      isLoading: true,
     };
   },
+  async created() {
+    await this.fetch();
+  },
+  methods: {
+    async fetch() {
+      await this.store.fetchFixtures();
+      this.liveGames = this.store.liveGames;
+      this.myGames = this.store.getMyGames;
+    },
+    addMyGames(game) {
+      this.store.addMyGames(game);
+    },
+    removeMyGames(game) {
+      this.store.removeMyGames(game);
+    },
+    renderLiveGames() {
+      this.liveGames = liveGames;
+    },
+    getSetResult(game, setNumber) {
+      console.log(game, setNumber);
+    },
+    getLiveScore(game) {
+      console.log(game);
+    },
+  },
+  computed: {},
 };
 </script>
 

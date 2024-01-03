@@ -64,6 +64,7 @@ export const useTennisStore = defineStore("game", {
       }
     },
 
+    // https://api.api-tennis.com/tennis/?method=get_fixtures&APIkey=180fc8f42877e51e2ab6e22a8e65be1aa951f5ee63b012a132edcc8c6f290d7b&date_start=2024-01-01&date_stop=2024-03-28
     async fetchStandings() {
       try {
         const response = await fetch(
