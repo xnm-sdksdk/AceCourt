@@ -95,16 +95,16 @@
           <!-- Second Column Last Match, Players -->
           <v-col cols="3">
             <!-- Last Match -->
-            <v-card-title
-              class="rounded-t-xl bg-blue-lighten-5 white--text ma-1 pa-3"
-            >
-              Last Match
-            </v-card-title>
             <v-card
-              class="rounded-b-xl bg-grey-lighten-4 ma-1"
+              class="rounded-xl bg-grey-lighten-4 ma-1"
               elevation="3"
               height="300"
             >
+              <div class="text-blue-900 font-bold">
+                <v-card-title class="ml-2 my-2 text-h6">
+                  Last Match
+                </v-card-title>
+              </div>
               <v-card-text>
                 <!-- First Player - Last Match -->
                 <v-row>
@@ -119,17 +119,18 @@
               </v-card-text>
             </v-card>
 
-            <div class="">
+            <div class="my-5">
               <!-- Players -->
-              <v-card-title
-                class="rounded-t-xl bg-blue-lighten-5 white--text ma-1 pa-3"
-                >Players</v-card-title
-              >
               <v-card
-                class="rounded-b-xl bg-grey-lighten-4 ma-1"
+                class="rounded-xl bg-grey-lighten-4 ma-1"
                 elevation="3"
                 height="300"
               >
+                <div class="text-blue-900 font-bold">
+                  <v-card-title class="ml-2 my-2 text-h6">
+                    Players
+                  </v-card-title>
+                </div>
                 <!-- Players -->
                 <v-col> </v-col>
 
