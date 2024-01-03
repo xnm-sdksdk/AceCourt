@@ -58,20 +58,6 @@
         </v-col>
       </v-row>
 
-      <!--Last Matches -->
-      <v-row>
-        <v-container>
-          <!-- Player Name Section -->
-          <v-row>
-            <v-col>
-              <v-container fluid class="name-container">
-                <h2 class="text-xl font-bold">Career</h2>
-              </v-container>
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-row>
-
       <!-- Registered Games -->
       <v-row>
         <v-container>
