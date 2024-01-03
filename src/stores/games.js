@@ -10,6 +10,7 @@ export const useGameStore = defineStore("game", {
     players: [],
     standings: [],
     liveGames: [],
+    fixtures:[],
     myGames: [],
     playerLastMatches: [],
   }),
@@ -40,6 +41,10 @@ export const useGameStore = defineStore("game", {
     getMyGames: (state) => {
       return state.myGames;
     },
+
+    getFixtures:(state) => {
+      return state.fixtures
+    }
   },
   actions: {
     addMyGames(game) {
@@ -88,7 +93,7 @@ export const useGameStore = defineStore("game", {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
-        this.liveGames = data.result;
+        this.fixtures = data.result;
       } catch (err) {
         console.log("Error fetching Fixtures: ", err);
         throw err;
