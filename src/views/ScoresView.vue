@@ -68,18 +68,21 @@
                           <v-col>{{ game.event_type_type }}</v-col>
                           <v-col>{{ game.event_status }}</v-col>
                         </v-row>
+                        <v-row> </v-row>
                         <ScoresHeaderResults></ScoresHeaderResults>
                         <v-row class="bg-blue-darken-2 ma-1">
                           <v-col>{{ game.event_first_player }}</v-col>
                           <!--
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col> -->
+                            <v-col>{{ game. }}</v-col>
+                            <v-col>{{ game. }}</v-col>
+                            <v-col>{{ game. }}</v-col>
+                            <v-col>{{ game. }}</v-col>
+                            <v-col>{{ game. }}</v-col>
+                            <v-col>{{ game. }}</v-col>
+                            <v-col>{{ game. }}</v-col> -->
+                          <v-btn @click="addMyGames"> Add MyGames </v-btn>
                         </v-row>
+
                         <v-row class="rounded-b-xl bg-blue-darken-2 ma-1" I>
                           <v-col>{{ game.event_second_player }}</v-col>
                         </v-row>
@@ -168,15 +171,11 @@ export default {
       isLoading: true,
     };
   },
-  async created() {
-    await this.fetch();
+  created() {
+    this.liveGames = this.store.getLiveScore;
+    this.myGames = this.store.getMyGames;
   },
   methods: {
-    async fetch() {
-      await this.store.fetchFixtures();
-      this.liveGames = this.store.liveGames;
-      this.myGames = this.store.getMyGames;
-    },
     addMyGames(game) {
       this.store.addMyGames(game);
     },
