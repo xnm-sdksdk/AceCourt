@@ -55,7 +55,6 @@ export const useGameStore = defineStore("game", {
       return state.standings;
     },
     // Get First Player in Ranking
-    // ! Testing
     getFirstPlayerRanking() {
       return this.standings.length > 0 ? this.standings[0] : null;
     },
