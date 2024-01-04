@@ -147,7 +147,7 @@ export const useGameStore = defineStore("game", {
         }
 
         const data = await response.json();
-        this.playerLastMatches = data.result;
+        this.h2h = data.result;
       } catch (error) {
         console.error("Error fetching H2H:", error);
       }

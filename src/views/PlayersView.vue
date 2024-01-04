@@ -205,11 +205,7 @@ export default {
 
     turnPro() {
       const lessYear = this.player.stats.map((year) => parseInt(year.season));
-      if (lessYear.some(isNaN)) {
-        return "No information";
-      } else {
-        return Math.min(...lessYear);
-      }
+      return Math.min(...lessYear);
     },
 
     sumPrizeMoney(season) {
