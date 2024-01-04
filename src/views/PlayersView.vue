@@ -138,7 +138,6 @@
 import NavBar from "@/components/NavBar.vue";
 import BackButton from "../components/BackButton.vue";
 import { useGameStore } from "@/stores/games.js";
-import { useTennisStore } from "@/stores/tennis.js";
 export default {
   components: {
     NavBar,
@@ -146,7 +145,6 @@ export default {
   },
   data() {
     return {
-      tennisStore: useTennisStore(),
       gameStore: useGameStore(),
       h2h: [],
       standings: null,

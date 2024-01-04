@@ -120,7 +120,7 @@
 
 <script>
 import NavBar from "@/components/NavBar.vue";
-import { useTennisStore } from "../stores/tennis";
+import { useGameStore } from "../stores/games";
 
 export default {
   components: {
@@ -128,7 +128,7 @@ export default {
   },
   data() {
     return {
-      store: useTennisStore(),
+      store: useGameStore(),
       fixtures: [],
     };
   },
