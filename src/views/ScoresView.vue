@@ -134,7 +134,10 @@
                 <!-- Players -->
 
                 <!-- See More Players -->
-                <v-row v-for="player in renderPlayers.slice(0,2)" :key="player.player_key">
+                <v-row
+                  v-for="player in renderPlayers.slice(0, 2)"
+                  :key="player.player_key"
+                >
                   <v-col>{{ player.player_name }}</v-col>
                 </v-row>
               </v-card>
