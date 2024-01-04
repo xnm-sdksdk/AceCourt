@@ -10,7 +10,7 @@ export const useGameStore = defineStore("game", {
     players: [],
     standings: [],
     liveGames: [],
-    fixtures:[],
+    fixtures: [],
     myGames: [],
     playerLastMatches: [],
   }),
@@ -42,9 +42,9 @@ export const useGameStore = defineStore("game", {
       return state.myGames;
     },
 
-    getFixtures:(state) => {
-      return state.fixtures
-    }
+    getFixtures: (state) => {
+      return state.fixtures;
+    },
   },
   actions: {
     addMyGames(game) {
@@ -84,6 +84,7 @@ export const useGameStore = defineStore("game", {
         console.error("Error fetching players:", error);
       }
     },
+    // https://api.api-tennis.com/tennis/?method=get_fixtures&APIkey=180fc8f42877e51e2ab6e22a8e65be1aa951f5ee63b012a132edcc8c6f290d7b&date_start=2023-01-01&date_stop=2023-02-28&tournament_key=1236
     async fetchFixtures() {
       try {
         const response = await fetch(
@@ -99,21 +100,21 @@ export const useGameStore = defineStore("game", {
         throw err;
       }
     },
-    async fetchLiveScores() {
-      try {
-        const response = await fetch(
-          `${TENNIS_API_URL}?method=get_livescore&APIkey=${API_KEY}`
-        );
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+    // async fetchLiveScores() {
+    //   try {
+    //     const response = await fetch(
+    //       `${TENNIS_API_URL}?method=get_livescore&APIkey=${API_KEY}`
+    //     );
+    //     if (!response.ok) {
+    //       throw new Error(`HTTP error! Status: ${response.status}`);
+    //     }
 
-        const data = await response.json();
-        this.liveGames = data.result;
-      } catch (error) {
-        console.error("Error fetching Live Games:", error);
-      }
-    },
+    //     const data = await response.json();
+    //     this.liveGames = data.result;
+    //   } catch (error) {
+    //     console.error("Error fetching Live Games:", error);
+    //   }
+    // },
 
     async fetchH2H() {
       try {
@@ -131,5 +132,5 @@ export const useGameStore = defineStore("game", {
       }
     },
   },
-  persist: true,
+  //persist:true
 });

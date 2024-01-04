@@ -37,9 +37,11 @@
                           <v-col>{{ game. }}</v-col>
                           <v-col>{{ game. }}</v-col>
                           <v-col>{{ game. }}</v-col> -->
+                      <v-btn @click="removeMyGames">Remove MyGames</v-btn>
                     </v-row>
                     <v-row class="rounded-b-xl bg-blue-darken-2 ma-1" I>
                       <v-col>{{ game.event_second_player }}</v-col>
+                      <v-btn>Access Game</v-btn>
                     </v-row>
                   </v-card>
                 </div>
@@ -68,20 +70,24 @@
                           <v-col>{{ game.event_type_type }}</v-col>
                           <v-col>{{ game.event_status }}</v-col>
                         </v-row>
+                        <v-row> </v-row>
                         <ScoresHeaderResults></ScoresHeaderResults>
                         <v-row class="bg-blue-darken-2 ma-1">
                           <v-col>{{ game.event_first_player }}</v-col>
                           <!--
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col> -->
+                            <v-col>{{ game. }}</v-col>
+                            <v-col>{{ game. }}</v-col>
+                            <v-col>{{ game. }}</v-col>
+                            <v-col>{{ game. }}</v-col>
+                            <v-col>{{ game. }}</v-col>
+                            <v-col>{{ game. }}</v-col>
+                            <v-col>{{ game. }}</v-col> -->
+                          <v-btn @click="addMyGames"> Add MyGames </v-btn>
                         </v-row>
+
                         <v-row class="rounded-b-xl bg-blue-darken-2 ma-1" I>
                           <v-col>{{ game.event_second_player }}</v-col>
+                          <v-btn @click="accessGame">Access Game</v-btn>
                         </v-row>
                       </v-card>
                       <!-- Fist Game Live Games -->
@@ -163,20 +169,17 @@ export default {
   data() {
     return {
       store: useGameStore(),
-      liveGames: [],
+
       myGames: [],
       isLoading: true,
     };
   },
-  async created() {
-    await this.fetch();
+  created() {
+    console.log(this.liveGames);
+    this.store.fetchFixtures();
+    this.myGames = this.store.getMyGames;
   },
   methods: {
-    async fetch() {
-      await this.store.fetchFixtures();
-      this.liveGames = this.store.liveGames;
-      this.myGames = this.store.getMyGames;
-    },
     addMyGames(game) {
       this.store.addMyGames(game);
     },
@@ -184,7 +187,7 @@ export default {
       this.store.removeMyGames(game);
     },
     renderLiveGames() {
-      this.liveGames = liveGames;
+      this.liveGames = this.store.getLiveScore;
     },
     getSetResult(game, setNumber) {
       console.log(game, setNumber);
@@ -193,7 +196,11 @@ export default {
       console.log(game);
     },
   },
-  computed: {},
+  computed: {
+    liveGames() {
+      return this.store.getLiveScore;
+    },
+  },
 };
 </script>
 
