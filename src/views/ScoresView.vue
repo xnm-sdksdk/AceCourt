@@ -41,7 +41,6 @@
                     </v-row>
                     <v-row class="rounded-b-xl bg-blue-darken-2 ma-1" I>
                       <v-col>{{ game.event_second_player }}</v-col>
-                      <v-btn>Access Game</v-btn>
                     </v-row>
                   </v-card>
                 </div>
@@ -87,7 +86,6 @@
 
                         <v-row class="rounded-b-xl bg-blue-darken-2 ma-1" I>
                           <v-col>{{ game.event_second_player }}</v-col>
-                          <v-btn @click="accessGame">Access Game</v-btn>
                         </v-row>
                       </v-card>
                       <!-- Fist Game Live Games -->
@@ -111,12 +109,12 @@
                   Last Match
                 </v-card-title>
               </div>
+              <v-row>
+                <v-col></v-col>
+                <v-col>3</v-col>
+              </v-row>
               <v-card-text>
                 <!-- First Player - Last Match -->
-                <v-row>
-                  <v-col> N. Djokovic (1) </v-col>
-                  <v-col>3</v-col>
-                </v-row>
                 <!-- Second Player - Last Match -->
                 <v-row>
                   <v-col> C. Alcaraz (1) </v-col>
@@ -169,7 +167,6 @@ export default {
   data() {
     return {
       store: useGameStore(),
-
       myGames: [],
       isLoading: true,
     };
@@ -186,9 +183,7 @@ export default {
     removeMyGames(game) {
       this.store.removeMyGames(game);
     },
-    renderLiveGames() {
-      this.liveGames = this.store.getLiveScore;
-    },
+
     getSetResult(game, setNumber) {
       console.log(game, setNumber);
     },
