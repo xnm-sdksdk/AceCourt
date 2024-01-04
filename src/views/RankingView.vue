@@ -64,7 +64,7 @@
 
 <script>
 import NavBar from "@/components/NavBar.vue";
-import { useGameStore } from "@/stores/games.js";
+import { useGameStore } from "@/stores/games";
 
 export default {
   components: {
