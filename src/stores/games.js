@@ -67,8 +67,14 @@ export const useGameStore = defineStore("game", {
     addMyGames(game) {
       this.myGames.push(game);
     },
+    // ! Needs review
     removeMyGames(game) {
-      console.log("Remove");
+      const index = this.myGames.findIndex(
+        (myGame) => myGame.event_key === game.event_key
+      );
+      if (index !== -1) {
+        this.myGames.splice(index, 1);
+      }
     },
     async fetchTournaments() {
       try {
@@ -170,5 +176,5 @@ export const useGameStore = defineStore("game", {
       }
     },
   },
-  persist:true
+  persist: true,
 });
