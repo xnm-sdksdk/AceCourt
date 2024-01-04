@@ -93,7 +93,7 @@ export const useGameStore = defineStore("game", {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
-        this.liveGames = data.result;
+        this.fixtures = data.result;
       } catch (err) {
         console.log("Error fetching Fixtures: ", err);
         throw err;
@@ -131,5 +131,5 @@ export const useGameStore = defineStore("game", {
       }
     },
   },
-  persist: true,
+  //persist:true
 });

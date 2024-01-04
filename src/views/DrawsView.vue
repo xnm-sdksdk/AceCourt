@@ -35,37 +35,7 @@
         ></v-select>
       </v-col>
     </v-row>
-
-    <v-row>
-      <div class="py-4">
-        <v-card
-          v-for="game in games"
-          :key="game.event_key"
-          class="bg-grey-lighten-5 mb-4"
-        >
-          <v-row class="rounded-t-xl bg-blue-darken-2 ma-1">
-            <v-col>{{ game.tournament_round }}</v-col>
-            <v-col>{{ game.event_type_type }}</v-col>
-            <v-col>{{ game.event_status }}</v-col>
-          </v-row>
-          <ScoresHeaderResults></ScoresHeaderResults>
-          <v-row class="bg-blue-darken-2 ma-1">
-            <v-col>{{ game.event_first_player }}</v-col>
-            <!--
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col> -->
-          </v-row>
-          <v-row class="rounded-b-xl bg-blue-darken-2 ma-1" I>
-            <v-col>{{ game.event_second_player }}</v-col>
-          </v-row>
-        </v-card>
-      </div>
-    </v-row>
+    
   </v-container>
 </template>
 
@@ -86,8 +56,13 @@ export default {
   },
 
   created() {
-    this.games = this.gameStore.getFixtures;
-    console.log(this.games);
+    this.gameStore.fetchFixtures()
+  },
+
+  computed: {
+    getFixtures() {
+      return this.gameStore.getFixtures
+    }
   },
 
   methods: {
