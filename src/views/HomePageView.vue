@@ -380,7 +380,7 @@
 import NavBar from "@/components/NavBar.vue";
 import Footer from "@/components/Footer.vue";
 import ButtonSeeMore from "@/components/ButtonSeeMore.vue";
-import { useTennisStore } from "@/stores/tennis";
+import { useGameStore } from "@/stores/games";
 //import Chart from "chart.js/auto";
 export default {
   components: {
@@ -391,7 +391,7 @@ export default {
   data() {
     return {
       SeeMore: "See More",
-      store: useTennisStore(),
+      store: useGameStore(),
     };
   },
   computed: {
