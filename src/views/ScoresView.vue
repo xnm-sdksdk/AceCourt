@@ -37,9 +37,11 @@
                           <v-col>{{ game. }}</v-col>
                           <v-col>{{ game. }}</v-col>
                           <v-col>{{ game. }}</v-col> -->
+                      <v-btn @click="removeMyGames">Remove MyGames</v-btn>
                     </v-row>
                     <v-row class="rounded-b-xl bg-blue-darken-2 ma-1" I>
                       <v-col>{{ game.event_second_player }}</v-col>
+                      <v-btn>Access Game</v-btn>
                     </v-row>
                   </v-card>
                 </div>
@@ -85,6 +87,7 @@
 
                         <v-row class="rounded-b-xl bg-blue-darken-2 ma-1" I>
                           <v-col>{{ game.event_second_player }}</v-col>
+                          <v-btn @click="accessGame">Access Game</v-btn>
                         </v-row>
                       </v-card>
                       <!-- Fist Game Live Games -->
@@ -166,13 +169,14 @@ export default {
   data() {
     return {
       store: useGameStore(),
-      liveGames: [],
+
       myGames: [],
       isLoading: true,
     };
   },
   created() {
-    this.liveGames = this.store.getLiveScore;
+    console.log(this.liveGames);
+    this.store.fetchFixtures();
     this.myGames = this.store.getMyGames;
   },
   methods: {
@@ -183,7 +187,7 @@ export default {
       this.store.removeMyGames(game);
     },
     renderLiveGames() {
-      this.liveGames = liveGames;
+      this.liveGames = this.store.getLiveScore;
     },
     getSetResult(game, setNumber) {
       console.log(game, setNumber);
@@ -192,7 +196,11 @@ export default {
       console.log(game);
     },
   },
-  computed: {},
+  computed: {
+    liveGames() {
+      return this.store.getLiveScore;
+    },
+  },
 };
 </script>
 
