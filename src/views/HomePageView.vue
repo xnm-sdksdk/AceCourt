@@ -258,31 +258,43 @@
                 <v-card-title class="ml-5 my-5 text-h5"> Ranking </v-card-title>
               </div>
 
-              <v-row class="ml-3">
-                <v-col cols="6">
+              <v-row class="ml-5">
+                <v-col cols="5">
                   <!-- Player -->
 
                   <v-img
                     src="../assets/nova.svg"
                     alt="Djokovic-Ranking-Image"
-                    width="200px"
-                    height="200px"
+                    width="180px"
+                    height="180px"
                     cover
                     class="rounded-circle"
                   >
                   </v-img>
                 </v-col>
 
-                <v-col cols="5">
-                  <div class="d-flex flex-col">
-                    <v-card-text>{{ fetchFirstPlayer.place }}</v-card-text>
-                    <v-card-text>{{ fetchFirstPlayer.player }}</v-card-text>
-                    <v-card-text>{{ fetchFirstPlayer.points }}</v-card-text>
-                    <v-card-text>{{ fetchFirstPlayer.country }}</v-card-text>
-                    <RouterLink :to="{ name: 'ranking' }">
-                      <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
-                    </RouterLink>
+                <v-col cols="6" class="mb-3">
+                  <div class="flex flex-column text-blue-900 font-bold">
+                    <div class="flex flex-row">
+                      <v-card-text class="text-h6 my-1 max-w-xs">{{
+                        fetchFirstPlayer.place
+                      }}</v-card-text>
+                      <v-card-text class="text-h6 my-1 max-w-xs">{{
+                        fetchFirstPlayer.player
+                      }}</v-card-text>
+                    </div>
+                    <div class="flex flex-row">
+                      <v-card-text class="text-h6 my-1 max-w-xs">{{
+                        fetchFirstPlayer.points
+                      }}</v-card-text>
+                      <v-card-text class="text-h6 my-1 max-w-xs">{{
+                        fetchFirstPlayer.country
+                      }}</v-card-text>
+                    </div>
                   </div>
+                  <RouterLink :to="{ name: 'ranking' }">
+                    <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
+                  </RouterLink>
                 </v-col>
               </v-row>
             </v-card>
