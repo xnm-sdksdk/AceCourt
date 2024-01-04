@@ -64,7 +64,7 @@
 
 <script>
 import NavBar from "@/components/NavBar.vue";
-import { useGameStore } from "@/stores/games";
+import { useGameStore } from "@/stores/games.js";
 
 export default {
   components: {
@@ -73,14 +73,13 @@ export default {
   data() {
     return {
       store: useGameStore(),
-      standings: [],
+      standings:[],
       selectedOption: "Ranking",
     };
   },
 
   created() {
     this.store.fetchStandings();
-    this.standings = this.store.getStandings || [];
   },
   methods: {
     goBack() {
@@ -93,10 +92,14 @@ export default {
   },
 
   computed: {
+    getStandings(){
+      return this.store.getStandings
+    },
+
     filteredStandings() {
       switch (this.selectedOption) {
         case "Ranking":
-          return this.standings;
+          return this.getStandings;
         case "Country":
           // Sort by Country Name
           return this.standings
@@ -115,11 +118,7 @@ export default {
         default:
           return this.standings;
       }
-    },
-  },
-
-  watch: {
-    selectedOption() {},
+    },   
   },
 };
 </script>

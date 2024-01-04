@@ -33,13 +33,13 @@
         </RouterLink>
       </div>
       <div class="flex items-center space-x-4">
-        <RouterLink :to="{ name: 'home' }">
+        <RouterLink :to="{ name: 'scores' }">
           <p>Scores</p>
         </RouterLink>
         <RouterLink :to="{ name: 'home' }">
           <button>Tournaments</button>
         </RouterLink>
-        <RouterLink :to="{ name: 'home' }">
+        <RouterLink :to="{ name: 'news' }">
           <p>News</p>
         </RouterLink>
       </div>
