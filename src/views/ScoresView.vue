@@ -154,7 +154,6 @@
 </template>
 
 <script>
-import { ref, onMounted } from "vue";
 import NavBar from "@/components/NavBar.vue";
 import ScoresHeaderResults from "@/components/ScoresHeaderResults.vue";
 import { useGameStore } from "@/stores/games";
