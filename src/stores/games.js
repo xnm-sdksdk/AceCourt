@@ -102,8 +102,8 @@ export const useGameStore = defineStore("game", {
         console.error("Error fetching players:", error);
       }
     },
-    // https://api.api-tennis.com/tennis/?method=get_fixtures&APIkey=180fc8f42877e51e2ab6e22a8e65be1aa951f5ee63b012a132edcc8c6f290d7b&date_start=2023-01-01&date_stop=2023-02-28&tournament_key=1236
     // Fetch All Games
+    // https://api.api-tennis.com/tennis/?method=get_fixtures&APIkey=180fc8f42877e51e2ab6e22a8e65be1aa951f5ee63b012a132edcc8c6f290d7b&date_start=2023-01-01&date_stop=2023-02-28&tournament_key=1236
     async fetchFixtures() {
       try {
         const response = await fetch(
@@ -120,6 +120,7 @@ export const useGameStore = defineStore("game", {
       }
     },
     // Fetch All Live Games
+    // https://api.api-tennis.com/tennis/?method=get_livescore&APIkey=180fc8f42877e51e2ab6e22a8e65be1aa951f5ee63b012a132edcc8c6f290d7b
     async fetchLiveScores() {
       try {
         const response = await fetch(
@@ -152,6 +153,7 @@ export const useGameStore = defineStore("game", {
       }
     },
     // Fetch Ranking
+    // https://api.api-tennis.com/tennis/?method=get_standings&APIkey=180fc8f42877e51e2ab6e22a8e65be1aa951f5ee63b012a132edcc8c6f290d7b&event_type=ATP
     async fetchStandings() {
       try {
         const response = await fetch(
