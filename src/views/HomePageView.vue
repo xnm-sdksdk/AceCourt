@@ -275,8 +275,10 @@
 
                 <v-col cols="5">
                   <div class="d-flex flex-col">
-                    <v-card-text>{{ fetchRankingPlayerName }}</v-card-text>
-                    <v-card-text>{{ fetchRankingPlayerPoints }}</v-card-text>
+                    <v-card-text>{{ fetchFirstPlayer.place }}</v-card-text>
+                    <v-card-text>{{ fetchFirstPlayer.player }}</v-card-text>
+                    <v-card-text>{{ fetchFirstPlayer.points }}</v-card-text>
+                    <v-card-text>{{ fetchFirstPlayer.country }}</v-card-text>
                     <RouterLink :to="{ name: 'ranking' }">
                       <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
                     </RouterLink>
@@ -394,16 +396,12 @@ export default {
       store: useGameStore(),
     };
   },
+  created() {
+    this.store.fetchStandings();
+  },
   computed: {
-    fetchRankingPlayerName() {
-      return this.store.getFirstPlayerRanking
-        ? this.store.getFirstPlayerRanking.player
-        : "Loading Name...";
-    },
-    fetchRankingPlayerPoints() {
-      return this.store.getFirstPlayerRanking
-        ? this.store.getFirstPlayerRanking.points
-        : "Loading Points...";
+    fetchFirstPlayer() {
+      return this.store.getFirstPlayerRanking;
     },
   },
 };
