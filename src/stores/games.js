@@ -32,11 +32,11 @@ export const useGameStore = defineStore("game", {
     },
     // Get Players
     getPlayers: (state) => {
-      if (state.liveGames.length > 0) {
-        const firstliveGame = state.liveGames[0];
-        return firstliveGame.event_first_player;
-      }
-      return null;
+      // if (state.liveGames.length > 0) {
+      //   const firstliveGame = state.liveGames[0];
+      //   return firstliveGame.event_first_player;
+      // }
+      return state.players;
     },
     // Get Live Games
     getLiveScore: (state) => {
@@ -169,5 +169,5 @@ export const useGameStore = defineStore("game", {
       }
     },
   },
-  //persist:true
+  persist:true
 });
