@@ -61,7 +61,8 @@ export const useGameStore = defineStore("game", {
     },
     // Get All Games
     getFixtures: (state) => {
-      return state.fixtures;
+      const filter=state.fixtures.filter(game=>game.event_qualification==`False`)
+      return filter;
     },
   },
   actions: {
@@ -114,7 +115,7 @@ export const useGameStore = defineStore("game", {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
-        this.liveGames = data.result;
+        this.fixtures = data.result;
       } catch (err) {
         console.log("Error fetching Fixtures: ", err);
         throw err;

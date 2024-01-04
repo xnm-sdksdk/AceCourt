@@ -22,29 +22,31 @@
         <v-select
           v-model="selectedOption"
           :items="[
-            '1st Round',
-            '2nd Round',
-            '3rd Round',
-            '4th Round',
-            'Quarter-Finals',
-            'Semi-Finals',
-            'Final',
+            { text: '1/64 Finals', value: '1\/64-finals' },
+            { text: '1/32 Finals', value: '1\/32-finals' },
+            { text: '1/16 Finals', value: '1\/16-finals' },
+            { text: '1/8 Finals', value: '1\/8-finals' },
+            { text: 'Quarter-Finals', value: 'quarter-finals' },
+            { text: 'Semi-Finals', value: 'semi-finals' },
+            { text: 'Final', value: 'final' },
           ]"
+          item-value="value"
+          item-text="text"
           label="Round:"
           full-width
         ></v-select>
       </v-col>
     </v-row>
     <v-row>
-      <!-- <v-table>
+      <v-table>
         <thead>
-          <th>1st Round</th>
-          <th>2nd Round</th>
-          <th>3rd Round</th>
+          <th></th>
+          <th></th>
+          <th></th>
         </thead>
         <tbody>
           <tr>
-            <v-card
+            <!-- <v-card
               v-for="game in liveGames"
               :key="game.event_key"
               class="rounded-xl bg-grey-lighten-5 ma-3"
@@ -55,7 +57,6 @@
                 <v-col>{{ game.event_status }}</v-col>
               </v-row>
               <v-row> </v-row>
-              <ScoresHeaderResults></ScoresHeaderResults>
               <v-row class="bg-blue-darken-2 ma-1">
                 <v-col>{{ game.event_first_player }}</v-col>
                 <v-btn @click="addMyGames"> Add MyGames </v-btn>
@@ -65,12 +66,13 @@
                 <v-col>{{ game.event_second_player }}</v-col>
                 <v-btn @click="accessGame">Access Game</v-btn>
               </v-row>
-            </v-card>
-          </tr>
+            </v-card>-->
+          </tr> 
         </tbody>
-      </v-table> -->
+      </v-table>
     </v-row>
   </v-container>
+  {{ filterByRound }}
 </template>
 
 <script>
@@ -84,7 +86,7 @@ export default {
   data() {
     return {
       gameStore: useGameStore(),
-      selectedOption: "1st Round",
+      selectedOption: "1/64-finals",
     };
   },
 
@@ -95,6 +97,14 @@ export default {
   computed: {
     getFixtures() {
       return this.gameStore.getFixtures;
+    },
+
+    filterByRound() {
+      const filterGames = this.getFixtures.filter(
+        (game) =>
+          game.tournament_round === `Australian Open - ${this.selectedOption}`
+      );
+      console.log(filterGames);
     },
   },
 
