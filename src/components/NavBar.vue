@@ -37,15 +37,13 @@
           <p>Scores</p>
         </RouterLink>
         <RouterLink :to="{ name: 'home' }">
-        <button>
-          Tournaments
-        </button>
-      </RouterLink>
+          <button>Tournaments</button>
+        </RouterLink>
         <RouterLink :to="{ name: 'home' }">
           <p>News</p>
         </RouterLink>
       </div>
-      
+
       <div v-if="isTournamentsHover" class="subnavbar">
         <RouterLink :to="{ name: 'schedule' }">Schedule</RouterLink>
         <RouterLink :to="{ name: 'draws' }">Draws</RouterLink>
@@ -98,6 +96,9 @@ export default {
 
     isProfilePage() {
       return this.$route.name === "profile";
+    },
+    isTournamentsHover() {
+      console.log("Tournaments Hover");
     },
   },
 };
