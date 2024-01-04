@@ -22,13 +22,13 @@
         <v-select
           v-model="selectedOption"
           :items="[
-            { text: '1/64 Finals', value: '1\/64-finals' },
-            { text: '1/32 Finals', value: '1\/32-finals' },
-            { text: '1/16 Finals', value: '1\/16-finals' },
-            { text: '1/8 Finals', value: '1\/8-finals' },
-            { text: 'Quarter-Finals', value: 'quarter-finals' },
-            { text: 'Semi-Finals', value: 'semi-finals' },
-            { text: 'Final', value: 'final' },
+            '1/64 Finals',
+            '1/32 Finals',
+            '1/16 Finals',
+            '1/8 Finals',
+            'Quarter-Finals',
+            'Semi-Finals',
+            'Final',
           ]"
           item-value="value"
           item-text="text"
@@ -40,9 +40,8 @@
     <v-row>
       <v-table>
         <thead>
-          <th></th>
-          <th></th>
-          <th></th>
+          <th rowspan="10">Serie 1</th>
+          <th rowspan="10">Serie 2</th>
         </thead>
         <tbody>
           <tr>
@@ -67,12 +66,12 @@
                 <v-btn @click="accessGame">Access Game</v-btn>
               </v-row>
             </v-card>-->
-          </tr> 
+          </tr>
         </tbody>
       </v-table>
     </v-row>
   </v-container>
-  {{ filterByRound }}
+  {{ filteredGames }}
 </template>
 
 <script>
@@ -86,7 +85,7 @@ export default {
   data() {
     return {
       gameStore: useGameStore(),
-      selectedOption: "1/64-finals",
+      selectedOption: "1/64 Finals",
     };
   },
 
@@ -99,7 +98,7 @@ export default {
       return this.gameStore.getFixtures;
     },
 
-    filterByRound() {
+    filteredGames() {
       const filterGames = this.getFixtures.filter(
         (game) =>
           game.tournament_round === `Australian Open - ${this.selectedOption}`
