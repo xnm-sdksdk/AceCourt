@@ -99,11 +99,7 @@
           <!-- Second Column Last Match, Players -->
           <v-col cols="3">
             <!-- Last Match -->
-            <v-card
-              class="rounded-xl bg-grey-lighten-4 ma-1"
-              elevation="3"
-              height="300"
-            >
+            <v-card class="rounded-xl bg-grey-lighten-4 ma-1" elevation="3">
               <div class="text-blue-900 font-bold">
                 <v-card-title class="ml-2 my-2 text-h6">
                   Last Match
@@ -136,13 +132,13 @@
                   </v-card-title>
                 </div>
                 <!-- Players -->
-                <v-col> </v-col>
 
                 <!-- See More Players -->
-                <v-row>
-                  <v-col>
-                    <v-btn>See More</v-btn>
-                  </v-col>
+                <v-row
+                  v-for="player in renderPlayers.slice(0, 2)"
+                  :key="player.player_key"
+                >
+                  <v-col>{{ player.player_name }}</v-col>
                 </v-row>
               </v-card>
             </div>
@@ -154,7 +150,6 @@
 </template>
 
 <script>
-import { ref, onMounted } from "vue";
 import NavBar from "@/components/NavBar.vue";
 import ScoresHeaderResults from "@/components/ScoresHeaderResults.vue";
 import { useGameStore } from "@/stores/games";
@@ -173,7 +168,9 @@ export default {
   },
   created() {
     console.log(this.liveGames);
+
     this.store.fetchFixtures();
+    this.store.fetchPlayers();
     this.myGames = this.store.getMyGames;
   },
   methods: {
@@ -194,6 +191,9 @@ export default {
   computed: {
     liveGames() {
       return this.store.getLiveScore;
+    },
+    renderPlayers() {
+      return this.store.getPlayers;
     },
   },
 };
