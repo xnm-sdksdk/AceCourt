@@ -60,7 +60,7 @@
                     </div>
                     <div class="my-4">
                       <v-card
-                        v-for="game in liveGames.slice(0,5)"
+                        v-for="game in liveGames.slice(0, 5)"
                         :key="game.event_key"
                         class="rounded-xl bg-grey-lighten-5 ma-3"
                       >
@@ -105,18 +105,9 @@
                   Last Match
                 </v-card-title>
               </div>
-              <v-row>
-                <v-col></v-col>
-                <v-col>3</v-col>
+              <v-row v-for="lastMatch in liveGames" :key="lastMatch.event_key">
+                <v-col>{{ lastMatch.event_first_player }} vs {{ lastMatch.event_second_player }}</v-col>
               </v-row>
-              <v-card-text>
-                <!-- First Player - Last Match -->
-                <!-- Second Player - Last Match -->
-                <v-row>
-                  <v-col> C. Alcaraz (1) </v-col>
-                  <v-col>0</v-col>
-                </v-row>
-              </v-card-text>
             </v-card>
 
             <div class="my-5">
