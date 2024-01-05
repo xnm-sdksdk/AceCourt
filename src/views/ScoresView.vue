@@ -99,24 +99,26 @@
           <!-- Second Column Last Match, Players -->
           <v-col cols="3">
             <!-- Last Match -->
-            <v-card class="rounded-xl bg-grey-lighten-4 ma-1" elevation="3">
+            <v-card
+              class="rounded-xl bg-grey-lighten-4 ma-1 pa-4"
+              elevation="3"
+            >
               <div class="text-blue-900 font-bold">
                 <v-card-title class="ml-2 my-2 text-h6">
                   Last Match
                 </v-card-title>
               </div>
               <v-row v-for="lastMatch in liveGames" :key="lastMatch.event_key">
-                <v-col>{{ lastMatch.event_first_player }} vs {{ lastMatch.event_second_player }}</v-col>
+                <v-col
+                  >{{ lastMatch.event_first_player }} vs
+                  {{ lastMatch.event_second_player }}</v-col
+                >
               </v-row>
             </v-card>
 
             <div class="my-5">
               <!-- Players -->
-              <v-card
-                class="rounded-xl bg-grey-lighten-4 ma-1"
-                elevation="3"
-                height="300"
-              >
+              <v-card class="rounded-xl bg-grey-lighten-4 ma-1 pa-4" elevation="3">
                 <div class="text-blue-900 font-bold">
                   <v-card-title class="ml-2 my-2 text-h6">
                     Players
