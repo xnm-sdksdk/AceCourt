@@ -60,7 +60,7 @@
                     </div>
                     <div class="my-4">
                       <v-card
-                        v-for="game in liveGames"
+                        v-for="game in liveGames.slice(0,5)"
                         :key="game.event_key"
                         class="rounded-xl bg-grey-lighten-5 ma-3"
                       >
@@ -169,7 +169,7 @@ export default {
   created() {
     console.log(this.liveGames);
 
-    this.store.fetchFixtures();
+    this.store.fetchLiveScores();
     this.store.fetchPlayers();
     this.myGames = this.store.getMyGames;
   },
