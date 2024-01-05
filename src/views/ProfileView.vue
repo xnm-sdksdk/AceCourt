@@ -54,12 +54,12 @@
                       <v-card-subtitle class="text-slate-700"
                         >Bio</v-card-subtitle
                       >
-                      <v-text class="ml-3 max-w-md"
+                      <v-card-text class="ml-3 max-w-md"
                         >Greetings, fellow tennis enthusiasts! I'm Sara, your
                         go- to source for all things tennis-related. As I
                         celebrate my one-year journey in the vibrant world of
                         tennis, allow me to share a bit about my tennis-loving
-                        self.</v-text
+                        self.</v-card-text
                       >
                     </div>
                   </v-col>
@@ -85,7 +85,9 @@ export default {
     NavBar,
     ProfileButtons,
   },
-  // setup() {},
+  data() {
+    return {};
+  },
 };
 </script>
 
