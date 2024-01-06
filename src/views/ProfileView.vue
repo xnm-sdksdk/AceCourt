@@ -68,9 +68,17 @@
             </v-col>
           </v-row>
         </div>
-        <div class="m-6 p-6">
-          <button class="px-6">Save</button>
-          <button>Logout</button>
+        <div class="flex flex-row m-3 p-3">
+          <div
+            class="flex flex-row bg-blue-lighten-5 rounded-xl pa-3 max-w-xs justify-center align-center"
+          >
+            <button class="px-6">Save</button>
+          </div>
+          <div
+            class="flex flex-row bg-blue-lighten-5 rounded-xl pa-3 max-w-xs justify-center align-center"
+          >
+            <button>Logout</button>
+          </div>
         </div>
       </v-main>
     </v-container>
