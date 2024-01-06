@@ -104,11 +104,11 @@
               elevation="3"
             >
               <div class="text-blue-900 font-bold">
-                <v-card-title class="ml-2 my-2 text-h6">
+                <v-card-title class="ml-2 my-1 text-h6">
                   Last Match
                 </v-card-title>
               </div>
-              <v-row v-for="lastMatch in liveGames" :key="lastMatch.event_key">
+              <v-row v-for="lastMatch in liveGames" :key="lastMatch.event_key"  class="ml-3 my-3">
                 <v-col
                   >{{ lastMatch.event_first_player }} vs
                   {{ lastMatch.event_second_player }}</v-col
@@ -120,7 +120,7 @@
               <!-- Players -->
               <v-card class="rounded-xl bg-grey-lighten-4 ma-1 pa-4" elevation="3">
                 <div class="text-blue-900 font-bold">
-                  <v-card-title class="ml-2 my-2 text-h6">
+                  <v-card-title class="ml-2 my-1 text-h6">
                     Players
                   </v-card-title>
                 </div>
@@ -130,6 +130,7 @@
                 <v-row
                   v-for="player in renderPlayers.slice(0, 2)"
                   :key="player.player_key"
+                  class="ml-3 my-3"
                 >
                   <v-col>{{ player.player_name }}</v-col>
                 </v-row>
