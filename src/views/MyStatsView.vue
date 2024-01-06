@@ -19,7 +19,7 @@
               >
                 <v-row class="justify-center align-center">
                   <v-col cols="11">
-                    <p>Graph Hours per Day</p>
+                    <p class="my-3">Graph Hours per Day</p>
                   </v-col>
                 </v-row>
               </v-card>
@@ -31,7 +31,7 @@
                     elevation="3"
                     height="100"
                   >
-                    <p>Days in streak</p>
+                    <p class="my-3 ml-3">Days in streak</p>
                   </v-card>
                 </v-col>
                 <v-col cols="6" class="my-4">
@@ -40,7 +40,7 @@
                     elevation="3"
                     height="100"
                   >
-                    <p>Average Hours</p>
+                    <p class="my-3 ml-3">Average Hours</p>
                   </v-card>
                 </v-col>
               </v-row>
@@ -52,7 +52,7 @@
                     elevation="3"
                     height="100"
                   >
-                    <p>Right Games</p>
+                    <p class="my-3 ml-3">Right Games</p>
                   </v-card>
                 </v-col>
                 <v-col cols="6" class="my-4">
@@ -61,7 +61,7 @@
                     elevation="3"
                     height="100"
                   >
-                    <p>Right Games Streak</p>
+                    <p class="my-3 ml-3">Right Games Streak</p>
                   </v-card>
                 </v-col>
               </v-row>
@@ -73,7 +73,7 @@
                     elevation="3"
                     height="100"
                   >
-                    <p>Favorite Players</p>
+                    <p class="my-3 ml-3">Favorite Players</p>
                   </v-card>
                 </v-col>
               </v-row>
