@@ -3,10 +3,10 @@
     <NavBar></NavBar>
     <v-container>
       <v-main class="d-flex justify-center align-start flex-column">
-        <div class="font-bold ml-15 mt-5">
+        <div class="font-bold">
           <h1>My Profile</h1>
         </div>
-        <div class="ma-3 ml-5 pa-3">
+        <div class="ma-3 pa-3">
           <ProfileButtons></ProfileButtons>
         </div>
         <div class="container mx-auto flex justify-between items-center py-4">
