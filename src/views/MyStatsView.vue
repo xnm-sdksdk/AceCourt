@@ -31,7 +31,9 @@
                     elevation="3"
                     height="100"
                   >
-                    <p class="my-3 ml-3">Days in streak</p>
+                    <Fire></Fire>
+
+                    <v-card-text class="my-3 ml-3">Days in streak</v-card-text>
                   </v-card>
                 </v-col>
                 <v-col cols="6" class="my-4">
@@ -40,7 +42,7 @@
                     elevation="3"
                     height="100"
                   >
-                    <p class="my-3 ml-3">Average Hours</p>
+                    <v-card-text class="my-3 ml-3">Average Hours</v-card-text>
                   </v-card>
                 </v-col>
               </v-row>
@@ -52,7 +54,7 @@
                     elevation="3"
                     height="100"
                   >
-                    <p class="my-3 ml-3">Right Games</p>
+                    <v-card-text class="my-3 ml-3">Right Games</v-card-text>
                   </v-card>
                 </v-col>
                 <v-col cols="6" class="my-4">
@@ -61,7 +63,7 @@
                     elevation="3"
                     height="100"
                   >
-                    <p class="my-3 ml-3">Right Games Streak</p>
+                    <v-card-text class="my-3 ml-3">Right Games Streak</v-card-text>
                   </v-card>
                 </v-col>
               </v-row>
@@ -73,7 +75,7 @@
                     elevation="3"
                     height="100"
                   >
-                    <p class="my-3 ml-3">Favorite Players</p>
+                    <v-card-text class="my-3 ml-3">Favorite Players</v-card-text>
                   </v-card>
                 </v-col>
               </v-row>
@@ -88,10 +90,12 @@
 <script>
 import NavBar from "@/components/NavBar.vue";
 import ProfileButtons from "@/components/ProfileButtons.vue";
+import Fire from "@/assets/fire.svg";
 export default {
   components: {
     NavBar,
     ProfileButtons,
+    Fire,
   },
   // setup() {},
 };
