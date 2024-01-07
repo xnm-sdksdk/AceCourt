@@ -60,7 +60,7 @@ export const useGameStore = defineStore("game", {
     },
     // Get All Games
     getFixtures: (state) => {
-      const filter=state.fixtures.filter(game=>game.event_qualification==`False`)
+      const filter=state.fixtures.filter(game=>game.event_qualification !=`True`)
       return filter;
     },
   },
@@ -177,5 +177,4 @@ export const useGameStore = defineStore("game", {
       }
     },
   },
-  persist: true,
 });

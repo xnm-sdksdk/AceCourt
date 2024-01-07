@@ -30,8 +30,6 @@
             'Semi-Finals',
             'Final',
           ]"
-          item-value="value"
-          item-text="text"
           label="Round:"
           full-width
         ></v-select>
@@ -45,33 +43,34 @@
         </thead>
         <tbody>
           <tr>
-            <!-- <v-card
-              v-for="game in liveGames"
+            <v-card
+              v-for="game in filteredGames"
               :key="game.event_key"
               class="rounded-xl bg-grey-lighten-5 ma-3"
             >
-              <v-row class="rounded-t-xl bg-blue-darken-2 ma-1">
-                <v-col>{{ game.tournament_round }}</v-col>
-                <v-col>{{ game.event_type_type }}</v-col>
-                <v-col>{{ game.event_status }}</v-col>
-              </v-row>
-              <v-row> </v-row>
               <v-row class="bg-blue-darken-2 ma-1">
                 <v-col>{{ game.event_first_player }}</v-col>
-                <v-btn @click="addMyGames"> Add MyGames </v-btn>
+                <v-col v-for="score in game.scores" :key="score.set">
+                  <div v-html="formatScore(score.score_first)"></div>
+                </v-col>
+                <v-col></v-col>
+                <v-col></v-col>
               </v-row>
 
-              <v-row class="rounded-b-xl bg-blue-darken-2 ma-1" I>
+              <v-row class="rounded-b-xl bg-blue-darken-2 ma-1">
                 <v-col>{{ game.event_second_player }}</v-col>
-                <v-btn @click="accessGame">Access Game</v-btn>
+                <v-col v-for="score in game.scores" :key="score.set">
+                  <div v-html="formatScore(score.score_second)"></div>
+                </v-col>
+                <v-col></v-col>
+                <v-col></v-col>
               </v-row>
-            </v-card>-->
+            </v-card>
           </tr>
         </tbody>
       </v-table>
     </v-row>
   </v-container>
-  {{ filteredGames }}
 </template>
 
 <script>
@@ -85,12 +84,13 @@ export default {
   data() {
     return {
       gameStore: useGameStore(),
-      selectedOption: "1/64 Finals",
+      selectedOption: "Final",
     };
   },
 
   created() {
     this.gameStore.fetchFixtures();
+    console.log(this.getFixtures);
   },
 
   computed: {
@@ -99,17 +99,53 @@ export default {
     },
 
     filteredGames() {
-      const filterGames = this.getFixtures.filter(
-        (game) =>
-          game.tournament_round === `Australian Open - ${this.selectedOption}`
-      );
-      console.log(filterGames);
+      console.log("Selected Option:", this.selectedOption);
+      switch (this.selectedOption) {
+        case "1/64 Finals":
+          return this.getFixtures.filter(
+            (game) => game.tournament_round === "Australian Open - 1/64-finals"
+          );
+        case "1/32 Finals":
+          return this.getFixtures.filter(
+            (game) => game.tournament_round === "Australian Open - 1/32-finals"
+          );
+        case "1/16 Finals":
+          return this.getFixtures.filter(
+            (game) => game.tournament_round === "Australian Open - 1/16-finals"
+          );
+        case "1/8 Finals":
+          return this.getFixtures.filter(
+            (game) => game.tournament_round === "Australian Open - 1/8-finals"
+          );
+        case "Quarter-Finals":
+          return this.getFixtures.filter(
+            (game) => game.tournament_round === "Australian Open - Quarter-finals"
+          );
+        case "Semi-Finals":
+          return this.getFixtures.filter(
+            (game) => game.tournament_round === "Australian Open - Semi-finals"
+          );
+        case "Final":
+          return this.getFixtures.filter(
+            (game) => game.tournament_round === "Australian Open - Final");
+        default:
+          return this.getFixtures;
+      }
     },
   },
 
   methods: {
     goBack() {
       this.$router.go(-1);
+    },
+
+    formatScore(score) {
+      const [integerPart, decimalPart] = score.split(".");
+      if (decimalPart) {
+        return `${integerPart}<sup>${decimalPart}</sup>`;
+      } else {
+        return integerPart;
+      }
     },
   },
 };
