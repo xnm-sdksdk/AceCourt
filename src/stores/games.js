@@ -177,4 +177,5 @@ export const useGameStore = defineStore("game", {
       }
     },
   },
+  persist:true
 });
