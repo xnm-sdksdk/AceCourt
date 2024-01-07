@@ -54,12 +54,12 @@
                       <v-card-subtitle class="text-slate-700"
                         >Bio</v-card-subtitle
                       >
-                      <v-text class="ml-3 max-w-md"
+                      <v-card-text class="ml-3 max-w-md"
                         >Greetings, fellow tennis enthusiasts! I'm Sara, your
                         go- to source for all things tennis-related. As I
                         celebrate my one-year journey in the vibrant world of
                         tennis, allow me to share a bit about my tennis-loving
-                        self.</v-text
+                        self.</v-card-text
                       >
                     </div>
                   </v-col>
@@ -68,9 +68,17 @@
             </v-col>
           </v-row>
         </div>
-        <div class="m-6 p-6">
-          <button class="px-6">Save</button>
-          <button>Logout</button>
+        <div class="flex flex-row m-3 p-3">
+          <div
+            class="flex flex-row bg-blue-lighten-5 rounded-xl pa-3 max-w-xs justify-center align-center"
+          >
+            <button class="px-6">Save</button>
+          </div>
+          <div
+            class="flex flex-row bg-blue-lighten-5 rounded-xl pa-3 max-w-xs justify-center align-center"
+          >
+            <button>Logout</button>
+          </div>
         </div>
       </v-main>
     </v-container>
@@ -85,7 +93,9 @@ export default {
     NavBar,
     ProfileButtons,
   },
-  // setup() {},
+  data() {
+    return {};
+  },
 };
 </script>
 

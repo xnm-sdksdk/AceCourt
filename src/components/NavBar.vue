@@ -52,14 +52,14 @@
       <div class="flex items-center space-x-4" v-if="!isUserLoggedIn">
         <RouterLink :to="{ name: 'login' }">
           <button
-            class="bg-white border border-blue-500 text-blue-500 px-4 py-2 rounded-full hover:bg-gray-100"
+            class="bg-white border border-blue-500 text-blue-500 px-4 py-2 rounded-full hover:bg-gray-100 justify-center align-center"
           >
             Login
           </button>
         </RouterLink>
         <RouterLink :to="{ name: 'signup' }">
           <button
-            class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600"
+            class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 justify-center align-center"
           >
             Sign Up
           </button>

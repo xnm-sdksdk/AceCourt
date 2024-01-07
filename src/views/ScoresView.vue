@@ -69,24 +69,44 @@
                           <v-col>{{ game.event_type_type }}</v-col>
                           <v-col>{{ game.event_status }}</v-col>
                         </v-row>
-                        <v-row> </v-row>
+                        <!-- Header Scores Results -->
                         <ScoresHeaderResults></ScoresHeaderResults>
-                        <v-row class="bg-blue-darken-2 ma-1">
-                          <v-col>{{ game.event_first_player }}</v-col>
-                          <!--
-                            <v-col>{{ game. }}</v-col>
-                            <v-col>{{ game. }}</v-col>
-                            <v-col>{{ game. }}</v-col>
-                            <v-col>{{ game. }}</v-col>
+                        <div class="game.event_live === '1'">
+                          <!-- <div
+                            class=""
+                            v-for="pointByPoint in game.pointbypoint"
+                            :key="pointByPoint.set_number"
+                          > -->
+                          <div
+                            class=""
+                            v-for="set in game.scores"
+                            :key="set.scores_set"
+                          >
+                            <v-row class="bg-blue-darken-2 ma-1">
+                              <v-col>{{ game.event_first_player }}</v-col>
+                              <v-col>{{
+                                game.event_game_result.slice(0, 2)
+                              }}</v-col>
+                              <!-- <v-col>{{ game.event_serve }}</v-col>  -->
+                              <!-- ! Call above useful for court view -->
+                              <v-col>{{ set.score_first }}</v-col>
+                              <v-col>{{ set.score_second }}</v-col>
+                              <!--
                             <v-col>{{ game. }}</v-col>
                             <v-col>{{ game. }}</v-col>
                             <v-col>{{ game. }}</v-col> -->
-                          <v-btn @click="addMyGames"> Add MyGames </v-btn>
-                        </v-row>
+                              <v-btn @click="addMyGames"> Add MyGames </v-btn>
+                            </v-row>
 
-                        <v-row class="rounded-b-xl bg-blue-darken-2 ma-1" I>
-                          <v-col>{{ game.event_second_player }}</v-col>
-                        </v-row>
+                            <v-row class="rounded-b-xl bg-blue-darken-2 ma-1" I>
+                              <v-col>{{ game.event_second_player }}</v-col>
+                              <v-col>{{
+                                game.event_game_result.slice(4, 7)
+                              }}</v-col>
+                            </v-row>
+                            <!-- </div> -->
+                          </div>
+                        </div>
                       </v-card>
                       <!-- Fist Game Live Games -->
                     </div>
@@ -99,35 +119,35 @@
           <!-- Second Column Last Match, Players -->
           <v-col cols="3">
             <!-- Last Match -->
-            <v-card class="rounded-xl bg-grey-lighten-4 ma-1" elevation="3">
+            <v-card
+              class="rounded-xl bg-grey-lighten-4 ma-1 pa-4"
+              elevation="3"
+            >
               <div class="text-blue-900 font-bold">
-                <v-card-title class="ml-2 my-2 text-h6">
+                <v-card-title class="ml-2 my-1 text-h6">
                   Last Match
                 </v-card-title>
               </div>
-              <v-row>
-                <v-col></v-col>
-                <v-col>3</v-col>
+              <v-row
+                v-for="lastMatch in liveGames"
+                :key="lastMatch.event_key"
+                class="ml-3 my-3"
+              >
+                <v-col
+                  >{{ lastMatch.event_first_player }} vs
+                  {{ lastMatch.event_second_player }}</v-col
+                >
               </v-row>
-              <v-card-text>
-                <!-- First Player - Last Match -->
-                <!-- Second Player - Last Match -->
-                <v-row>
-                  <v-col> C. Alcaraz (1) </v-col>
-                  <v-col>0</v-col>
-                </v-row>
-              </v-card-text>
             </v-card>
 
             <div class="my-5">
               <!-- Players -->
               <v-card
-                class="rounded-xl bg-grey-lighten-4 ma-1"
+                class="rounded-xl bg-grey-lighten-4 ma-1 pa-4"
                 elevation="3"
-                height="300"
               >
                 <div class="text-blue-900 font-bold">
-                  <v-card-title class="ml-2 my-2 text-h6">
+                  <v-card-title class="ml-2 my-1 text-h6">
                     Players
                   </v-card-title>
                 </div>
@@ -137,6 +157,7 @@
                 <v-row
                   v-for="player in renderPlayers.slice(0, 2)"
                   :key="player.player_key"
+                  class="ml-3 my-3"
                 >
                   <v-col>{{ player.player_name }}</v-col>
                 </v-row>
@@ -169,7 +190,7 @@ export default {
   created() {
     console.log(this.liveGames);
 
-    this.store.fetchFixtures();
+    this.store.fetchLiveScores();
     this.store.fetchPlayers();
     this.myGames = this.store.getMyGames;
   },
