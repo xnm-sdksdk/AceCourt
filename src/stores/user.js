@@ -19,12 +19,22 @@ export const useUserStore = defineStore("user", {
       }
     },
 
-    register(name,email,password,typeUser){
-      const findUser=this.users.find(user=>user.email==email)
-      if(findUser){
-        alert("Already have an account with this email!")
-      }else{
-        this.users.push({id:this.users[this.users.length - 1].id + 1, name:name , email: email , password: password , typeUser:typeUser})
+    register(name, email, password, typeUser) {
+      const findUser = this.users.find((user) => user.email === email);
+    
+      if (findUser) {
+        alert("Already have an account with this email!");
+      } else {
+        const newUserId = this.users.length > 0 ? this.users[this.users.length - 1].id + 1 : 1;
+    
+        this.users.push({
+          id: newUserId,
+          name: name,
+          email: email,
+          password: password,
+          typeUser: typeUser,
+        });
+    
         console.log(this.users);
       }
     },
