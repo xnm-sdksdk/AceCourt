@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-white shadow-md p-4" v-if="isLandingPage">
+  <nav>
     <div class="container mx-auto flex justify-between items-center">
       <div class="flex items-center">
         <RouterLink :to="{ name: 'home' }">
@@ -7,32 +7,7 @@
         </RouterLink>
       </div>
       <div class="flex items-center space-x-4">
-        <RouterLink :to="{ name: 'login' }">
-          <button
-            class="bg-white border border-blue-500 text-blue-500 px-4 py-2 rounded-full hover:bg-gray-100 justify-center align-center"
-          >
-            Login
-          </button>
-        </RouterLink>
-        <RouterLink :to="{ name: 'signup' }">
-          <button
-            class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 justify-center align-center"
-          >
-            Sign Up
-          </button>
-        </RouterLink>
-      </div>
-    </div>
-  </nav>
-
-  <nav v-else-if="!isLandingPage">
-    <div class="container mx-auto flex justify-between items-center">
-      <div class="flex items-center">
-        <RouterLink :to="{ name: 'home' }">
-          <h1>Ace Court</h1>
-        </RouterLink>
-      </div>
-      <div class="flex items-center space-x-4">
+        <!-- Navbar para usuário logado -->
         <RouterLink :to="{ name: 'scores' }">
           <p>Scores</p>
         </RouterLink>
@@ -43,13 +18,17 @@
           <p>News</p>
         </RouterLink>
       </div>
-
-      <div v-if="isTournamentsHover" class="subnavbar">
-        <RouterLink :to="{ name: 'schedule' }">Schedule</RouterLink>
-        <RouterLink :to="{ name: 'draws' }">Draws</RouterLink>
-        <RouterLink :to="{ name: 'ranking' }">Ranking</RouterLink>
+      <div v-if="isUserLoggedIn">
+        <!-- Botão para o perfil quando logado -->
+        <RouterLink :to="{ name: 'profile' }">
+          <button
+            class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 justify-center align-center"
+          >
+            Profile
+          </button>
+        </RouterLink>
       </div>
-      <div class="flex items-center space-x-4" v-if="!isUserLoggedIn">
+      <div v-else class="flex items-center space-x-4">
         <RouterLink :to="{ name: 'login' }">
           <button
             class="bg-white border border-blue-500 text-blue-500 px-4 py-2 rounded-full hover:bg-gray-100 justify-center align-center"
@@ -65,15 +44,8 @@
           </button>
         </RouterLink>
       </div>
-      <div v-else>
-        <RouterLink :to="{ name: 'profile' }">
-          <img src="@/assets/profile.svg" alt="" />
-        </RouterLink>
-      </div>
     </div>
   </nav>
-
-  <nav v-else-if="isProfilePage">asdasd</nav>
 </template>
 
 <script>
@@ -82,23 +54,13 @@ export default {
   data() {
     return {
       store: useUserStore(),
+      isTournamentsHover: false,
     };
   },
 
   computed: {
-    isLandingPage() {
-      return this.$route.name === "landingpage";
-    },
-
     isUserLoggedIn() {
       return this.store.getLoggedUser;
-    },
-
-    isProfilePage() {
-      return this.$route.name === "profile";
-    },
-    isTournamentsHover() {
-      console.log("Tournaments Hover");
     },
   },
 };

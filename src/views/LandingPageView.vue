@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavBar></NavBar>
+    <LandingNavBar></LandingNavBar>
     <v-container
       class="container mx-auto flex justify-between items-center p-4"
     >
@@ -278,12 +278,12 @@
 </template>
 
 <script>
-import NavBar from "../components/NavBar.vue";
+import LandingNavBar from "../components/LandingNavBar.vue";
 import Footer from "../components/Footer.vue";
 
 export default {
   components: {
-    NavBar,
+    LandingNavBar,
     Footer,
   },
 };
