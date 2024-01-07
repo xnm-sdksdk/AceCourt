@@ -36,10 +36,10 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-table>
+      <v-col>
+        <v-table>
         <thead>
-          <th rowspan="10">Serie 1</th>
-          <th rowspan="10">Serie 2</th>
+          <th rowspan="10">{{ selectedOption }}</th>
         </thead>
         <tbody>
           <tr>
@@ -48,28 +48,86 @@
               :key="game.event_key"
               class="rounded-xl bg-grey-lighten-5 ma-3"
             >
-              <v-row class="bg-blue-darken-2 ma-1">
+              <v-row class="rounded-xl bg-grey-lighten-5 ma-3">
                 <v-col>{{ game.event_first_player }}</v-col>
-                <v-col v-for="score in game.scores" :key="score.set">
+                <v-col v-for="(score) in game.scores" :key="score.set">
                   <div v-html="formatScore(score.score_first)"></div>
                 </v-col>
-                <v-col></v-col>
-                <v-col></v-col>
               </v-row>
 
-              <v-row class="rounded-b-xl bg-blue-darken-2 ma-1">
+              <v-row class="rounded-xl bg-grey-lighten-5 ma-3">
                 <v-col>{{ game.event_second_player }}</v-col>
                 <v-col v-for="score in game.scores" :key="score.set">
                   <div v-html="formatScore(score.score_second)"></div>
                 </v-col>
-                <v-col></v-col>
-                <v-col></v-col>
               </v-row>
             </v-card>
           </tr>
         </tbody>
       </v-table>
+      </v-col>
+      <v-col>
+        <v-table>
+        <thead>
+          <th rowspan="10">{{ selectedOption }}</th>
+        </thead>
+        <tbody>
+          <tr>
+            <v-card
+              v-for="game in filteredGames"
+              :key="game.event_key"
+              class="rounded-xl bg-grey-lighten-5 ma-3"
+            >
+              <v-row class="rounded-xl bg-grey-lighten-5 ma-3">
+                <v-col>{{ game.event_first_player }}</v-col>
+                <v-col v-for="(score) in game.scores" :key="score.set">
+                  <div v-html="formatScore(score.score_first)"></div>
+                </v-col>
+              </v-row>
+
+              <v-row class="rounded-xl bg-grey-lighten-5 ma-3">
+                <v-col>{{ game.event_second_player }}</v-col>
+                <v-col v-for="score in game.scores" :key="score.set">
+                  <div v-html="formatScore(score.score_second)"></div>
+                </v-col>
+              </v-row>
+            </v-card>
+          </tr>
+        </tbody>
+      </v-table>
+      </v-col>
+      <v-col>
+        <v-table>
+        <thead>
+          <th rowspan="10">{{ selectedOption }}</th>
+        </thead>
+        <tbody>
+          <tr>
+            <v-card
+              v-for="game in filteredGames"
+              :key="game.event_key"
+              class="rounded-xl bg-grey-lighten-5 ma-3"
+            >
+              <v-row class="rounded-xl bg-grey-lighten-5 ma-3">
+                <v-col>{{ game.event_first_player }}</v-col>
+                <v-col v-for="(score) in game.scores" :key="score.set">
+                  <div v-html="formatScore(score.score_first)"></div>
+                </v-col>
+              </v-row>
+
+              <v-row class="rounded-xl bg-grey-lighten-5 ma-3">
+                <v-col>{{ game.event_second_player }}</v-col>
+                <v-col v-for="score in game.scores" :key="score.set">
+                  <div v-html="formatScore(score.score_second)"></div>
+                </v-col>
+              </v-row>
+            </v-card>
+          </tr>
+        </tbody>
+      </v-table>
+      </v-col>
     </v-row>
+    
   </v-container>
 </template>
 
@@ -84,7 +142,7 @@ export default {
   data() {
     return {
       gameStore: useGameStore(),
-      selectedOption: "Final",
+      selectedOption: "Semi-Final",
     };
   },
 
@@ -140,13 +198,22 @@ export default {
     },
 
     formatScore(score) {
-      const [integerPart, decimalPart] = score.split(".");
-      if (decimalPart) {
-        return `${integerPart}<sup>${decimalPart}</sup>`;
+      const number = score.split(".");
+      if (number[1]) {
+        return `${number[0]}<sup>${number[1]}</sup>`;
       } else {
-        return integerPart;
+        return number[0];
       }
     },
+
+    formatFinalResult(result){
+      const score=result.split(" - ")
+      if (score[1]) {
+        return `${number[0]}<sup>${number[1]}</sup>`;
+      } else {
+        return number[0];
+      }
+    }
   },
 };
 </script>
