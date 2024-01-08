@@ -68,16 +68,18 @@
             </v-col>
           </v-row>
         </div>
-        <div class="flex flex-row m-3 p-3">
+        <div class="flex flex-row m-3 px-2">
           <div
-            class="flex flex-row bg-blue-lighten-5 rounded-xl pa-3 max-w-xs justify-center align-center"
+            class="bg-blue-lighten-5 rounded-xl mx-3 pa-3 max-w-xs justify-center align-center"
           >
-            <button class="px-6">Save</button>
+            <button class="justify-center align-center text-blue-900">Save</button>
           </div>
           <div
-            class="flex flex-row bg-blue-lighten-5 rounded-xl pa-3 max-w-xs justify-center align-center"
+            class="bg-blue-lighten-5 rounded-xl pa-3 max-w-xs justify-center align-center"
           >
-            <button @click="logout">Logout</button>
+            <button class="justify-center align-center text-blue-900" @click="logout">
+              Logout
+            </button>
           </div>
         </div>
       </v-main>
@@ -88,7 +90,7 @@
 <script>
 import NavBar from "@/components/NavBar.vue";
 import ProfileButtons from "@/components/ProfileButtons.vue";
-import { useUserStore } from '../stores/user';
+import { useUserStore } from "../stores/user";
 export default {
   components: {
     NavBar,
@@ -96,15 +98,15 @@ export default {
   },
   data() {
     return {
-      userStore:useUserStore()
+      userStore: useUserStore(),
     };
   },
 
   methods: {
     logout() {
-      this.userStore.logout
-      this.$router.push({name:"landingpage"})
-    }
+      this.userStore.logout;
+      this.$router.push({ name: "landingpage" });
+    },
   },
 };
 </script>
