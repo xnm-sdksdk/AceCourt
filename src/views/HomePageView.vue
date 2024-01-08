@@ -103,13 +103,13 @@
               </div>
             </v-card>
             <!-- Second Row -->
-            <div class="justify-center items-center p-1">
+            <div class="p-1">
               <v-card
                 v-for="game in liveGames.slice(0, 1)"
                 :key="game.event_key"
-                class="text-center bg-grey-lighten-5"
+                class="text-center rounded-b-xl bg-grey-lighten-5"
               >
-                <v-row>
+                <v-row class="rounded-b-xl">
                   <v-col cols="2" class="m-3">{{
                     game.event_first_player
                   }}</v-col>
@@ -121,8 +121,8 @@
                   <v-col cols="2" class="m-3">2</v-col>
                 </v-row>
                 <!-- Third Row -->
-                <div class="justify-center items-center p-1">
-                  <v-row class="rounded-b-xl text-center">
+                <div class="">
+                  <v-row class="">
                     <v-col cols="2" class="m-3">{{
                       game.event_second_player
                     }}</v-col>
