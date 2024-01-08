@@ -129,7 +129,7 @@
                 </v-card-title>
               </div>
               <v-row
-                v-for="lastMatch in liveGames"
+                v-for="lastMatch in liveGames.slice(0, 4)"
                 :key="lastMatch.event_key"
                 class="ml-3 my-3"
               >
