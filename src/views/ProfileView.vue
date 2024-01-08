@@ -77,7 +77,7 @@
           <div
             class="flex flex-row bg-blue-lighten-5 rounded-xl pa-3 max-w-xs justify-center align-center"
           >
-            <button>Logout</button>
+            <button @click="logout">Logout</button>
           </div>
         </div>
       </v-main>
@@ -88,13 +88,23 @@
 <script>
 import NavBar from "@/components/NavBar.vue";
 import ProfileButtons from "@/components/ProfileButtons.vue";
+import { useUserStore } from '../stores/user';
 export default {
   components: {
     NavBar,
     ProfileButtons,
   },
   data() {
-    return {};
+    return {
+      userStore:useUserStore()
+    };
+  },
+
+  methods: {
+    logout() {
+      this.userStore.logout
+      this.$router.push({name:"landingpage"})
+    }
   },
 };
 </script>
