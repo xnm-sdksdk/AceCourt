@@ -99,24 +99,20 @@
               elevation="3"
             >
               <div class="justify-center items-center p-1">
-                <div class="text-blue-900 font-bold">
-                  <v-row>
-                    <v-col cols="2" class="m-3">Sets</v-col>
-                    <v-col cols="1" class="m-3">1st</v-col>
-                    <v-col cols="1" class="m-3">2nd</v-col>
-                    <v-col cols="1" class="m-3">3rd</v-col>
-                    <v-col cols="1" class="m-3">4th</v-col>
-                    <v-col cols="1" class="m-3">5th</v-col>
-                    <v-col cols="2" class="m-3">Final</v-col>
-                  </v-row>
-                </div>
+                <ScoresHeaderHome></ScoresHeaderHome>
               </div>
             </v-card>
             <!-- Second Row -->
             <div class="justify-center items-center p-1">
-              <v-card class="text-center bg-grey-lighten-5 white--text">
+              <v-card
+                v-for="game in liveGames.slice(0, 1)"
+                :key="game.event_key"
+                class="text-center bg-grey-lighten-5"
+              >
                 <v-row>
-                  <v-col cols="2" class="m-3">N. Djokovic</v-col>
+                  <v-col cols="2" class="m-3">{{
+                    game.event_first_player
+                  }}</v-col>
                   <v-col cols="1" class="m-3">6</v-col>
                   <v-col cols="1" class="m-3">6</v-col>
                   <v-col cols="1" class="m-3">-</v-col>
@@ -124,22 +120,20 @@
                   <v-col cols="1" class="m-3">-</v-col>
                   <v-col cols="2" class="m-3">2</v-col>
                 </v-row>
-              </v-card>
-            </div>
-            <!-- Third Row -->
-            <div class="justify-center items-center p-1">
-              <v-card
-                class="rounded-b-xl text-center bg-grey-lighten-5 white--text"
-              >
-                <v-row>
-                  <v-col cols="2" class="m-3">C. Alcaraz</v-col>
-                  <v-col cols="1" class="m-3">3</v-col>
-                  <v-col cols="1" class="m-3">2</v-col>
-                  <v-col cols="1" class="m-3">-</v-col>
-                  <v-col cols="1" class="m-3">-</v-col>
-                  <v-col cols="1" class="m-3">-</v-col>
-                  <v-col cols="2" class="m-3">0</v-col>
-                </v-row>
+                <!-- Third Row -->
+                <div class="justify-center items-center p-1">
+                  <v-row class="rounded-b-xl text-center">
+                    <v-col cols="2" class="m-3">{{
+                      game.event_second_player
+                    }}</v-col>
+                    <v-col cols="1" class="m-3">3</v-col>
+                    <v-col cols="1" class="m-3">2</v-col>
+                    <v-col cols="1" class="m-3">-</v-col>
+                    <v-col cols="1" class="m-3">-</v-col>
+                    <v-col cols="1" class="m-3">-</v-col>
+                    <v-col cols="2" class="m-3">0</v-col>
+                  </v-row>
+                </div>
               </v-card>
             </div>
           </v-col>
@@ -273,24 +267,30 @@
                   </v-img>
                 </v-col>
 
-                <v-col cols="6" class="mb-3">
-                  <div class="flex flex-column text-blue-900 font-bold">
-                    <div class="flex flex-row">
-                      <v-card-text class="text-h6 my-1 max-w-xs">{{
+                <v-col cols="7" class="">
+                  <div
+                    class="flex flex-row text-blue-900 font-bold text-center"
+                  >
+                    <div class="flex flex-column text-left px-1">
+                      <v-card-title>Place</v-card-title>
+                      <v-card-text class="text-h6">{{
                         fetchFirstPlayer.place
                       }}</v-card-text>
-                      <v-card-text class="text-h6 my-1 max-w-xs">{{
+                    </div>
+                    <div class="flex flex-column text-left">
+                      <v-card-title>Name</v-card-title>
+                      <v-card-text class="text-h6">{{
                         fetchFirstPlayer.player
                       }}</v-card-text>
                     </div>
+
+                    <!-- 
                     <div class="flex flex-row">
-                      <v-card-text class="text-h6 my-1 max-w-xs">{{
+                      <v-card-title>Points</v-card-title>
+                      <v-card-text class="text-h6">{{
                         fetchFirstPlayer.points
                       }}</v-card-text>
-                      <v-card-text class="text-h6 my-1 max-w-xs">{{
-                        fetchFirstPlayer.country
-                      }}</v-card-text>
-                    </div>
+                    </div> -->
                   </div>
                   <RouterLink :to="{ name: 'ranking' }">
                     <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
@@ -394,6 +394,7 @@
 import NavBar from "@/components/NavBar.vue";
 import Footer from "@/components/Footer.vue";
 import ButtonSeeMore from "@/components/ButtonSeeMore.vue";
+import ScoresHeaderHome from "@/components/ScoresHeaderHome.vue";
 import { useGameStore } from "@/stores/games";
 //import Chart from "chart.js/auto";
 export default {
@@ -401,6 +402,7 @@ export default {
     NavBar,
     ButtonSeeMore,
     Footer,
+    ScoresHeaderHome,
   },
   data() {
     return {
@@ -410,10 +412,14 @@ export default {
   },
   created() {
     this.store.fetchStandings();
+    this.store.fetchLiveScores();
   },
   computed: {
     fetchFirstPlayer() {
       return this.store.getFirstPlayerRanking;
+    },
+    liveGames() {
+      return this.store.getLiveScore;
     },
   },
 };
