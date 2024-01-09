@@ -71,58 +71,61 @@
                         </v-row>
                         <!-- Header Scores Results -->
                         <ScoresHeaderResults></ScoresHeaderResults>
+
                         <div class="game.event_live === '1'">
-                          <!-- <div
+                          <div
                             class=""
-                            v-for="set in game.scores"
-                            :key="set.scores_set"
-                          > -->
-                          <!-- <div
+                            v-for="(set, setIndex) in game.pointbypoint"
+                            :key="setIndex"
+                          >
+                            <div
                               class=""
-                              v-for="pointByPoint in game.pointbypoint"
-                              :key="pointByPoint.set_number"
-                            > -->
-                          <v-row class="bg-blue-darken-2 ma-1">
-                            <v-col>{{ game.event_first_player }}</v-col>
-                            <v-col>{{
-                              game.event_game_result.slice(0, 2)
-                            }}</v-col>
-                            <v-col>1</v-col>
-                            <v-col>2</v-col>
-                            <v-col>3</v-col>
-                            <v-col>4</v-col>
-                            <v-col>5</v-col>
-                            <v-col>Final</v-col>
-                            <!-- <v-col>{{ game.event_serve }}</v-col>  -->
-                            <!-- ! Call above useful for court view -->
-                            <!-- <v-col>{{ set.score_first }}</v-col> -->
-                            <!--
+                              v-for="(pointByPoint, pointIndex) in set.points"
+                              :key="pointIndex"
+                            >
+                              <v-row class="bg-blue-darken-2 ma-1">
+                                <v-col>{{ game.event_first_player }}</v-col>
+                                <v-col>{{
+                                  game.event_game_result.slice(0, 2)
+                                }}</v-col>
+                                <v-col>Score {{ pointByPoint.score }}</v-col>
+
+                                <v-col>3</v-col>
+                                <v-col>4</v-col>
+                                <v-col>5</v-col>
+                                <v-col>Final</v-col>
+                                <!-- <v-col>{{ game.event_serve }}</v-col>  -->
+                                <!-- ! Call above useful for court view -->
+                                <!-- <v-col>{{ set.score_first }}</v-col> -->
+                                <!--
                                 <v-col>{{ game. }}</v-col>
                             <v-col>{{ game. }}</v-col>
                             <v-col>{{ game. }}</v-col> -->
-                            <v-btn @click="addMyGames(game)">
-                              Add MyGames
-                            </v-btn>
-                          </v-row>
+                                <v-btn @click="addMyGames(game)">
+                                  Add MyGames
+                                </v-btn>
+                              </v-row>
 
-                          <v-row class="rounded-b-xl bg-blue-darken-2 ma-1" I>
-                            <v-col>{{ game.event_second_player }}</v-col>
-                            <v-col>{{
-                              game.event_game_result.slice(4, 7)
-                            }}</v-col>
-                            <v-col>1</v-col>
-                            <v-col>2</v-col>
-                            <v-col>3</v-col>
-                            <v-col>4</v-col>
-                            <v-col>5</v-col>
-                            <v-col>Final</v-col>
-                            <!-- <v-col>{{ set.score_second }}</v-col> -->
-                          </v-row>
-                          <!-- </div> -->
-                          <!-- </div> -->
+                              <v-row
+                                class="rounded-b-xl bg-blue-darken-2 ma-1"
+                                I
+                              >
+                                <v-col>{{ game.event_second_player }}</v-col>
+                                <v-col>{{
+                                  game.event_game_result.slice(4, 7)
+                                }}</v-col>
+                                <v-col>1</v-col>
+                                <v-col>2</v-col>
+                                <v-col>3</v-col>
+                                <v-col>4</v-col>
+                                <v-col>5</v-col>
+                                <v-col>Final</v-col>
+                                <!-- <v-col>{{ set.score_second }}</v-col> -->
+                              </v-row>
+                            </div>
+                          </div>
                         </div>
                       </v-card>
-                      <!-- Fist Game Live Games -->
                     </div>
                   </v-card>
                 </div>
@@ -177,9 +180,17 @@
                 </v-row>
 
                 <v-col cols="9">
-                  <v-btn block rounded="xl" size="large" @click="showAllPlayers">{{
-                    visiblePlayers ? "Show Initial Players" : "Show All Players"
-                  }}</v-btn>
+                  <v-btn
+                    block
+                    rounded="xl"
+                    size="large"
+                    @click="showAllPlayers"
+                    >{{
+                      visiblePlayers
+                        ? "Show Initial Players"
+                        : "Show All Players"
+                    }}</v-btn
+                  >
                 </v-col>
               </v-card>
             </div>
