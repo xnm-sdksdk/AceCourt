@@ -37,7 +37,7 @@
                           <v-col>{{ game. }}</v-col>
                           <v-col>{{ game. }}</v-col>
                           <v-col>{{ game. }}</v-col> -->
-                      <v-btn @click="removeMyGames">Remove MyGames</v-btn>
+                      <v-btn @click="removeMyGames(game)">Remove MyGames</v-btn>
                     </v-row>
                     <v-row class="rounded-b-xl bg-blue-darken-2 ma-1" I>
                       <v-col>{{ game.event_second_player }}</v-col>
@@ -100,7 +100,7 @@
                                 <v-col>{{ game. }}</v-col>
                             <v-col>{{ game. }}</v-col>
                             <v-col>{{ game. }}</v-col> -->
-                                <v-btn @click="addMyGames"> Add MyGames </v-btn>
+                                <v-btn @click="addMyGames(game)"> Add MyGames </v-btn>
                               </v-row>
 
                               <v-row
