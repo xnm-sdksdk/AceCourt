@@ -3,7 +3,8 @@ import { defineStore } from "pinia";
 export const useUserStore = defineStore("user", {
   state: () => ({
     users:[],
-    loggedUser:null
+    loggedUser:null,
+    isUserLogged:false
   }),
   getters: {
     getAllUsers:(state)=>state.users,
@@ -14,6 +15,7 @@ export const useUserStore = defineStore("user", {
       const findUser=this.users.find(user=>user.email==email && user.password==password)
       if(findUser){
         this.loggedUser=findUser
+        this.isUserLogged=true
       }else{
         alert("User don't found!")
       }
@@ -42,6 +44,7 @@ export const useUserStore = defineStore("user", {
 
     logout(){
       this.loggedUser=null
+      this.isUserLogged=false
     }
   },
   persist: true,

@@ -20,7 +20,7 @@
                 <v-row class="ml-5 my-5">
                   <v-col cols="3" class="my-5 m-5">
                     <v-img
-                      src="../assets/carlos.svg"
+                      :src="getloggedUser.image"
                       alt="Highlight-Player-Image"
                       width="180px"
                       height="180px"
@@ -34,19 +34,19 @@
                       >Name</v-card-subtitle
                     >
                     <v-card-title class="my-2 text-body-1"
-                      >Sara Johnson</v-card-title
+                      >{{ getloggedUser.name }}</v-card-title
                     >
                     <v-card-subtitle class="m-1 text-body-2"
                       >E-Mail</v-card-subtitle
                     >
                     <v-card-title class="my-2 text-body-1"
-                      >Sarajohnson22@gmail.com</v-card-title
+                      >{{getloggedUser.email}}</v-card-title
                     >
                     <v-card-subtitle class="m-1 text-body-2"
                       >Password</v-card-subtitle
                     >
                     <v-card-title class="my-2 text-body-1"
-                      >Sab24yn35therwgtev</v-card-title
+                      >{{ hideCharacters(getloggedUser.password) }}</v-card-title
                     >
                   </v-col>
                   <v-col cols="5" class="m-1">
@@ -99,12 +99,21 @@ export default {
       userStore:useUserStore()
     };
   },
+  computed: {
+    getloggedUser() {
+      return this.userStore.getloggedUser 
+    }
+  },
 
   methods: {
     logout() {
       this.userStore.logout
       this.$router.push({name:"landingpage"})
-    }
+    },
+    hideCharacters(text) {
+      // Substitui cada caractere por um asterisco
+      return text.replace(/./g, '*');
+    },
   },
 };
 </script>

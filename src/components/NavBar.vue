@@ -60,7 +60,7 @@ export default {
 
   computed: {
     isUserLoggedIn() {
-      return this.store.getLoggedUser;
+      return this.store.isUserLogged;
     },
   },
 };
