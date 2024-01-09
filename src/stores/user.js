@@ -35,6 +35,7 @@ export const useUserStore = defineStore("user", {
           email: email,
           password: password,
           typeUser: typeUser,
+          bio:"",
           image:"@/assets/profilepic.svg"
         });
     
