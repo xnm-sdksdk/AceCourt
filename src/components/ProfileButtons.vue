@@ -5,17 +5,17 @@
     >
       <RouterLink :to="{ name: 'profile' }">
         <div class="text-blue-900">
-          <button>Profile</button>
+          <button class="text-center px-3">Profile</button>
         </div>
       </RouterLink>
       <RouterLink :to="{ name: 'trophies' }">
         <div class="text-blue-900">
-          <button>Trophies</button>
+          <button class="text-center px-3">Trophies</button>
         </div>
       </RouterLink>
       <RouterLink :to="{ name: 'mystats' }">
         <div class="text-blue-900">
-          <button>My Stats</button>
+          <button class="text-center px-3">My Stats</button>
         </div>
       </RouterLink>
     </div>

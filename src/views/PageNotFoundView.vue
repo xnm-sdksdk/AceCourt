@@ -1,7 +1,7 @@
 <template>
   <NavBar></NavBar>
-  <div class="">
-    <h1>Page Not Found</h1>
+  <div class="flex items-center justify-center h-screen">
+    <h1 class="text-7xl">Page Not Found</h1>
   </div>
 </template>
 
@@ -11,8 +11,5 @@ export default {
   components: {
     NavBar,
   },
-  // setup() {},
 };
 </script>
-
-<style></style>
