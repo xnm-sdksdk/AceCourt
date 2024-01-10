@@ -273,13 +273,13 @@
                   >
                     <div class="flex flex-column text-left px-1">
                       <v-card-title>Place</v-card-title>
-                      <v-card-text class="text-h6">{{
+                      <v-card-text class="text-h6" v-if="fetchFirstPlayer">{{
                         fetchFirstPlayer.place
                       }}</v-card-text>
                     </div>
                     <div class="flex flex-column text-left">
                       <v-card-title>Name</v-card-title>
-                      <v-card-text class="text-h6">{{
+                      <v-card-text class="text-h6" v-if="fetchFirstPlayer">{{
                         fetchFirstPlayer.player
                       }}</v-card-text>
                     </div>
