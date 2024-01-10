@@ -285,7 +285,7 @@
                     </div>
                     <div class="flex flex-column text-left">
                       <v-card-title>Points</v-card-title>
-                      <v-card-text class="text-h6">{{
+                      <v-card-text class="text-h6" v-if="fetchFirstPlayer">{{
                         fetchFirstPlayer.points
                       }}</v-card-text>
                     </div>
