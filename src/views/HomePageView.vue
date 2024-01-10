@@ -267,11 +267,11 @@
                   </v-img>
                 </v-col>
 
-                <v-col cols="7" class="">
+                <v-col cols="6" class="">
                   <div
                     class="flex flex-row text-blue-900 font-bold text-center"
                   >
-                    <div class="flex flex-column text-left px-1">
+                    <div class="flex flex-column text-left">
                       <v-card-title>Place</v-card-title>
                       <v-card-text class="text-h6" v-if="fetchFirstPlayer">{{
                         fetchFirstPlayer.place
@@ -283,14 +283,12 @@
                         fetchFirstPlayer.player
                       }}</v-card-text>
                     </div>
-
-                    <!-- 
-                    <div class="flex flex-row">
+                    <div class="flex flex-column text-left">
                       <v-card-title>Points</v-card-title>
                       <v-card-text class="text-h6">{{
                         fetchFirstPlayer.points
                       }}</v-card-text>
-                    </div> -->
+                    </div>
                   </div>
                   <RouterLink :to="{ name: 'ranking' }">
                     <ButtonSeeMore :text="SeeMore"></ButtonSeeMore>
