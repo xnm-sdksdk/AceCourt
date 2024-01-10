@@ -210,13 +210,13 @@
               </div>
 
               <!-- Player -->
-              <v-row class="ml-3">
-                <v-col cols="6">
+              <v-row class="ml-5">
+                <v-col cols="5">
                   <v-img
                     src="../assets/player.svg"
                     alt="Player-Image"
-                    width="200px"
-                    height="200px"
+                    width="180px"
+                    height="180px"
                     cover
                     class="rounded-circle"
                   >
