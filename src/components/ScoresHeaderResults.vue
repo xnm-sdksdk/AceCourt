@@ -2,7 +2,6 @@
   <v-row class="rounded-t-xl bg-blue-lighten-5 ma-1" v-if="game">
     <div class="flex text-blue-900">
       <v-col>{{ game.tournament_round }}</v-col>
-      <v-col>{{ game.event_type_type }}</v-col>
       <v-col>1st</v-col>
       <v-col>2nd</v-col>
       <v-col>3rd</v-col>

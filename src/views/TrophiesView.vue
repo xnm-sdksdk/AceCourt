@@ -3,15 +3,15 @@
     <NavBar></NavBar>
     <v-container>
       <v-main class="d-flex justify-center align-start flex-column">
-        <div class="font-bold">
-          <h1>My Profile</h1>
-        </div>
-        <div class="ma-3 pa-3">
-          <ProfileButtons></ProfileButtons>
-        </div>
         <div class="container mx-auto flex justify-between items-center py-4">
           <v-row class="justify-center align-center">
-            <v-col cols="11" class="text-center">
+            <v-col cols="12" md="9" class="ma-3 pa-3">
+              <div class="font-bold py-5">
+                <h1>Trophies</h1>
+              </div>
+              <ProfileButtons></ProfileButtons>
+            </v-col>
+            <v-col cols="12" md="9" class="text-center">
               <v-card class="rounded-lg bg-grey-lighten-5" elevation="3">
                 <v-row v-for="(trophy, index) in getTrophies" :key="index" class="ml-15 my-15">
                   <!-- First Row -->
