@@ -45,9 +45,93 @@ export const useUserStore = defineStore("user", {
               isCompleted:false
             },
             {
-              id:1,
-              title:"Create a bio",
-              image:"@/assets/personal-data-two-color-9c5ea.svg",
+              id:2,
+              title:"Hit 5 games in a row",
+              image:"@/assets/prize.svg",
+              isCompleted:false
+            },
+            {
+              id:3,
+              title:"Hit 10 games in a row",
+              image:"@/assets/superman.svg",
+              isCompleted:false
+            },
+            {
+              id:4,
+              title:"Change your avatar",
+              image:"@/assets/transferwise.svg",
+              isCompleted:false
+            },
+            {
+              id:5,
+              title:"Hit a game prediction",
+              image:"@/assets/target.svg",
+              isCompleted:false
+            },
+            {
+              id:6,
+              title:"Check the Statistics on a game",
+              image:"@/assets/analysis.svg",
+              isCompleted:false
+            },
+            {
+              id:7,
+              title:"Check a game",
+              image:"@/assets/oceania.svg",
+              isCompleted:false
+            },
+            {
+              id:8,
+              title:"Vote on a game",
+              image:"@/assets/voting.svg",
+              isCompleted:false
+            },
+            {
+              id:9,
+              title:"Check the Schedules page",
+              image:"@/assets/calendar.svg",
+              isCompleted:false
+            },
+            {
+              id:10,
+              title:"Get all trophies",
+              image:"@/assets/career.svg",
+              isCompleted:false
+            },
+            {
+              id:11,
+              title:"Get 10 trophies",
+              image:"@/assets/winner.svg",
+              isCompleted:false
+            },
+            {
+              id:12,
+              title:"Get 5 trophies",
+              image:"@/assets/step.svg",
+              isCompleted:false
+            },
+            {
+              id:13,
+              title:"Check all the app pages",
+              image:"@/assets/checklist.svg",
+              isCompleted:false
+            },
+            {
+              id:14,
+              title:"Check the My Stats page",
+              image:"@/assets/knowledge.svg",
+              isCompleted:false
+            },
+            {
+              id:15,
+              title:"Check the Match Report Page",
+              image:"@/assets/report.svg",
+              isCompleted:false
+            },
+            {
+              id:16,
+              title:"Win a Favorite Player",
+              image:"@/assets/tennis.svg",
               isCompleted:false
             },
           ],
