@@ -8,7 +8,8 @@ export const useUserStore = defineStore("user", {
   }),
   getters: {
     getAllUsers:(state)=>state.users,
-    getLoggedUser:(state)=>state.loggedUser
+    getLoggedUser:(state)=>state.loggedUser,
+    getUserTrophies:(state)=>state.loggedUser.trophies
   },
   actions: {
     login(email,password){
