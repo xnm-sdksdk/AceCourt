@@ -13,9 +13,7 @@ export const useGameStore = defineStore("game", {
     // Retrieve Ranking
     standings: [],
     // Retrieve All Live Games
-    liveGames: [],
-    // Retrieve All My Games
-    myGames: [],
+    liveGames: [],  
     // Retrieve All Games
     fixtures: [],
     // Retrieve Last Match of Player
@@ -46,10 +44,6 @@ export const useGameStore = defineStore("game", {
     getPlayerLastMatches: (state) => {
       return state.playerLastMatches;
     },
-    // Get My Games
-    getMyGames: (state) => {
-      return state.myGames;
-    },
     // Get Ranking
     getStandings: (state) => {
       return state.standings;
@@ -65,18 +59,6 @@ export const useGameStore = defineStore("game", {
     },
   },
   actions: {
-    addMyGames(game) {
-      this.myGames.push(game);
-    },
-    // ! Needs review
-    removeMyGames(game) {
-      const index = this.myGames.findIndex(
-        (myGame) => myGame.event_key === game.event_key
-      );
-      if (index !== -1) {
-        this.myGames.splice(index, 1);
-      }
-    },
     async fetchTournaments() {
       try {
         const response = await fetch(
