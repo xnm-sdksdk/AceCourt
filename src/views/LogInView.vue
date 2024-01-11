@@ -85,6 +85,7 @@ export default {
         this.$router.push({name:"home"})
       } catch (error) {
         alert(`Error: ${error.message}` )
+        
       }
     },
   },
