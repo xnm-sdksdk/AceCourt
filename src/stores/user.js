@@ -174,6 +174,10 @@ export const useUserStore = defineStore("user", {
         this.myGames.splice(index, 1);
       }
     },
+
+    updateUserProfile(newUser){
+      
+    }
   },
   persist: true,
 });
