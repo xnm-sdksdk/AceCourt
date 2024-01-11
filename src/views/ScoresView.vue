@@ -24,14 +24,6 @@
                     <ScoresHeaderResults :game="game"></ScoresHeaderResults>
                     <v-row class="bg-blue-darken-2 ma-1">
                       <v-col>{{ game.event_first_player }}</v-col>
-                      <!--
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col>
-                          <v-col>{{ game. }}</v-col> -->
                       <v-btn @click="removeMyGames(game)">Remove MyGames</v-btn>
                     </v-row>
                     <v-row class="rounded-b-xl bg-blue-darken-2 ma-1" I>
@@ -43,7 +35,6 @@
             </div>
 
             <!-- Live Games -->
-
             <v-row>
               <v-col col="9">
                 <div class="my-4">
@@ -59,13 +50,6 @@
                         v-for="game in liveGames"
                         :key="game.event_key"
                       >
-                        <!-- <v-row class="rounded-t-xl bg-blue-darken-2 ma-1">
-                          <v-col>{{ game.tournament_round }}</v-col>
-                          <v-col>{{ game.event_type_type }}</v-col>
-                          <v-col>{{ game.event_status }}</v-col>
-                        </v-row> -->
-                        <!-- Header Scores Results -->
-
                         <!-- <div class="game.event_live === '1'">
                           <div
                           class=""
@@ -77,6 +61,7 @@
                           v-for="(pointByPoint, pointIndex) in set.points"
                           :key="pointIndex"
                           > -->
+                        <!-- Header Scores Results -->
                         <ScoresHeaderResults :game="game">
                         </ScoresHeaderResults>
                         <v-row class="bg-blue-darken-2 ma-1">
@@ -92,11 +77,6 @@
                           <v-col>Final</v-col>
                           <!-- <v-col>{{ game.event_serve }}</v-col>  -->
                           <!-- ! Call above useful for court view -->
-                          <!-- <v-col>{{ set.score_first }}</v-col> -->
-                          <!--
-                                <v-col>{{ game. }}</v-col>
-                            <v-col>{{ game. }}</v-col>
-                            <v-col>{{ game. }}</v-col> -->
                           <v-btn @click="addMyGames(game)"> Add MyGames </v-btn>
                         </v-row>
 
@@ -111,7 +91,6 @@
                           <v-col>4</v-col>
                           <v-col>5</v-col>
                           <v-col>Final</v-col>
-                          <!-- <v-col>{{ set.score_second }}</v-col> -->
                         </v-row>
                         <!-- </div>
                           </div>
@@ -167,7 +146,10 @@
                   :key="player.player_key"
                   class="ml-3 my-3"
                 >
-                  <v-col>{{ player.player_name }}</v-col>
+                  <v-col
+                    >{{ player.player_name }}
+                    <ProfileStar @click="addFavoritePlayer(player)"></ProfileStar
+                  ></v-col>
                 </v-row>
 
                 <v-col cols="9">
@@ -195,12 +177,14 @@
 <script>
 import NavBar from "@/components/NavBar.vue";
 import ScoresHeaderResults from "@/components/ScoresHeaderResults.vue";
+import ProfileStar from "@/assets/ProfileStar.svg";
 import { useGameStore } from "@/stores/games";
 
 export default {
   components: {
     NavBar,
     ScoresHeaderResults,
+    ProfileStar,
   },
   props: { game: Object },
   data() {
@@ -236,6 +220,9 @@ export default {
     showAllPlayers() {
       console.log("Displaying All Players");
     },
+    addFavoritePlayer(player) {
+      console.log("Favorite Player Added: ", player.player_name);
+    },
   },
   computed: {
     liveGames() {
@@ -247,5 +234,3 @@ export default {
   },
 };
 </script>
-
-<style></style>
