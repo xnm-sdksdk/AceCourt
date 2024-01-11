@@ -3,12 +3,12 @@
     <NavBar></NavBar>
     <v-container>
       <v-main>
-        <div class="ma-3 pa-3">
-          <ProfileButtons></ProfileButtons>
-        </div>
         <div class="container mx-auto flex justify-between items-center p-4">
           <v-row class="justify-center align-center">
-            <v-col cols="11" class="">
+            <v-col cols="12" md="9" class="ma-3 pa-3">
+              <ProfileButtons></ProfileButtons>
+            </v-col>
+            <v-col cols="12" md="9" class="">
               <v-card
                 class="rounded-lg bg-grey-lighten-5"
                 elevation="3"
@@ -24,8 +24,8 @@
                 </v-row>
               </v-card>
               <!-- Second Row -->
-              <v-row class="justify-center align-center">
-                <v-col cols="6" class="my-4">
+              <v-row class="justify-center align-center my-2">
+                <v-col cols="6" class="">
                   <v-card
                     class="rounded-lg bg-grey-lighten-5"
                     elevation="3"
@@ -42,7 +42,7 @@
                     </div>
                   </v-card>
                 </v-col>
-                <v-col cols="6" class="my-4">
+                <v-col cols="6" class="">
                   <v-card
                     class="rounded-lg bg-grey-lighten-5"
                     elevation="3"
@@ -60,8 +60,8 @@
                 </v-col>
               </v-row>
               <!-- Third Row -->
-              <v-row class="justify-center align-center">
-                <v-col cols="6" class="my-4">
+              <v-row class="justify-center align-center my-1">
+                <v-col cols="6" class="">
                   <v-card
                     class="rounded-lg bg-grey-lighten-5"
                     elevation="3"
@@ -77,7 +77,7 @@
                     </div>
                   </v-card>
                 </v-col>
-                <v-col cols="6" class="my-4">
+                <v-col cols="6" class="">
                   <v-card
                     class="rounded-lg bg-grey-lighten-5"
                     elevation="3"
@@ -96,7 +96,7 @@
               </v-row>
               <!-- Fourth Row -->
               <v-row class="justify-center align-center">
-                <v-col cols="12" class="my-4">
+                <v-col cols="12" class="">
                   <v-card
                     class="rounded-lg bg-grey-lighten-5"
                     elevation="3"
