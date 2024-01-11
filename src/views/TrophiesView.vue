@@ -13,102 +13,45 @@
             </v-col>
             <v-col cols="12" md="9" class="text-center">
               <v-card class="rounded-lg bg-grey-lighten-5" elevation="3">
-                <div class="">
+                <v-row v-for="(trophy, index) in getTrophies" :key="index" class="ml-15 my-15">
                   <!-- First Row -->
-                  <v-row class="ml-15 my-15">
+                  <div class="ml-15 my-15" v-if="index<=3">
                     <v-col cols="3">
                       <div class="w-40">
                         <!-- Hit 5 Games in a row -->
-                        <Prize></Prize>
-                        <v-card-text>Hit 5 games in a row</v-card-text>
+                        <v-img :src="trophy.image"></v-img>
+                        <v-card-text>{{trophy.title}}</v-card-text>
                       </div>
                     </v-col>
+                  </div>
+                  <v-row class="ml-15 my-15" v-else-if="index<=7">
                     <v-col cols="3">
-                      <!-- Hit 10 games in a row -->
-                      <SuperMan></SuperMan>
-                      <v-card-text>Hit 10 games in a row</v-card-text>
+                      <div class="w-40">
+                        <!-- Hit 5 Games in a row -->
+                        <v-img :src="trophy.image"></v-img>
+                        <v-card-text>{{trophy.title}}</v-card-text>
+                      </div>
                     </v-col>
+                  </v-row>
+                  <v-row class="ml-15 my-15" v-else-if="index<=11">
                     <v-col cols="3">
-                      <!-- Create a Bio -->
-                      <PersonalData></PersonalData>
-                      <v-card-text>Create a Bio</v-card-text>
+                      <div class="w-40">
+                        <!-- Hit 5 Games in a row -->
+                        <v-img :src="trophy.image"></v-img>
+                        <v-card-text>{{trophy.title}}</v-card-text>
+                      </div>
                     </v-col>
+                  </v-row>
+                  <v-row class="ml-15 my-15" v-else-if="index<=15">
                     <v-col cols="3">
-                      <!-- Change you Avatar -->
-                      <TransferWise></TransferWise>
-                      <v-card-text>Change your Avatar</v-card-text>
+                      <div class="w-40">
+                        <!-- Hit 5 Games in a row -->
+                        <v-img :src="trophy.image"></v-img>
+                        <v-card-text>{{trophy.title}}</v-card-text>
+                      </div>
                     </v-col>
                   </v-row>
-                  <!-- Second Row -->
-                  <v-row class="ml-15 my-15">
-                    <v-col cols="3" class="">
-                      <!-- Hit a Game prediction -->
-                      <Target></Target>
-                      <v-card-text>Hit a game prediction</v-card-text>
-                    </v-col>
-                    <v-col cols="3" class="">
-                      <!-- Check the Statistics on a game -->
-                      <Analysis></Analysis>
-                      <v-card-text>Check the Statistics on a game</v-card-text>
-                    </v-col>
-                    <v-col cols="3" class="">
-                      <!-- Check a game -->
-                      <CheckGame></CheckGame>
-                      <v-card-text>Check a game</v-card-text>
-                    </v-col>
-                    <v-col cols="3" class="">
-                      <!-- Vote on a game -->
-                      <Vote></Vote>
-                      <v-card-text>Vote on a game</v-card-text>
-                    </v-col>
-                  </v-row>
-                  <!-- Third Row -->
-                  <v-row class="ml-15 my-15">
-                    <v-col cols="3" class="">
-                      <!-- Check the Schedules page -->
-                      <Schedule></Schedule>
-                      <v-card-text>Check the Schedules page</v-card-text>
-                    </v-col>
-                    <v-col cols="3" class="">
-                      <!-- Get all trophies -->
-                      <Trophies></Trophies>
-                      <v-card-text>Get all trophies</v-card-text>
-                    </v-col>
-                    <v-col cols="3" class="">
-                      <!-- Get 10 trophies -->
-                      <Winner></Winner>
-                      <v-card-text>Get 10 trophies</v-card-text>
-                    </v-col>
-                    <v-col cols="3" class="">
-                      <!-- Get 5 trophies -->
-                      <Step></Step>
-                      <v-card-text>Get 5 trophies</v-card-text>
-                    </v-col>
-                  </v-row>
-                  <!-- Fourth Row -->
-                  <v-row class="ml-15 my-15">
-                    <v-col cols="3" class="">
-                      <!-- Check all the app pages -->
-                      <Checklist></Checklist>
-                      <v-card-text>Check all the app pages</v-card-text>
-                    </v-col>
-                    <v-col cols="3" class="">
-                      <!-- Get all trophies -->
-                      <Knowledge></Knowledge>
-                      <v-card-text>Check the My Stats page</v-card-text>
-                    </v-col>
-                    <v-col cols="3" class="">
-                      <!-- Check the Match Report -->
-                      <Report></Report>
-                      <v-card-text>Check the Match Report Page</v-card-text>
-                    </v-col>
-                    <v-col cols="3" class="">
-                      <!-- Win a Favorite Player -->
-                      <Tennis></Tennis>
-                      <v-card-text>Win a Favorite Player</v-card-text>
-                    </v-col>
-                  </v-row>
-                </div>
+                </v-row>
               </v-card>
             </v-col>
           </v-row>
@@ -120,46 +63,25 @@
 
 <script>
 import NavBar from "@/components/NavBar.vue";
-import ProfileButtons from "@/components/ProfileButtons.vue";
-import Prize from "@/assets/prize.svg";
-import SuperMan from "@/assets/superman.svg";
-import PersonalData from "@/assets/personal-data-two-color-9c5ea.svg";
-import TransferWise from "@/assets/transferwise.svg";
-import Target from "@/assets/target.svg";
-import Analysis from "@/assets/analysis.svg";
-import CheckGame from "@/assets/oceania.svg";
-import Vote from "@/assets/voting.svg";
-import Schedule from "@/assets/calendar.svg";
-import Trophies from "@/assets/career.svg";
-import Winner from "@/assets/winner.svg";
-import Step from "@/assets/step.svg";
-import Checklist from "@/assets/checklist.svg";
-import Knowledge from "@/assets/knowledge.svg";
-import Report from "@/assets/report.svg";
-import Tennis from "@/assets/tennis.svg";
-export default {
+import { useUserStore } from '../stores/user';
+export default{
   components: {
     NavBar,
-    ProfileButtons,
-    Prize,
-    SuperMan,
-    PersonalData,
-    TransferWise,
-    Target,
-    Analysis,
-    CheckGame,
-    Vote,
-    Schedule,
-    Trophies,
-    Winner,
-    Step,
-    Checklist,
-    Knowledge,
-    Report,
-    Tennis,
   },
-  // setup() {},
-};
+
+  data() {
+    return {
+      userStore: useUserStore()
+    }
+  },
+
+  computed: {
+    getTrophies() {
+      console.log(this.userStore.getUserTrophies);
+      return this.userStore.getUserTrophies
+    }
+  },
+}
 </script>
 
 <style></style>
