@@ -20,7 +20,7 @@
                 <v-row class="ml-5 my-5">
                   <v-col cols="3" class="my-5 m-5">
                     <v-img
-                      :src="getloggedUser.image"
+                      :src=getlogUser.image
                       alt="Highlight-Player-Image"
                       width="180px"
                       height="180px"
@@ -34,19 +34,19 @@
                       >Name</v-card-subtitle
                     >
                     <v-card-title class="my-2 text-body-1"
-                      >{{ getloggedUser.name }}</v-card-title
+                      >{{ getlogUser.name }}</v-card-title
                     >
                     <v-card-subtitle class="m-1 text-body-2"
                       >E-Mail</v-card-subtitle
                     >
                     <v-card-title class="my-2 text-body-1"
-                      >{{getloggedUser.email}}</v-card-title
+                      >{{getlogUser.email}}</v-card-title
                     >
                     <v-card-subtitle class="m-1 text-body-2"
                       >Password</v-card-subtitle
                     >
                     <v-card-title class="my-2 text-body-1"
-                      >{{ hideCharacters(getloggedUser.password) }}</v-card-title
+                      >{{ hideCharacters(getlogUser.password) }}</v-card-title
                     >
                   </v-col>
                   <v-col cols="5" class="m-1">
@@ -55,11 +55,7 @@
                         >Bio</v-card-subtitle
                       >
                       <v-card-text class="ml-3 max-w-md"
-                        >Greetings, fellow tennis enthusiasts! I'm Sara, your
-                        go- to source for all things tennis-related. As I
-                        celebrate my one-year journey in the vibrant world of
-                        tennis, allow me to share a bit about my tennis-loving
-                        self.</v-card-text
+                        >{{ getlogUser.bio }}</v-card-text
                       >
                     </div>
                   </v-col>
@@ -90,7 +86,7 @@
 <script>
 import NavBar from "@/components/NavBar.vue";
 import ProfileButtons from "@/components/ProfileButtons.vue";
-import { useUserStore } from "../stores/user";
+import { useUserStore } from "../stores/user.js";
 export default {
   components: {
     NavBar,
@@ -102,8 +98,9 @@ export default {
     };
   },
   computed: {
-    getloggedUser() {
-      return this.userStore.getloggedUser 
+    getlogUser() {
+      console.log(this.userStore.getLoggedUser.image);
+      return this.userStore.getLoggedUser 
     }
   },
 
@@ -113,7 +110,6 @@ export default {
       this.$router.push({name:"landingpage"})
     },
     hideCharacters(text) {
-      // Substitui cada caractere por um asterisco
       return text.replace(/./g, '*');
     },
   },

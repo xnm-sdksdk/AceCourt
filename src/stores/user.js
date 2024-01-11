@@ -36,10 +36,24 @@ export const useUserStore = defineStore("user", {
           password: password,
           typeUser: typeUser,
           bio:"",
-          image:"@/assets/profilepic.svg",
-          trophies:[],
+          image:"../assets/profilepic.svg",
+          trophies:[
+            {
+              id:1,
+              title:"Create a bio",
+              image:"@/assets/personal-data-two-color-9c5ea.svg",
+              isCompleted:false
+            },
+            {
+              id:1,
+              title:"Create a bio",
+              image:"@/assets/personal-data-two-color-9c5ea.svg",
+              isCompleted:false
+            },
+          ],
           myPlayers:[],
           myGames:[],
+          votes:[],
         });
     
         console.log(this.users);
