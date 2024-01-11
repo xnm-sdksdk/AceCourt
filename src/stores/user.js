@@ -49,7 +49,26 @@ export const useUserStore = defineStore("user", {
     logout(){
       this.loggedUser=null
       this.isUserLogged=false
-    }
+    },
+
+    addMyGames(game) {
+      const loggedUserIndex = this.users.findIndex(user => user.id === this.loggedUser.id);
+    
+      if (loggedUserIndex !== -1) {
+        this.users[loggedUserIndex].myGames.push(game);
+    
+        console.log("Game added to user's collection:", this.users[loggedUserIndex]);
+      }
+    },
+    // ! Needs review
+    removeMyGames(game) {
+      const index = this.myGames.findIndex(
+        (myGame) => myGame.event_key === game.event_key
+      );
+      if (index !== -1) {
+        this.myGames.splice(index, 1);
+      }
+    },
   },
   persist: true,
 });
