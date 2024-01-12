@@ -49,12 +49,12 @@
 
                   <v-card-subtitle class="m-1 text-body-2">Password</v-card-subtitle>
                   <v-card-title class="my-2 text-body-1">
-                    <template v-if="editMode">
+                    <div v-if="editMode">
                       <v-text-field v-model="editedUser.password"></v-text-field>
-                    </template>
-                    <template v-else>
+                    </div>
+                    <div v-else>
                       {{ hideCharacters(getlogUser.password) }}
-                    </template>
+                    </div>
                   </v-card-title>
                 </v-col>
 

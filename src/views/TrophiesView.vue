@@ -5,9 +5,6 @@
       <v-main class="d-flex justify-center align-start flex-column">
         <v-row class="justify-center align-center">
           <v-col cols="12" md="9" class="ma-3 pa-3">
-            <div class="font-bold py-5">
-              <h1>Trophies</h1>
-            </div>
             <ProfileButtons></ProfileButtons>
           </v-col>
           <v-col cols="12" md="9" class="text-center">
@@ -15,7 +12,7 @@
               <v-row>
                 <v-col v-for="(trophy, index) in getTrophies" :key="index" cols="3" class="my-15">
                   <div class="w-40 mx-auto">
-                    <v-img :src="trophy.image"></v-img>
+                    <v-img :src="trophy.image" width="100px" height="100px"></v-img>
                     <v-card-text>{{ trophy.title }}</v-card-text>
                   </div>
                 </v-col>
@@ -27,15 +24,13 @@
     </v-container>
   </v-app>
 </template>
-
-
-
 <script>
 import NavBar from "@/components/NavBar.vue";
+import ProfileButtons from "@/components/ProfileButtons.vue";
 import { useUserStore } from "../stores/user";
 export default {
   components: {
-    NavBar,
+    NavBar,ProfileButtons
   },
 
   data() {
