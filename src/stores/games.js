@@ -109,7 +109,8 @@ export const useGameStore = defineStore("game", {
       }
     },
     // Fetch All Live Games
-    // https://api.api-tennis.com/tennis/?method=get_livescore&APIkey=180fc8f42877e51e2ab6e22a8e65be1aa951f5ee63b012a132edcc8c6f290d7b&tournament_key=1236
+    // https://api.api-tennis.com/tennis/?method=get_livescore&APIkey=180fc8f42877e51e2ab6e22a8e65be1aa951f5ee63b012a132edcc8c6f290d7b
+    // &tournament_key=1236
     async fetchLiveScores() {
       try {
         const response = await fetch(

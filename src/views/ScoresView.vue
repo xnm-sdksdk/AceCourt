@@ -51,24 +51,26 @@
                         :key="game.event_key"
                       >
                         <!-- <div class="game.event_live === '1'">
-                          <div
-                          class=""
-                          v-for="(set, setIndex) in game.pointbypoint"
-                          :key="setIndex"
-                          >
-                          <div
-                          class=""
-                          v-for="(pointByPoint, pointIndex) in set.points"
-                          :key="pointIndex"
-                          > -->
+                           -->
                         <!-- Header Scores Results -->
                         <ScoresHeaderResults :game="game">
                         </ScoresHeaderResults>
                         <v-row class="bg-blue-darken-2 ma-1">
                           <v-col>{{ game.event_first_player }}</v-col>
-                          <v-col>{{
+                          <!-- <v-col>{{
                             game.event_game_result.slice(0, 2)
-                          }}</v-col>
+                          }}</v-col> -->
+                          <v-col
+                            v-for="(set, setIndex) in game.pointbypoint"
+                            :key="setIndex"
+                          >
+                            <v-col
+                              v-for="(point, pointIndex) in set.points"
+                              :key="pointIndex"
+                            >
+                              {{ point.score }}
+                            </v-col>
+                          </v-col>
                           <!-- <v-col>Score {{ pointByPoint.score }}</v-col> -->
 
                           <v-col>3</v-col>
@@ -92,9 +94,6 @@
                           <v-col>5</v-col>
                           <v-col>Final</v-col>
                         </v-row>
-                        <!-- </div>
-                          </div>
-                        </div> -->
                       </v-card>
                     </div>
                   </v-card>
@@ -150,7 +149,7 @@
 
                 <!-- See More Players -->
                 <v-row
-                  v-for="player in renderPlayers.slice(0, 2)"
+                  v-for="player in renderPlayers.slice(0, 5)"
                   :key="player.player_key"
                   class="ml-3 my-3"
                 >
@@ -165,17 +164,13 @@
                 </v-row>
 
                 <v-col cols="9">
-                  <v-btn
-                    block
-                    rounded="xl"
-                    size="large"
-                    @click="showAllPlayers"
-                    >{{
+                  <div class="flex justify-center items-center">
+                    <v-btn @click="showAllPlayers">{{
                       visiblePlayers
                         ? "Show Initial Players"
                         : "Show All Players"
-                    }}</v-btn
-                  >
+                    }}</v-btn>
+                  </div>
                 </v-col>
               </v-card>
             </div>
