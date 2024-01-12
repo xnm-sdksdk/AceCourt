@@ -73,7 +73,6 @@ export default {
   data() {
     return {
       store: useGameStore(),
-      standings:[],
       selectedOption: "Ranking",
     };
   },
