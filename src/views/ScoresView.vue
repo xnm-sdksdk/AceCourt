@@ -115,17 +115,15 @@
                   Last Match
                 </v-card-title>
               </div>
-              <v-row
-                v-for="lastMatch in liveGames.slice(0, 4)"
-                :key="lastMatch.event_key"
-                class="ml-3 my-3"
-              >
-                <v-col
-                  v-if="lastMatch && lastMatch.event_status !== 'Finished'"
-                >
+              <v-row class="ml-3 my-3">
+                <v-col v-if="ongoingGames">
                   <p>Games ongoing...</p>
                 </v-col>
-                <v-col v-else>
+                <v-col
+                  v-else
+                  v-for="lastMatch in liveGames"
+                  :key="lastMatch.event_key"
+                >
                   <!-- Displaying players names -->
                   <v-col cols="9"
                     >{{ lastMatch.event_first_player }} vs
@@ -210,6 +208,7 @@ export default {
       listPlayers: [],
       visiblePlayers: false,
       isLoading: true,
+      ongoingGames: false,
     };
   },
   created() {
@@ -246,6 +245,16 @@ export default {
     },
     renderPlayers() {
       return this.store.getPlayers;
+    },
+  },
+  watch: {
+    liveGames: {
+      handler(newGames) {
+        this.ongoingGames = newGames.some(
+          (lastMatch) => lastMatch.event_status !== "Finished"
+        );
+      },
+      immediate: true,
     },
   },
 };
