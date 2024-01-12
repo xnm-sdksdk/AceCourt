@@ -56,43 +56,59 @@
                         <ScoresHeaderResults :game="game">
                         </ScoresHeaderResults>
                         <v-row class="bg-blue-darken-2 ma-1">
-                          <v-col>{{ game.event_first_player }}</v-col>
-                          <!-- <v-col>{{
-                            game.event_game_result.slice(0, 2)
-                          }}</v-col> -->
-                          <v-col
+                          <v-col cols="4">{{ game.event_first_player }}</v-col>
+                          <!-- <v-col
                             v-for="(set, setIndex) in game.pointbypoint"
                             :key="setIndex"
+                            >{{ getFirstPlayerScore(game, set) }}
+                          </v-col> -->
+                          <!-- <v-col
+                            v-for="(set, setIndex) in game.pointbypoint"
+                            :key="setIndex"
+                          >
+                            <span>{{ getSecondPlayerScore(game, set) }}</span>
+                          </v-col> -->
+                          <!-- <v-col>{{
+                          }}</v-col> -->
+                          <!-- <v-col
                           >
                             <v-col
                               v-for="(point, pointIndex) in set.points"
                               :key="pointIndex"
                             >
-                              {{ point.score }}
+                              <p v-if="game.event_status !== 'Finished'">
+                                 {{ set.score }} 
+                              </p>
                             </v-col>
-                          </v-col>
+                          </v-col> -->
                           <!-- <v-col>Score {{ pointByPoint.score }}</v-col> -->
-
-                          <v-col>3</v-col>
-                          <v-col>4</v-col>
-                          <v-col>5</v-col>
-                          <v-col>Final</v-col>
+                          <v-col cols="1">1</v-col>
+                          <v-col cols="1">2</v-col>
+                          <v-col cols="1">3</v-col>
+                          <v-col cols="1">4</v-col>
+                          <v-col cols="1">5</v-col>
+                          <v-col cols="1">{{
+                            game.event_game_result.slice(0, 2)
+                          }}</v-col>
                           <!-- <v-col>{{ game.event_serve }}</v-col>  -->
                           <!-- ! Call above useful for court view -->
-                          <v-btn @click="addMyGames(game)"> Add MyGames </v-btn>
+                          <v-col cols="2">
+                            <v-btn @click="addMyGames(game)">
+                              Add MyGames
+                            </v-btn>
+                          </v-col>
                         </v-row>
 
                         <v-row class="rounded-b-xl bg-blue-darken-2 ma-1">
-                          <v-col>{{ game.event_second_player }}</v-col>
-                          <v-col>{{
+                          <v-col cols="4">{{ game.event_second_player }}</v-col>
+                          <v-col cols="1">1</v-col>
+                          <v-col cols="1">2</v-col>
+                          <v-col cols="1">3</v-col>
+                          <v-col cols="1">4</v-col>
+                          <v-col cols="1">5</v-col>
+                          <v-col cols="1">{{
                             game.event_game_result.slice(4, 7)
                           }}</v-col>
-                          <v-col>1</v-col>
-                          <v-col>2</v-col>
-                          <v-col>3</v-col>
-                          <v-col>4</v-col>
-                          <v-col>5</v-col>
-                          <v-col>Final</v-col>
                         </v-row>
                       </v-card>
                     </div>
@@ -233,6 +249,12 @@ export default {
     addFavoritePlayer(player) {
       console.log("Favorite Player Added: ", player.player_name);
     },
+    // getFirstPlayerScore(game, set) {
+    //   return set.points[set.points.length - 1].score;
+    // },
+    // getSecondPlayerScore(game, set) {
+    //   return set.points[set.points.length - 1].score; // Assuming this is the correct way to get the second player's score
+    // },
   },
   computed: {
     liveGames() {
@@ -248,8 +270,23 @@ export default {
         this.ongoingGames = newGames.some(
           (lastMatch) => lastMatch.event_status !== "Finished"
         );
+        // newGames.forEach((game) => {
+        //   game.pointbypoint.forEach((set, setIndex) => {
+        //     // Access the set scores and update UI as needed
+        //     const firstPlayerScore = set.points[set.points.length - 1].score;
+        //     const secondPlayerScore = set.points[set.points.length - 1].score;
+
+        //     // Perform your logic or UI update here
+        //     console.log(
+        //       `Set ${
+        //         setIndex + 1
+        //       } - First Player Score: ${firstPlayerScore}, Second Player Score: ${secondPlayerScore}`
+        //     );
+        //   });
+        // });
       },
       immediate: true,
+      // deep: true,
     },
   },
 };
