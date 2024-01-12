@@ -175,9 +175,20 @@ export const useUserStore = defineStore("user", {
       }
     },
 
-    updateUserProfile(newUser){
-      
-    }
+    updateUserProfile(newUser) {
+      // Find index of object that are gonna be updated
+      const index = this.users.findIndex((user) => user.id === newUser.id);
+
+      if (index !== -1) {
+        // Update in users Array
+        this.users[index] = newUser;
+
+        //If newUser Id is equal to loggeduser id,replace
+        if (newUser.id === this.loggedUser.id) {
+          this.loggedUser = newUser;
+        }
+      }
+    },
   },
   persist: true,
 });
