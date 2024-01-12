@@ -73,7 +73,6 @@ export default {
   data() {
     return {
       store: useGameStore(),
-      standings:[],
       selectedOption: "Ranking",
     };
   },
@@ -102,21 +101,21 @@ export default {
           return this.getStandings;
         case "Country":
           // Sort by Country Name
-          return this.standings
+          return this.getStandings
             .slice()
             .sort((a, b) => a.country.localeCompare(b.country));
         case "A-Z":
           // Sort by Name (A-Z)
-          return this.standings
+          return this.getStandings
             .slice()
             .sort((a, b) => a.player.localeCompare(b.player));
         case "Z-A":
           // Sort by Name (Z-A)
-          return this.standings
+          return this.getStandings
             .slice()
             .sort((a, b) => b.player.localeCompare(a.player));
         default:
-          return this.standings;
+          return this.getStandings;
       }
     },   
   },
