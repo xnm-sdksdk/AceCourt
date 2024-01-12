@@ -10,6 +10,7 @@ export const useUserStore = defineStore("user", {
     getAllUsers: (state) => state.users,
     getLoggedUser: (state) => state.loggedUser,
     getUserTrophies: (state) => state.loggedUser.trophies,
+    getCompletedTrophies:(state)=>state.loggedUser.trophies.filter(trophy=>trophy.isCompleted=true)
   },
   actions: {
     login(email, password) {
@@ -178,6 +179,7 @@ export const useUserStore = defineStore("user", {
     updateUserProfile(newUser) {
       // Find index of object that are gonna be updated
       const index = this.users.findIndex((user) => user.id === newUser.id);
+      const findBioTrophy=this.loggedUser.trophies.find(trophy=>trophy.title=="Create a bio")
 
       if (index !== -1) {
         // Update in users Array
@@ -186,9 +188,15 @@ export const useUserStore = defineStore("user", {
         //If newUser Id is equal to loggeduser id,replace
         if (newUser.id === this.loggedUser.id) {
           this.loggedUser = newUser;
+          //If User change bio in first time win a trophy
+          if(newUser.bio!="" && findBioTrophy.isCompleted==false){}
         }
       }
     },
+
+    addBadge(){
+
+    }
   },
   persist: true,
 });
