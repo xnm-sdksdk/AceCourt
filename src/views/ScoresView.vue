@@ -120,7 +120,9 @@
                 :key="lastMatch.event_key"
                 class="ml-3 my-3"
               >
-                <v-col v-if="lastMatch && lastMatch.event_status !== 'Finished'">
+                <v-col
+                  v-if="lastMatch && lastMatch.event_status !== 'Finished'"
+                >
                   <p>Games ongoing...</p>
                 </v-col>
                 <v-col v-else>
@@ -191,6 +193,7 @@ import NavBar from "@/components/NavBar.vue";
 import ScoresHeaderResults from "@/components/ScoresHeaderResults.vue";
 import ProfileStar from "@/assets/ProfileStar.svg";
 import { useGameStore } from "@/stores/games";
+import { useUserStore } from "@/stores/user";
 
 export default {
   components: {
@@ -202,6 +205,7 @@ export default {
   data() {
     return {
       store: useGameStore(),
+      userStore: useUserStore(),
       myGames: [],
       listPlayers: [],
       visiblePlayers: false,
@@ -213,14 +217,14 @@ export default {
 
     this.store.fetchLiveScores();
     this.store.fetchPlayers();
-    this.myGames = this.store.getMyGames;
+    this.myGames = this.userStore.getMyGames;
   },
   methods: {
     addMyGames(game) {
-      this.store.addMyGames(game);
+      this.userStore.addMyGames(game);
     },
     removeMyGames(game) {
-      this.store.removeMyGames(game);
+      this.userStore.removeMyGames(game);
     },
 
     getSetResult(game, setNumber) {
