@@ -120,10 +120,18 @@
                 :key="lastMatch.event_key"
                 class="ml-3 my-3"
               >
-                <v-col
-                  >{{ lastMatch.event_first_player }} vs
-                  {{ lastMatch.event_second_player }}</v-col
-                >
+                <v-col v-if="lastMatch && lastMatch.event_status !== 'Finished'">
+                  <p>Games ongoing...</p>
+                </v-col>
+                <v-col v-else>
+                  <!-- Displaying players names -->
+                  <v-col cols="9"
+                    >{{ lastMatch.event_first_player }} vs
+                    {{ lastMatch.event_second_player }}</v-col
+                  >
+                  <!-- Displaying final result -->
+                  <v-col cols="3">{{ lastMatch.event_final_result }}</v-col>
+                </v-col>
               </v-row>
             </v-card>
 
@@ -146,9 +154,13 @@
                   :key="player.player_key"
                   class="ml-3 my-3"
                 >
-                  <v-col
+                  <v-col class="d-flex align-center"
                     >{{ player.player_name }}
-                    <ProfileStar @click="addFavoritePlayer(player)"></ProfileStar
+                  </v-col>
+                  <v-col
+                    ><ProfileStar
+                      @click="addFavoritePlayer(player)"
+                    ></ProfileStar
                   ></v-col>
                 </v-row>
 
