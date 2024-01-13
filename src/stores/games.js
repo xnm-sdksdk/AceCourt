@@ -13,11 +13,13 @@ export const useGameStore = defineStore("game", {
     // Retrieve Ranking
     standings: [],
     // Retrieve All Live Games
-    liveGames: [],  
+    liveGames: [],
     // Retrieve All Games
     fixtures: [],
     // Retrieve Last Match of Player
     playerLastMatches: [],
+    // Retrieve Games of the day
+    gamesOfDay: [],
   }),
   getters: {
     // Get Tournament
@@ -54,8 +56,14 @@ export const useGameStore = defineStore("game", {
     },
     // Get All Games
     getFixtures: (state) => {
-      const filter=state.fixtures.filter(game=>game.event_qualification !=`True`)
+      const filter = state.fixtures.filter(
+        (game) => game.event_qualification != `True`
+      );
       return filter;
+    },
+    // Get games finished
+    getFinishedScore: (state) => {
+      return state.gamesOfDay;
     },
   },
   actions: {
@@ -126,6 +134,27 @@ export const useGameStore = defineStore("game", {
         console.error("Error fetching Live Games:", error);
       }
     },
+
+    // Fetch games of the present day that are finished
+    // &tournament_key=1236
+    async fetchFinishedGames() {
+      try {
+        // const day = new Date();
+        // const formatDay = `${day.getFullYear()}-${(day.getMonth() + 1)
+        //   .toString()
+        //   .padStart(2, "0")}-${day.getDate().toString().padStart(2, "0")}`;
+        const response = await fetch(
+          `${TENNIS_API_URL}?method=get_fixtures&APIkey=${API_KEY}&date_start=2024-01-13&date_stop=2024-01-14`
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        this.fixtures = data.result;
+      } catch (err) {
+        console.log("Error fetching Finished Games: ", err);
+      }
+    },
     // Fetch H2H
     async fetchH2H() {
       try {
@@ -160,5 +189,5 @@ export const useGameStore = defineStore("game", {
       }
     },
   },
-  persist:true
+  persist: true,
 });
