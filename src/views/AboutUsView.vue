@@ -3,7 +3,7 @@
   <v-container>
     <v-row>
       <v-col>
-        <img src="@/assets/about.svg" alt="" />
+        <img src="../assets/about.svg" alt="" />
       </v-col>
       <v-col>
         <h1>About us</h1>
