@@ -50,13 +50,13 @@
                         v-for="game in liveGames"
                         :key="game.event_key"
                       >
-                        <!-- <div class="game.event_live === '1'">
-                           -->
                         <!-- Header Scores Results -->
                         <ScoresHeaderResults :game="game">
                         </ScoresHeaderResults>
                         <v-row class="bg-blue-darken-2 ma-1">
-                          <v-col cols="4">{{ game.event_first_player }}</v-col>
+                          <v-col cols="4" class="ml-3">{{
+                            game.event_first_player
+                          }}</v-col>
                           <!-- <v-col
                             v-for="(set, setIndex) in game.pointbypoint"
                             :key="setIndex"
@@ -82,25 +82,39 @@
                             </v-col>
                           </v-col> -->
                           <!-- <v-col>Score {{ pointByPoint.score }}</v-col> -->
-                          <v-col cols="1">1</v-col>
-                          <v-col cols="1">2</v-col>
-                          <v-col cols="1">3</v-col>
-                          <v-col cols="1">4</v-col>
-                          <v-col cols="1">5</v-col>
-                          <v-col cols="1">{{
-                            game.event_game_result.slice(0, 2)
-                          }}</v-col>
+                          <v-col
+                            v-for="(set, setIndex) in game.pointbypoint"
+                            :key="setIndex"
+                          >
+                            <v-col cols="1" v-if="set.set_number === 'Set 1'">
+                              {{
+                                set.points[set.points.length - 1].score.slice(
+                                  0,
+                                  2
+                                )
+                              }}</v-col
+                            >
+                            <v-col cols="1">2</v-col>
+                            <v-col cols="1">3</v-col>
+                            <v-col cols="1">4</v-col>
+                            <v-col cols="1">5</v-col>
+                            <v-col cols="1">{{
+                              game.event_game_result.slice(0, 2)
+                            }}</v-col>
+                          </v-col>
                           <!-- <v-col>{{ game.event_serve }}</v-col>  -->
                           <!-- ! Call above useful for court view -->
-                          <v-col cols="2">
+                          <!-- <v-col cols="2">
                             <v-btn @click="addMyGames(game)">
                               Add MyGames
                             </v-btn>
-                          </v-col>
+                          </v-col> -->
                         </v-row>
 
                         <v-row class="rounded-b-xl bg-blue-darken-2 ma-1">
-                          <v-col cols="4">{{ game.event_second_player }}</v-col>
+                          <v-col cols="4" class="ml-3">{{
+                            game.event_second_player
+                          }}</v-col>
                           <v-col cols="1">1</v-col>
                           <v-col cols="1">2</v-col>
                           <v-col cols="1">3</v-col>
@@ -136,7 +150,7 @@
                 </v-col>
                 <v-col
                   v-else
-                  v-for="lastMatch in liveGames"
+                  v-for="lastMatch in lastMatches"
                   :key="lastMatch.event_key"
                 >
                   <!-- Displaying players names -->
@@ -227,6 +241,7 @@ export default {
 
     this.store.fetchLiveScores();
     this.store.fetchPlayers();
+    this.store.fetchFinishedGames();
     this.myGames = this.userStore.getMyGames;
   },
   methods: {
@@ -263,13 +278,19 @@ export default {
     renderPlayers() {
       return this.store.getPlayers;
     },
+    finishedGames() {
+      return this.store.getFinishedScore;
+    },
+    lastMatches() {
+      return this.finishedGames.filter(
+        (game) => game.event_status === "Finished"
+      );
+    },
   },
   watch: {
     liveGames: {
       handler(newGames) {
-        this.ongoingGames = newGames.some(
-          (lastMatch) => lastMatch.event_status !== "Finished"
-        );
+        this.ongoingGames = newGames.some(game => game.event_status === "Finished");
         // newGames.forEach((game) => {
         //   game.pointbypoint.forEach((set, setIndex) => {
         //     // Access the set scores and update UI as needed
