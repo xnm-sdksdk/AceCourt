@@ -15,13 +15,13 @@
                 >
                   <div class="text-blue-900 font-bold">
                     <v-card-title class="ml-5 my-5 text-h5">
-                      Final
+                      {{ game.tournament_round }}
                     </v-card-title>
                   </div>
                   <!-- First Player Image -->
                   <div class="flex">
                     <v-img
-                      src="../assets/nova.svg"
+                      :src="game.event_first_player_logo"
                       alt="First-Player-Game"
                       height="180px"
                       width="180px"
@@ -31,7 +31,7 @@
 
                     <!-- Second Player Image -->
                     <v-img
-                      src="../assets/carlos.svg"
+                      :src="game.event_second_player_logo"
                       alt="First-Player-Game"
                       height="180px"
                       width="180px"
@@ -52,20 +52,21 @@
                 >
                   <v-row>
                     <v-col>Sets</v-col>
+                    <v-col></v-col>
                     <v-col>1st</v-col>
                     <v-col>2nd</v-col>
                     <v-col>3rd</v-col>
                     <v-col>Final</v-col>
                   </v-row>
                   <v-row>
-                    <v-col>N. Djokovic</v-col>
+                    <v-col>{{ game.event_first_player }}</v-col>
                     <v-col>6</v-col>
                     <v-col>6</v-col>
                     <v-col>6</v-col>
                     <v-col>3</v-col>
                   </v-row>
                   <v-row>
-                    <v-col>C. Alcaraz</v-col>
+                    <v-col>{{ game.event_second_player }}</v-col>
                     <v-col>3</v-col>
                     <v-col>2</v-col>
                     <v-col>4</v-col>
@@ -74,25 +75,53 @@
                 </v-card>
               </v-col>
             </v-row>
-            <!-- Voting System -->
-            <v-row class="justify-center align-center">
+            <v-row class="justify-center align-center" align="center">
               <v-col cols="11">
                 <v-card
                   class="rounded-lg bg-grey-lighten-5"
                   elevation="3"
                   height="200"
                 >
+                  <!-- First Line-->
                   <v-row>
-                    <v-card-title>Winning Player</v-card-title>
+                    <v-col>
+                      <p>{{ game.event_first_player }}</p>
+                    </v-col>
+
+                    <v-col>
+                      <p>{{ game.event_second_player }}</p>
+                    </v-col>
                   </v-row>
-                  <v-col>
-                    <div class="flex">
-                      <p>N. Djokovic</p>
-                      <p>C. Alcaraz</p>
-                    </div>
-                    <v-btn>Vote</v-btn>
-                    <v-btn>Vote</v-btn>
-                  </v-col>
+
+                  <v-row align="center">
+                    <v-col>
+                      <v-progress-linear
+                        v-if="game.probability_first_player"
+                        :value="game.probability_first_player"
+                        color="primary"
+                        height="10"
+                      ></v-progress-linear>
+                    </v-col>
+
+                    <v-col>
+                      <v-progress-linear
+                        v-if="game.probability_second_player"
+                        :value="game.probability_second_player"
+                        color="primary"
+                        height="10"
+                      ></v-progress-linear>
+                    </v-col>
+                  </v-row>
+
+                  <!-- Second Line -->
+                  <v-row justify="center">
+                    <v-col>
+                      <v-btn>Vote</v-btn>
+                    </v-col>
+                    <v-col>
+                      <v-btn>Vote</v-btn>
+                    </v-col>
+                  </v-row>
                 </v-card>
               </v-col>
             </v-row>
@@ -129,13 +158,39 @@ export default {
   data() {
     return {
       store: useGameStore(),
-      fixtures: [],
+      game: null,
     };
   },
   created() {
-    // this.store.fetchFixtures();
-    // this.fixtures = this.store.getFixtures;
-    // console.log(this.fixtures);
+    // this.game=this.$route.params.id
+    this.game = {
+      event_key: 11920665,
+      event_date: "2024-01-14",
+      event_time: "05:30",
+      event_first_player: "J. De Jong",
+      first_player_key: 412,
+      event_second_player: "P. Cachin",
+      second_player_key: 414,
+      event_final_result: "-",
+      event_game_result: "-",
+      event_serve: null,
+      event_winner: null,
+      event_status: "1",
+      event_type_type: "Atp Singles",
+      tournament_name: "ATP Australian Open",
+      tournament_key: 1236,
+      tournament_round: "ATP Australian Open - 1/64-finals",
+      tournament_season: "2024",
+      event_live: "0",
+      event_first_player_logo:
+        "https://api.api-tennis.com/logo-tennis/412_j-de-jong.jpg",
+      event_second_player_logo:
+        "https://api.api-tennis.com/logo-tennis/414_p-cachin.jpg",
+      event_qualification: "False",
+      pointbypoint: [],
+      scores: [],
+    };
+    console.log(this.game);
   },
 };
 </script>

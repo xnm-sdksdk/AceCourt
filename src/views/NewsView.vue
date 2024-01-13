@@ -1,44 +1,40 @@
 <template>
   <NavBar></NavBar>
-  <v-container
-      class="container mx-auto flex justify-between items-center p-4"
-    >
-      <v-row>
-        <v-col cols="12" md="6" class="align-self-center">
-          <!-- Title -->
-          <h1 class="text-5xl font-bold mb-4">
-            Discover Australian Open Like Never Before
-          </h1>
+  <v-container class="container mx-auto p-4">
+    <v-row>
+      <!-- Coluna para o texto (ocupando 3 colunas em telas médias e grandes) -->
+      <v-col cols="12" md="3">
+        <h1 class="text-5xl font-bold mb-4">
+          Discover Australian Open Like Never Before
+        </h1>
 
-          <!-- Description -->
-          <p class="text-lg mb-4">
-            Welcome to Ace Court, your gateway to an immersive tennis
-            experience. Get real-time updates, personalize your favorites, stay
-            informed with updated news, and explore player rankings—all in one
-            place. Elevate your love for tennis with us.
-          </p>
+        <p class="text-lg mb-4">
+          Welcome to Ace Court, your gateway to an immersive tennis
+          experience. Get real-time updates, personalize your favorites, stay
+          informed with updated news, and explore player rankings—all in one
+          place. Elevate your love for tennis with us.
+        </p>
 
-          <!-- Start Button -->
-          <RouterLink :to="{ name: 'home' }">
-            <button
-              class="text-white px-4 py-2 rounded-full"
-              style="letter-spacing: 0.15em"
-            >
-              Start
-            </button>
-          </RouterLink>
-        </v-col>
+        <RouterLink :to="{ name: 'home' }">
+          <button
+            class="text-white px-4 py-2 rounded-full"
+            style="letter-spacing: 0.15em"
+          >
+            Start
+          </button>
+        </RouterLink>
+      </v-col>
 
-        <!-- Image -->
-        <v-col cols="12" md="6" class="d-flex align-center justify-center">
-          <img
-            src="../assets/HeroImage.svg"
-            alt="Imagem"
-            class="w-full h-auto small-image"
-          />
-        </v-col>
-      </v-row>
-    </v-container>
+      <!-- Coluna para a imagem (ocupando 9 colunas em telas médias e grandes) -->
+      <v-col cols="12" md="9">
+        <img
+          src="../assets/newsHeader.svg"
+          alt="Imagem"
+          class="w-full h-auto"
+        />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
