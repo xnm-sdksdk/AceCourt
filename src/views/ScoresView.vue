@@ -290,7 +290,7 @@ export default {
   watch: {
     liveGames: {
       handler(newGames) {
-        this.ongoingGames = newGames.some(game => game.event_status === "Finished");
+        this.ongoingGames = newGames.some(game => game.event_status !== "Finished");
         // newGames.forEach((game) => {
         //   game.pointbypoint.forEach((set, setIndex) => {
         //     // Access the set scores and update UI as needed
