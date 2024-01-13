@@ -177,25 +177,22 @@ export const useUserStore = defineStore("user", {
     },
 
     updateUserProfile(newUser) {
-      // Find index of object that are gonna be updated
       const index = this.users.findIndex((user) => user.id === newUser.id);
-      const findBioTrophy=this.loggedUser.trophies.find(trophy=>trophy.title=="Create a bio")
-
+    
       if (index !== -1) {
-        // Update in users Array
         this.users[index] = newUser;
-
-        //If newUser Id is equal to loggeduser id,replace
+    
         if (newUser.id === this.loggedUser.id) {
           this.loggedUser = newUser;
-          //If User change bio in first time win a trophy
-          if(newUser.bio!="" && findBioTrophy.isCompleted==false){}
+    
+          const findBioTrophy = this.loggedUser.trophies.find(trophy => trophy.title === "Create a bio");
+    
+          if (newUser.bio!="" && !findBioTrophy.isCompleted) {
+            findBioTrophy.isCompleted = true;
+            console.log(newUser.trophies);
+          }
         }
       }
-    },
-
-    addBadge(){
-
     }
   },
   persist: true,

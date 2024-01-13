@@ -136,6 +136,7 @@ export default {
     },
     saveChanges() {
       this.userStore.updateUserProfile(this.editedUser);
+      console.log(this.userStore.loggedUser.trophies)
       this.editMode = false;
     },
   },
