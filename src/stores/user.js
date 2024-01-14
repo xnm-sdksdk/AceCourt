@@ -10,7 +10,9 @@ export const useUserStore = defineStore("user", {
     getAllUsers: (state) => state.users,
     getLoggedUser: (state) => state.loggedUser,
     getUserTrophies: (state) => state.loggedUser.trophies,
-    getCompletedTrophies:(state)=>state.loggedUser.trophies.filter(trophy=>trophy.isCompleted=true)
+    getCompletedTrophies: (state) =>
+      state.loggedUser.trophies.filter((trophy) => (trophy.isCompleted = true)),
+    getUserVoteGames: (state) => state.loggedUser.votes,
   },
   actions: {
     login(email, password) {
@@ -178,22 +180,35 @@ export const useUserStore = defineStore("user", {
 
     updateUserProfile(newUser) {
       const index = this.users.findIndex((user) => user.id === newUser.id);
-    
+
       if (index !== -1) {
         this.users[index] = newUser;
-    
+
         if (newUser.id === this.loggedUser.id) {
           this.loggedUser = newUser;
-    
-          const findBioTrophy = this.loggedUser.trophies.find(trophy => trophy.title === "Create a bio");
-    
-          if (newUser.bio!="" && !findBioTrophy.isCompleted) {
+
+          const findBioTrophy = this.loggedUser.trophies.find(
+            (trophy) => trophy.title === "Create a bio"
+          );
+
+          if (newUser.bio != "" && !findBioTrophy.isCompleted) {
             findBioTrophy.isCompleted = true;
             console.log(newUser.trophies);
           }
         }
       }
-    }
+    },
+
+    addVote(player, gameKey) {
+      const newVote = {
+        player: player,
+        gameKey: gameKey,
+        state:false
+      };
+
+      this.loggedUser.votes.push(newVote);
+      console.log(this.loggedUser.votes);
+    },
   },
   persist: true,
 });

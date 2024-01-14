@@ -126,10 +126,10 @@
                   <!-- Second Line -->
                   <v-row justify="center">
                     <v-col>
-                      <v-btn>Vote</v-btn>
+                      <v-btn @click="votePlayer('First Player')" :disabled="endVote">Vote</v-btn>
                     </v-col>
                     <v-col>
-                      <v-btn>Vote</v-btn>
+                      <v-btn @click="votePlayer('Second Player')" :disabled="endVote">Vote</v-btn>
                     </v-col>
                   </v-row>
                 </v-card>
@@ -160,6 +160,7 @@
 <script>
 import NavBar from "@/components/NavBar.vue";
 import { useGameStore } from "../stores/games";
+import { useUserStore } from '../stores/user';
 
 export default {
   components: {
@@ -168,8 +169,10 @@ export default {
   data() {
     return {
       store: useGameStore(),
+      userStore:useUserStore(),
       game: null,
       chance: 50,
+      endVote: false
     };
   },
   created() {
@@ -249,12 +252,32 @@ export default {
         this.chance = Math.floor(Math.random() * 5) + 65;
       }
 
-      // Ajuste do chance com base no jogador com menor ranking
       if (this.game.first_player_key === lowerRankPlayer) {
         this.chance = 100 - this.chance;
       }
-      console.log(this.chance);
     },
+
+    votePlayer(player){
+      //Get Game Key
+      const gameKey=this.game.event_key
+
+      //Check if user already vote in the game
+      const checkGame=this.userStore.getUserVoteGames.find(vote=>vote.gameKey==gameKey)
+
+      //Check if is logged
+      if(!this.userStore.isUserLogged){
+        alert("To use this fixture you need to be logged!")
+      }else{
+        //Check if game is finished
+        if(this.game.event_status=="Finished" || checkGame){
+          this.endVote=true
+        }
+        else{
+          this.userStore.addVote(player,gameKey)
+          this.endVote=true
+        }
+      }
+    }
   },
 };
 </script>
