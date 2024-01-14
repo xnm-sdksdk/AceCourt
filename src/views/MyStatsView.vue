@@ -73,6 +73,7 @@
                       </div>
                       <div class="my-1">
                         <v-card-text class="">Right Games</v-card-text>
+                        <v-card-text class="">{{ getFilteredVotes.length }}</v-card-text>
                       </div>
                     </div>
                   </v-card>
@@ -89,6 +90,7 @@
                       </div>
                       <div class="my-1">
                         <v-card-text class="">Right Games Streak</v-card-text>
+                        <v-card-text class="">Rdasdasdasd</v-card-text>
                       </div>
                     </div>
                   </v-card>
@@ -130,6 +132,7 @@ import Hours from "@/assets/Hours.svg";
 import DoubleCheck from "@/assets/DoubleCheck.svg";
 import RightGames from "@/assets/RightGames.svg";
 import ProfileStar from "@/assets/ProfileStar.svg";
+import { useUserStore } from "../stores/user";
 export default {
   components: {
     NavBar,
@@ -139,6 +142,29 @@ export default {
     DoubleCheck,
     RightGames,
     ProfileStar,
+  },
+
+  data() {
+    return {
+      userStore: useUserStore(),
+    };
+  },
+
+  created () {
+    console.log(this.getVotes);
+  },
+
+  computed: {
+    getVotes() {
+      return this.userStore.getUserVotes;
+    },
+
+    getFilteredVotes() {
+      // Filtra os votos que têm state como true
+      const filteredVotes =this.userStore.getUserVotes.filter((vote) => vote.state === true);
+
+      return filteredVotes;
+    },
   },
 };
 </script>

@@ -19,25 +19,40 @@
                     </v-card-title>
                   </div>
                   <!-- First Player Image -->
+
                   <div class="flex">
-                    <v-img
-                      :src="game.event_first_player_logo"
-                      alt="First-Player-Game"
-                      height="180px"
-                      width="180px"
-                      cover
-                      class="rounded-circle"
-                    ></v-img>
+                    <router-link
+                      :to="{
+                        name: 'players',
+                        params: { id: game.first_player_key },
+                      }"
+                    >
+                      <v-img
+                        :src="game.event_first_player_logo"
+                        alt="First-Player-Game"
+                        height="180px"
+                        width="180px"
+                        cover
+                        class="rounded-circle"
+                      ></v-img>
+                    </router-link>
 
                     <!-- Second Player Image -->
-                    <v-img
-                      :src="game.event_second_player_logo"
-                      alt="First-Player-Game"
-                      height="180px"
-                      width="180px"
-                      cover
-                      class="rounded-circle"
-                    ></v-img>
+                    <router-link
+                      :to="{
+                        name: 'players',
+                        params: { id: game.second_player_key },
+                      }"
+                    >
+                      <v-img
+                        :src="game.event_second_player_logo"
+                        alt="First-Player-Game"
+                        height="180px"
+                        width="180px"
+                        cover
+                        class="rounded-circle"
+                      ></v-img>
+                    </router-link>
                   </div>
                 </v-card>
               </v-col>
@@ -126,10 +141,18 @@
                   <!-- Second Line -->
                   <v-row justify="center">
                     <v-col>
-                      <v-btn @click="votePlayer('First Player')" :disabled="endVote">Vote</v-btn>
+                      <v-btn
+                        @click="votePlayer('First Player')"
+                        :disabled="endVote"
+                        >Vote</v-btn
+                      >
                     </v-col>
                     <v-col>
-                      <v-btn @click="votePlayer('Second Player')" :disabled="endVote">Vote</v-btn>
+                      <v-btn
+                        @click="votePlayer('Second Player')"
+                        :disabled="endVote"
+                        >Vote</v-btn
+                      >
                     </v-col>
                   </v-row>
                 </v-card>
@@ -160,7 +183,7 @@
 <script>
 import NavBar from "@/components/NavBar.vue";
 import { useGameStore } from "../stores/games";
-import { useUserStore } from '../stores/user';
+import { useUserStore } from "../stores/user";
 
 export default {
   components: {
@@ -169,10 +192,10 @@ export default {
   data() {
     return {
       store: useGameStore(),
-      userStore:useUserStore(),
+      userStore: useUserStore(),
       game: null,
       chance: 50,
-      endVote: false
+      endVote: false,
     };
   },
   created() {
@@ -222,6 +245,15 @@ export default {
     } else {
       console.log("Alguns rankings não foram encontrados.");
     }
+
+    //Check if user already vote in the game
+    const checkGame = this.userStore.getUserVoteGames.find(
+      (vote) => vote.gameKey == this.game.event_key
+    );
+
+    if (this.game.event_status == "Finished" || checkGame) {
+      this.endVote = true;
+    }
   },
 
   methods: {
@@ -257,27 +289,38 @@ export default {
       }
     },
 
-    votePlayer(player){
+    votePlayer(player) {
       //Get Game Key
-      const gameKey=this.game.event_key
-
-      //Check if user already vote in the game
-      const checkGame=this.userStore.getUserVoteGames.find(vote=>vote.gameKey==gameKey)
-
+      const gameKey = this.game.event_key;
       //Check if is logged
-      if(!this.userStore.isUserLogged){
-        alert("To use this fixture you need to be logged!")
-      }else{
+      if (!this.userStore.isUserLogged) {
+        alert("To use this fixture you need to be logged!");
+      } else {
         //Check if game is finished
-        if(this.game.event_status=="Finished" || checkGame){
-          this.endVote=true
-        }
-        else{
-          this.userStore.addVote(player,gameKey)
-          this.endVote=true
+        this.userStore.addVote(player, gameKey);
+        this.endVote = true;
+
+        if (player == "First Player") {
+          this.chance++;
+        } else {
+          this.chance--;
         }
       }
-    }
+    },
+  },
+
+  watch: {
+    game: {
+      handler(newGame) {
+        if (newGame) {
+          // Verifica o status do jogo
+          if (newGame.event_status === "Finished") {
+            this.endVote = true;
+          }
+        }
+      },
+      immediate: true,
+    },
   },
 };
 </script>

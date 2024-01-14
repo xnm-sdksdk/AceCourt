@@ -200,14 +200,27 @@ export const useUserStore = defineStore("user", {
     },
 
     addVote(player, gameKey) {
-      const newVote = {
-        player: player,
-        gameKey: gameKey,
-        state:false
-      };
 
-      this.loggedUser.votes.push(newVote);
-      console.log(this.loggedUser.votes);
+      const loggedUserIndex = this.users.findIndex(
+        (user) => user.id === this.loggedUser.id
+      );
+      console.log(loggedUserIndex);
+
+      if (loggedUserIndex !== -1) {
+        const newVote = {
+          player: player,
+          gameKey: gameKey,
+          state:false
+        };
+  
+        this.loggedUser.votes.push(newVote);
+        console.log(this.loggedUser.votes);
+
+        console.log(
+          "Game added to user's collection:",
+          this.users[loggedUserIndex]
+        );
+      }
     },
   },
   persist: true,
