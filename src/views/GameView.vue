@@ -176,6 +176,12 @@
           </v-col>
         </v-row>
       </div>
+      <v-img
+        src="@/assets/court.svg"
+        alt="Court"
+        width="100%"
+        height="auto"
+      ></v-img>
     </v-container>
   </v-app>
 </template>
@@ -199,34 +205,12 @@ export default {
     };
   },
   created() {
+    // this.intervalId = setInterval(() => {
+      // }, 5000);
+      
+    this.store.fetchLiveScores();
     // this.game=this.$route.params.id
-    this.game = {
-      event_key: 11920665,
-      event_date: "2024-01-14",
-      event_time: "05:30",
-      event_first_player: "J. De Jong",
-      first_player_key: 412,
-      event_second_player: "P. Cachin",
-      second_player_key: 414,
-      event_final_result: "-",
-      event_game_result: "-",
-      event_serve: null,
-      event_winner: null,
-      event_status: "1",
-      event_type_type: "Atp Singles",
-      tournament_name: "ATP Australian Open",
-      tournament_key: 1236,
-      tournament_round: "ATP Australian Open - 1/64-finals",
-      tournament_season: "2024",
-      event_live: "0",
-      event_first_player_logo:
-        "https://api.api-tennis.com/logo-tennis/412_j-de-jong.jpg",
-      event_second_player_logo:
-        "https://api.api-tennis.com/logo-tennis/414_p-cachin.jpg",
-      event_qualification: "False",
-      pointbypoint: [],
-      scores: [],
-    };
+    this.game = this.store.getLiveScore.find(game=>game.event_key==11920857)
 
     //Get players Rankings
     const firstPlayerRank = this.store.getStandings
@@ -254,6 +238,8 @@ export default {
     if (this.game.event_status == "Finished" || checkGame) {
       this.endVote = true;
     }
+
+    console.log(this.game);
   },
 
   methods: {
@@ -316,10 +302,14 @@ export default {
           // Verifica o status do jogo
           if (newGame.event_status === "Finished") {
             this.endVote = true;
+          } else {
+            // Jogo não está acabado, verifica event_game_result
+            console.log("Game Result:", newGame.scores);
           }
         }
       },
       immediate: true,
+      deep: true,
     },
   },
 };
