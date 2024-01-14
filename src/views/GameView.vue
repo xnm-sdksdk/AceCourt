@@ -48,7 +48,7 @@
                 <v-card
                   class="rounded-lg bg-grey-lighten-5"
                   elevation="3"
-                  height="300"
+                  height="150"
                 >
                   <v-row>
                     <v-col>Sets</v-col>
@@ -93,24 +93,34 @@
                     </v-col>
                   </v-row>
 
-                  <v-row align="center">
-                    <v-col>
-                      <v-progress-linear
-                        v-if="game.probability_first_player"
-                        :value="game.probability_first_player"
-                        color="primary"
-                        height="10"
-                      ></v-progress-linear>
-                    </v-col>
-
-                    <v-col>
-                      <v-progress-linear
-                        v-if="game.probability_second_player"
-                        :value="game.probability_second_player"
-                        color="primary"
-                        height="10"
-                      ></v-progress-linear>
-                    </v-col>
+                  <v-row class="d-flex align-center">
+                    <v-container>
+                      <v-row>
+                        <v-col>
+                          <v-row class="d-flex align-center">
+                            <v-col class="text-left">
+                              <p>{{ chance }}%</p>
+                            </v-col>
+                            <v-col class="text-right">
+                              <p>{{ 100 - chance }}%</p>
+                            </v-col>
+                          </v-row>
+                          <v-row class="d-flex align-center">
+                            <v-col>
+                              <v-progress-linear
+                                :style="{
+                                  '--bar-color': '#A9DC3C',
+                                  '--background-color': '#008BCC',
+                                }"
+                                :model-value="chance"
+                                :height="20"
+                                max-width="150"
+                              ></v-progress-linear>
+                            </v-col>
+                          </v-row>
+                        </v-col>
+                      </v-row>
+                    </v-container>
                   </v-row>
 
                   <!-- Second Line -->
@@ -159,6 +169,7 @@ export default {
     return {
       store: useGameStore(),
       game: null,
+      chance: 50,
     };
   },
   created() {
@@ -190,9 +201,71 @@ export default {
       pointbypoint: [],
       scores: [],
     };
-    console.log(this.game);
+
+    //Get players Rankings
+    const firstPlayerRank = this.store.getStandings
+      .filter((rank) => rank.player_key === this.game.first_player_key)
+      .map((rank) => rank.place)[0];
+
+    const secondPlayerRank = this.store.getStandings
+      .filter((rank) => rank.player_key === this.game.second_player_key)
+      .map((rank) => rank.place)[0];
+
+    if (firstPlayerRank !== undefined && secondPlayerRank !== undefined) {
+      this.modelValue = this.generateModelValue(
+        firstPlayerRank,
+        secondPlayerRank
+      );
+    } else {
+      console.log("Alguns rankings não foram encontrados.");
+    }
+  },
+
+  methods: {
+    generateModelValue(firstPlayerRank, secondPlayerRank) {
+      const rankDifference = Math.abs(firstPlayerRank - secondPlayerRank);
+      let lowerRankPlayer, higherRankPlayer;
+
+      // See what are the higher ranking
+      if (firstPlayerRank < secondPlayerRank) {
+        lowerRankPlayer = this.game.first_player_key;
+        higherRankPlayer = this.game.second_player_key;
+      } else {
+        lowerRankPlayer = this.game.second_player_key;
+        higherRankPlayer = this.game.first_player_key;
+      }
+
+      if (rankDifference < 10) {
+        // Generate a number between 50 and 54
+        this.chance = Math.floor(Math.random() * 5) + 50;
+      } else if (rankDifference < 30) {
+        // Generate a number between 55 and 59
+        this.chance = Math.floor(Math.random() * 5) + 55;
+      } else if (rankDifference < 50) {
+        // Generate a number between 60 and 64
+        this.chance = Math.floor(Math.random() * 5) + 60;
+      } else {
+        // Generate a number between 60 and 65
+        this.chance = Math.floor(Math.random() * 5) + 65;
+      }
+
+      // Ajuste do chance com base no jogador com menor ranking
+      if (this.game.first_player_key === lowerRankPlayer) {
+        this.chance = 100 - this.chance;
+      }
+      console.log(this.chance);
+    },
   },
 };
 </script>
 
-<style></style>
+<style>
+.v-progress-linear::before {
+  background-color: var(--background-color);
+}
+
+.v-progress-linear__background,
+.v-progress-linear__buffer {
+  background-color: var(--bar-color);
+}
+</style>
