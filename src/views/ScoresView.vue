@@ -238,7 +238,6 @@ export default {
   },
   created() {
     console.log(this.liveGames);
-
     this.store.fetchLiveScores();
     this.store.fetchPlayers();
     this.store.fetchFinishedGames();

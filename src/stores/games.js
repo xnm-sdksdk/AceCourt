@@ -122,7 +122,7 @@ export const useGameStore = defineStore("game", {
     async fetchLiveScores() {
       try {
         const response = await fetch(
-          `${TENNIS_API_URL}?method=get_livescore&APIkey=${API_KEY}`
+          `${TENNIS_API_URL}?method=get_livescore&APIkey=${API_KEY}&tournament_key=1236`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
