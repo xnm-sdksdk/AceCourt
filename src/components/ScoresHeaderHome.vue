@@ -7,7 +7,7 @@
       <v-col>3rd</v-col>
       <v-col>4th</v-col>
       <v-col>5th</v-col>
-      <v-col cols="1">
+      <v-col cols="2">
         <img src="../assets/Live.svg" />
       </v-col>
     </v-row>
