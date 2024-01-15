@@ -158,10 +158,7 @@ export default {
       intervalId: null,
     };
   },
-<<<<<<< HEAD
-=======
 
->>>>>>> 0bd75a08f805d93fc7d4371f85dbff8a735d8f81
   created() {
     console.log(this.getFilteredVotes);
     console.log(this.userStore.getTime);
@@ -181,7 +178,6 @@ export default {
     getFilteredVotes() {
       // Filtra os votos que têm state como true
       const filteredVotes = this.getVotes.filter((vote) => vote.state === true);
-<<<<<<< HEAD
       return filteredVotes;
     },
     time() {
@@ -189,7 +185,6 @@ export default {
       const minutes = Math.floor(this.userStore.usageTime / 60);
       const seconds = (this.userStore.usageTime % 60).toFixed(0);
       return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-=======
 
       return filteredVotes;
     },
@@ -209,7 +204,6 @@ export default {
         console.log("No favorite players.");
         return "";
       }
->>>>>>> 0bd75a08f805d93fc7d4371f85dbff8a735d8f81
     },
   },
 };

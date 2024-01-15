@@ -15,11 +15,8 @@ export const useUserStore = defineStore("user", {
     getCompletedTrophies: (state) =>
       state.loggedUser.trophies.filter((trophy) => trophy.isCompleted === true),
     getUserVoteGames: (state) => state.loggedUser.votes,
-<<<<<<< HEAD
     getTime: (state) => state.usageTime,
-=======
-    getUserPlayers:(state)=>state.loggedUser.myPlayers
->>>>>>> 0bd75a08f805d93fc7d4371f85dbff8a735d8f81
+    getUserPlayers: (state) => state.loggedUser.myPlayers,
   },
   actions: {
     login(email, password) {
@@ -221,21 +218,18 @@ export const useUserStore = defineStore("user", {
           gameKey: gameKey,
           state: false,
         };
-<<<<<<< HEAD
 
         this.loggedUser.votes.push(newVote);
         console.log(this.loggedUser.votes);
-=======
->>>>>>> 0bd75a08f805d93fc7d4371f85dbff8a735d8f81
 
         this.loggedUser.votes.push(newVote);
-        this.users[loggedUserIndex]=this.loggedUser
+        this.users[loggedUserIndex] = this.loggedUser;
         console.log(this.loggedUser.votes);
       }
     },
 
     addFavorite(playerKey, playerName) {
-      console.log("TESTE")
+      console.log("TESTE");
       const loggedUserIndex = this.users.findIndex(
         (user) => user.id === this.loggedUser.id
       );
@@ -244,11 +238,11 @@ export const useUserStore = defineStore("user", {
       if (loggedUserIndex !== -1) {
         const newFav = {
           playerKey: playerKey,
-          playerName: playerName
+          playerName: playerName,
         };
 
         this.loggedUser.myPlayers.push(newFav);
-        this.users[loggedUserIndex]=this.loggedUser
+        this.users[loggedUserIndex] = this.loggedUser;
       }
     },
 
@@ -258,8 +252,10 @@ export const useUserStore = defineStore("user", {
       );
 
       if (loggedUserIndex !== -1) {
-        this.loggedUser.myPlayers=this.loggedUser.myPlayers.filter(player=>player.playerKey != playerKey);
-        this.users[loggedUserIndex].myPlayers=this.loggedUser.myPlayers
+        this.loggedUser.myPlayers = this.loggedUser.myPlayers.filter(
+          (player) => player.playerKey != playerKey
+        );
+        this.users[loggedUserIndex].myPlayers = this.loggedUser.myPlayers;
       }
     },
     // Keep track of usage of the user in the application
