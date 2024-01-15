@@ -210,7 +210,7 @@ export default {
       
     this.store.fetchLiveScores();
     // this.game=this.$route.params.id
-    this.game = this.store.getLiveScore.find(game=>game.event_key==11920857)
+    this.game = this.store.getLiveScore.find(game=>game.event_key==11920671)
 
     //Get players Rankings
     const firstPlayerRank = this.store.getStandings
