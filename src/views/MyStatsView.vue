@@ -73,7 +73,7 @@
                       </div>
                       <div class="my-1">
                         <v-card-text class="">Right Games</v-card-text>
-                        <v-card-text class="">{{ getFilteredVotes.length }}</v-card-text>
+                        <v-card-text class="">{{ getFilteredVotes.length }} of {{ getVotes.length }}</v-card-text>
                       </div>
                     </div>
                   </v-card>
@@ -151,17 +151,17 @@ export default {
   },
 
   created () {
-    console.log(this.getVotes);
+    console.log(this.getFilteredVotes);
   },
 
   computed: {
     getVotes() {
-      return this.userStore.getUserVotes;
+      return this.userStore.getUserVoteGames;
     },
 
     getFilteredVotes() {
       // Filtra os votos que têm state como true
-      const filteredVotes =this.userStore.getUserVotes.filter((vote) => vote.state === true);
+      const filteredVotes =this.getVotes.filter(vote=>vote.state===true)
 
       return filteredVotes;
     },
