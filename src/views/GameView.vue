@@ -177,7 +177,7 @@
         </v-row>
       </div>
       <v-img
-        src="@/assets/court.svg"
+        src="/assets/court.svg"
         alt="Court"
         width="100%"
         height="auto"
@@ -206,11 +206,13 @@ export default {
   },
   created() {
     // this.intervalId = setInterval(() => {
-      // }, 5000);
-      
+    // }, 5000);
+
     this.store.fetchLiveScores();
     // this.game=this.$route.params.id
-    this.game = this.store.getLiveScore.find(game=>game.event_key==11920671)
+    this.game = this.store.getLiveScore.find(
+      (game) => game.event_key == 11920438
+    );
 
     //Get players Rankings
     const firstPlayerRank = this.store.getStandings
