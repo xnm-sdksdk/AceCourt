@@ -152,6 +152,7 @@ export const useUserStore = defineStore("user", {
     logout() {
       this.loggedUser = null;
       this.isUserLogged = false;
+      this.$reset();
     },
 
     addMyGames(game) {
@@ -233,7 +234,6 @@ export const useUserStore = defineStore("user", {
 
         this.loggedUser.myPlayers.push(newFav);
         this.users[loggedUserIndex]=this.loggedUser
-        console.log(this.loggedUser.myPlayers);
       }
     },
 
@@ -245,7 +245,6 @@ export const useUserStore = defineStore("user", {
       if (loggedUserIndex !== -1) {
         this.loggedUser.myPlayers=this.loggedUser.myPlayers.filter(player=>player.playerKey != playerKey);
         this.users[loggedUserIndex].myPlayers=this.loggedUser.myPlayers
-        console.log(this.loggedUser.myPlayers);
       }
     },
   },

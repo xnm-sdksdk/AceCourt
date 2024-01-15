@@ -240,8 +240,12 @@ export default {
     },
 
     addFav(){
-      this.userStore.addFavorite(this.player.player_key,this.player.player_name)
-      this.isFavorite=true
+      if(this.userStore.isUserLogged){
+        this.userStore.addFavorite(this.player.player_key,this.player.player_name)
+        this.isFavorite=true
+      }else{
+        alert("Please do Login to favorite player!")
+      }
     },
 
     remFav(){
