@@ -5,7 +5,7 @@
       <!-- Highlight Player Card -->
       <div class="container mx-auto flex justify-between items-center p-4">
         <v-row class="justify-center align-center">
-          <v-col cols="5">
+          <v-col :cols="12" md="5" lg="5">
             <v-card
               class="rounded-xl bg-grey-lighten-5"
               elevation="3"
@@ -52,7 +52,7 @@
           </v-col>
 
           <!-- Live Games Card -->
-          <v-col cols="5">
+          <v-col :cols="12" md="5" lg="5" class="order-sm-2">
             <div class="">
               <v-card
                 class="rounded-xl bg-grey-lighten-5"
@@ -93,7 +93,7 @@
       <div class="container mx-auto flex justify-between items-center p-4">
         <!-- First Row -->
         <v-row class="justify-center align-center">
-          <v-col cols="10">
+          <v-col :cols="12">
             <v-card
               class="rounded-t-xl m-1 text-center bg-blue-lighten-5 white--text"
               elevation="3"
@@ -118,7 +118,9 @@
                   <v-col cols="1" class="m-3">-</v-col>
                   <v-col cols="1" class="m-3">-</v-col>
                   <v-col cols="1" class="m-3">-</v-col>
-                  <v-col cols="2" class="m-3">2</v-col>
+                  <v-col cols="1" class="m-3">{{
+                    game.event_game_result.slice(0, 2)
+                  }}</v-col>
                 </v-row>
                 <!-- Third Row -->
                 <div class="">
@@ -131,7 +133,9 @@
                     <v-col cols="1" class="m-3">-</v-col>
                     <v-col cols="1" class="m-3">-</v-col>
                     <v-col cols="1" class="m-3">-</v-col>
-                    <v-col cols="2" class="m-3">0</v-col>
+                    <v-col cols="1" class="m-3">{{
+                      game.event_game_result.slice(4, 7)
+                    }}</v-col>
                   </v-row>
                 </div>
               </v-card>
@@ -143,7 +147,7 @@
       <!-- Top Matches Card -->
       <div class="container mx-auto flex justify-between items-center p-4">
         <v-row class="justify-center align-center">
-          <v-col cols="5">
+          <v-col :cols="12" md="5" lg="5" class="order-sm-2">
             <v-card
               class="rounded-xl bg-grey-lighten-5"
               elevation="3"
@@ -199,7 +203,7 @@
 
           <!-- News Card -->
 
-          <v-col cols="5">
+          <v-col :cols="12" md="5" lg="5" class="order-sm-2">
             <v-card
               class="rounded-xl bg-grey-lighten-5"
               elevation="3"
@@ -242,7 +246,7 @@
       <!-- Ranking Card -->
       <div class="container mx-auto flex justify-between items-center p-4">
         <v-row class="justify-center align-center">
-          <v-col cols="5">
+          <v-col :cols="12" md="5" lg="5" class="order-sm-2">
             <v-card
               class="rounded-xl bg-grey-lighten-5"
               elevation="3"
@@ -297,7 +301,7 @@
               </v-row>
             </v-card>
           </v-col>
-          <v-col cols="5">
+          <v-col :cols="12" md="5" lg="5" class="order-sm-2">
             <!-- Head to Head Card -->
             <v-card
               class="rounded-xl bg-grey-lighten-5"
@@ -358,7 +362,7 @@
       <!-- Tournament Progress Stats Card -->
       <div class="container mx-auto flex justify-between items-center p-4">
         <v-row class="justify-center align-center">
-          <v-col cols="10">
+          <v-col :cols="12" md="5" lg="5" class="order-sm-2">
             <v-card
               max-width="1500"
               class="rounded-xl bg-grey-lighten-5"
