@@ -3,16 +3,19 @@ import { defineStore } from "pinia";
 export const useUserStore = defineStore("user", {
   state: () => ({
     users: [],
+    usageTime: 0,
     loggedUser: null,
     isUserLogged: false,
+    timeControl: null,
   }),
   getters: {
     getAllUsers: (state) => state.users,
     getLoggedUser: (state) => state.loggedUser,
     getUserTrophies: (state) => state.loggedUser.trophies,
     getCompletedTrophies: (state) =>
-      state.loggedUser.trophies.filter((trophy) => (trophy.isCompleted = true)),
+      state.loggedUser.trophies.filter((trophy) => trophy.isCompleted === true),
     getUserVoteGames: (state) => state.loggedUser.votes,
+    getTime: (state) => state.usageTime,
   },
   actions: {
     login(email, password) {
@@ -22,6 +25,7 @@ export const useUserStore = defineStore("user", {
       if (findUser) {
         this.loggedUser = findUser;
         this.isUserLogged = true;
+        this.timeTrack();
       } else {
         throw new Error("User not found!");
       }
@@ -150,10 +154,11 @@ export const useUserStore = defineStore("user", {
     },
 
     logout() {
+      this.stopTimeTrack();
       this.loggedUser = null;
       this.isUserLogged = false;
     },
-
+    // Add Games to My Games
     addMyGames(game) {
       const loggedUserIndex = this.users.findIndex(
         (user) => user.id === this.loggedUser.id
@@ -168,7 +173,7 @@ export const useUserStore = defineStore("user", {
         );
       }
     },
-    // ! Needs review
+    // Remove Games from My Games
     removeMyGames(game) {
       const index = this.myGames.findIndex(
         (myGame) => myGame.event_key === game.event_key
@@ -200,7 +205,6 @@ export const useUserStore = defineStore("user", {
     },
 
     addVote(player, gameKey) {
-
       const loggedUserIndex = this.users.findIndex(
         (user) => user.id === this.loggedUser.id
       );
@@ -210,9 +214,9 @@ export const useUserStore = defineStore("user", {
         const newVote = {
           player: player,
           gameKey: gameKey,
-          state:false
+          state: false,
         };
-  
+
         this.loggedUser.votes.push(newVote);
         console.log(this.loggedUser.votes);
 
@@ -221,6 +225,19 @@ export const useUserStore = defineStore("user", {
           this.users[loggedUserIndex]
         );
       }
+    },
+    // Keep track of usage of the user in the application
+    timeTrack() {
+      console.log("timeTrack action started");
+      this.timeControl = setInterval(() => {
+        console.log("Running");
+        this.usageTime += 1;
+      }, 1000);
+    },
+    // Stop tracking the usage of the user
+    stopTimeTrack() {
+      clearInterval(this.timeControl);
+      this.timeControl = null;
     },
   },
   persist: true,

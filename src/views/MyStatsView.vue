@@ -54,6 +54,7 @@
                       </div>
                       <div class="my-1">
                         <v-card-text class="">Average Hours</v-card-text>
+                        <v-card-text> {{ time }}</v-card-text>
                       </div>
                     </div>
                   </v-card>
@@ -73,7 +74,10 @@
                       </div>
                       <div class="my-1">
                         <v-card-text class="">Right Games</v-card-text>
-                        <v-card-text class="">{{ getFilteredVotes.length }} of {{ getVotes.length }}</v-card-text>
+                        <v-card-text class=""
+                          >{{ getFilteredVotes.length }} of
+                          {{ getVotes.length }}</v-card-text
+                        >
                       </div>
                     </div>
                   </v-card>
@@ -143,27 +147,40 @@ export default {
     RightGames,
     ProfileStar,
   },
-
   data() {
     return {
       userStore: useUserStore(),
+      pageLoad: Date.now(),
+      pageActive: true,
+      intervalId: null,
     };
   },
-
-  created () {
+  created() {
     console.log(this.getFilteredVotes);
+    console.log(this.userStore.getTime);
+    console.log(this.time);
   },
-
+  mounted() {
+    console.log("Component is mounted");
+    this.userStore.timeTrack();
+  },
+  beforeDestroy() {
+    this.userStore.stopTimeTrack();
+  },
   computed: {
     getVotes() {
       return this.userStore.getUserVoteGames;
     },
-
     getFilteredVotes() {
       // Filtra os votos que têm state como true
-      const filteredVotes =this.getVotes.filter(vote=>vote.state===true)
-
+      const filteredVotes = this.getVotes.filter((vote) => vote.state === true);
       return filteredVotes;
+    },
+    time() {
+      console.log("Current usageTime:", this.userStore.usageTime);
+      const minutes = Math.floor(this.userStore.usageTime / 60);
+      const seconds = (this.userStore.usageTime % 60).toFixed(0);
+      return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
     },
   },
 };
