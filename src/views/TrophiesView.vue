@@ -12,7 +12,7 @@
               <v-row>
                 <v-col v-for="(trophy, index) in getTrophies" :key="index" cols="3" class="my-15">
                   <div class="w-40 mx-auto">
-                    <v-img :src="trophy.image" width="100px" height="100px"></v-img>
+                    <img :src="trophy.image" width="100px" height="100px">
                     <v-card-text>{{ trophy.title }}</v-card-text>
                   </div>
                 </v-col>

@@ -48,97 +48,97 @@ export const useUserStore = defineStore("user", {
             {
               id: 1,
               title: "Create a bio",
-              image: "@/assets/personal-data-two-color-9c5ea.svg",
+              image: "../assets/personal-data-two-color-9c5ea.svg",
               isCompleted: false,
             },
             {
               id: 2,
               title: "Hit 5 games in a row",
-              image: "@/assets/prize.svg",
+              image: "../assets/prize.svg",
               isCompleted: false,
             },
             {
               id: 3,
               title: "Hit 10 games in a row",
-              image: "@/assets/superman.svg",
+              image: "../assets/superman.svg",
               isCompleted: false,
             },
             {
               id: 4,
               title: "Change your avatar",
-              image: "@/assets/transferwise.svg",
+              image: "../assets/transferwise.svg",
               isCompleted: false,
             },
             {
               id: 5,
               title: "Hit a game prediction",
-              image: "@/assets/target.svg",
+              image: "../assets/target.svg",
               isCompleted: false,
             },
             {
               id: 6,
               title: "Check the Statistics on a game",
-              image: "@/assets/analysis.svg",
+              image: "../assets/analysis.svg",
               isCompleted: false,
             },
             {
               id: 7,
               title: "Check a game",
-              image: "@/assets/oceania.svg",
+              image: "../assets/oceania.svg",
               isCompleted: false,
             },
             {
               id: 8,
               title: "Vote on a game",
-              image: "@/assets/voting.svg",
+              image: "../assets/voting.svg",
               isCompleted: false,
             },
             {
               id: 9,
               title: "Check the Schedules page",
-              image: "@/assets/calendar.svg",
+              image: "../assets/calendar.svg",
               isCompleted: false,
             },
             {
               id: 10,
               title: "Get all trophies",
-              image: "@/assets/career.svg",
+              image: "../assets/career.svg",
               isCompleted: false,
             },
             {
               id: 11,
               title: "Get 10 trophies",
-              image: "@/assets/winner.svg",
+              image: "../assets/winner.svg",
               isCompleted: false,
             },
             {
               id: 12,
               title: "Get 5 trophies",
-              image: "@/assets/step.svg",
+              image: "../assets/step.svg",
               isCompleted: false,
             },
             {
               id: 13,
               title: "Check all the app pages",
-              image: "@/assets/checklist.svg",
+              image: "../assets/checklist.svg",
               isCompleted: false,
             },
             {
               id: 14,
               title: "Check the My Stats page",
-              image: "@/assets/knowledge.svg",
+              image: "../assets/knowledge.svg",
               isCompleted: false,
             },
             {
               id: 15,
               title: "Check the Match Report Page",
-              image: "@/assets/report.svg",
+              image: "../assets/report.svg",
               isCompleted: false,
             },
             {
               id: 16,
               title: "Win a Favorite Player",
-              image: "@/assets/tennis.svg",
+              image: "../assets/tennis.svg",
               isCompleted: false,
             },
           ],
@@ -200,7 +200,6 @@ export const useUserStore = defineStore("user", {
     },
 
     addVote(player, gameKey) {
-
       const loggedUserIndex = this.users.findIndex(
         (user) => user.id === this.loggedUser.id
       );
@@ -210,16 +209,43 @@ export const useUserStore = defineStore("user", {
         const newVote = {
           player: player,
           gameKey: gameKey,
-          state:false
+          state: false,
         };
-  
-        this.loggedUser.votes.push(newVote);
-        console.log(this.loggedUser.votes);
 
-        console.log(
-          "Game added to user's collection:",
-          this.users[loggedUserIndex]
-        );
+        this.loggedUser.votes.push(newVote);
+        this.users[loggedUserIndex]=this.loggedUser
+        console.log(this.loggedUser.votes);
+      }
+    },
+
+    addFavorite(playerKey, playerName) {
+      console.log("TESTE")
+      const loggedUserIndex = this.users.findIndex(
+        (user) => user.id === this.loggedUser.id
+      );
+      console.log(loggedUserIndex);
+
+      if (loggedUserIndex !== -1) {
+        const newFav = {
+          playerKey: playerKey,
+          playerName: playerName
+        };
+
+        this.loggedUser.myPlayers.push(newFav);
+        this.users[loggedUserIndex]=this.loggedUser
+        console.log(this.loggedUser.myPlayers);
+      }
+    },
+
+    remFavorite(playerKey) {
+      const loggedUserIndex = this.users.findIndex(
+        (user) => user.id === this.loggedUser.id
+      );
+
+      if (loggedUserIndex !== -1) {
+        this.loggedUser.myPlayers=this.loggedUser.myPlayers.filter(player=>player.playerKey != playerKey);
+        this.users[loggedUserIndex].myPlayers=this.loggedUser.myPlayers
+        console.log(this.loggedUser.myPlayers);
       }
     },
   },

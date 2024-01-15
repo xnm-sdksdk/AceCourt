@@ -176,12 +176,12 @@
           </v-col>
         </v-row>
       </div>
-      <v-img
+      <img
         src="/assets/court.svg"
         alt="Court"
         width="100%"
         height="auto"
-      ></v-img>
+      >
     </v-container>
   </v-app>
 </template>
