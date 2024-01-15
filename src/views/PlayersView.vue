@@ -15,11 +15,17 @@
 
       <!-- Player Name Section -->
       <v-row>
-        <v-col>
-          <v-container fluid class="name-container">
+        <v-container fluid class="name-container">
+          <v-col>
             <h2 class="text-xl font-bold">{{ player.player_name }}</h2>
-          </v-container>
-        </v-col>
+          </v-col>
+          <v-col v-if="isFavorite">
+            <v-btn @click="remFav">Remove Favourite</v-btn>
+          </v-col>
+          <v-col v-else>
+            <v-btn @click="addFav">Add Favourite</v-btn>
+          </v-col>
+        </v-container>
       </v-row>
 
       <!-- Player Information Section -->
@@ -64,7 +70,7 @@
           <!-- Player Name Section -->
           <v-row>
             <v-col>
-              <v-container fluid class="name-container">
+              <v-container class="name-container">
                 <h2 class="text-xl font-bold">Registed Games</h2> </v-container
               ><!-- Player Name Section -->
               <v-row>
@@ -138,6 +144,7 @@
 import NavBar from "@/components/NavBar.vue";
 import BackButton from "../components/BackButton.vue";
 import { useGameStore } from "@/stores/games.js";
+import { useUserStore } from '../stores/user';
 export default {
   components: {
     NavBar,
@@ -146,16 +153,17 @@ export default {
   data() {
     return {
       gameStore: useGameStore(),
+      userStore: useUserStore(),
       h2h: [],
       standings: null,
       player: null,
       playerId: null,
+      isFavorite: false,
     };
   },
   created() {
     //Get player Id from route
     this.playerId = this.$route.params.id;
-    
 
     //Get standings to get the points and place of the player
     this.standings = this.gameStore.getStandings.find(
@@ -166,11 +174,12 @@ export default {
     this.player = this.gameStore.getPlayers.find(
       (player) => player.player_key == this.playerId
     );
-    console.log(this.player);
 
-    //G of the playeret last games
-    // this.h2h = this.gameStore.getPlayerLastMacthes;
-    // console.log(this.h2h);
+    //Check if player is Favorite
+    if(this.userStore.getLoggedUser != null){
+
+    }
+    console.log(this.player);
   },
 
   computed: {
@@ -229,6 +238,20 @@ export default {
 
       return formattedWithSpaces;
     },
+
+    addFav(){
+      if(this.userStore.isUserLogged){
+        this.userStore.addFavorite(this.player.player_key,this.player.player_name)
+        this.isFavorite=true
+      }else{
+        alert("Please do Login to favorite player!")
+      }
+    },
+
+    remFav(){
+      this.userStore.remFavorite(this.player.player_key)
+      this.isFavorite=false
+    }
   },
 };
 </script>
@@ -237,6 +260,8 @@ export default {
   background-color: #efefef;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
+  display: flex;
+  flex-direction: row;
 }
 
 .info-container {

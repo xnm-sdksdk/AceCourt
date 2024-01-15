@@ -14,14 +14,14 @@
             <v-card class="rounded-lg bg-grey-lighten-5" elevation="3" height="300">
               <v-row class="ml-5 my-5">
                 <v-col cols="3" class="my-5 m-5">
-                  <v-img
+                  <img
                     :src="getlogUser.image"
                     alt="Highlight-Player-Image"
                     width="180px"
                     height="180px"
                     cover
                     class="rounded-circle"
-                  ></v-img>
+                  >
                 </v-col>
 
                 <v-col cols="3" class="text-slate-700">

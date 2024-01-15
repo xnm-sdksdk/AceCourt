@@ -115,6 +115,9 @@
 
                       <div class="my-1">
                         <v-card-text class="">Favorite Players</v-card-text>
+                        <v-card-text class="">{{
+                          favoritePlayers
+                        }}</v-card-text>
                       </div>
                     </div>
                   </v-card>
@@ -155,6 +158,10 @@ export default {
       intervalId: null,
     };
   },
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0bd75a08f805d93fc7d4371f85dbff8a735d8f81
   created() {
     console.log(this.getFilteredVotes);
     console.log(this.userStore.getTime);
@@ -174,6 +181,7 @@ export default {
     getFilteredVotes() {
       // Filtra os votos que têm state como true
       const filteredVotes = this.getVotes.filter((vote) => vote.state === true);
+<<<<<<< HEAD
       return filteredVotes;
     },
     time() {
@@ -181,6 +189,27 @@ export default {
       const minutes = Math.floor(this.userStore.usageTime / 60);
       const seconds = (this.userStore.usageTime % 60).toFixed(0);
       return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+=======
+
+      return filteredVotes;
+    },
+
+    favoritePlayers() {
+      const favorites = this.userStore.getUserPlayers;
+
+      if (favorites.length > 0) {
+        // Use o método join para unir os nomes dos jogadores com uma vírgula
+        const playerNames = favorites
+          .map((player) => player.playerName)
+          .join(", ");
+
+        console.log("Favorite Players:", playerNames);
+        return playerNames;
+      } else {
+        console.log("No favorite players.");
+        return "";
+      }
+>>>>>>> 0bd75a08f805d93fc7d4371f85dbff8a735d8f81
     },
   },
 };
