@@ -93,7 +93,7 @@
       <div class="container mx-auto flex justify-between items-center p-4">
         <!-- First Row -->
         <v-row class="justify-center align-center">
-          <v-col :cols="12">
+          <v-col :cols="12" md="5" lg="10" class="order-sm-2" >
             <v-card
               class="rounded-t-xl m-1 text-center bg-blue-lighten-5 white--text"
               elevation="3"
@@ -362,7 +362,7 @@
       <!-- Tournament Progress Stats Card -->
       <div class="container mx-auto flex justify-between items-center p-4">
         <v-row class="justify-center align-center">
-          <v-col :cols="12" md="5" lg="5" class="order-sm-2">
+          <v-col :cols="12" md="5" lg="10" class="order-sm-2">
             <v-card
               max-width="1500"
               class="rounded-xl bg-grey-lighten-5"
