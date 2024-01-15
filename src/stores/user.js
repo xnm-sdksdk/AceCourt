@@ -13,6 +13,7 @@ export const useUserStore = defineStore("user", {
     getCompletedTrophies: (state) =>
       state.loggedUser.trophies.filter((trophy) => (trophy.isCompleted = true)),
     getUserVoteGames: (state) => state.loggedUser.votes,
+    getUserPlayers:(state)=>state.loggedUser.myPlayers
   },
   actions: {
     login(email, password) {

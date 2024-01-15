@@ -73,7 +73,10 @@
                       </div>
                       <div class="my-1">
                         <v-card-text class="">Right Games</v-card-text>
-                        <v-card-text class="">{{ getFilteredVotes.length }} of {{ getVotes.length }}</v-card-text>
+                        <v-card-text class=""
+                          >{{ getFilteredVotes.length }} of
+                          {{ getVotes.length }}</v-card-text
+                        >
                       </div>
                     </div>
                   </v-card>
@@ -111,6 +114,9 @@
 
                       <div class="my-1">
                         <v-card-text class="">Favorite Players</v-card-text>
+                        <v-card-text class="">{{
+                          favoritePlayers
+                        }}</v-card-text>
                       </div>
                     </div>
                   </v-card>
@@ -150,7 +156,7 @@ export default {
     };
   },
 
-  created () {
+  created() {
     console.log(this.getFilteredVotes);
   },
 
@@ -161,9 +167,26 @@ export default {
 
     getFilteredVotes() {
       // Filtra os votos que têm state como true
-      const filteredVotes =this.getVotes.filter(vote=>vote.state===true)
+      const filteredVotes = this.getVotes.filter((vote) => vote.state === true);
 
       return filteredVotes;
+    },
+
+    favoritePlayers() {
+      const favorites = this.userStore.getUserPlayers;
+
+      if (favorites.length > 0) {
+        // Use o método join para unir os nomes dos jogadores com uma vírgula
+        const playerNames = favorites
+          .map((player) => player.playerName)
+          .join(", ");
+
+        console.log("Favorite Players:", playerNames);
+        return playerNames;
+      } else {
+        console.log("No favorite players.");
+        return "";
+      }
     },
   },
 };
