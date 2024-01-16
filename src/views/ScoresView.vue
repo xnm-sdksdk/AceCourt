@@ -236,7 +236,6 @@ export default {
     return {
       store: useGameStore(),
       userStore: useUserStore(),
-      myGames: this.userStore.getLoggedUser.myGames,
       listPlayers: [],
       visiblePlayers: false,
       isLoading: true,
@@ -248,9 +247,7 @@ export default {
     console.log(this.liveGames);
     this.store.fetchFixtures();
     this.store.fetchPlayers();
-    this.store.fetchFinishedGames();
-    console.log(this.userStore.getLoggedUser());
-    this.myGames = this.userStore.getMyGames();
+    console.log(this.userStore.getLoggedUser);
     console.log(this.userStore.getLoggedUser);
   },
   methods: {

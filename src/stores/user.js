@@ -168,7 +168,7 @@ export const useUserStore = defineStore("user", {
 
       if (loggedUserIndex !== -1) {
         this.users[loggedUserIndex].myGames.push(game);
-
+        this.loggedUser.myGames.push(game)
         console.log(
           "Game added to user's collection:",
           this.users[loggedUserIndex]
