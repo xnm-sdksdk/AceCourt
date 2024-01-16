@@ -61,10 +61,6 @@ export const useGameStore = defineStore("game", {
       );
       return filter;
     },
-    // Get games finished
-    getFinishedScore: (state) => {
-      return state.gamesOfDay;
-    },
   },
   actions: {
     async fetchTournaments() {
@@ -135,26 +131,7 @@ export const useGameStore = defineStore("game", {
       }
     },
 
-    // Fetch games of the present day that are finished
     // &tournament_key=1236
-    async fetchFinishedGames() {
-      try {
-        // const day = new Date();
-        // const formatDay = `${day.getFullYear()}-${(day.getMonth() + 1)
-        //   .toString()
-        //   .padStart(2, "0")}-${day.getDate().toString().padStart(2, "0")}`;
-        const response = await fetch(
-          `${TENNIS_API_URL}?method=get_fixtures&APIkey=${API_KEY}&date_start=2024-01-13&date_stop=2024-01-14`
-        );
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
-        this.fixtures = data.result;
-      } catch (err) {
-        console.log("Error fetching Finished Games: ", err);
-      }
-    },
     // Fetch H2H
     async fetchH2H() {
       try {

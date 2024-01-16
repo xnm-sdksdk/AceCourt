@@ -165,7 +165,8 @@ export default {
   },
   created() {
     //Get player Id from route
-    this.playerId = this.$route.params.id;
+    this.playerId = Number(this.$route.params.id);
+    console.log(this.playerId);
 
     //Get standings to get the points and place of the player
     this.standings = this.gameStore.getStandings.find(
@@ -178,14 +179,14 @@ export default {
     );
 
     //Check if player is Favorite
-    if(this.userStore.getLoggedUser != null){
-      console.log("TESTE")
-      const findPlayer=this.userStore.loggedUser.myPlayers.find(player=>player.playerKey===this.playerId)
-      if(findPlayer){
-        this.isFavorite=true
+    if (this.userStore.getLoggedUser != null) {
+      const findPlayer = this.userStore.loggedUser.myPlayers.find(
+        (player) => player.playerKey === this.playerId
+      );
+      if (findPlayer) {
+        this.isFavorite = true;
       }
     }
-    console.log(this.playerId);
   },
   computed: {
     filterSingles() {
