@@ -111,17 +111,21 @@
                   <p>Games ongoing...</p>
                 </v-col>
                 <v-col
+                  cols="12"
                   v-else
                   v-for="lastMatch in lastMatches"
                   :key="lastMatch.event_key"
                 >
                   <!-- Displaying players names -->
-                  <v-col cols="9"
-                    >{{ lastMatch.event_first_player }} vs
-                    {{ lastMatch.event_second_player }}</v-col
+                  <router-link
+                    :to="{ name: 'game', params: { id: lastMatch.event_key } }"
                   >
-                  <!-- Displaying final result -->
-                  <v-col cols="3">{{ lastMatch.event_final_result }}</v-col>
+                    <v-col cols="12"
+                      >{{ lastMatch.event_first_player }} vs
+                      {{ lastMatch.event_second_player }} :
+                      {{ lastMatch.event_final_result }}</v-col
+                    >
+                  </router-link>
                 </v-col>
               </v-row>
             </v-card>
@@ -228,17 +232,23 @@ export default {
     renderPlayers() {
       return this.store.getPlayers;
     },
-  },
-  watch: {
-    liveGames: {
-      handler(newGames) {
-        this.ongoingGames = newGames.some(
-          (game) => game.event_status !== "Finished"
-        );
-      },
-      immediate: true,
-      deep: true,
+    lastMatches() {
+      return this.liveGames.slice(
+        this.liveGames.length - 5,
+        this.liveGames.length
+      );
     },
   },
+  // watch: {
+  //   liveGames: {
+  //     handler(newGames) {
+  //       this.ongoingGames = newGames.some(
+  //         (game) => game.event_status !== "Finished"
+  //       );
+  //     },
+  //     immediate: true,
+  //     deep: true,
+  //   },
+  // },
 };
 </script>
