@@ -241,7 +241,6 @@ export const useUserStore = defineStore("user", {
 
     //Add Favorite Player
     addFavorite(playerKey, playerName) {
-      console.log("TESTE");
       const loggedUserIndex = this.users.findIndex(
         (user) => user.id === this.loggedUser.id
       );

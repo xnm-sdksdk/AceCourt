@@ -66,66 +66,6 @@
         </tbody>
       </v-table>
       </v-col>
-      <v-col>
-        <v-table>
-        <thead>
-          <th rowspan="10">{{ selectedOption }}</th>
-        </thead>
-        <tbody>
-          <tr>
-            <v-card
-              v-for="game in filteredGames"
-              :key="game.event_key"
-              class="rounded-xl bg-grey-lighten-5 ma-3"
-            >
-              <v-row class="rounded-xl bg-grey-lighten-5 ma-3">
-                <v-col>{{ game.event_first_player }}</v-col>
-                <v-col v-for="(score) in game.scores" :key="score.set">
-                  <div v-html="formatScore(score.score_first)"></div>
-                </v-col>
-              </v-row>
-
-              <v-row class="rounded-xl bg-grey-lighten-5 ma-3">
-                <v-col>{{ game.event_second_player }}</v-col>
-                <v-col v-for="score in game.scores" :key="score.set">
-                  <div v-html="formatScore(score.score_second)"></div>
-                </v-col>
-              </v-row>
-            </v-card>
-          </tr>
-        </tbody>
-      </v-table>
-      </v-col>
-      <v-col>
-        <v-table>
-        <thead>
-          <th rowspan="10">{{ selectedOption }}</th>
-        </thead>
-        <tbody>
-          <tr>
-            <v-card
-              v-for="game in filteredGames"
-              :key="game.event_key"
-              class="rounded-xl bg-grey-lighten-5 ma-3"
-            >
-              <v-row class="rounded-xl bg-grey-lighten-5 ma-3">
-                <v-col>{{ game.event_first_player }}</v-col>
-                <v-col v-for="(score) in game.scores" :key="score.set">
-                  <div v-html="formatScore(score.score_first)"></div>
-                </v-col>
-              </v-row>
-
-              <v-row class="rounded-xl bg-grey-lighten-5 ma-3">
-                <v-col>{{ game.event_second_player }}</v-col>
-                <v-col v-for="score in game.scores" :key="score.set">
-                  <div v-html="formatScore(score.score_second)"></div>
-                </v-col>
-              </v-row>
-            </v-card>
-          </tr>
-        </tbody>
-      </v-table>
-      </v-col>
     </v-row>
     
   </v-container>

@@ -14,7 +14,6 @@ import MatchReportView from "@/views/MatchReportView.vue";
 import UpcomingGamesView from "@/views/UpcomingGamesView.vue";
 import ProfileView from "@/views/ProfileView.vue";
 import MyStatsView from "@/views/MyStatsView.vue";
-import EditProfile from "@/views/EditProfileView.vue";
 import TrophiesView from "@/views/TrophiesView.vue";
 import AboutUsView from "@/views/AboutUsView.vue";
 import PageNotFoundView from "@/views/PageNotFoundView.vue";
@@ -142,14 +141,6 @@ const router = createRouter({
       component: MyStatsView,
       meta: {
         title: "My Stats",
-      },
-    },
-    {
-      path: "/edit",
-      name: "edit",
-      component: EditProfile,
-      meta: {
-        title: "Edit Profile",
       },
     },
     {
