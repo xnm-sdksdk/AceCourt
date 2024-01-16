@@ -53,7 +53,7 @@
                         <Hours></Hours>
                       </div>
                       <div class="my-1">
-                        <v-card-text class="">Average Hours</v-card-text>
+                        <v-card-text class="">Usage Time</v-card-text>
                         <v-card-text> {{ time }}</v-card-text>
                       </div>
                     </div>
