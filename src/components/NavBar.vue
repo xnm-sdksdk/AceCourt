@@ -12,7 +12,7 @@
           <p>Scores</p>
         </RouterLink>
         <RouterLink :to="{ name: 'draw' }">
-          <button>Tournaments</button>
+          <p>Tournaments</p>
         </RouterLink>
         <RouterLink :to="{ name: 'news' }">
           <p>News</p>
