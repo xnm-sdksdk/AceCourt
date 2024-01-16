@@ -14,7 +14,8 @@ export const useUserStore = defineStore("user", {
     getUserTrophies: (state) => state.loggedUser.trophies,
     getCompletedTrophies: (state) =>
       state.loggedUser.trophies.filter((trophy) => trophy.isCompleted === true),
-    getUserVoteGames: (state) => state.loggedUser.votes,
+    getUserVoteGames: (state) =>
+      state.loggedUser ? state.loggedUser.votes : [],
     getTime: (state) => state.usageTime,
     getUserPlayers: (state) => state.loggedUser.myPlayers,
   },
@@ -241,7 +242,6 @@ export const useUserStore = defineStore("user", {
       const loggedUserIndex = this.users.findIndex(
         (user) => user.id === this.loggedUser.id
       );
-      
 
       if (loggedUserIndex !== -1) {
         const newFav = {
@@ -256,7 +256,10 @@ export const useUserStore = defineStore("user", {
           (trophy) => trophy.id === 16
         );
 
-        if ((this.loggedUser.myPlayers.length == 1 && !findFavTrophy.isCompleted)) {
+        if (
+          this.loggedUser.myPlayers.length == 1 &&
+          !findFavTrophy.isCompleted
+        ) {
           findFavTrophy.isCompleted = true;
           console.log(this.loggedUser.trophies);
         }
@@ -280,63 +283,62 @@ export const useUserStore = defineStore("user", {
     // Add MyStats Trophy
     addStatsBadge() {
       //Find in users array
-      const loggedUserIndex  = this.users.findIndex(
+      const loggedUserIndex = this.users.findIndex(
         (user) => user.id === this.loggedUser.id
       );
 
-      if(loggedUserIndex !== -1) {
+      if (loggedUserIndex !== -1) {
         //Find in loggedUser
         const findMyStatsTrophy = this.loggedUser.trophies.find(
           (trophy) => trophy.id === 14
         );
 
         //If not completed, complete it
-        if(!findMyStatsTrophy.isCompleted) {
+        if (!findMyStatsTrophy.isCompleted) {
           findMyStatsTrophy.isCompleted = true;
-          this.users[loggedUserIndex].trophies = this.loggedUser.trophies
+          this.users[loggedUserIndex].trophies = this.loggedUser.trophies;
           console.log(this.loggedUser.trophies);
         }
-
       }
     },
 
-    addCheckVoteBadge(user){
+    addCheckVoteBadge(user) {
       //Find in users array
-      const loggedUserIndex  = this.users.findIndex(
+      const loggedUserIndex = this.users.findIndex(
         (user) => user.id === this.loggedUser.id
       );
 
-      if(loggedUserIndex !== -1) {
+      if (loggedUserIndex !== -1) {
         //Find in loggedUser
         const findCheckVoteTrophy = this.loggedUser.trophies.find(
           (trophy) => trophy.id === 8
         );
 
         //If not completed, complete it
-        if(!findCheckVoteTrophy.isCompleted) {
+        if (!findCheckVoteTrophy.isCompleted) {
           findCheckVoteTrophy.isCompleted = true;
-          this.users[loggedUserIndex].trophies = this.loggedUser.trophies
+          this.users[loggedUserIndex].trophies = this.loggedUser.trophies;
           console.log(this.loggedUser.trophies);
         }
       }
     },
 
-    addCheckGameBadge(){
+    addCheckGameBadge() {
       //Find in users array
-      const loggedUserIndex  = this.users.findIndex(
+      const loggedUserIndex = this.users.findIndex(
         (user) => user.id === this.loggedUser.id
       );
 
-      if(loggedUserIndex !== -1) {
+      if (loggedUserIndex !== -1) {
         //Find in loggedUser
         const findCheckGameTrophy = this.loggedUser.trophies.find(
           (trophy) => trophy.id === 7
         );
 
         //If not completed, complete it
-        if(!findCheckGameTrophy.isCompleted) {
+        if (!findCheckGameTrophy.isCompleted) {
           findCheckGameTrophy.isCompleted = true;
-          this.users[loggedUserIndex].trophies = this.loggedUser.trophies
+          this.users[loggedUserIndex].trophies = this.loggedUser.trophies;
           console.log(this.loggedUser.trophies);
         }
       }
