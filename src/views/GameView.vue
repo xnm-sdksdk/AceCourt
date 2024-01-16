@@ -176,7 +176,13 @@
           </v-col>
         </v-row>
       </div>
-      <img src="/assets/court.svg" alt="Court" width="100%" height="auto" />
+      <div>
+        <v-row class="d-flex justify-center">
+          <v-col>
+            <img src="../assets/court.svg" alt="Court" />
+          </v-col>
+        </v-row>
+      </div>
     </v-container>
   </v-app>
 </template>
@@ -207,7 +213,7 @@ export default {
     //Get Game
     this.game = this.store.getFixtures.find(
       (game) => game.event_key === gameKey
-    ); 
+    );
 
     //Get players Rankings
     const firstPlayerRank = this.store.getStandings
@@ -237,7 +243,7 @@ export default {
     }
 
     //Check if user already have the badge
-    if(this.userStore.isUserLogged){
+    if (this.userStore.isUserLogged) {
       this.userStore.addCheckVoteBadge();
       this.userStore.addCheckGameBadge();
     }
