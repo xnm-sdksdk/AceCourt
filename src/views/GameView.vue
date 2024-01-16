@@ -232,7 +232,7 @@ export default {
       (vote) => vote.gameKey == this.game.event_key
     );
 
-    if (this.game.event_status == "Finished" || checkGame) {
+    if (checkGame) {
       this.endVote = true;
     }
 
