@@ -12,7 +12,7 @@
               <v-row>
                 <v-col v-for="(trophy, index) in getTrophies" :key="index" cols="3" class="my-15">
                   <div class="w-40 mx-auto" v-if="trophy.isCompleted">
-                    <img :src=trophy.image class="mx-auto" width="100%">
+                    <img :src="trophy.image" alt="Trophy Image">
                     <v-card-text>{{ trophy.title }}</v-card-text>
                   </div>
                   <div class="w-40 mx-auto" v-else>
@@ -58,7 +58,7 @@ export default {
     trophiesPerRow() {
       return 4; 
     },
-    
+
     trophyRows() {
       const trophies = this.getTrophies.slice(0, this.trophiesPerRow * 4); 
       const rows = [];

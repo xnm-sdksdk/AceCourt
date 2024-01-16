@@ -15,10 +15,10 @@
               <v-row class="ml-5 my-5">
                 <v-col cols="3" class="my-5 m-5">
                   <img
-                    :src="getlogUser.image"
+                    src="../assets/profilepic.svg"
                     alt="Highlight-Player-Image"
-                    width="180px"
-                    height="180px"
+                    width="180"
+                    height="180"
                     cover
                     class="rounded-circle"
                   >
@@ -118,7 +118,7 @@ export default {
   },
   computed: {
     getlogUser() {
-      console.log(this.userStore.getLoggedUser.image);
+
       return this.userStore.getLoggedUser;
     },
   },
