@@ -49,6 +49,7 @@
                         class="rounded-xl bg-grey-lighten-5 ma-3"
                         v-for="game in liveGames"
                         :key="game.event_key"
+                        
                       >
                         <!-- Header Scores Results -->
                         <ScoresHeaderResults :game="game">
@@ -82,7 +83,7 @@
                             </v-col>
                           </v-col> -->
                           <!-- <v-col>Score {{ pointByPoint.score }}</v-col> -->
-                          <v-col
+                          <!-- <v-col
                             v-for="(set, setIndex) in game.pointbypoint"
                             :key="setIndex"
                           >
@@ -93,15 +94,15 @@
                                   2
                                 )
                               }}</v-col
-                            >
-                            <v-col cols="1">2</v-col>
-                            <v-col cols="1">3</v-col>
-                            <v-col cols="1">4</v-col>
-                            <v-col cols="1">5</v-col>
-                            <v-col cols="1">{{
-                              game.event_game_result.slice(0, 2)
-                            }}</v-col>
-                          </v-col>
+                            > -->
+                          <v-col cols="1">2</v-col>
+                          <v-col cols="1">3</v-col>
+                          <v-col cols="1">4</v-col>
+                          <v-col cols="1">5</v-col>
+                          <v-col cols="1">{{
+                            game.event_game_result.slice(0, 2)
+                          }}</v-col>
+                          <!-- </v-col> -->
                           <!-- <v-col>{{ game.event_serve }}</v-col>  -->
                           <!-- ! Call above useful for court view -->
                           <!-- <v-col cols="2">
@@ -267,12 +268,12 @@ export default {
     //   return set.points[set.points.length - 1].score;
     // },
     // getSecondPlayerScore(game, set) {
-    //   return set.points[set.points.length - 1].score; // Assuming this is the correct way to get the second player's score
+    //   return set.points[set.points.length - 1].score;
     // },
   },
   computed: {
     liveGames() {
-      return this.store.getLiveScore;
+      return this.store.getFixtures;
     },
     renderPlayers() {
       return this.store.getPlayers;
@@ -289,7 +290,9 @@ export default {
   watch: {
     liveGames: {
       handler(newGames) {
-        this.ongoingGames = newGames.some(game => game.event_status !== "Finished");
+        this.ongoingGames = newGames.some(
+          (game) => game.event_status !== "Finished"
+        );
         // newGames.forEach((game) => {
         //   game.pointbypoint.forEach((set, setIndex) => {
         //     // Access the set scores and update UI as needed
