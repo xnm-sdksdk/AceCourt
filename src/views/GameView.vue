@@ -176,12 +176,7 @@
           </v-col>
         </v-row>
       </div>
-      <img
-        src="/assets/court.svg"
-        alt="Court"
-        width="100%"
-        height="auto"
-      >
+      <img src="/assets/court.svg" alt="Court" width="100%" height="auto" />
     </v-container>
   </v-app>
 </template>
@@ -207,12 +202,8 @@ export default {
   created() {
     // this.intervalId = setInterval(() => {
     // }, 5000);
-
-    this.store.fetchLiveScores();
     // this.game=this.$route.params.id
-    this.game = this.store.getLiveScore.find(
-      (game) => game.event_key == 11920438
-    );
+    console.log(this.store.getFixtures);
 
     //Get players Rankings
     const firstPlayerRank = this.store.getStandings
