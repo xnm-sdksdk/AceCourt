@@ -179,6 +179,7 @@ export default {
 
     //Check if player is Favorite
     if(this.userStore.getLoggedUser != null){
+      console.log("TESTE")
       const findPlayer=this.userStore.loggedUser.myPlayers.find(player=>player.playerKey===this.playerId)
       if(findPlayer){
         this.isFavorite=true
