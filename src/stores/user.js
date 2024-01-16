@@ -270,6 +270,30 @@ export const useUserStore = defineStore("user", {
         this.users[loggedUserIndex].myPlayers = this.loggedUser.myPlayers;
       }
     },
+
+    // Add MyStats Trophy
+    addStatsBadge() {
+      //Find in users array
+      const loggedUserIndex  = this.users.findIndex(
+        (user) => user.id === this.loggedUser.id
+      );
+
+      if(loggedUserIndex !== -1) {
+        //Find in loggedUser
+        const findMyStatsTrophy = this.loggedUser.trophies.find(
+          (trophy) => trophy.id === 14
+        );
+
+        //If not completed, complete it
+        if(!findMyStatsTrophy.isCompleted) {
+          findMyStatsTrophy.isCompleted = true;
+          this.users[loggedUserIndex].trophies = this.loggedUser.trophies
+          console.log(this.loggedUser.trophies);
+        }
+
+      }
+    },
+
     // Keep track of usage of the user in the application
     timeTrack() {
       console.log("timeTrack action started");

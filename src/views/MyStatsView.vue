@@ -163,6 +163,8 @@ export default {
     console.log(this.getFilteredVotes);
     console.log(this.userStore.getTime);
     console.log(this.time);
+    //Verify if logged user have stats badge
+    this.userStore.addStatsBadge(this.userStore.loggedUser);
   },
   mounted() {
     console.log("Component is mounted");
