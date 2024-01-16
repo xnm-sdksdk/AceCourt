@@ -202,9 +202,15 @@ export default {
   created() {
     // this.intervalId = setInterval(() => {
     // }, 5000);
-    // this.game=this.$route.params.id
-    console.log(this.store.getFixtures);
+    //Get Game Key as a number
+    const gameKey = Number(this.$route.params.id);
+    console.log(gameKey);
+    //Get Game
+    this.game = this.store.getFixtures.find(
+      (game) => game.event_key === gameKey
+    ); 
 
+    console.log(this.game)
     //Get players Rankings
     const firstPlayerRank = this.store.getStandings
       .filter((rank) => rank.player_key === this.game.first_player_key)
@@ -231,8 +237,6 @@ export default {
     if (this.game.event_status == "Finished" || checkGame) {
       this.endVote = true;
     }
-
-    console.log(this.game);
   },
 
   methods: {
