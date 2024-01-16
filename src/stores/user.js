@@ -137,13 +137,13 @@ export const useUserStore = defineStore("user", {
             {
               id: 15,
               title: "Check the Match Report Page",
-              image: "../assets/report.svg",
+              image: "@/assets/report.svg",
               isCompleted: false,
             },
             {
               id: 16,
               title: "Win a Favorite Player",
-              image: "../assets/tennis.svg",
+              image: "@/assets/tennis.svg",
               isCompleted: false,
             },
           ],

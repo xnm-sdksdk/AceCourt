@@ -11,9 +11,13 @@
             <v-card class="rounded-lg bg-grey-lighten-5" elevation="3">
               <v-row>
                 <v-col v-for="(trophy, index) in getTrophies" :key="index" cols="3" class="my-15">
-                  <div class="w-40 mx-auto">
-                    <img :src="trophy.image" width="100px" height="100px">
+                  <div class="w-40 mx-auto" v-if="trophy.isCompleted">
+                    <img :src=trophy.image class="mx-auto" width="100%">
                     <v-card-text>{{ trophy.title }}</v-card-text>
+                  </div>
+                  <div class="w-40 mx-auto" v-else>
+                    <img :src=trophy.image class="mx-auto" width="100%">
+                    <v-card-text style="color:#0F3972">{{ trophy.title }}</v-card-text>
                   </div>
                 </v-col>
               </v-row>
