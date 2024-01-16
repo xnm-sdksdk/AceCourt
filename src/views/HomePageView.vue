@@ -93,22 +93,22 @@
       <div class="container mx-auto flex justify-between items-center p-4">
         <!-- First Row -->
         <v-row class="justify-center align-center">
-          <v-col :cols="12" md="5" lg="10" class="order-sm-2" >
-            <v-card
-              class="rounded-t-xl m-1 text-center bg-blue-lighten-5 white--text"
-              elevation="3"
-            >
-              <div class="justify-center items-center p-1">
-                <ScoresHeaderHome></ScoresHeaderHome>
-              </div>
-            </v-card>
+          <v-col :cols="12" md="5" lg="10" class="order-sm-2">
             <!-- Second Row -->
             <div class="p-1">
               <v-card
                 v-for="game in liveGames.slice(0, 1)"
                 :key="game.event_key"
-                class="text-center rounded-b-xl bg-grey-lighten-5"
+                class="text-center rounded-xl bg-grey-lighten-5"
               >
+                <v-card
+                  class="rounded-t-xl text-center bg-blue-lighten-5 white--text"
+                  elevation="3"
+                >
+                  <div class="justify-center items-center px-1">
+                    <ScoresHeaderHome :game="game"></ScoresHeaderHome>
+                  </div>
+                </v-card>
                 <v-row class="rounded-b-xl">
                   <v-col cols="2" class="m-3">{{
                     game.event_first_player
@@ -406,6 +406,7 @@ export default {
     Footer,
     ScoresHeaderHome,
   },
+  props: { game: Object },
   data() {
     return {
       SeeMore: "See More",
@@ -414,14 +415,14 @@ export default {
   },
   created() {
     this.store.fetchStandings();
-    this.store.fetchLiveScores();
+    this.store.fetchFixtures();
   },
   computed: {
     fetchFirstPlayer() {
       return this.store.getFirstPlayerRanking;
     },
     liveGames() {
-      return this.store.getLiveScore;
+      return this.store.getFixtures;
     },
   },
 };
