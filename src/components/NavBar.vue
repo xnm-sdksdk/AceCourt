@@ -11,7 +11,7 @@
         <RouterLink :to="{ name: 'scores' }">
           <p>Scores</p>
         </RouterLink>
-        <RouterLink :to="{ name: 'draw' }">
+        <RouterLink :to="{ name: 'tournament' }">
           <p>Tournaments</p>
         </RouterLink>
         <RouterLink :to="{ name: 'news' }">
