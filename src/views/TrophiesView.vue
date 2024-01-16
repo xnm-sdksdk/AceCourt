@@ -45,15 +45,22 @@ export default {
 
   computed: {
     getTrophies() {
-      console.log(this.userStore.getUserTrophies);
+      //Sort trophies by completed
+      this.userStore.getUserTrophies.sort((a, b) => {
+        if (a.isCompleted && !b.isCompleted) return -1;
+        if (!a.isCompleted && b.isCompleted) return 1;
+        return 0;
+      });
+      //Return trophies
       return this.userStore.getUserTrophies;
     },
 
     trophiesPerRow() {
-      return 4; // Altere para o número desejado de troféus por linha
+      return 4; 
     },
+    
     trophyRows() {
-      const trophies = this.getTrophies.slice(0, this.trophiesPerRow * 4); // Certifique-se de ter troféus suficientes
+      const trophies = this.getTrophies.slice(0, this.trophiesPerRow * 4); 
       const rows = [];
       for (let i = 0; i < trophies.length; i += this.trophiesPerRow) {
         rows.push(trophies.slice(i, i + this.trophiesPerRow));
