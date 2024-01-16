@@ -195,7 +195,7 @@ export const useUserStore = defineStore("user", {
           this.loggedUser = newUser;
 
           const findBioTrophy = this.loggedUser.trophies.find(
-            (trophy) => trophy.title === "Create a bio"
+            (trophy) => trophy.id===1
           );
 
           if (newUser.bio != "" && !findBioTrophy.isCompleted) {
