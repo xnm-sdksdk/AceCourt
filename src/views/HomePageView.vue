@@ -147,7 +147,7 @@
       <!-- Top Matches Card -->
       <div class="container mx-auto flex justify-between items-center p-4">
         <v-row class="justify-center align-center">
-          <v-col :cols="12" md="5" lg="6" class="order-sm-2">
+          <v-col :cols="12" md="5" lg="5" class="order-sm-2">
             <v-card
               class="rounded-xl bg-grey-lighten-5"
               elevation="3"
@@ -203,7 +203,7 @@
 
           <!-- News Card -->
 
-          <v-col :cols="12" md="5" lg="6" class="order-sm-2">
+          <v-col :cols="12" md="5" lg="5" class="order-sm-2">
             <v-card
               class="rounded-xl bg-grey-lighten-5"
               elevation="3"
