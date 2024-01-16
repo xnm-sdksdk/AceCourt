@@ -3,17 +3,20 @@ import { defineStore } from "pinia";
 export const useUserStore = defineStore("user", {
   state: () => ({
     users: [],
+    usageTime: 0,
     loggedUser: null,
     isUserLogged: false,
+    timeControl: null,
   }),
   getters: {
     getAllUsers: (state) => state.users,
     getLoggedUser: (state) => state.loggedUser,
     getUserTrophies: (state) => state.loggedUser.trophies,
     getCompletedTrophies: (state) =>
-      state.loggedUser.trophies.filter((trophy) => (trophy.isCompleted = true)),
+      state.loggedUser.trophies.filter((trophy) => trophy.isCompleted === true),
     getUserVoteGames: (state) => state.loggedUser.votes,
-    getUserPlayers:(state)=>state.loggedUser.myPlayers
+    getTime: (state) => state.usageTime,
+    getUserPlayers: (state) => state.loggedUser.myPlayers,
   },
   actions: {
     login(email, password) {
@@ -23,6 +26,7 @@ export const useUserStore = defineStore("user", {
       if (findUser) {
         this.loggedUser = findUser;
         this.isUserLogged = true;
+        this.timeTrack();
       } else {
         throw new Error("User not found!");
       }
@@ -151,11 +155,12 @@ export const useUserStore = defineStore("user", {
     },
 
     logout() {
+      this.stopTimeTrack();
       this.loggedUser = null;
       this.isUserLogged = false;
       this.$reset();
     },
-
+    // Add Games to My Games
     addMyGames(game) {
       const loggedUserIndex = this.users.findIndex(
         (user) => user.id === this.loggedUser.id
@@ -170,7 +175,7 @@ export const useUserStore = defineStore("user", {
         );
       }
     },
-    // ! Needs review
+    // Remove Games from My Games
     removeMyGames(game) {
       const index = this.myGames.findIndex(
         (myGame) => myGame.event_key === game.event_key
@@ -215,13 +220,16 @@ export const useUserStore = defineStore("user", {
         };
 
         this.loggedUser.votes.push(newVote);
-        this.users[loggedUserIndex]=this.loggedUser
+        console.log(this.loggedUser.votes);
+
+        this.loggedUser.votes.push(newVote);
+        this.users[loggedUserIndex] = this.loggedUser;
         console.log(this.loggedUser.votes);
       }
     },
 
     addFavorite(playerKey, playerName) {
-      console.log("TESTE")
+      console.log("TESTE");
       const loggedUserIndex = this.users.findIndex(
         (user) => user.id === this.loggedUser.id
       );
@@ -230,11 +238,11 @@ export const useUserStore = defineStore("user", {
       if (loggedUserIndex !== -1) {
         const newFav = {
           playerKey: playerKey,
-          playerName: playerName
+          playerName: playerName,
         };
 
         this.loggedUser.myPlayers.push(newFav);
-        this.users[loggedUserIndex]=this.loggedUser
+        this.users[loggedUserIndex] = this.loggedUser;
       }
     },
 
@@ -244,9 +252,24 @@ export const useUserStore = defineStore("user", {
       );
 
       if (loggedUserIndex !== -1) {
-        this.loggedUser.myPlayers=this.loggedUser.myPlayers.filter(player=>player.playerKey != playerKey);
-        this.users[loggedUserIndex].myPlayers=this.loggedUser.myPlayers
+        this.loggedUser.myPlayers = this.loggedUser.myPlayers.filter(
+          (player) => player.playerKey != playerKey
+        );
+        this.users[loggedUserIndex].myPlayers = this.loggedUser.myPlayers;
       }
+    },
+    // Keep track of usage of the user in the application
+    timeTrack() {
+      console.log("timeTrack action started");
+      this.timeControl = setInterval(() => {
+        console.log("Running");
+        this.usageTime += 1;
+      }, 1000);
+    },
+    // Stop tracking the usage of the user
+    stopTimeTrack() {
+      clearInterval(this.timeControl);
+      this.timeControl = null;
     },
   },
   persist: true,

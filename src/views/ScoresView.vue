@@ -238,7 +238,7 @@ export default {
   },
   created() {
     console.log(this.liveGames);
-    this.store.fetchLiveScores();
+    this.store.fetchFixtures();
     this.store.fetchPlayers();
     this.store.fetchFinishedGames();
     this.myGames = this.userStore.getMyGames;

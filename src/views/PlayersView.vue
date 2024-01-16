@@ -17,7 +17,9 @@
       <v-row>
         <v-container fluid class="name-container">
           <v-col>
-            <h2 class="text-xl font-bold">{{ player.player_name }}</h2>
+            <h2 class="text-xl font-bold">
+              {{ player.player_name }}
+            </h2>
           </v-col>
           <v-col v-if="isFavorite">
             <v-btn @click="remFav">Remove Favourite</v-btn>
@@ -144,7 +146,7 @@
 import NavBar from "@/components/NavBar.vue";
 import BackButton from "../components/BackButton.vue";
 import { useGameStore } from "@/stores/games.js";
-import { useUserStore } from '../stores/user';
+import { useUserStore } from "../stores/user";
 export default {
   components: {
     NavBar,
@@ -182,9 +184,8 @@ export default {
         this.isFavorite=true
       }
     }
-    console.log(this.player);
+    console.log(this.playerId);
   },
-
   computed: {
     filterSingles() {
       const stats = this.player.stats.filter((stat) => stat.type == "singles");
@@ -242,19 +243,22 @@ export default {
       return formattedWithSpaces;
     },
 
-    addFav(){
-      if(this.userStore.isUserLogged){
-        this.userStore.addFavorite(this.player.player_key,this.player.player_name)
-        this.isFavorite=true
-      }else{
-        alert("Please do Login to favorite player!")
+    addFav() {
+      if (this.userStore.isUserLogged) {
+        this.userStore.addFavorite(
+          this.player.player_key,
+          this.player.player_name
+        );
+        this.isFavorite = true;
+      } else {
+        alert("Please do Login to favorite player!");
       }
     },
 
-    remFav(){
-      this.userStore.remFavorite(this.player.player_key)
-      this.isFavorite=false
-    }
+    remFav() {
+      this.userStore.remFavorite(this.player.player_key);
+      this.isFavorite = false;
+    },
   },
 };
 </script>
