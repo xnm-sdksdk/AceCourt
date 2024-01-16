@@ -284,11 +284,8 @@ export default {
     renderPlayers() {
       return this.store.getPlayers;
     },
-    finishedGames() {
-      return this.store.getFinishedScore;
-    },
     lastMatches() {
-      return this.finishedGames.filter(
+      return this.liveGames.filter(
         (game) => game.event_status === "Finished"
       );
     },

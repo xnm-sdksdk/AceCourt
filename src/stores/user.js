@@ -224,8 +224,6 @@ export const useUserStore = defineStore("user", {
         };
 
         this.loggedUser.votes.push(newVote);
-
-        this.loggedUser.votes.push(newVote);
         this.users[loggedUserIndex] = this.loggedUser;
 
         const findVoteTrophy = this.loggedUser.trophies.find(
@@ -291,6 +289,27 @@ export const useUserStore = defineStore("user", {
           console.log(this.loggedUser.trophies);
         }
 
+      }
+    },
+
+    addCheckVoteBadge(){
+      //Find in users array
+      const loggedUserIndex  = this.users.findIndex(
+        (user) => user.id === this.loggedUser.id
+      );
+
+      if(loggedUserIndex !== -1) {
+        //Find in loggedUser
+        const findCheckVoteTrophy = this.loggedUser.trophies.find(
+          (trophy) => trophy.id === 8
+        );
+
+        //If not completed, complete it
+        if(!findCheckVoteTrophy.isCompleted) {
+          findCheckVoteTrophy.isCompleted = true;
+          this.users[loggedUserIndex].trophies = this.loggedUser.trophies
+          console.log(this.loggedUser.trophies);
+        }
       }
     },
 
