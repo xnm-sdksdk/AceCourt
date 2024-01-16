@@ -291,24 +291,6 @@ export default {
       }
     },
   },
-
-  watch: {
-    game: {
-      handler(newGame) {
-        if (newGame) {
-          // Verifica o status do jogo
-          if (newGame.event_status === "Finished") {
-            this.endVote = true;
-          } else {
-            // Jogo não está acabado, verifica event_game_result
-            console.log("Game Result:", newGame.scores);
-          }
-        }
-      },
-      immediate: true,
-      deep: true,
-    },
-  },
 };
 </script>
 

@@ -154,6 +154,7 @@ export const useUserStore = defineStore("user", {
       }
     },
 
+    // Logout
     logout() {
       this.stopTimeTrack();
       this.loggedUser = null;
@@ -168,7 +169,7 @@ export const useUserStore = defineStore("user", {
 
       if (loggedUserIndex !== -1) {
         this.users[loggedUserIndex].myGames.push(game);
-        this.loggedUser.myGames.push(game)
+        this.loggedUser.myGames.push(game);
         console.log(
           "Game added to user's collection:",
           this.users[loggedUserIndex]
@@ -176,6 +177,7 @@ export const useUserStore = defineStore("user", {
       }
       this.myGames.push(game);
     },
+
     // Remove Games from My Games
     removeMyGames(game) {
       const index = this.myGames.findIndex(
@@ -186,6 +188,7 @@ export const useUserStore = defineStore("user", {
       }
     },
 
+    // Update User Profile
     updateUserProfile(newUser) {
       const index = this.users.findIndex((user) => user.id === newUser.id);
 
@@ -207,6 +210,7 @@ export const useUserStore = defineStore("user", {
       }
     },
 
+    //Add Vote
     addVote(player, gameKey) {
       const loggedUserIndex = this.users.findIndex(
         (user) => user.id === this.loggedUser.id
@@ -235,6 +239,7 @@ export const useUserStore = defineStore("user", {
       }
     },
 
+    //Add Favorite Player
     addFavorite(playerKey, playerName) {
       console.log("TESTE");
       const loggedUserIndex = this.users.findIndex(
@@ -253,6 +258,7 @@ export const useUserStore = defineStore("user", {
       }
     },
 
+    //Remove Favorite Player
     remFavorite(playerKey) {
       const loggedUserIndex = this.users.findIndex(
         (user) => user.id === this.loggedUser.id
