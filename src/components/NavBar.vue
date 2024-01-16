@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <div class="container mx-auto flex justify-between items-center">
+    <div class="container mx-auto flex justify-between items-center m-3">
       <div class="flex items-center">
         <RouterLink :to="{ name: 'home' }">
           <h1>Ace Court</h1>
