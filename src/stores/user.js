@@ -210,7 +210,6 @@ export const useUserStore = defineStore("user", {
       const loggedUserIndex = this.users.findIndex(
         (user) => user.id === this.loggedUser.id
       );
-      console.log(loggedUserIndex);
 
       if (loggedUserIndex !== -1) {
         const newVote = {
@@ -220,11 +219,18 @@ export const useUserStore = defineStore("user", {
         };
 
         this.loggedUser.votes.push(newVote);
-        console.log(this.loggedUser.votes);
 
         this.loggedUser.votes.push(newVote);
         this.users[loggedUserIndex] = this.loggedUser;
-        console.log(this.loggedUser.votes);
+
+        const findVoteTrophy = this.loggedUser.trophies.find(
+          (trophy) => trophy.id===8
+        );
+
+        if (this.loggedUser.votes.length = 1 && !findVoteTrophy.isCompleted) {
+          findVoteTrophy.isCompleted = true;
+          console.log(newUser.trophies);
+        }
       }
     },
 
