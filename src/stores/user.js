@@ -159,7 +159,6 @@ export const useUserStore = defineStore("user", {
       this.stopTimeTrack();
       this.loggedUser = null;
       this.isUserLogged = false;
-      this.$reset();
     },
     // Add Games to My Games
     addMyGames(game) {
@@ -242,7 +241,7 @@ export const useUserStore = defineStore("user", {
       const loggedUserIndex = this.users.findIndex(
         (user) => user.id === this.loggedUser.id
       );
-      console.log(loggedUserIndex);
+      
 
       if (loggedUserIndex !== -1) {
         const newFav = {
@@ -252,6 +251,15 @@ export const useUserStore = defineStore("user", {
 
         this.loggedUser.myPlayers.push(newFav);
         this.users[loggedUserIndex] = this.loggedUser;
+
+        const findFavTrophy = this.loggedUser.trophies.find(
+          (trophy) => trophy.id === 16
+        );
+
+        if ((this.loggedUser.myPlayers.length == 1 && !findFavTrophy.isCompleted)) {
+          findFavTrophy.isCompleted = true;
+          console.log(this.loggedUser.trophies);
+        }
       }
     },
 
@@ -292,7 +300,7 @@ export const useUserStore = defineStore("user", {
       }
     },
 
-    addCheckVoteBadge(){
+    addCheckVoteBadge(user){
       //Find in users array
       const loggedUserIndex  = this.users.findIndex(
         (user) => user.id === this.loggedUser.id
@@ -307,6 +315,27 @@ export const useUserStore = defineStore("user", {
         //If not completed, complete it
         if(!findCheckVoteTrophy.isCompleted) {
           findCheckVoteTrophy.isCompleted = true;
+          this.users[loggedUserIndex].trophies = this.loggedUser.trophies
+          console.log(this.loggedUser.trophies);
+        }
+      }
+    },
+
+    addCheckGameBadge(){
+      //Find in users array
+      const loggedUserIndex  = this.users.findIndex(
+        (user) => user.id === this.loggedUser.id
+      );
+
+      if(loggedUserIndex !== -1) {
+        //Find in loggedUser
+        const findCheckGameTrophy = this.loggedUser.trophies.find(
+          (trophy) => trophy.id === 7
+        );
+
+        //If not completed, complete it
+        if(!findCheckGameTrophy.isCompleted) {
+          findCheckGameTrophy.isCompleted = true;
           this.users[loggedUserIndex].trophies = this.loggedUser.trophies
           console.log(this.loggedUser.trophies);
         }

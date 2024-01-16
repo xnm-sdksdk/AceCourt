@@ -238,7 +238,8 @@ export default {
 
     //Check if user already have the badge
     if(this.userStore.isUserLogged){
-      this.userStore.addCheckVoteBadge(this.userStore.loggedUser);
+      this.userStore.addCheckVoteBadge();
+      this.userStore.addCheckGameBadge();
     }
   },
 

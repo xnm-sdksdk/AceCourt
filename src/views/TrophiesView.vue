@@ -17,7 +17,7 @@
                   </div>
                   <div class="w-40 mx-auto" v-else>
                     <img :src=trophy.image class="mx-auto" width="100%">
-                    <v-card-text style="color:#0F3972">{{ trophy.title }}</v-card-text>
+                    <v-card-text style="color:green">{{ trophy.title }}</v-card-text>
                   </div>
                 </v-col>
               </v-row>
