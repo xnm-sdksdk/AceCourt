@@ -21,10 +21,13 @@
                     :key="game.event_key"
                     class="bg-grey-lighten-5 mb-4"
                   >
-                    <ScoresHeaderResults :game="game"></ScoresHeaderResults>
+                    <ScoresHeaderResults
+                      :game="game"
+                      @remove-my-games="removeMyGames"
+                      :inLiveGames="inLiveGames"
+                    ></ScoresHeaderResults>
                     <v-row class="bg-blue-darken-2 ma-1">
                       <v-col>{{ game.event_first_player }}</v-col>
-                      <v-btn @click="removeMyGames(game)">Remove MyGames</v-btn>
                     </v-row>
                     <v-row class="rounded-b-xl bg-blue-darken-2 ma-1" I>
                       <v-col>{{ game.event_second_player }}</v-col>
@@ -49,10 +52,13 @@
                         class="rounded-xl bg-grey-lighten-5 ma-3"
                         v-for="game in liveGames"
                         :key="game.event_key"
-                        
                       >
                         <!-- Header Scores Results -->
-                        <ScoresHeaderResults :game="game">
+                        <ScoresHeaderResults
+                          :game="game"
+                          @add-my-games="addMyGames"
+                          :inLiveGames="inLiveGames"
+                        >
                         </ScoresHeaderResults>
                         <v-row class="bg-blue-darken-2 ma-1">
                           <v-col cols="4" class="ml-3">{{
@@ -230,11 +236,12 @@ export default {
     return {
       store: useGameStore(),
       userStore: useUserStore(),
-      myGames: [],
+      myGames: this.userStore.getLoggedUser.myGames,
       listPlayers: [],
       visiblePlayers: false,
       isLoading: true,
       ongoingGames: false,
+      inLiveGames: true,
     };
   },
   created() {
@@ -242,7 +249,9 @@ export default {
     this.store.fetchFixtures();
     this.store.fetchPlayers();
     this.store.fetchFinishedGames();
-    this.myGames = this.userStore.getMyGames;
+    console.log(this.userStore.getLoggedUser());
+    this.myGames = this.userStore.getMyGames();
+    console.log(this.userStore.getLoggedUser);
   },
   methods: {
     addMyGames(game) {

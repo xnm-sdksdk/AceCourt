@@ -174,6 +174,7 @@ export const useUserStore = defineStore("user", {
           this.users[loggedUserIndex]
         );
       }
+      this.myGames.push(game);
     },
     // Remove Games from My Games
     removeMyGames(game) {
@@ -195,7 +196,7 @@ export const useUserStore = defineStore("user", {
           this.loggedUser = newUser;
 
           const findBioTrophy = this.loggedUser.trophies.find(
-            (trophy) => trophy.id===1
+            (trophy) => trophy.id === 1
           );
 
           if (newUser.bio != "" && !findBioTrophy.isCompleted) {
@@ -224,10 +225,10 @@ export const useUserStore = defineStore("user", {
         this.users[loggedUserIndex] = this.loggedUser;
 
         const findVoteTrophy = this.loggedUser.trophies.find(
-          (trophy) => trophy.id===8
+          (trophy) => trophy.id === 8
         );
 
-        if (this.loggedUser.votes.length = 1 && !findVoteTrophy.isCompleted) {
+        if ((this.loggedUser.votes.length = 1 && !findVoteTrophy.isCompleted)) {
           findVoteTrophy.isCompleted = true;
           console.log(newUser.trophies);
         }
