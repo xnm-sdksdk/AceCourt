@@ -143,22 +143,22 @@
                 </div>
 
                 <!-- See More Players -->
-                <v-row
-                  v-for="player in renderPlayers.slice(0, 5)"
-                  :key="player.player_key"
-                  class="ml-3 my-3"
-                >
-                  <v-col class="d-flex align-center"
-                    >{{ player.player_name }}
-                  </v-col>
-                  <v-col
-                    ><ProfileStar
-                      @click="addFavoritePlayer(player)"
-                    ></ProfileStar
-                  ></v-col>
-                </v-row>
-
-                <v-col cols="9">
+                <div v-if="renderPlayers.length>0">
+                  <v-row
+                    v-for="player in renderPlayers.slice(0, 5)"
+                    :key="player.playerKey"
+                    class="ml-3 my-3"
+                  >
+                    <v-col class="d-flex align-center"
+                      >{{ player.playerName }}
+                    </v-col>
+                    <v-col
+                      ><ProfileStar
+                        @click="removeFav(player.playerKey)"
+                      ></ProfileStar
+                    ></v-col>
+                  </v-row>
+                  <v-col cols="9">
                   <div class="flex justify-center items-center">
                     <v-btn @click="showAllPlayers">{{
                       visiblePlayers
@@ -167,6 +167,11 @@
                     }}</v-btn>
                   </div>
                 </v-col>
+                </div>
+                <div v-else class="flex justify-center items-center">
+                  <br>
+                  No Favorite Players.
+                </div>
               </v-card>
             </div>
           </v-col>
@@ -221,8 +226,8 @@ export default {
     showAllPlayers() {
       console.log("Displaying All Players");
     },
-    addFavoritePlayer(player) {
-      console.log("Favorite Player Added: ", player.player_name);
+    removeFav(playerKey) {
+      this.userStore.remFavorite(playerKey);
     },
   },
   computed: {
@@ -230,7 +235,13 @@ export default {
       return this.store.getFixtures;
     },
     renderPlayers() {
-      return this.store.getPlayers;
+      //Verifying if user have favorite players
+      if (this.userStore.getLoggedUser.myPlayers.length > 0) {
+        console.log(this.userStore.getLoggedUser.myPlayers);
+        return this.userStore.getLoggedUser.myPlayers;
+      }else{
+        return []
+      }
     },
     lastMatches() {
       return this.liveGames.slice(
