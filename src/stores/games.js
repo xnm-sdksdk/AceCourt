@@ -174,5 +174,5 @@ export const useGameStore = defineStore("game", {
 
     getStats(gameKey){}
   },
-  persist: true,
+  //persist: true,
 });

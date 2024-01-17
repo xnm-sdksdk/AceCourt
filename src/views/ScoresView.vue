@@ -207,12 +207,14 @@ export default {
     };
   },
   created() {
-    console.log(this.liveGames);
-    console.log(this.userStore.getLoggedUser);;
+    this.store.fetchFixtures();
   },
   methods: {
     addMyGames(game) {
+      //Add to my Games
       this.userStore.addMyGames(game);
+      //Remove from Live Games
+      this.store.removeLiveGames(game);
     },
     removeMyGames(game) {
       this.userStore.removeMyGames(game);
@@ -229,7 +231,22 @@ export default {
   },
   computed: {
     liveGames() {
-      return this.store.getFixtures;
+      if (this.userStore.isUserLogged) {
+        // Get Fixtures
+        const liveGames = this.store.getFixtures;
+
+        // Get Logged User Games
+        const myGames = this.userStore.getLoggedUser.myGames;
+
+        // Filter Live games removing myGames
+        const filteredGames = liveGames.filter((liveGame) => {
+          // Verifique se o jogo ao vivo não está em myGames
+          return !myGames.some((myGame) => myGame.event_key === liveGame.event_key);
+        });
+
+        console.log(filteredGames);
+        return filteredGames;
+      }
     },
     renderPlayers() {
       //Verifying if user have favorite players
@@ -244,6 +261,9 @@ export default {
         this.liveGames.length - 5,
         this.liveGames.length
       );
+    },
+    myGames() {
+      return this.userStore.getLoggedUser.myGames;
     },
   },
   // watch: {
