@@ -161,26 +161,27 @@
           </v-col>
 
           <!-- Statistics -->
-          <v-col cols="6">
-            <v-card
-              class="rounded-lg bg-grey-lighten-5"
-              elevation="3"
-              height="600"
-            >
-              <v-row class="justify-center align-center">
-                <v-col cols="6">
-                  <v-card-title>Statistics</v-card-title>
-                </v-col>
-              </v-row>
-            </v-card>
-          </v-col>
-        </v-row>
-      </div>
-      <div>
-        <v-row class="d-flex justify-center">
-          <v-col>
-            <img src="../assets/court.svg" alt="Court" />
-          </v-col>
+          <v-row>
+            <v-col cols="9">
+              <v-card
+                class="rounded-lg bg-grey-lighten-5"
+                elevation="3"
+                height="600"
+              >
+                <v-row class="justify-center align-center">
+                  <v-col cols="6">
+                    <v-card-title>Statistics</v-card-title>
+                  </v-col>
+                </v-row>
+              </v-card>
+            </v-col>
+          </v-row>
+          <!-- Court -->
+          <v-row class="justify-center align-center">
+            <v-col>
+              <img src="../assets/court.svg" alt="Court" />
+            </v-col>
+          </v-row>
         </v-row>
       </div>
     </v-container>
