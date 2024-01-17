@@ -15,7 +15,7 @@
                     >My Games</v-card-title
                   >
                 </div>
-                <div class="py-4">
+                <div class="py-4" v-if="myGames.length>0">
                   <v-card
                     v-for="game in myGames"
                     :key="game.event_key"
@@ -33,6 +33,11 @@
                       <v-col>{{ game.event_second_player }}</v-col>
                     </v-row>
                   </v-card>
+                </div>
+                <div class="py-4" v-else>
+                  <h2 class="flex justify-center items-center">
+                      No Games Added
+                  </h2>
                 </div>
               </v-card>
             </div>
@@ -217,7 +222,7 @@ export default {
       this.store.removeLiveGames(game);
     },
     removeMyGames(game) {
-      this.userStore.removeMyGames(game);
+      this.userStore.remMyGames(game);
     },
     getLiveScore(game) {
       console.log(game);
@@ -243,9 +248,9 @@ export default {
           // Verifique se o jogo ao vivo não está em myGames
           return !myGames.some((myGame) => myGame.event_key === liveGame.event_key);
         });
-
-        console.log(filteredGames);
         return filteredGames;
+      }else{
+        return this.store.getFixtures;
       }
     },
     renderPlayers() {
