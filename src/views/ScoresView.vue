@@ -143,7 +143,7 @@
                 </div>
 
                 <!-- See More Players -->
-                <div v-if="renderPlayers.length>0">
+                <div v-if="renderPlayers.length > 0">
                   <v-row
                     v-for="player in renderPlayers.slice(0, 5)"
                     :key="player.playerKey"
@@ -159,17 +159,17 @@
                     ></v-col>
                   </v-row>
                   <v-col cols="9">
-                  <div class="flex justify-center items-center">
-                    <v-btn @click="showAllPlayers">{{
-                      visiblePlayers
-                        ? "Show Initial Players"
-                        : "Show All Players"
-                    }}</v-btn>
-                  </div>
-                </v-col>
+                    <div class="flex justify-center items-center">
+                      <v-btn @click="showAllPlayers">{{
+                        visiblePlayers
+                          ? "Show Initial Players"
+                          : "Show All Players"
+                      }}</v-btn>
+                    </div>
+                  </v-col>
                 </div>
                 <div v-else class="flex justify-center items-center">
-                  <br>
+                  <br />
                   No Favorite Players.
                 </div>
               </v-card>
@@ -208,10 +208,7 @@ export default {
   },
   created() {
     console.log(this.liveGames);
-    this.store.fetchFixtures();
-    this.store.fetchPlayers();
-    console.log(this.userStore.getLoggedUser);
-    console.log(this.userStore.getLoggedUser);
+    console.log(this.userStore.getLoggedUser);;
   },
   methods: {
     addMyGames(game) {
@@ -237,10 +234,9 @@ export default {
     renderPlayers() {
       //Verifying if user have favorite players
       if (this.userStore.getLoggedUser.myPlayers.length > 0) {
-        console.log(this.userStore.getLoggedUser.myPlayers);
         return this.userStore.getLoggedUser.myPlayers;
-      }else{
-        return []
+      } else {
+        return [];
       }
     },
     lastMatches() {

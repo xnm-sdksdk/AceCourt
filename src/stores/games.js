@@ -59,7 +59,7 @@ export const useGameStore = defineStore("game", {
     // Get All Games
     getFixtures: (state) => {
       const filter = state.fixtures.filter(
-        (game) => game.event_qualification != `True`
+        (game) => game.event_qualification != `True` && game.tournament_key == 1236
       );
       return filter;
     },
