@@ -178,9 +178,6 @@
           </v-row>
           <!-- Court -->
           <v-row class="justify-center align-center">
-            <v-col>
-              <img src="../assets/court.svg" alt="Court" />
-            </v-col>
             <!-- ! Animation Rendering results, needs adjustments -->
             <div v-if="animationGame">
               <v-card-title>{{ servingPlayer }} served</v-card-title>
@@ -192,6 +189,9 @@
                 <div>{{ game.event_first_player }}: {{ firstPlayer }}</div>
                 <div>{{ game.event_second_player }}: {{ secondPlayer }}</div>
               </v-card-text>
+              <v-col>
+                <img src="../assets/court.svg" alt="Court" />
+              </v-col>
             </div>
           </v-row>
         </v-row>
@@ -224,14 +224,14 @@ export default {
     };
   },
   created() {
-    // this.intervalId = setInterval(() => {
-    // }, 5000);
     //Get Game Key as a number
     const gameKey = Number(this.$route.params.id);
     //Get Game
     this.game = this.store.getFixtures.find(
       (game) => game.event_key === gameKey
     );
+    // Get point by point
+    this.pointbypoint = this.game.pointbypoint || [];
 
     //Get players Rankings
     const firstPlayerRank = this.store.getStandings
@@ -324,14 +324,16 @@ export default {
           this.servingPlayer === this.game.event_first_player
             ? this.game.event_second_player
             : this.game.event_first_player;
-        this.firstPlayer += Math.floor(Math.random() * 3);
-        this.secondPlayer += Math.floor(Math.random() * 3);
 
-        this.animationGame = true;
-
-        setTimeout(() => {
-          this.animationGame = false;
-        }, 3000);
+        for (const point of this.pointbypoint) {
+          const points = point.points;
+          this.firstPlayer = points;
+          this.secondPlayer = points;
+          this.animationGame = true;
+          setTimeout(() => {
+            this.animationGame = false;
+          }, 3000);
+        }
       }, 5000);
     },
     endResultAnimation() {
