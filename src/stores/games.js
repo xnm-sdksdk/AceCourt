@@ -20,6 +20,8 @@ export const useGameStore = defineStore("game", {
     playerLastMatches: [],
     // Retrieve Games of the day
     gamesOfDay: [],
+    // Retrieve Stats
+    statistics:[],
   }),
   getters: {
     // Get Tournament
@@ -61,6 +63,10 @@ export const useGameStore = defineStore("game", {
       );
       return filter;
     },
+    //Statistic
+    getStatistic:(state) => {
+      return state.statistics
+    }
   },
   actions: {
     async fetchTournaments() {
@@ -165,6 +171,8 @@ export const useGameStore = defineStore("game", {
         console.error("Error fetching Standings:", error);
       }
     },
+
+    getStats(gameKey){}
   },
   persist: true,
 });

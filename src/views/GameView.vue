@@ -173,13 +173,16 @@
                     <v-card-title>Statistics</v-card-title>
                   </v-col>
                 </v-row>
+
+                <v-row>asdsad</v-row>
               </v-card>
             </v-col>
           </v-row>
           <!-- Court -->
           <v-row class="justify-center align-center">
+            <v-col v-if="animationGame">
             <!-- ! Animation Rendering results, needs adjustments -->
-            <div v-if="animationGame">
+            <div v-for="(index,point) in points" :key="point">
               <v-card-title>{{ servingPlayer }} served</v-card-title>
               <v-card-subtitle
                 >{{ game.event_first_player }} vs
@@ -189,10 +192,12 @@
                 <div>{{ game.event_first_player }}: {{ firstPlayer }}</div>
                 <div>{{ game.event_second_player }}: {{ secondPlayer }}</div>
               </v-card-text>
-              <v-col>
+              
+            </div>
+            </v-col>
+            <v-col>
                 <img src="../assets/court.svg" alt="Court" />
               </v-col>
-            </div>
           </v-row>
         </v-row>
       </div>
@@ -221,6 +226,7 @@ export default {
       servingPlayer: "",
       firstPlayer: 0,
       secondPlayer: 0,
+      statistic: [],
     };
   },
   created() {
@@ -265,6 +271,19 @@ export default {
       this.userStore.addCheckVoteBadge();
       this.userStore.addCheckGameBadge();
     }
+
+    //Check if game have statistics
+    const findStats = this.store.getStatistic.find(
+      (game) => game.gamekey == this.gamekey
+    );
+    if (findStats) {
+      console.log(this.statistic);
+    } else {
+      this.statistic = [];
+      console.log(this.statistic);
+    }
+
+    console.log(this.game);
   },
 
   methods: {
@@ -318,13 +337,24 @@ export default {
         }
       }
     },
-    resultAnimation() {
+    resultAnimation(index) {
       this.intervalId = setInterval(() => {
         this.servingPlayer =
           this.servingPlayer === this.game.event_first_player
             ? this.game.event_second_player
             : this.game.event_first_player;
-
+        setTimeout(() => {
+            this.animationGame = false;
+          }, 3000);
+        },
+      5000)
+    },
+    endResultAnimation() {
+      clearInterval(this.intervalId);
+    },
+    //Statistics Animation
+    StatsAnimation() {
+      this.intervalId = setInterval(() => {
         for (const point of this.pointbypoint) {
           const points = point.points;
           this.firstPlayer = points;
@@ -335,9 +365,6 @@ export default {
           }, 3000);
         }
       }, 5000);
-    },
-    endResultAnimation() {
-      clearInterval(this.intervalId);
     },
   },
 
