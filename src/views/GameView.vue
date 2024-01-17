@@ -181,6 +181,18 @@
             <v-col>
               <img src="../assets/court.svg" alt="Court" />
             </v-col>
+            <!-- ! Animation Rendering results, needs adjustments -->
+            <div v-if="animationGame">
+              <v-card-title>{{ servingPlayer }} served</v-card-title>
+              <v-card-subtitle
+                >{{ game.event_first_player }} vs
+                {{ game.event_second_player }}</v-card-subtitle
+              >
+              <v-card-text>
+                <div>{{ game.event_first_player }}: {{ firstPlayer }}</div>
+                <div>{{ game.event_second_player }}: {{ secondPlayer }}</div>
+              </v-card-text>
+            </div>
           </v-row>
         </v-row>
       </div>
@@ -204,6 +216,11 @@ export default {
       game: null,
       chance: 50,
       endVote: false,
+      animationGame: false,
+      intervalId: null,
+      servingPlayer: "",
+      firstPlayer: 0,
+      secondPlayer: 0,
     };
   },
   created() {
@@ -301,6 +318,32 @@ export default {
         }
       }
     },
+    resultAnimation() {
+      this.intervalId = setInterval(() => {
+        this.servingPlayer =
+          this.servingPlayer === this.game.event_first_player
+            ? this.game.event_second_player
+            : this.game.event_first_player;
+        this.firstPlayer += Math.floor(Math.random() * 3);
+        this.secondPlayer += Math.floor(Math.random() * 3);
+
+        this.animationGame = true;
+
+        setTimeout(() => {
+          this.animationGame = false;
+        }, 3000);
+      }, 5000);
+    },
+    endResultAnimation() {
+      clearInterval(this.intervalId);
+    },
+  },
+
+  mounted() {
+    this.resultAnimation();
+  },
+  beforeDestroy() {
+    this.endResultAnimation();
   },
 };
 </script>
