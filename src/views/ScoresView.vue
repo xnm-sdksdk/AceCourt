@@ -65,33 +65,38 @@
                           :inLiveGames="inLiveGames"
                         >
                         </ScoresHeaderResults>
-                        <v-row class="bg-blue-darken-2 ma-1" cols="1">
+                        <v-row class="bg-blue-darken-2 ma-1">
                           <v-col cols="4" class="ml-3">{{
                             game.event_first_player
                           }}</v-col>
 
                           <v-col
-                            v-for="point in game.pointbypoint"
+                            cols="1"
+                            v-for="point in game.pointbypoint.slice(-1)"
                             :key="point.set_number"
                           >
-                            <v-col v-if="point.set_number == 'Set 1'">
-                              <v-col
-                                v-for="result in point.points"
-                                :key="result.number_point"
-                              >
-                                {{ result.score }}
-                              </v-col>
-                            </v-col>
+                            {{ point.score.slice(0, 2) }}
                           </v-col>
-
-                          <v-col cols="1">{{ game.event_final_result.slice(0,2) }}</v-col>
+                          <v-col cols="1">2</v-col>
+                          <v-col cols="1">3</v-col>
+                          <v-col cols="1">4</v-col>
+                          <v-col cols="1">5</v-col>
+                          <v-col cols="1">{{
+                            game.event_final_result.slice(0, 2)
+                          }}</v-col>
                         </v-row>
 
                         <v-row class="rounded-b-xl bg-blue-darken-2 ma-1">
                           <v-col cols="4" class="ml-3">{{
                             game.event_second_player
                           }}</v-col>
-                          <v-col cols="1">1</v-col>
+                          <v-col
+                            cols="1"
+                            v-for="point in game.pointbypoint.slice(-1)"
+                            :key="point.set_number"
+                          >
+                            {{ point.score.slice(3, 6) }}
+                          </v-col>
                           <v-col cols="1">2</v-col>
                           <v-col cols="1">3</v-col>
                           <v-col cols="1">4</v-col>
