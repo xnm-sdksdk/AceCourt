@@ -359,33 +359,7 @@
           </v-col>
         </v-row>
       </div>
-      <!-- Tournament Progress Stats Card -->
-      <div class="container mx-auto flex justify-between items-center p-4">
-        <v-row class="justify-center align-center">
-          <v-col :cols="12" md="5" lg="10" class="order-sm-2">
-            <v-card
-              max-width="1500"
-              class="rounded-xl bg-grey-lighten-5"
-              elevation="3"
-              height="300"
-            >
-              <v-card-title class="ml-4"> Tournament Progress </v-card-title>
-              <!-- Graph 1 -->
 
-              <!-- Graph 2 -->
-              <!-- Graph 3 -->
-              <!--<canvas ref="myChart"></canvas>-->
-              <v-card-subtitle class="ml-4"
-                >Percentage of Completion</v-card-subtitle
-              >
-              <v-card-subtitle class="ml-4"
-                >Average First Server Won %</v-card-subtitle
-              >
-              <v-card-subtitle class="ml-4">Second Serve % Won</v-card-subtitle>
-            </v-card>
-          </v-col>
-        </v-row>
-      </div>
       <!-- Footer -->
     </v-container>
     <Footer></Footer>
@@ -398,7 +372,7 @@ import Footer from "@/components/Footer.vue";
 import ButtonSeeMore from "@/components/ButtonSeeMore.vue";
 import ScoresHeaderHome from "@/components/ScoresHeaderHome.vue";
 import { useGameStore } from "@/stores/games";
-//import Chart from "chart.js/auto";
+
 export default {
   components: {
     NavBar,
