@@ -21,7 +21,7 @@ export const useGameStore = defineStore("game", {
     // Retrieve Games of the day
     gamesOfDay: [],
     // Retrieve Stats
-    statistics:[],
+    statistics: [],
   }),
   getters: {
     // Get Tournament
@@ -34,10 +34,6 @@ export const useGameStore = defineStore("game", {
     },
     // Get Players
     getPlayers: (state) => {
-      // if (state.liveGames.length > 0) {
-      //   const firstliveGame = state.liveGames[0];
-      //   return firstliveGame.event_first_player;
-      // }
       return state.players;
     },
     // Get Live Games
@@ -59,14 +55,15 @@ export const useGameStore = defineStore("game", {
     // Get All Games
     getFixtures: (state) => {
       const filter = state.fixtures.filter(
-        (game) => game.event_qualification != `True` && game.tournament_key == 1236
+        (game) =>
+          game.event_qualification != `True` && game.tournament_key == 1236
       );
       return filter;
     },
     //Statistic
-    getStatistic:(state) => {
-      return state.statistics
-    }
+    getStatistic: (state) => {
+      return state.statistics;
+    },
   },
   actions: {
     async fetchTournaments() {
@@ -172,12 +169,14 @@ export const useGameStore = defineStore("game", {
       }
     },
 
-    addStatistic(statistic){
-      const findStatistic = this.statistics.find(stat => stat.gameKey == statistic.gameKey)
-      if(!findStatistic){
-        this.statistics.push(statistic)
+    addStatistic(statistic) {
+      const findStatistic = this.statistics.find(
+        (stat) => stat.gameKey == statistic.gameKey
+      );
+      if (!findStatistic) {
+        this.statistics.push(statistic);
       }
     },
-    persist:true,
+    persist: true,
   },
 });
