@@ -82,7 +82,7 @@ export default {
   data() {
     return {
       gameStore: useGameStore(),
-      selectedOption: "Semi-Final",
+      selectedOption: "1/64 Finals",
     };
   },
 
