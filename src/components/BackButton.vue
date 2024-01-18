@@ -3,7 +3,7 @@
     class="px-4 py-2 rounded-full"
     @click="goBack"
   >
-    <img src="@/assets/back.svg" alt="" />
+    <img src="../assets/back.svg" alt="" />
     Back
   </button>
 </template>
