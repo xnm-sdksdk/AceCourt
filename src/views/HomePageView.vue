@@ -119,7 +119,7 @@
                   <v-col cols="1" class="m-3">-</v-col>
                   <v-col cols="1" class="m-3">-</v-col>
                   <v-col cols="1" class="m-3">{{
-                    game.event_game_result.slice(0, 2)
+                    game.event_final_result.slice(0, 2)
                   }}</v-col>
                 </v-row>
                 <!-- Third Row -->
@@ -134,7 +134,7 @@
                     <v-col cols="1" class="m-3">-</v-col>
                     <v-col cols="1" class="m-3">-</v-col>
                     <v-col cols="1" class="m-3">{{
-                      game.event_game_result.slice(4, 7)
+                      game.event_final_result.slice(4, 7)
                     }}</v-col>
                   </v-row>
                 </div>

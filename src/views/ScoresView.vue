@@ -70,7 +70,7 @@
                             game.event_first_player
                           }}</v-col>
 
-                          <!-- <v-col
+                          <v-col
                             v-for="point in game.pointbypoint"
                             :key="point.set_number"
                           >
@@ -82,13 +82,9 @@
                                 {{ result.score }}
                               </v-col>
                             </v-col>
-                          </v-col> -->
-
-                          <v-col v-if="game.pointbypoint">
-                            G {{ game.points }}
                           </v-col>
 
-                          <v-col cols="1">{{ game.event_game_result }}</v-col>
+                          <v-col cols="1">{{ game.event_final_result.slice(0,2) }}</v-col>
                         </v-row>
 
                         <v-row class="rounded-b-xl bg-blue-darken-2 ma-1">
@@ -101,7 +97,7 @@
                           <v-col cols="1">4</v-col>
                           <v-col cols="1">5</v-col>
                           <v-col cols="1">{{
-                            game.event_game_result.slice(4, 7)
+                            game.event_final_result.slice(4, 7)
                           }}</v-col>
                         </v-row>
                       </v-card>
@@ -228,6 +224,7 @@ export default {
   created() {
     this.store.fetchFixtures();
   },
+
   methods: {
     addMyGames(game) {
       //Add to my Games
