@@ -1,13 +1,45 @@
 <template>
   <NavBar></NavBar>
-    <v-container>
-        <v-row>
-            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" style="fill:#003852"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-160 0q-17 0-28.5-11.5T280-280q0-17 11.5-28.5T320-320q17 0 28.5 11.5T360-280q0 17-11.5 28.5T320-240Zm320 0q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"/></svg>
+    <v-container class="containerTournament">
+        <v-row class="tournamentCont">
+          <v-col>
+            <v-row>
+              <h1>Schedule</h1>
+            </v-row>
+            <v-row>
+              <p>Explore the comprehensive schedule feature on our tennis dashboard, keeping you updated on match timings, player matchups, and tournament progress in real-time.</p>
+            </v-row>
+          </v-col>
         </v-row>
-        <v-row>
-        <v-col cols="12">
-            <h1>Tournaments</h1>
-        </v-col>
+        <v-row class="tournamentCont">
+          <v-col>
+            <v-row class="d-flex align-center">
+              <v-col>
+                <SchedulePic height="70" width="70"></SchedulePic>
+              </v-col>
+            </v-row>
+            <v-row>
+              <h1>Draws</h1>
+            </v-row>
+            <v-row>
+              <p>Explore the comprehensive schedule feature on our tennis dashboard, keeping you updated on match timings, player matchups, and tournament progress in real-time.</p>
+            </v-row>
+          </v-col>
+        </v-row>
+        <v-row class="tournamentCont">
+          <v-col>
+            <v-row class="d-flex align-center">
+              <v-col>
+                <DrawsPic height="70" width="70"></DrawsPic>
+              </v-col>
+            </v-row>
+            <v-row>
+              <h1>Schedule</h1>
+            </v-row>
+            <v-row>
+              <p>Explore the comprehensive schedule feature on our tennis dashboard, keeping you updated on match timings, player matchups, and tournament progress in real-time.</p>
+            </v-row>
+          </v-col>
         </v-row>
     </v-container>
 </template>
@@ -15,8 +47,42 @@
 import NavBar from "../components/NavBar.vue";
 export default {
   components: {
-    NavBar,
+    NavBar
   },
 };
 </script>
-<style></style>
+<style>
+.containerTournament {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+}
+
+.tournamentCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #1C1C1C;
+  border-radius: 10px;
+  padding: 5%;
+  margin: 1%;
+}
+
+.tournamentCont:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+}
+
+SchedulePic {
+  background-color: #F2F9FC;
+}
+
+p{
+  text-align: justify;
+  font-size: 20px;
+  font-weight: 500;
+  color: #1C1C1C;
+};
+</style>

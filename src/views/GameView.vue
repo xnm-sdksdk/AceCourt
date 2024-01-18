@@ -220,6 +220,11 @@
       </div>
     </v-container>
     {{ currentPoints }}
+    {{ currentGameIndex }}
+    {{ currentPointIndex }}
+    {{ game.pointbypoint.length }}
+    {{ game.pointbypoint[currentGameIndex].points.length }}
+    {{ game.pointbypoint[currentGameIndex].points[currentPointIndex] }}
   </v-app>
 </template>
 
@@ -243,7 +248,7 @@ export default {
       intervalId: null,
       currentPointIndex: 0,
       currentGameIndex: 0,
-      currentPoints: "",
+      currentPoints: null,
       statistic: [],
     };
   },
@@ -298,8 +303,6 @@ export default {
     //   this.statistic = [];
     //   console.log(this.statistic);
     // }
-
-    this.renderPoints;
   },
   methods: {
     generateChanceValue(firstPlayerRank, secondPlayerRank) {
@@ -356,7 +359,7 @@ export default {
   renderPoints() {
     this.intervalId = setInterval(() => {
       if (this.currentGameIndex < this.game.pointbypoint.length) {
-        
+
         this.currentPoints = this.game.pointbypoint[this.currentGameIndex].points[this.currentPointIndex];
         this.currentPointIndex++;
 
