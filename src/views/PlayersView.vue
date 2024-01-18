@@ -8,13 +8,13 @@
         <v-col>
           <h1 class="text-3xl font-bold mb-4">Player Information</h1>
         </v-col>
-        <v-col>
+        <v-col cols="1">
           <BackButton></BackButton>
         </v-col>
       </v-row>
 
       <!-- Player Name Section -->
-      <v-row>
+      <v-row v-if="player">
         <v-container fluid class="name-container">
           <v-col>
             <h2 class="text-xl font-bold">
@@ -187,9 +187,18 @@ export default {
         this.isFavorite = true;
       }
     }
+
+    console.log(this.playerId);
   },
   computed: {
     filterSingles() {
+      console.log("this.player:", this.player);
+
+      if (!this.player || !this.player.stats) {
+        console.log("Player not found.");
+        return [];
+      }
+
       const stats = this.player.stats.filter((stat) => stat.type == "singles");
       stats.sort((a, b) => parseInt(b.season) - parseInt(a.season));
       return stats;
