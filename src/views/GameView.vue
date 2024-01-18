@@ -181,37 +181,34 @@
           <!-- Court -->
           <v-row class="justify-center align-center">
             <v-col>
-              <!-- ! Animation Rendering results, needs adjustments -->
               <div v-for="(points, index) in game.pointbypoint" :key="index">
-                <div v-if="renderPoints(index)">
-                  <div v-for="point in points.points" :key="point">
-                    <v-card-title>{{ points.set_number }}</v-card-title>
-                    <v-card-title class="d-flex justify-center">
-                      <v-img
-                        :src="game.event_first_player_logo"
-                        width="80px"
-                        height="80px"
-                      ></v-img>
-                      <p class="mr-5">{{ game.event_first_player }}</p>
-                      {{ point.score }}
-                      <p class="ml-5">{{ game.event_second_player }}</p>
-                      <v-img
-                        :src="game.event_second_player_logo"
-                        width="80px"
-                        height="80px"
-                      ></v-img>
-                    </v-card-title>
-                    <v-card-subtitle
-                      v-if="points.player_served === 'First Player'"
-                    >
-                      {{ game.event_first_player }} served
-                    </v-card-subtitle>
-                    <v-card-subtitle
-                      v-else-if="points.player_served === 'Second Player'"
-                    >
-                      {{ game.event_second_player }} served
-                    </v-card-subtitle>
-                  </div>
+                <div v-if="animationGame">
+                  <v-card-title>{{ points.set_number }}</v-card-title>
+                  <v-card-title class="d-flex justify-center">
+                    <v-img
+                      :src="game.event_first_player_logo"
+                      width="80px"
+                      height="80px"
+                    ></v-img>
+                    <p class="mr-5">{{ game.event_first_player }}</p>
+                    {{ point.score }}
+                    <p class="ml-5">{{ game.event_second_player }}</p>
+                    <v-img
+                      :src="game.event_second_player_logo"
+                      width="80px"
+                      height="80px"
+                    ></v-img>
+                  </v-card-title>
+                  <v-card-subtitle
+                    v-if="points.player_served === 'First Player'"
+                  >
+                    {{ game.event_first_player }} served
+                  </v-card-subtitle>
+                  <v-card-subtitle
+                    v-else-if="points.player_served === 'Second Player'"
+                  >
+                    {{ game.event_second_player }} served
+                  </v-card-subtitle>
                 </div>
               </div>
             </v-col>
@@ -222,6 +219,7 @@
         </v-row>
       </div>
     </v-container>
+    {{ currentPoints }}
   </v-app>
 </template>
 
@@ -242,15 +240,16 @@ export default {
       chance: 50,
       endVote: false,
       animationGame: false,
-      intervalId: 0,
-      currentIndex: 0,
+      intervalId: null,
+      currentPointIndex: 0,
+      currentGameIndex: 0,
+      currentPoints: "",
       statistic: [],
     };
   },
   created() {
     //Get Game Key as a number
     const gameKey = Number(this.$route.params.id);
-    console.log(gameKey);
     //Get Game
     this.game = this.store.getFixtures.find(
       (game) => game.event_key === gameKey
@@ -293,14 +292,14 @@ export default {
     const findStats = this.store.getStatistic.find(
       (game) => game.gamekey == this.gamekey
     );
-    if (findStats) {
-      console.log(this.statistic);
-    } else {
-      this.statistic = [];
-      console.log(this.statistic);
-    }
+    // if (findStats) {
+    //   //console.log(this.statistic);
+    // } else {
+    //   this.statistic = [];
+    //   console.log(this.statistic);
+    // }
 
-    console.log(this.game);
+    this.renderPoints;
   },
   methods: {
     generateChanceValue(firstPlayerRank, secondPlayerRank) {
@@ -356,16 +355,19 @@ export default {
   },
   renderPoints() {
     this.intervalId = setInterval(() => {
-      if (this.currentIndex < this.game.pointbypoint.point.length) {
-        // Lógica para renderizar o ponto aqui
-        this.currentIndex++;
+      if (this.currentGameIndex < this.game.pointbypoint.length) {
+        
+        this.currentPoints = this.game.pointbypoint[this.currentGameIndex].points[this.currentPointIndex];
+        this.currentPointIndex++;
+
+        if (this.currentPointIndex >= this.game.pointbypoint[this.currentGameIndex].points.length) {
+          this.currentGameIndex++;
+          this.currentPointIndex = 0;
+        }
       } else {
         clearInterval(this.intervalId);
       }
     }, 5000); // Intervalo de 5 segundos
-  },
-  endResultAnimation() {
-    clearInterval(this.intervalId);
   },
   //Statistics Animation
   StatsAnimation() {
@@ -382,10 +384,7 @@ export default {
     }, 5000);
   },
 
-  mounted() {
-    this.renderPoints;
-    console.log(this.renderPoints);
-  },
+
   beforeDestroy() {
     this.endResultAnimation();
   },
