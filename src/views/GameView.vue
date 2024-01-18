@@ -75,7 +75,7 @@
                   </v-row>
                   <v-row>
                     <v-col>{{ game.event_first_player }}</v-col>
-                    <v-col>6</v-col>
+                    <v-col>{{}}</v-col>
                     <v-col>6</v-col>
                     <v-col>6</v-col>
                     <v-col>3</v-col>
@@ -174,7 +174,89 @@
                   </v-col>
                 </v-row>
 
-                <v-row>asdsad</v-row>
+                <v-row class="d-flex justify-centercenter">
+                  <v-col cols="6">
+                    <v-card-subtitle>{{
+                      game.event_first_player
+                    }}</v-card-subtitle>
+                  </v-col>
+                  <v-col cols="6">
+                    <v-card-subtitle>{{
+                      game.event_second_player
+                    }}</v-card-subtitle>
+                  </v-col>
+                </v-row>
+
+                <v-row class="d-flex justify-centercenter">
+                  <v-col cols="3">
+                    <v-card-subtitle>{{
+                      this.addStatistic.secondPlayerServeLost
+                    }}</v-card-subtitle>
+                  </v-col>
+                  <v-col cols="5">
+                    <v-progress-linear
+                      :style="{
+                        '--bar-color': '#A9DC3C',
+                        '--background-color': '#008BCC',
+                      }"
+                      :model-value="statBar"
+                      :height="20"
+                      max-width="150"
+                    ></v-progress-linear>
+                  </v-col>
+                  <v-col cols="3">
+                    <v-card-subtitle>{{
+                      this.addStatistic.firstPlayerServeLost
+                    }}</v-card-subtitle>
+                  </v-col>
+                </v-row>
+
+                <v-row class="d-flex justify-centercenter">
+                  <v-col cols="3">
+                    <v-card-subtitle>{{
+                      this.addStatistic.firstPlayerServeWinner
+                    }}</v-card-subtitle>
+                  </v-col>
+                  <v-col cols="5">
+                    <v-progress-linear
+                      :style="{
+                        '--bar-color': '#A9DC3C',
+                        '--background-color': '#008BCC',
+                      }"
+                      :model-value="statBar"
+                      :height="20"
+                      max-width="150"
+                    ></v-progress-linear>
+                  </v-col>
+                  <v-col cols="3">
+                    <v-card-subtitle>{{
+                      this.addStatistic.secondPlayerServeWinner
+                    }}</v-card-subtitle>
+                  </v-col>
+                </v-row>
+                <v-row class="d-flex justify-centercenter">
+                  <v-col cols="3">
+                    <v-card-subtitle>{{
+                      this.addStatistic.firstPlayerScore
+                    }}</v-card-subtitle>
+                  </v-col>
+                  <v-col cols="5">
+                    <v-progress-linear
+                      :style="{
+                        '--bar-color': '#A9DC3C',
+                        '--background-color': '#008BCC',
+                      }"
+                      :model-value="statBar"
+                      :height="20"
+                      max-width="150"
+                    ></v-progress-linear>
+                  </v-col>
+                  <v-col cols="3">
+                    <v-card-subtitle>{{
+                      this.addStatistic.secondPlayerScore
+                    }}</v-card-subtitle>
+                  </v-col>
+                </v-row>
               </v-card>
             </v-col>
           </v-row>
@@ -212,19 +294,13 @@
                 </div>
               </div>
             </v-col>
-            <v-col>
+            <v-col cols="12">
               <img src="../assets/court.svg" alt="Court" />
             </v-col>
           </v-row>
         </v-row>
       </div>
     </v-container>
-    {{ currentPoints }}
-    {{ currentGameIndex }}
-    {{ currentPointIndex }}
-    {{ game.pointbypoint.length }}
-    {{ game.pointbypoint[currentGameIndex].points.length }}
-    {{ game.pointbypoint[currentGameIndex].points[currentPointIndex] }}
   </v-app>
 </template>
 
@@ -243,6 +319,7 @@ export default {
       userStore: useUserStore(),
       game: null,
       chance: 50,
+      statBar:40,
       endVote: false,
       animationGame: false,
       intervalId: null,
@@ -297,12 +374,15 @@ export default {
     const findStats = this.store.getStatistic.find(
       (game) => game.gamekey == this.gamekey
     );
-    // if (findStats) {
-    //   //console.log(this.statistic);
-    // } else {
-    //   this.statistic = [];
-    //   console.log(this.statistic);
-    // }
+
+    if (findStats) {
+      this.statistic = findStats;
+    } else {
+      this.statistic = [];
+    }
+
+    this.generateStatValue;
+    console.log(this.game);
   },
   methods: {
     generateChanceValue(firstPlayerRank, secondPlayerRank) {
@@ -359,11 +439,16 @@ export default {
   renderPoints() {
     this.intervalId = setInterval(() => {
       if (this.currentGameIndex < this.game.pointbypoint.length) {
-
-        this.currentPoints = this.game.pointbypoint[this.currentGameIndex].points[this.currentPointIndex];
+        this.currentPoints =
+          this.game.pointbypoint[this.currentGameIndex].points[
+            this.currentPointIndex
+          ];
         this.currentPointIndex++;
 
-        if (this.currentPointIndex >= this.game.pointbypoint[this.currentGameIndex].points.length) {
+        if (
+          this.currentPointIndex >=
+          this.game.pointbypoint[this.currentGameIndex].points.length
+        ) {
           this.currentGameIndex++;
           this.currentPointIndex = 0;
         }
@@ -387,7 +472,54 @@ export default {
     }, 5000);
   },
 
+  computed: {
+    addStatistic() {
+      //Compare the scores and count how many times the first player won
+      const firstPlayerScore = this.game.scores.filter(
+        (score) =>
+          parseFloat(score.score_first) > parseFloat(score.score_second)
+      ).length;
 
+      //Compare the scores and count how many times the second player won
+      const secondPlayerScore = this.game.scores.filter(
+        (score) => score.score_second > score.score_first
+      ).length;
+
+      // Count how many times the serve_lost is "First Player"
+      const firstPlayerServeLost = this.game.pointbypoint.filter(
+        (point) => point.serve_lost === "First Player"
+      ).length;
+
+      // Count how many times the serve_lost is "Second Player"
+      const secondPlayerServeLost = this.game.pointbypoint.filter(
+        (point) => point.serve_lost === "Second Player"
+      ).length;
+
+      // Count how many times the serve_winner is "First Player"
+      const firstPlayerServeWinner = this.game.pointbypoint.filter(
+        (point) => point.serve_winner === "First Player"
+      ).length;
+
+      // Count how many times the serve_winner is "Second Player"
+      const secondPlayerServeWinner = this.game.pointbypoint.filter(
+        (point) => point.serve_winner === "Second Player"
+      ).length;
+
+      const statistics = {
+        gamekey: this.game.event_key,
+        firstPlayerScore: firstPlayerScore,
+        secondPlayerScore: secondPlayerScore,
+        firstPlayerServeLost: firstPlayerServeLost,
+        secondPlayerServeLost: secondPlayerServeLost,
+        firstPlayerServeWinner: firstPlayerServeWinner,
+        secondPlayerServeWinner: secondPlayerServeWinner,
+      };
+
+      //Create the object with the statistics
+      this.store.addStatistic(statistics);
+      return statistics;
+    },
+  },
   beforeDestroy() {
     this.endResultAnimation();
   },

@@ -171,6 +171,13 @@ export const useGameStore = defineStore("game", {
         console.error("Error fetching Standings:", error);
       }
     },
+
+    addStatistic(statistic){
+      const findStatistic = this.statistics.find(stat => stat.gameKey == statistic.gameKey)
+      if(!findStatistic){
+        this.statistics.push(statistic)
+      }
+    },
+    persist:true,
   },
-  //persist: true,
 });
