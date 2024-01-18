@@ -8,12 +8,12 @@
         <v-col>
           <h1 class="text-3xl font-bold mb-4">Ranking</h1>
         </v-col>
-        <v-col class="text-right">
+        <v-col class="text-right" cols="1">
           <button
             class="bg-white border border-blue-500 text-blue-500 px-4 py-2 rounded-full hover:bg-gray-100"
             @click="goBack"
           >
-            <img src="@/assets/back.svg" alt="" />
+            <img src="../assets/back.svg" alt="" />
             Back
           </button>
         </v-col>
@@ -50,7 +50,13 @@
                 style="cursor: pointer"
               >
                 <td>{{ stand.place }}</td>
-                <td @click="seePlayer(stand.player_key,stand.place,stand.points)">{{ stand.player }}</td>
+                <td
+                  @click="
+                    seePlayer(stand.player_key, stand.place, stand.points)
+                  "
+                >
+                  {{ stand.player }}
+                </td>
                 <td>{{ stand.country }}</td>
                 <td>{{ stand.points }}</td>
               </tr>
@@ -86,13 +92,13 @@ export default {
     },
 
     seePlayer(playerKey) {
-      this.$router.push({ name: "players", params: { id: playerKey} });
+      this.$router.push({ name: "players", params: { id: playerKey } });
     },
   },
 
   computed: {
-    getStandings(){
-      return this.store.getStandings
+    getStandings() {
+      return this.store.getStandings;
     },
 
     filteredStandings() {
@@ -117,7 +123,7 @@ export default {
         default:
           return this.getStandings;
       }
-    },   
+    },
   },
 };
 </script>

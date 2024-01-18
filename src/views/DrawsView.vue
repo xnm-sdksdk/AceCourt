@@ -6,12 +6,12 @@
       <v-col>
         <h1 class="text-3xl font-bold mb-4">Draws</h1>
       </v-col>
-      <v-col class="text-right">
+      <v-col class="text-right" cols="1">
         <button
           class="bg-white border border-blue-500 text-blue-500 px-4 py-2 rounded-full hover:bg-gray-100"
           @click="goBack"
         >
-          <img src="@/assets/back.svg" alt="" />
+          <img src="../assets/back.svg" alt="" />
           Back
         </button>
       </v-col>
