@@ -15,7 +15,7 @@
                     >My Games</v-card-title
                   >
                 </div>
-                <div class="py-4" v-if="myGames.length>0">
+                <div class="py-4" v-if="myGames.length > 0">
                   <v-card
                     v-for="game in myGames"
                     :key="game.event_key"
@@ -36,7 +36,7 @@
                 </div>
                 <div class="py-4" v-else>
                   <h2 class="flex justify-center items-center">
-                      No Games Added
+                    No Games Added
                   </h2>
                 </div>
               </v-card>
@@ -65,14 +65,23 @@
                           :inLiveGames="inLiveGames"
                         >
                         </ScoresHeaderResults>
-                        <v-row class="bg-blue-darken-2 ma-1">
+                        <!-- v-for="points in game.pointbypoint"
+                        :key="points.number_point" -->
+                        <v-row
+                          class="bg-blue-darken-2 ma-1"
+                          cols="1"
+                        >
                           <v-col cols="4" class="ml-3">{{
                             game.event_first_player
                           }}</v-col>
 
-                          <v-col cols="1">3</v-col>
-                          <v-col cols="1">4</v-col>
-                          <v-col cols="1">5</v-col>
+                          <!-- <v-col v-if="pointbypoint.set_number == 'Set 1'">{{
+                            pointbypoint.score
+                          }}</v-col> -->
+                          <!-- <v-col>{{ setResult(points) }}</v-col> -->
+                          <!-- <v-col>{{ points.score[2] }}</v-col>
+                          <v-col>{{ points.score }}</v-col>
+                          <v-col>{{ points.score }}</v-col> -->
                           <v-col cols="1">{{
                             game.event_game_result.slice(0, 2)
                           }}</v-col>
@@ -231,6 +240,15 @@ export default {
     removeFav(playerKey) {
       this.userStore.remFavorite(playerKey);
     },
+    // setResult(points) {
+    //   if (points) {
+    //     setTimeout(() => {
+    //       return points.score;
+    //     }, 1000);
+    //   } else {
+    //     return "";
+    //   }
+    // },
   },
   computed: {
     liveGames() {
@@ -244,10 +262,12 @@ export default {
         // Filter Live games removing myGames
         const filteredGames = liveGames.filter((liveGame) => {
           // Verifique se o jogo ao vivo não está em myGames
-          return !myGames.some((myGame) => myGame.event_key === liveGame.event_key);
+          return !myGames.some(
+            (myGame) => myGame.event_key === liveGame.event_key
+          );
         });
         return filteredGames;
-      }else{
+      } else {
         return this.store.getFixtures;
       }
     },
