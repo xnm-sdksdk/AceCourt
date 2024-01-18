@@ -218,8 +218,6 @@ export default {
     addMyGames(game) {
       //Add to my Games
       this.userStore.addMyGames(game);
-      //Remove from Live Games
-      this.store.removeLiveGames(game);
     },
     removeMyGames(game) {
       this.userStore.remMyGames(game);
