@@ -65,25 +65,31 @@
                           :inLiveGames="inLiveGames"
                         >
                         </ScoresHeaderResults>
-                        <!-- v-for="points in game.pointbypoint"
-                        :key="points.number_point" -->
-                        <v-row
-                          class="bg-blue-darken-2 ma-1"
-                          cols="1"
-                        >
+                        <v-row class="bg-blue-darken-2 ma-1" cols="1">
                           <v-col cols="4" class="ml-3">{{
                             game.event_first_player
                           }}</v-col>
 
-                          <!-- <v-col v-if="pointbypoint.set_number == 'Set 1'">{{
-                            pointbypoint.score
-                          }}</v-col> -->
-                          <!-- <v-col>{{ setResult(points) }}</v-col> -->
-                          <!-- <v-col>{{ points.score[2] }}</v-col>
-                          <v-col>{{ points.score }}</v-col>
-                          <v-col>{{ points.score }}</v-col> -->
+                          <!-- <v-col
+                            v-for="point in game.pointbypoint"
+                            :key="point.set_number"
+                          >
+                            <v-col v-if="point.set_number == 'Set 1'">
+                              <v-col
+                                v-for="result in point.points"
+                                :key="result.number_point"
+                              >
+                                {{ result.score }}
+                              </v-col>
+                            </v-col>
+                          </v-col> -->
+
+                          <v-col v-if="game.pointbypoint">
+                            G {{ game.points }}
+                          </v-col>
+
                           <v-col cols="1">{{
-                            game.event_game_result.slice(0, 2)
+                            game.event_game_result
                           }}</v-col>
                         </v-row>
 
@@ -218,6 +224,7 @@ export default {
       isLoading: true,
       ongoingGames: false,
       inLiveGames: true,
+      currentScore: "",
     };
   },
   created() {
@@ -242,13 +249,23 @@ export default {
     },
     // setResult(points) {
     //   if (points) {
-    //     setTimeout(() => {
-    //       return points.score;
-    //     }, 1000);
+    //     setInterval(() => {
+    //       this.currentScore = points.map((point) => point.score).join(" - ");
+    //     }, 4000);
+    //     clearInterval(this.currentScore);
+    //     return this.currentScore;
     //   } else {
     //     return "";
     //   }
-    // },
+    formatScore(points) {
+      if (points && points.length) {
+        setInterval(() => {
+          this.currentScore = points.map((point) => point.score).join(" - ");
+        }, 4000);
+        return this.currentScore; //
+      }
+      return "";
+    },
   },
   computed: {
     liveGames() {
