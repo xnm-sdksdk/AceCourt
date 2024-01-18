@@ -88,9 +88,7 @@
                             G {{ game.points }}
                           </v-col>
 
-                          <v-col cols="1">{{
-                            game.event_game_result
-                          }}</v-col>
+                          <v-col cols="1">{{ game.event_game_result }}</v-col>
                         </v-row>
 
                         <v-row class="rounded-b-xl bg-blue-darken-2 ma-1">
@@ -241,30 +239,8 @@ export default {
     getLiveScore(game) {
       console.log(game);
     },
-    showAllPlayers() {
-      console.log("Displaying All Players");
-    },
     removeFav(playerKey) {
       this.userStore.remFavorite(playerKey);
-    },
-    // setResult(points) {
-    //   if (points) {
-    //     setInterval(() => {
-    //       this.currentScore = points.map((point) => point.score).join(" - ");
-    //     }, 4000);
-    //     clearInterval(this.currentScore);
-    //     return this.currentScore;
-    //   } else {
-    //     return "";
-    //   }
-    formatScore(points) {
-      if (points && points.length) {
-        setInterval(() => {
-          this.currentScore = points.map((point) => point.score).join(" - ");
-        }, 4000);
-        return this.currentScore; //
-      }
-      return "";
     },
   },
   computed: {
@@ -306,16 +282,5 @@ export default {
       return this.userStore.getLoggedUser.myGames;
     },
   },
-  // watch: {
-  //   liveGames: {
-  //     handler(newGames) {
-  //       this.ongoingGames = newGames.some(
-  //         (game) => game.event_status !== "Finished"
-  //       );
-  //     },
-  //     immediate: true,
-  //     deep: true,
-  //   },
-  // },
 };
 </script>
