@@ -227,7 +227,7 @@ export default {
     };
   },
   created() {
-    this.store.fetchFixtures();
+    this.store.fetchLiveScores();
   },
 
   methods: {
@@ -249,7 +249,7 @@ export default {
     liveGames() {
       if (this.userStore.isUserLogged) {
         // Get Fixtures
-        const liveGames = this.store.getFixtures;
+        const liveGames = this.store.getLiveScore;
 
         // Get Logged User Games
         const myGames = this.userStore.getLoggedUser.myGames;
@@ -263,7 +263,7 @@ export default {
         });
         return filteredGames;
       } else {
-        return this.store.getFixtures;
+        return this.store.getLiveGames;
       }
     },
     renderPlayers() {

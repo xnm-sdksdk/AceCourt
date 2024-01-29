@@ -103,7 +103,7 @@ export const useGameStore = defineStore("game", {
     async fetchFixtures() {
       try {
         const response = await fetch(
-          `${TENNIS_API_URL}?method=get_fixtures&APIkey=${API_KEY}&date_start=2023-01-01&date_stop=2023-01-28&tournament_key=1236`
+          `${TENNIS_API_URL}?method=get_fixtures&APIkey=${API_KEY}`
         );
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
